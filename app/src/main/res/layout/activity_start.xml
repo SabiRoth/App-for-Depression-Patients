@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:weightSum="1"
+    android:gravity="center_horizontal">
+
+    <TextView
+        android:id="@+id/textView_overview"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/overview_textview"
+        android:visibility="visible"
+    />
+
+    <Button
+        android:id="@+id/button_overview_calendar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/calendar_button"
+        android:visibility="visible"
+    />
+
+    <Button
+        android:id="@+id/button_overview_graph"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/graph_button"
+     />
+
+    <TextView
+        android:id="@+id/textView_entries"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/entries_textview"
+    />
+
+    <Button
+        android:id="@+id/button_sensitivies"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/sensitivies_button"
+    />
+
+    <Button
+        android:id="@+id/button_activities"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/activities_button"
+    />
+
+    <TextView
+        android:id="@+id/textView_movementProfile"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/movementProfile_textview"
+    />
+
+    <Button
+        android:id="@+id/button_map"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/map_button"
+    />
+
+    <Button
+        android:id="@+id/button_places"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/places_button"
+    />
+</android.support.constraint.ConstraintLayout>

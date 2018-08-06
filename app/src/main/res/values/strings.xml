@@ -1,3 +1,19 @@
 <resources>
     <string name="app_name">Bachelorarbeit</string>
+
+
+    <!--Buttons-->
+    <string name="calendar_button">Kalenderübersicht</string>
+    <string name="graph_button">Graphendiagramm</string>
+    <string name="sensitivies_button">Befindlichkeiten</string>
+    <string name="activities_button">Aktivitäten</string>
+    <string name="map_button">Kartenansicht</string>
+    <string name="places_button">Orte tracken</string>
+
+    <!--TextViews-->
+    <string name="overview_textview">Übersichten</string>
+    <string name="entries_textview">Zusätzliche Eingaben</string>
+    <string name="movementProfile_textview">Bewegungsprofil</string>
+
+
 </resources>
