@@ -9,6 +9,7 @@
     <string name="activities_button">Aktivitäten</string>
     <string name="map_button">Kartenansicht</string>
     <string name="places_button">Orte tracken</string>
+    <string name="next">Weiter</string>
 
     <!--TextViews-->
     <string name="overview_textview">Übersichten</string>
