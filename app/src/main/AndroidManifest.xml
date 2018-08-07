@@ -5,6 +5,7 @@
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.VIBRATE" />
 
+    <!--TODO: Info über Backup durchlesen-->
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -18,18 +19,49 @@
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
         <activity
             android:name=".HomeActivity"
-            android:label="StartActivity"
-            android:parentActivityName=".MainActivity"></activity>
+            android:label="AppName"
+            android:parentActivityName=".MainActivity">
+        </activity>
+
+        <activity
+            android:name=".CalendarActivity"
+            android:label="Kalender">
+        </activity>
+
+        <activity
+            android:name=".ActivitiesActivity"
+            android:label="Aktivitäten eingeben">
+        </activity>
+
+        <activity
+            android:name=".GraphActivity"
+            android:label="Verlauf">
+        </activity>
+
+        <activity
+            android:name=".MapActivity"
+            android:label="Kartenansicht">
+        </activity>
+
+        <activity
+            android:name=".PlacesActivity"
+            android:label="Orte tracken">
+        </activity>
+
+        <activity
+            android:name=".SensitivitiesActivity"
+            android:label="Befindlichkeiten eingeben">
+        </activity>
 
         <service
             android:name=".BackgroundService"
-            android:exported="false"></service>
+            android:exported="false">
+        </service>
     </application>
 
 </manifest>
