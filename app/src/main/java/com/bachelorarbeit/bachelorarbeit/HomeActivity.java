@@ -9,6 +9,8 @@ import android.widget.TextView;
 
 public class HomeActivity extends AppCompatActivity {
 
+   /*
+   TODO: Prüfen ob deklaration hier außen notwendig ist
     private TextView overview;
     private Button overview_calendar_button;
     private Button overview_graph_button;
@@ -18,7 +20,7 @@ public class HomeActivity extends AppCompatActivity {
     private TextView movementProfile;
     private Button movementProfile_map_button;
     private Button movementProfile_places_button;
-
+*/
 
 
     @Override
@@ -110,5 +112,12 @@ public class HomeActivity extends AppCompatActivity {
     private void clickMovementProfilePlaces(){
         Intent i = new Intent(this, PlacesActivity.class);
         startActivity(i);
+    }
+
+    @Override
+    public void onPause() {
+        super.onPause();
+        Intent Service = new Intent(this, BackgroundService.class);
+        startService(Service);
     }
 }

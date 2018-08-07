@@ -18,6 +18,7 @@
 
     <!--Textsize variabel!-->
     <!--Werte in values!-->
+    <!--Buttonbreite je nach Inhaltsgröße: wrap content und margin entfernen-->
 
     <TextView
         android:id="@+id/textView_overview"
