@@ -2,7 +2,9 @@ package com.bachelorarbeit.bachelorarbeit;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ListView;
@@ -13,7 +15,7 @@ import java.util.ArrayList;
 
 public class SensitivitiesActivity extends AppCompatActivity {
 
-    public String[] allSelectedEntries;
+    public ArrayList<String> allSelectedEntries = new ArrayList<String>();
 
     //TODO: Auslagern?
     public String[] general = {"Abgeschlagen sein", "Hitzewallungen", "Zittern", "Überempfindlichkeit", "Gefühl von innerer Leere", "Kraftlosigkeit", "Verspannungen im Nacken", "Gliederschmerzen"};
@@ -29,27 +31,53 @@ public class SensitivitiesActivity extends AppCompatActivity {
         setContentView(R.layout.activity_sensitivities);
         TextView header = (TextView)findViewById(R.id.textView_sensitivities_header);
         header.setText("Allgemein");
-        ListView listViewGeneral = (ListView)findViewById(R.id.listViewCheckboxesGeneral);
+        final ListView listViewGeneral = (ListView)findViewById(R.id.listViewCheckboxesGeneral);
         ListView listViewHead = (ListView)findViewById(R.id.listViewCheckboxesHead);
         ListView listViewChestNeck = (ListView)findViewById(R.id.listViewCheckboxesChestNeck);
-        //usw
+        ListView listViewGastrointestinal = (ListView)findViewById(R.id.listViewCheckboxesGastrointestinal) ;
+        ListView listViewBladderSexuality = (ListView)findViewById(R.id.listViewCheckboxesBladderSexuality);
+        ListView listViewMental = (ListView)findViewById(R.id.listViewCheckboxesMental);
         Button buttonSensitivitiesNext = (Button)findViewById(R.id.button_sensitivies_next);
 
         listViewHead.setVisibility(View.GONE);
         listViewChestNeck.setVisibility(View.GONE);
+        listViewGastrointestinal.setVisibility(View.GONE);
+        listViewBladderSexuality.setVisibility(View.GONE);
+        listViewMental.setVisibility(View.GONE);
 
         ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,
                R.layout.simple_list_item, general);
 
         listViewGeneral.setAdapter(adapter);
-        //clicklistener
+        listViewGeneral.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+             @Override
+             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+                 entryClicked(i);
+             }
+        });
+
+        buttonSensitivitiesNext.setOnClickListener(new View.OnClickListener() {
+             @Override
+             public void onClick(View view) {
+                 nextButtonClicked();
+              }
+        });
     }
 
 
-    private void entryClicked(){
-
+    private void entryClicked(int clickedNumber){
+        String temp = general[clickedNumber];
+        if (allSelectedEntries.contains(temp)) {
+            allSelectedEntries.remove(temp);
+        }
+        else{
+            allSelectedEntries.add(temp);
+        }
         //setChecked(boolean checked)
         //add to allSelectedEntries
     }
 
+    private void nextButtonClicked(){
+
+    }
 }
