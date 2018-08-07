@@ -9,6 +9,9 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Checkable;
+import android.widget.CheckedTextView;
+
 
 import java.util.ArrayList;
 
@@ -45,14 +48,17 @@ public class SensitivitiesActivity extends AppCompatActivity {
         listViewBladderSexuality.setVisibility(View.GONE);
         listViewMental.setVisibility(View.GONE);
 
-        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,
+        final ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,
                R.layout.simple_list_item, general);
 
         listViewGeneral.setAdapter(adapter);
         listViewGeneral.setOnItemClickListener(new AdapterView.OnItemClickListener() {
              @Override
              public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-                 entryClicked(i);
+                 entryClicked(adapter.getItem(i));
+                 CheckedTextView checkedTextView = (CheckedTextView) view;
+                 checkedTextView.toggle();
+                 checkedTextView.refreshDrawableState();
              }
         });
 
@@ -65,16 +71,15 @@ public class SensitivitiesActivity extends AppCompatActivity {
     }
 
 
-    private void entryClicked(int clickedNumber){
-        String temp = general[clickedNumber];
-        if (allSelectedEntries.contains(temp)) {
-            allSelectedEntries.remove(temp);
+    private void entryClicked(String clickedEntry){
+        if (allSelectedEntries.contains(clickedEntry)) {
+            allSelectedEntries.remove(clickedEntry);
         }
         else{
-            allSelectedEntries.add(temp);
+            allSelectedEntries.add(clickedEntry);
         }
         //setChecked(boolean checked)
-        //add to allSelectedEntries
+
     }
 
     private void nextButtonClicked(){
