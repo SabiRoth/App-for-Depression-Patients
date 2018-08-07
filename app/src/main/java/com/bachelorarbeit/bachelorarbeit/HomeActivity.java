@@ -7,9 +7,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
-import org.w3c.dom.Text;
-
-public class StartActivity extends AppCompatActivity {
+public class HomeActivity extends AppCompatActivity {
 
     private TextView overview;
     private Button overview_calendar_button;
@@ -26,7 +24,7 @@ public class StartActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_start);
+        setContentView(R.layout.activity_home);
         TextView overview = (TextView)findViewById(R.id.textView_overview);
         Button overview_calendar_button = (Button)findViewById(R.id.button_overview_calendar);
         Button overview_graph_button = (Button)findViewById(R.id.button_overview_graph);

@@ -23,7 +23,7 @@
         </activity>
 
         <activity
-            android:name=".StartActivity"
+            android:name=".HomeActivity"
             android:label="StartActivity"
             android:parentActivityName=".MainActivity">
         </activity>

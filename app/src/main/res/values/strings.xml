@@ -3,8 +3,8 @@
 
 
     <!--Buttons-->
-    <string name="calendar_button">Kalenderübersicht</string>
-    <string name="graph_button">Graphendiagramm</string>
+    <string name="calendar_button">Kalender</string>
+    <string name="graph_button">Verlauf</string>
     <string name="sensitivies_button">Befindlichkeiten</string>
     <string name="activities_button">Aktivitäten</string>
     <string name="map_button">Kartenansicht</string>
