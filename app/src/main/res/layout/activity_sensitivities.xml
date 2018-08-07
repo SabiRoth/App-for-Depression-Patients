@@ -19,10 +19,12 @@
         android:layout_marginTop="15dp"/>
 
 
-    <include
-        layout="@layout/frames_sensitivities">
-    </include>
-
+    <ListView
+        android:id="@+id/listViewCheckboxes"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        tools:layout_editor_absoluteX="8dp"
+        tools:layout_editor_absoluteY="8dp" />
 
     <Button
         android:id="@+id/button_sensitivies_next"
