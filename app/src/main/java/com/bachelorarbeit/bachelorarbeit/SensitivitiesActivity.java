@@ -34,11 +34,11 @@ public class SensitivitiesActivity extends AppCompatActivity {
         listViewSensitivities = (ListView)findViewById(R.id.listViewCheckboxes);
         buttonSensitivitiesNext = (Button)findViewById(R.id.button_sensitivies_next);
 
-
+        //TODO: aus Datenbank holen, damit selbsteingegebene Einträge gespeichert und angezeigt werden können ODER BESSER: neue Seite mit zusätzlichen Eingaben und da speichern und anzeigen ->  Liste kann so bleiben
         String[] general = {"Abgeschlagen sein", "Hitzewallungen", "Zittern", "Überempfindlichkeit", "Gefühl von innerer Leere", "Kraftlosigkeit", "Verspannungen im Nacken", "Gliederschmerzen"};
         String[] head = {"Kopf wie Blei", "Kopfschmerzen", "Sehstörungen", "Druck auf den Ohren", "Hörstörungen", "Zahnschmerzen", "Zungenbrennen", "Mundgeruch"};
         String[] chestNeck = {"Druckgefühl", "Beengung im Brustkorb", "Schmerzen in der Herzgegend", "Herzrasen", "unregelmäßiges Atmen", "Kloßgefühl im Hals", "Würgegefühl"};
-        String[] gastrointestinal = {"Appetitlosigkeit", "Unruhe im Bauchraum", "Völlegefühl/Blähungen", "Sodbrennen/Aufstoßen", "Übelkeit/Erbrechen", "Durchfall/Verstopfung", "Gewichtsverlust", "Heißhunger"};
+        String[] gastrointestinal = {"Appetitlosigkeit", "Unruhe im Bauchraum", "Völlegefühl/Blähungen", "Sodbrennen/Aufstoßen", "Übelkeit", "Erbrechen", "Durchfall", "Verstopfung", "Gewichtsverlust", "Heißhunger"};
         String[] bladderSexuality = {"Druck in der Blase", "Häufiger Harndrang", "Schmerzen beim Wasserlassen", "kein sexuelles Verlangen", "Potenzstörungen", "Schmerzen beim Geschlechtsverkehr", "Störungen der Periode"};
         String[] mental = {"Leeregefühl im Kopf", "ständige Müdigkeit", "Konzentrationsstörungen", "Gedächtnisstörungen", "Gedankenblockade", "Schlafstörungen"};
 

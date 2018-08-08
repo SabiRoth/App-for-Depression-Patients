@@ -27,7 +27,8 @@
         android:text="@string/overview_textview"
         android:visibility="visible"
         android:textSize="35sp"
-        android:layout_marginTop="10dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginBottom="20dp"
         android:textColor="@color/colorHeadings"
     />
 
@@ -40,6 +41,7 @@
         android:textSize="25sp"
         android:layout_marginLeft="50dp"
         android:layout_marginRight="50dp"
+        android:layout_marginBottom="5dp"
         android:drawableEnd="@mipmap/calendar_icon"
         android:drawablePadding="15sp"
     />
@@ -53,9 +55,24 @@
        android:textSize="25sp"
        android:layout_marginLeft="50dp"
        android:layout_marginRight="50dp"
+       android:layout_marginBottom="5dp"
        android:drawableEnd="@mipmap/graph_icon"
        android:drawablePadding="15sp"
     />
+
+
+    <Button
+        android:id="@+id/button_map"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/map_button"
+        android:textSize="25sp"
+        android:layout_marginLeft="50dp"
+        android:layout_marginRight="50dp"
+        android:layout_marginBottom="5dp"
+        android:drawableEnd="@mipmap/maps_icon"
+        android:drawablePadding="15sp"
+        />
 
 
     <TextView
@@ -64,7 +81,8 @@
         android:layout_height="wrap_content"
         android:text="@string/entries_textview"
         android:textSize="35sp"
-        android:layout_marginTop="30dp"
+        android:layout_marginTop="50dp"
+        android:layout_marginBottom="20dp"
         android:textColor="@color/colorHeadings"
     />
 
@@ -77,6 +95,7 @@
         android:textSize="25sp"
         android:layout_marginLeft="50dp"
         android:layout_marginRight="50dp"
+        android:layout_marginBottom="5dp"
         android:drawableEnd="@mipmap/sensitivities_icon"
         android:drawablePadding="15sp"
     />
@@ -90,47 +109,11 @@
         android:textSize="25sp"
         android:layout_marginLeft="50dp"
         android:layout_marginRight="50dp"
+        android:layout_marginBottom="5dp"
         android:drawableEnd="@mipmap/activities_icon"
         android:drawablePadding="15sp"
     />
 
-
-    <TextView
-        android:id="@+id/textView_movementProfile"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/movementProfile_textview"
-        android:textSize="35sp"
-        android:layout_marginTop="30dp"
-        android:textColor="@color/colorHeadings"
-    />
-
-
-    <Button
-        android:id="@+id/button_map"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="@string/map_button"
-        android:textSize="25sp"
-        android:layout_marginLeft="50dp"
-        android:layout_marginRight="50dp"
-        android:drawableEnd="@mipmap/maps_icon"
-        android:drawablePadding="15sp"
-    />
-
-
-
-    <Button
-        android:id="@+id/button_places"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="@string/places_button"
-        android:textSize="25sp"
-        android:layout_marginLeft="50dp"
-        android:layout_marginRight="50dp"
-        android:drawableEnd="@mipmap/tracking_icon"
-        android:drawablePadding="15sp"
-    />
 
 
 <!-- </android.support.constraint.ConstraintLayout> -->

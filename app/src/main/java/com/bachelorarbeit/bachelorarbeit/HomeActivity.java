@@ -31,12 +31,11 @@ public class HomeActivity extends AppCompatActivity {
         TextView overview = (TextView)findViewById(R.id.textView_overview);
         Button overview_calendar_button = (Button)findViewById(R.id.button_overview_calendar);
         Button overview_graph_button = (Button)findViewById(R.id.button_overview_graph);
+        Button movementProfile_map_button = (Button)findViewById(R.id.button_map);
         TextView entries = (TextView)findViewById(R.id.textView_entries);
         Button entries_sensitivies_button = (Button)findViewById(R.id.button_sensitivies);
         Button entries_activities_button = (Button)findViewById(R.id.button_activities);
-        TextView movementProfile = (TextView)findViewById(R.id.textView_movementProfile);
-        Button movementProfile_map_button = (Button)findViewById(R.id.button_map);
-        Button movementProfile_places_button = (Button)findViewById(R.id.button_places);
+
 
         //clickListener for all buttons
 
@@ -54,6 +53,13 @@ public class HomeActivity extends AppCompatActivity {
             }
         });
 
+        movementProfile_map_button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                clickMovementProfileMap();
+            }
+        });
+
         entries_sensitivies_button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -65,20 +71,6 @@ public class HomeActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 clickEntriesActivities();
-            }
-        });
-
-        movementProfile_map_button.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                clickMovementProfileMap();
-            }
-        });
-
-        movementProfile_places_button.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                clickMovementProfilePlaces();
             }
         });
 
@@ -95,6 +87,11 @@ public class HomeActivity extends AppCompatActivity {
         startActivity(i);
     }
 
+    private void clickMovementProfileMap(){
+        Intent i = new Intent(this, MapActivity.class);
+        startActivity(i);
+    }
+
     private void clickEntriesSensitivies(){
         Intent i = new Intent(this, SensitivitiesActivity.class);
         startActivity(i);
@@ -105,15 +102,7 @@ public class HomeActivity extends AppCompatActivity {
         startActivity(i);
     }
 
-    private void clickMovementProfileMap(){
-        Intent i = new Intent(this, MapActivity.class);
-        startActivity(i);
-    }
 
-    private void clickMovementProfilePlaces(){
-        Intent i = new Intent(this, PlacesActivity.class);
-        startActivity(i);
-    }
 
     @Override
     public void onPause() {

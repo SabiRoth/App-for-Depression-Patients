@@ -15,6 +15,9 @@
     <string name="overview_textview">Übersichten</string>
     <string name="entries_textview">Zusätzliche Eingaben</string>
     <string name="movementProfile_textview">Bewegungsprofil</string>
+    <string name="actvitites1_textview">Soziale Aktivitäten</string>
+    <string name="activities2_textview">Sportliche Aktivitäten</string>
+    <string name="activities3_textview">Verpflichtungen</string>
 
 
 </resources>
