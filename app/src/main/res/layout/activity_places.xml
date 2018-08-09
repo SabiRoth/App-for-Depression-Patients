@@ -6,37 +6,32 @@
     android:layout_height="fill_parent"
     android:fillViewport="true">
 
+
     <LinearLayout
-        xmlns:app="http://schemas.android.com/apk/res-auto"
         xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical"
-        android:weightSum="1">
+        android:orientation="vertical">
 
         <TextView
-            android:id="@+id/textView_sensitivities_header"
+            android:id="@+id/textView_places_header"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:text="Gib die Orte zu den ausgewählten Aktivitäten ein:"
             android:textColor="@color/colorText"
+            android:textStyle="italic"
             android:textSize="30sp"
-            android:layout_marginBottom="20dp"
             android:layout_marginLeft="15dp"
-            android:layout_marginTop="15dp"/>
+            android:layout_marginTop="15dp"
+            android:layout_marginBottom="25dp"/>
 
-
-        <com.bachelorarbeit.bachelorarbeit.NonScrollListView
-            android:id="@+id/listViewCheckboxes"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            tools:layout_editor_absoluteX="8dp"
-            tools:layout_editor_absoluteY="8dp" />
+        <include layout="@layout/listentry_places"/>
 
         <Button
-            android:id="@+id/button_sensitivies_next"
+            android:id="@+id/button_places_end"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/next"
+            android:text="Abschließen"
             android:textSize="24dp"
             android:layout_gravity="right"
             android:layout_marginTop="25dp"

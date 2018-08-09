@@ -74,6 +74,41 @@
             tools:layout_editor_absoluteX="8dp"
             tools:layout_editor_absoluteY="8dp" />
 
+        <TextView
+            android:id="@+id/textView_activities_headerInput"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/activitiesInput_textview"
+            android:textColor="@color/colorText"
+            android:textSize="30sp"
+            android:layout_marginBottom="20dp"
+            android:layout_marginLeft="15dp"
+            android:layout_marginTop="15dp"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:weightSum="1">
+
+            <EditText
+                android:id="@+id/editText_activities"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.9"/>
+
+            <Button
+                android:id="@+id/saveButton_activities"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/save_button"
+                android:layout_gravity="right"
+                android:textSize="20dp"
+                android:layout_marginLeft="15dp"/>
+
+        </LinearLayout>
+
+
         <Button
             android:id="@+id/button_activities_next"
             android:layout_width="wrap_content"
@@ -82,7 +117,8 @@
             android:textSize="24dp"
             android:layout_gravity="right"
             android:layout_marginTop="15dp"
-            android:layout_marginRight="15dp"/>
+            android:layout_marginRight="15dp"
+            android:layout_marginBottom="15dp"/>
 
 
     </LinearLayout>

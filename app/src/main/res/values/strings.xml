@@ -10,6 +10,7 @@
     <string name="map_button">Kartenansicht</string>
     <string name="places_button">Orte tracken</string>
     <string name="next">Weiter</string>
+    <string name="save_button">Speichern</string>
 
     <!--TextViews-->
     <string name="overview_textview">Übersichten</string>
@@ -18,6 +19,6 @@
     <string name="actvitites1_textview">Soziale Aktivitäten</string>
     <string name="activities2_textview">Sportliche Aktivitäten</string>
     <string name="activities3_textview">Verpflichtungen</string>
-
+    <string name="activitiesInput_textview">Weitere Eingaben</string>
 
 </resources>
