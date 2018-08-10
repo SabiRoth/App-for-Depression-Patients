@@ -16,6 +16,8 @@ import java.util.ArrayList;
 public class PlacesActivity extends AppCompatActivity {
 
 
+    public ArrayList<EditText> editTextArrayList = new ArrayList<EditText>();
+    public ArrayList<String> selectedActivites = new ArrayList<String>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,7 +32,7 @@ public class PlacesActivity extends AppCompatActivity {
         });;
         LinearLayout layout = (LinearLayout)findViewById(R.id.layout_listentry_places);
         Intent intent = getIntent();
-        ArrayList<String> selectedActivites = intent.getStringArrayListExtra("selectedActivities");
+        selectedActivites = intent.getStringArrayListExtra("selectedActivities");
         LinearLayout.LayoutParams paramsForTextView = new LinearLayout.LayoutParams(
                 LinearLayout.LayoutParams.WRAP_CONTENT,
                 LinearLayout.LayoutParams.WRAP_CONTENT
@@ -53,7 +55,7 @@ public class PlacesActivity extends AppCompatActivity {
             editText.setLayoutParams(paramsforEditView);
             buildEditText(editText);
             layout.addView(editText);
-
+            editTextArrayList.add(editText);
         }
     }
 
@@ -65,11 +67,20 @@ public class PlacesActivity extends AppCompatActivity {
 
     private void buildEditText(EditText editText){
         editText.setHint("Ort eingeben");
-        editText.setInputType(InputType.TYPE_CLASS_PHONE);
+        editText.setInputType(InputType.TYPE_CLASS_TEXT);
     }
 
     private void endButtonClicked(){
+        //TODO: weitergeben: Liste Aktivitäten & Liste Orte
+        ArrayList<String> placesArrayList = new ArrayList<String>();
+        for(int i = 0; i<editTextArrayList.size(); i++){
+            if(!(editTextArrayList.get(i).getText().toString().equals(""))) {
+                placesArrayList.add(editTextArrayList.get(i).getText().toString());
+            }
+        }
         Intent i = new Intent(this, HomeActivity.class);
+        i.putExtra("placesArrayList", placesArrayList);
+        i.putExtra("activitiesArrayList", selectedActivites);
         startActivity(i);
     }
 }

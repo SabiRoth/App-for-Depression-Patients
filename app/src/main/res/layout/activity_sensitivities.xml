@@ -4,7 +4,8 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
-    android:fillViewport="true">
+    android:fillViewport="true"
+    android:id="@+id/layout_sensitivities">
 
     <LinearLayout
         xmlns:app="http://schemas.android.com/apk/res-auto"
@@ -31,6 +32,8 @@
             android:layout_height="wrap_content"
             tools:layout_editor_absoluteX="8dp"
             tools:layout_editor_absoluteY="8dp" />
+
+        <include layout="@layout/listentry_sensitivities_own_entry"/>
 
         <Button
             android:id="@+id/button_sensitivies_next"

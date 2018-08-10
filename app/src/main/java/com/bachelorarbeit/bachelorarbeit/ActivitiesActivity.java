@@ -103,17 +103,24 @@ public class ActivitiesActivity extends AppCompatActivity {
     }
 
     private void nextButtonClicked(){
-
-        Intent i = new Intent(this, PlacesActivity.class);
-        i.putExtra("selectedActivities", allSelectedEntries);
+        Intent i;
+        if(allSelectedEntries.size()==0){
+            i = new Intent(this, HomeActivity.class);
+        }
+        else {
+            i = new Intent(this, PlacesActivity.class);
+            i.putExtra("selectedActivities", allSelectedEntries);
+        }
         startActivity(i);
     }
 
     private void saveButtonClicked(){
-        allSelectedEntries.add(editTextField.getText().toString());
-        CharSequence text = "Gespeichert";
-        Toast toast = Toast.makeText(getApplicationContext(), text, Toast.LENGTH_LONG);
-        toast.show();
-        editTextField.setText("");
+
+        if(!(editTextField.getText().toString().equals(""))) {
+            allSelectedEntries.add(editTextField.getText().toString());
+            CharSequence text = "Gespeichert";
+            Toast.makeText(getApplicationContext(), text, Toast.LENGTH_LONG).show();
+            editTextField.setText("");
+        }
     }
 }
