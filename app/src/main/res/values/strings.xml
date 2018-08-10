@@ -20,5 +20,31 @@
     <string name="activities2_textview">Sportliche Aktivitäten</string>
     <string name="activities3_textview">Verpflichtungen</string>
     <string name="activitiesInput_textview">Weitere Eingaben</string>
+    <string name="gps_activation_textview">GPS-Tracking</string>
+    <string name="push_activation_textview">Push-Benachrichtigungen</string>
+    <string name="recipient_mail_textview">Standard als E-Mail-Empfänger anlegen</string>
+    <string name="privacyPolicy_textview">Datenschutzerklärung</string>
+    <string name="siteNotice">Impressum</string>
+
+    <!--ActivityLabels-->
+    <string name="home_activity_label">Home</string>
+    <string name="calendar_activity_label">Kalender</string>
+    <string name="activities_activity_label">Aktivitäten eingeben</string>
+    <string name="graph_activity_label">Verlauf</string>
+    <string name="map_activity_label">Kartenansicht</string>
+    <string name="places_activity_label">Orte tracken</string>
+    <string name="sensitivities_activity_label">Befindlichkeiten eingeben</string>
+    <string name="settings_activity_label">Einstellungen</string>
+    <string name="emergency_activity_label">Notrufnummern</string>
+
+    <!--Text Emegency-->
+    <string name="emergency1"><b>In Notfällen:</b></string>
+    <string name="emergency2">Feuerwehr/Rettungsdienst: 112</string>
+    <string name="emergency3">Polizei: 110</string>
+    <string name="emergency4"><b>Wenn du jemanden zum Reden brauchst:</b></string>
+    <string name="emergency5"><u>Telefonseelsorge</u></string>
+    <string name="emergency6">0800/111 0 111 oder 116 123  <i>(kostenlos, 24h)</i></string>
+    <string name="emergency7"><u>Info-Telefon Depression</u></string>
+    <string name="emergency8">0800 3344533 <i>(kostenlos, Mo, Di, Do: 13:00 – 17:00 Uhr und Mi, Fr: 08:30 – 12:30 Uhr)</i></string>
 
 </resources>

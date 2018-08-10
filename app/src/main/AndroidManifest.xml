@@ -24,40 +24,51 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
         <activity
             android:name=".HomeActivity"
-            android:label="AppName"
+            android:label="@string/home_activity_label"
             android:parentActivityName=".MainActivity">
         </activity>
 
         <activity
             android:name=".CalendarActivity"
-            android:label="Kalender">
+            android:label="@string/calendar_activity_label">
         </activity>
 
         <activity
             android:name=".ActivitiesActivity"
-            android:label="Aktivitäten eingeben">
+            android:label="@string/activities_activity_label">
         </activity>
 
         <activity
             android:name=".GraphActivity"
-            android:label="Verlauf">
+            android:label="@string/graph_activity_label">
         </activity>
 
         <activity
             android:name=".MapActivity"
-            android:label="Kartenansicht">
+            android:label="@string/map_activity_label">
         </activity>
 
         <activity
             android:name=".PlacesActivity"
-            android:label="Orte tracken">
+            android:label="@string/places_activity_label">
         </activity>
 
         <activity
             android:name=".SensitivitiesActivity"
-            android:label="Befindlichkeiten eingeben">
+            android:label="@string/sensitivities_activity_label">
+        </activity>
+
+        <activity
+        android:name=".SettingsActivity"
+        android:label="@string/settings_activity_label">
+    </activity>
+
+        <activity
+            android:name=".EmergencyActivity"
+            android:label="@string/settings_activity_label">
         </activity>
 
         <service

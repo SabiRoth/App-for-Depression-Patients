@@ -17,16 +17,15 @@ import java.util.ArrayList;
 
 public class ActivitiesActivity extends AppCompatActivity {
 
-    //TODO: Zusätzliche Eingaben
-    //TODO: Scrollbar
+    //TODO: Wörter in strings auslagern
 
     public ListView socialActivitiesListView;
     public ListView sportActivititesListView;
     public ListView obligationsActivitiesListView;
     public EditText editTextField;
-    public String[] socialActivitiesArrayString = {"Mit Freunden/Bekannten getroffen", "Mit Freunden/Bekannten telefoniert"};
-    public String[] sportActivitiesArrayString = {"Spazieren gehen", "Schwimmen"};
-    public String[] obligationsActivitiesArrayString = {"Zur Arbeit gegangen", "Einkaufen gegangen"};
+    public String[] socialActivitiesArrayString = {"Mit Freunden/Bekannten getroffen", "Mit Freunden/Bekannten telefoniert", "Theater-/Kino-/Konzertbesuch", "Auswärts Essen gegangen", "Bar-/Disko-/Kneipenbesuch"};
+    public String[] sportActivitiesArrayString = {"Spazieren gehen", "Schwimmen", "Laufen", "Wandern/Bergsteigen", "Ballsport", "Tanzen", "Radfahren"};
+    public String[] obligationsActivitiesArrayString = {"Zur Arbeit gegangen", "Einkaufen gegangen", "Arztbesuch"};
     public ArrayList<String> allSelectedEntries = new ArrayList<String>();
 
 
