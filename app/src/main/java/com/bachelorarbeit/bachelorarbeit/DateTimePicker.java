@@ -21,20 +21,25 @@ public class DateTimePicker extends Calendar {
 
     public String getCurrentTime() {
         calendar.setTimeZone(TimeZone.getTimeZone("Europe/Berlin"));
-        int minute = calendar.get(Calendar.MINUTE);
-        String minuteString = Integer.toString(minute);
-        if(minuteString.length() == 1){
-            minuteString = "0" + minuteString;
+        String minute = Integer.toString(calendar.get(Calendar.MINUTE));
+        if(minute.length() == 1){
+            minute = "0" + minute;
+        }
+        String hour = Integer.toString(calendar.get(Calendar.HOUR_OF_DAY));
+        if(hour.length()==1){
+            hour = "0" + hour;
         }
 
-        return calendar.get(Calendar.HOUR_OF_DAY) + ":" + minuteString;
+        return hour + ":" + minute;
     }
 
     public String getCurrentDate(){
+        calendar.setTimeZone(TimeZone.getTimeZone("Europe/Berlin"));
         return calendar.get(Calendar.DAY_OF_MONTH) + "." + (calendar.get(Calendar.MONTH)+1) + "." +  calendar.get(Calendar.YEAR);
     }
 
     public String getDaytime(){
+        calendar.setTimeZone(TimeZone.getTimeZone("Europe/Berlin"));
         String daytime;
         if(calendar.get(Calendar.HOUR_OF_DAY) < 11 && calendar.get(Calendar.HOUR_OF_DAY) > 2){
             daytime = "Morgen";
@@ -47,7 +52,6 @@ public class DateTimePicker extends Calendar {
         }
         return daytime;
     }
-
 
 
     @Override

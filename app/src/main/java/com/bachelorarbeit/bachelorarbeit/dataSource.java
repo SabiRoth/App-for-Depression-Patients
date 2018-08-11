@@ -21,13 +21,20 @@ public class dataSource {
     private dbHelper dbHelper;
 
 
-    private String[] columns = {
+    private String[] columnsEntries = {
             dbHelper.COLUMN_ID,
             dbHelper.COLUMN_SENSIBILITIES,
             dbHelper.COLUMN_PLACES,
             dbHelper.COLUMN_ACTIVITIES,
             dbHelper.COLUMN_DATE,
-            dbHelper.COLUMN_TIME
+            dbHelper.COLUMN_TIME,
+            dbHelper.COLUMN_DAYTIME
+    };
+
+    private String[] columnsMovementProfile = {
+            dbHelper.COLUMN_ID,
+            dbHelper.COLUMN_MOVEMENT_PROFILE,
+            dbHelper.COLUMN_DATE
     };
 
 
@@ -44,22 +51,25 @@ public class dataSource {
     }
 
     //write a new entry in the database
-    public void createEntry(String sensitivies, String activities, String places, String date, String time) {
+    public void createEntry(String sensitivies, String activities, String places, String date, String time, String daytime) {
         ContentValues values = new ContentValues();
         values.put(dbHelper.COLUMN_SENSIBILITIES, sensitivies);
         values.put(dbHelper.COLUMN_ACTIVITIES, activities);
         values.put(dbHelper.COLUMN_PLACES, places);
         values.put(dbHelper.COLUMN_DATE, date);
         values.put(dbHelper.COLUMN_TIME, time);
+        values.put(dbHelper.COLUMN_DAYTIME, daytime);
 
-        database.insert(dbHelper.TABLE_ENTRIES, null, values);
+        database.insert(dbHelper.TABLE_ALL_ENTRIES, null, values);
     }
 
+    public void createMovementProfileEntry(){
 
+    }
 
     public void deleteEntry(Entry entry) {
         long id = entry.getId();
-        database.delete(dbHelper.TABLE_ENTRIES,
+        database.delete(dbHelper.TABLE_ALL_ENTRIES,
                 dbHelper.COLUMN_ID + "=" + id,
                 null);
     }
@@ -67,8 +77,20 @@ public class dataSource {
 
     //provide all entries in the database
     public ArrayList<Entry> getAllEntries() {
-        Cursor cursor = database.query(dbHelper.TABLE_ENTRIES, columns, null, null, null, null, null);
+        Cursor cursor = database.query(dbHelper.TABLE_ALL_ENTRIES, columnsEntries, null, null, null, null, null);
         return cursorToEntry(cursor);
+    }
+
+    public Entry getLastEntry(){
+        //TODO: Bessere Lösung mit Cursor
+        ArrayList<Entry> allEntrys = getAllEntries();
+        if(allEntrys.size()>0) {
+            int lastEntryNumber = allEntrys.size() - 1;
+            return allEntrys.get(lastEntryNumber);
+        }
+        else{
+            return null;
+        }
     }
 
 
@@ -84,6 +106,7 @@ public class dataSource {
                     entry.setPlaces(cursor.getString(cursor.getColumnIndex(dbHelper.COLUMN_PLACES)));
                     entry.setDate(cursor.getString(cursor.getColumnIndex(dbHelper.COLUMN_DATE)));
                     entry.setTime(cursor.getString(cursor.getColumnIndex(dbHelper.COLUMN_TIME)));
+                    entry.setDaytime(cursor.getString(cursor.getColumnIndex(dbHelper.COLUMN_DAYTIME)));
                     entries.add(entry);
                 }
             }

@@ -100,7 +100,7 @@ public class PlacesActivity extends AppCompatActivity {
 
         dataSource = new dataSource(this);
         dataSource.open();
-        dataSource.createEntry(sensitivitiesString, activitiesString, placesString, dateTimePicker.getCurrentDate(),  dateTimePicker.getCurrentTime());
+        dataSource.createEntry(sensitivitiesString, activitiesString, placesString, dateTimePicker.getCurrentDate(),  dateTimePicker.getCurrentTime(), dateTimePicker.getDaytime());
 
 
         startActivity(i);

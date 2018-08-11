@@ -82,4 +82,12 @@ public class Entry {
         this.time = time;
     }
 
+    public String getDaytime() {
+        return daytime;
+    }
+
+    public void setDaytime(String daytime) {
+        this.daytime = daytime;
+    }
+
 }
