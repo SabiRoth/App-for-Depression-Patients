@@ -103,13 +103,14 @@ public class ActivitiesActivity extends AppCompatActivity {
 
     private void nextButtonClicked(){
         Intent i;
-        if(allSelectedEntries.size()==0){
+       /* if(allSelectedEntries.size()==0){
             i = new Intent(this, HomeActivity.class);
         }
-        else {
+        else {*/
             i = new Intent(this, PlacesActivity.class);
             i.putExtra("selectedActivities", allSelectedEntries);
-        }
+            i.putExtra("sensitivitiesString", getIntent().getStringExtra("sensitivitiesString"));
+        /*}*/
         startActivity(i);
     }
 

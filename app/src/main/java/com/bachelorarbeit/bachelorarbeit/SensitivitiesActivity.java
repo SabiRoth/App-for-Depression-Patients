@@ -126,7 +126,7 @@ public class SensitivitiesActivity extends AppCompatActivity {
        else{
            String[] temp = new String[allSelectedEntries.size()];
            String sensitivitiesString = Arrays.toString(allSelectedEntries.toArray(temp));
-           Intent i = new Intent (this, HomeActivity.class);
+           Intent i = new Intent (this, ActivitiesActivity.class);
            i.putExtra("sensitivitiesString", sensitivitiesString);
            startActivity(i);
        }

@@ -22,10 +22,12 @@ public class DateTimePicker extends Calendar {
     public String getCurrentTime() {
         calendar.setTimeZone(TimeZone.getTimeZone("Europe/Berlin"));
         int minute = calendar.get(Calendar.MINUTE);
-        if(minute<10){
-            minute = 0 + minute; //TODO: PRÜFEN UND GGF. ÄNDERN
+        String minuteString = Integer.toString(minute);
+        if(minuteString.length() == 1){
+            minuteString = "0" + minuteString;
         }
-        return calendar.get(Calendar.HOUR_OF_DAY) + ":" + minute;
+
+        return calendar.get(Calendar.HOUR_OF_DAY) + ":" + minuteString;
     }
 
     public String getCurrentDate(){
@@ -34,10 +36,10 @@ public class DateTimePicker extends Calendar {
 
     public String getDaytime(){
         String daytime;
-        if(Calendar.HOUR_OF_DAY<11){
+        if(calendar.get(Calendar.HOUR_OF_DAY) < 11 && calendar.get(Calendar.HOUR_OF_DAY) > 2){
             daytime = "Morgen";
         }
-        if(Calendar.HOUR>16){
+        if(calendar.get(Calendar.HOUR_OF_DAY) > 16 || calendar.get(Calendar.HOUR_OF_DAY) < 3){
             daytime = "Abend";
         }
         else{

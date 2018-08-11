@@ -24,6 +24,7 @@ public class PlacesActivity extends AppCompatActivity {
 
     public ArrayList<EditText> editTextArrayList = new ArrayList<EditText>();
     public ArrayList<String> selectedActivites = new ArrayList<String>();
+    public String sensitivitiesString;
     private dataSource dataSource;
 
     @Override
@@ -40,6 +41,7 @@ public class PlacesActivity extends AppCompatActivity {
         LinearLayout layout = (LinearLayout)findViewById(R.id.layout_listentry_places);
         Intent intent = getIntent();
         selectedActivites = intent.getStringArrayListExtra("selectedActivities");
+        sensitivitiesString = intent.getStringExtra("sensitivitiesString");
         LinearLayout.LayoutParams paramsForTextView = new LinearLayout.LayoutParams(
                 LinearLayout.LayoutParams.WRAP_CONTENT,
                 LinearLayout.LayoutParams.WRAP_CONTENT
@@ -98,7 +100,7 @@ public class PlacesActivity extends AppCompatActivity {
 
         dataSource = new dataSource(this);
         dataSource.open();
-        dataSource.createEntry("Beispiel", activitiesString, placesString, dateTimePicker.getCurrentDate(),  dateTimePicker.getCurrentTime());
+        dataSource.createEntry(sensitivitiesString, activitiesString, placesString, dateTimePicker.getCurrentDate(),  dateTimePicker.getCurrentTime());
 
 
         startActivity(i);
