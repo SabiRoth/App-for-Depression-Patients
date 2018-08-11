@@ -109,6 +109,15 @@ public class SensitivitiesActivity extends AppCompatActivity {
         checkedTextView.refreshDrawableState();
     }
 
+    private void saveButtonOwnEntriesClicked(EditText editText){
+        if(!(editText.getText().toString().equals(""))) {
+            allSelectedEntries.add(editText.getText().toString());
+            CharSequence text = "Gespeichert";
+            Toast.makeText(getApplicationContext(), text, Toast.LENGTH_LONG).show();
+            editText.setText("");
+        }
+    }
+
     private void nextButtonClicked(){
        counter++;
        if(counter<arrayListStringArrays.size()) {
@@ -117,18 +126,9 @@ public class SensitivitiesActivity extends AppCompatActivity {
        else{
            String[] temp = new String[allSelectedEntries.size()];
            String sensitivitiesString = Arrays.toString(allSelectedEntries.toArray(temp));
-           sensitivitiesString.length();
            Intent i = new Intent (this, HomeActivity.class);
+           i.putExtra("sensitivitiesString", sensitivitiesString);
            startActivity(i);
        }
-    }
-
-    private void saveButtonOwnEntriesClicked(EditText editText){
-        if(!(editText.getText().toString().equals(""))) {
-            allSelectedEntries.add(editText.getText().toString());
-            CharSequence text = "Gespeichert";
-            Toast.makeText(getApplicationContext(), text, Toast.LENGTH_LONG).show();
-            editText.setText("");
-        }
     }
 }

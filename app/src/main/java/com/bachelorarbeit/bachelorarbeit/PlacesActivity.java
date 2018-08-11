@@ -6,12 +6,17 @@ import android.support.v7.app.AppCompatActivity;
 import android.text.InputType;
 import android.view.View;
 import android.widget.Button;
+import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Calendar;
+import java.util.Date;
+import java.util.TimeZone;
 
 
 public class PlacesActivity extends AppCompatActivity {
@@ -83,14 +88,17 @@ public class PlacesActivity extends AppCompatActivity {
         Intent i = new Intent(this, HomeActivity.class);
         String[] temp = new String[selectedActivites.size()];
         String activitiesString = Arrays.toString(selectedActivites.toArray(temp));
-        i.putExtra("activitiesString", activitiesString);
+       // i.putExtra("activitiesString", activitiesString);
         String[] temp2 = new String[placesArrayList.size()];
         String placesString = Arrays.toString(placesArrayList.toArray(temp2));
-        i.putExtra("placesString", placesString);
+        //i.putExtra("placesString", placesString);
+
+
+        DateTimePicker  dateTimePicker = DateTimePicker.getInstance();
 
         dataSource = new dataSource(this);
         dataSource.open();
-        dataSource.createEntry("Beispiel", activitiesString, placesString, "Platzhalter", "Platzhalter");
+        dataSource.createEntry("Beispiel", activitiesString, placesString, dateTimePicker.getCurrentDate(),  dateTimePicker.getCurrentTime());
 
 
         startActivity(i);
