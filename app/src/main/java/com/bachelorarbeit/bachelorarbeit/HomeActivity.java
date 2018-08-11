@@ -1,7 +1,8 @@
 package com.bachelorarbeit.bachelorarbeit;
 
-import android.media.Image;
 import android.os.Bundle;
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
 import android.support.v7.app.AppCompatActivity;
 import android.content.Intent;
 import android.view.View;
@@ -30,11 +31,9 @@ public class HomeActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
 
-        TextView overview = (TextView)findViewById(R.id.textView_overview);
         Button overview_calendar_button = (Button)findViewById(R.id.button_overview_calendar);
         Button overview_graph_button = (Button)findViewById(R.id.button_overview_graph);
         Button movementProfile_map_button = (Button)findViewById(R.id.button_map);
-        TextView entries = (TextView)findViewById(R.id.textView_entries);
         Button entries_sensitivies_button = (Button)findViewById(R.id.button_sensitivies);
         Button entries_activities_button = (Button)findViewById(R.id.button_activities);
         ImageButton settingsButton = (ImageButton)findViewById(R.id.settings_imageButton);
@@ -96,7 +95,7 @@ public class HomeActivity extends AppCompatActivity {
     }
 
     private void clickOverviewCalendar(){
-        Intent i = new Intent(this, CalendarActivity.class);
+        Intent i = new Intent(this, showDbClass.class);
         startActivity(i);
     }
 

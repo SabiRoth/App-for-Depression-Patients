@@ -11,6 +11,7 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 
 
 public class PlacesActivity extends AppCompatActivity {
@@ -18,6 +19,7 @@ public class PlacesActivity extends AppCompatActivity {
 
     public ArrayList<EditText> editTextArrayList = new ArrayList<EditText>();
     public ArrayList<String> selectedActivites = new ArrayList<String>();
+    private dataSource dataSource;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -79,8 +81,18 @@ public class PlacesActivity extends AppCompatActivity {
             }
         }
         Intent i = new Intent(this, HomeActivity.class);
-        i.putExtra("placesArrayList", placesArrayList);
-        i.putExtra("activitiesArrayList", selectedActivites);
+        String[] temp = new String[selectedActivites.size()];
+        String activitiesString = Arrays.toString(selectedActivites.toArray(temp));
+        i.putExtra("activitiesString", activitiesString);
+        String[] temp2 = new String[placesArrayList.size()];
+        String placesString = Arrays.toString(placesArrayList.toArray(temp2));
+        i.putExtra("placesString", placesString);
+
+        dataSource = new dataSource(this);
+        dataSource.open();
+        dataSource.createEntry("Beispiel", activitiesString, placesString, "Platzhalter", "Platzhalter");
+
+
         startActivity(i);
     }
 }

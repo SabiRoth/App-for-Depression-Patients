@@ -31,10 +31,7 @@
             android:parentActivityName=".MainActivity">
         </activity>
 
-        <activity
-            android:name=".CalendarActivity"
-            android:label="@string/calendar_activity_label">
-        </activity>
+
 
         <activity
             android:name=".ActivitiesActivity"
@@ -62,13 +59,18 @@
         </activity>
 
         <activity
-        android:name=".SettingsActivity"
-        android:label="@string/settings_activity_label">
-    </activity>
+            android:name=".SettingsActivity"
+            android:label="@string/settings_activity_label">
+        </activity>
 
         <activity
             android:name=".EmergencyActivity"
             android:label="@string/settings_activity_label">
+        </activity>
+
+        <activity
+            android:name=".showDbClass">
+
         </activity>
 
         <service

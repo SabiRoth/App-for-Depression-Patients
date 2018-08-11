@@ -14,7 +14,7 @@ public class SettingsActivity extends AppCompatActivity {
         Switch switchButtonGPS = (Switch)findViewById(R.id.switch_gps);
         Switch switchButtonPush = (Switch)findViewById(R.id.switch_push);
         //TODO: Aus DB letzte Einstellungen holen und je nachdem auf an oder aus schalten
-        
+
         switchButtonGPS.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton compoundButton, boolean bChecked) {
