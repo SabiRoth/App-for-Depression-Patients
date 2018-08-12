@@ -41,6 +41,8 @@
 
     <!--EditText Hint-->
     <string name="places_edittext">Ort eingeben</string>
+    <string name="sensibilities_edittext">Befindlichkeit eingeben</string>
+    <string name="activities_edittext">Aktivität eingeben</string>
 
 
     <!--Text Emegency-->

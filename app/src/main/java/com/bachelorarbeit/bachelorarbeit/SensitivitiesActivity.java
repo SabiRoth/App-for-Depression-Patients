@@ -41,12 +41,12 @@ public class SensitivitiesActivity extends AppCompatActivity {
         buttonSensitivitiesNext = (Button)findViewById(R.id.button_sensitivies_next);
 
 
-        String[] general = {"Abgeschlagen sein", "Hitzewallungen", "Zittern", "Überempfindlichkeit", "Gefühl von innerer Leere", "Kraftlosigkeit", "Verspannungen im Nacken", "Gliederschmerzen", "Verminderter Antrieb", "Verminderte Aktivität", "Bewegungsdrang", "Unruhe", "Geminderte Leistungsfähigkeit", "Kraftlosigkeit", "Schlafstörungen", "Ständige Müdigkeit", "Morgentief", "Appetitsminderung", "Appetitsssteigerung"};
+        String[] general = {"Abgeschlagen sein", "Hitzewallungen", "Zittern", "Überempfindlichkeit", "Gefühl von innerer Leere", "Kraftlosigkeit", "Verspannungen im Nacken", "Gliederschmerzen", "Verminderter Antrieb", "Verminderte Aktivität", "Bewegungsdrang", "Unruhe", "Geminderte Leistungsfähigkeit", "Kraftlosigkeit", "Schlafstörungen", "Ständige Müdigkeit", "Morgentief", "Appetitsminderung", "Appetitssteigerung"};
         String[] head = {"Kopf wie Blei", "Kopfschmerzen", "Sehstörungen", "Druck auf den Ohren", "Hörstörungen", "Zahnschmerzen", "Zungenbrennen", "Mundgeruch"};
         String[] chestNeck = {"Druckgefühl", "Beengung im Brustkorb", "Schmerzen in der Herzgegend", "Herzrasen", "Unregelmäßiges Atmen", "Kloßgefühl im Hals", "Würgegefühl"};
         String[] gastrointestinal = {"Appetitlosigkeit", "Unruhe im Bauchraum", "Völlegefühl/Blähungen", "Sodbrennen/Aufstoßen", "Übelkeit", "Erbrechen", "Durchfall", "Verstopfung", "Gewichtsverlust", "Heißhunger"};
         String[] bladderSexuality = {"Druck in der Blase", "Häufiger Harndrang", "Schmerzen beim Wasserlassen", "Libidoverlust", "Potenzstörungen", "Schmerzen beim Geschlechtsverkehr", "Störungen der Periode"};
-        String[] mental = {"Leeregefühl im Kopf", "Konzentrationsstörungen", "Gedächtnisstörungen", "Gedankenblockade", "Gefühle der Werlosigkeit", "Beeinträchtigtes Selbstvertrauen", "Schuldgefühle", "Gedrückte Stimmung", "Versagensgefühle", "Selbstvorwürfe", "Pessimismus", "Unzufriedenheit", "Stress", "Verzweiflung", "Gefühle der Nutzlosigkeit", "Geminderte Begeisterungsfähigkeit", "Unentschlossenheit", "Weinen", "Interessenverlust"};
+        String[] mental = {"Leeregefühl im Kopf", "Konzentrationsstörungen", "Gedächtnisstörungen", "Gedankenblockade", "Gefühle der Wertlosigkeit", "Beeinträchtigtes Selbstvertrauen", "Schuldgefühle", "Gedrückte Stimmung", "Versagensgefühle", "Selbstvorwürfe", "Pessimismus", "Unzufriedenheit", "Stress", "Verzweiflung", "Gefühle der Nutzlosigkeit", "Geminderte Begeisterungsfähigkeit", "Unentschlossenheit", "Weinen", "Interessenverlust"};
         String[] social ={"Sozialer Rückzug", "Verminderte Gesprächigkeit", "Reizbarkeit"};
         String[] ownEntries = {}; //TODO: aus Datenbank holen
 

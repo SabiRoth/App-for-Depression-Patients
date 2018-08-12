@@ -79,7 +79,8 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="0.9"
-                android:hint="Aktivität eingeben"
+                android:hint="@string/activities_edittext"
+                android:inputType="text"
                 android:layout_marginStart="15dp"/>
 
             <Button
