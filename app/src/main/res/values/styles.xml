@@ -9,4 +9,15 @@
     </style>
 
     <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar"/>
+
+    <style name="header">
+        <!--TODO: Befüllen mit header-eigenschaften, Textgröße, Farbe, Hintergrund etc. -> Dann style="@style/" im layout verwenden!!-->
+    </style>
+
+    <style name="normalText">
+    </style>
+
+    <style name="buttonStyle">
+
+    </style>
 </resources>

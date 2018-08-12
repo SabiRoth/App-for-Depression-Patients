@@ -105,8 +105,11 @@ public class HomeActivity extends AppCompatActivity {
     }
 
     private void clickMovementProfileMap(){
-        Intent i = new Intent(this, MapActivity.class);
+        Intent i = new Intent(this, GPSTracker.class);
         startActivity(i);
+        /*Intent i = new Intent(this, MapActivity.class);
+        startActivity(i);
+        */
     }
 
     private void clickEntriesSensitivies(){
