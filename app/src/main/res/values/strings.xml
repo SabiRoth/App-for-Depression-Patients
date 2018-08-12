@@ -11,12 +11,13 @@
     <string name="places_button">Orte tracken</string>
     <string name="next">Weiter</string>
     <string name="save_button">Speichern</string>
+    <string name="end_button">Abschließen</string>
 
     <!--TextViews-->
     <string name="overview_textview">Übersichten</string>
     <string name="entries_textview">Zusätzliche Eingaben</string>
     <string name="movementProfile_textview">Bewegungsprofil</string>
-    <string name="actvitites1_textview">Soziale Aktivitäten</string>
+    <string name="activities1_textview">Soziale Aktivitäten</string>
     <string name="activities2_textview">Sportliche Aktivitäten</string>
     <string name="activities3_textview">Verpflichtungen</string>
     <string name="activitiesInput_textview">Weitere Eingaben</string>
@@ -25,6 +26,7 @@
     <string name="recipient_mail_textview">Standard als E-Mail-Empfänger anlegen</string>
     <string name="privacyPolicy_textview">Datenschutzerklärung</string>
     <string name="siteNotice">Impressum</string>
+    <string name="places_textview">Gib die Orte zu deinen Aktivitäten ein:</string>
 
     <!--ActivityLabels-->
     <string name="home_activity_label">Home</string>
@@ -36,6 +38,10 @@
     <string name="sensitivities_activity_label">Befindlichkeiten eingeben</string>
     <string name="settings_activity_label">Einstellungen</string>
     <string name="emergency_activity_label">Notrufnummern</string>
+
+    <!--EditText Hint-->
+    <string name="places_edittext">Ort eingeben</string>
+
 
     <!--Text Emegency-->
     <string name="emergency1"><b>In Notfällen:</b></string>

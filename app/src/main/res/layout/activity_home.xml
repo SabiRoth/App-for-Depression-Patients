@@ -16,14 +16,15 @@
         android:weightSum="1"
         android:gravity="center_horizontal">
 
-        <!--
+      <!--
+
         <include
             layout="@layout/app_bar"
         />
         -->
 
+
         <!--TODO: Textsize variabel!-->
-        <!--TODO: Werte in values!-->
         <!--TODO: Buttonbreite je nach Inhaltsgröße: wrap content und margin entfernen-->
 
         <LinearLayout
@@ -49,7 +50,6 @@
                 app:srcCompat="@mipmap/settings_icon"
                 android:layout_marginStart="30dp"
                 android:background="@null"/>
-
         </LinearLayout>
 
         <TextView
@@ -57,94 +57,54 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/overview_textview"
-            android:visibility="visible"
-            android:textSize="32sp"
-            android:layout_marginTop="20dp"
-            android:layout_marginBottom="15dp"
-            android:textColor="@color/colorHeadings"
-        />
+            style="@style/headerTextView_home"/>
 
         <Button
             android:id="@+id/button_overview_calendar"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/calendar_button"
-            android:visibility="visible"
-            android:textSize="25sp"
-            android:layout_marginLeft="50dp"
-            android:layout_marginRight="50dp"
-            android:layout_marginBottom="5dp"
             android:drawableEnd="@mipmap/calendar_icon"
-            android:drawablePadding="15sp"
-        />
-
+            style="@style/button_home"/>
 
         <Button
            android:id="@+id/button_overview_graph"
            android:layout_width="match_parent"
            android:layout_height="wrap_content"
            android:text="@string/graph_button"
-           android:textSize="25sp"
-           android:layout_marginLeft="50dp"
-           android:layout_marginRight="50dp"
-           android:layout_marginBottom="5dp"
            android:drawableEnd="@mipmap/graph_icon"
-           android:drawablePadding="15sp"
-        />
-
+           style="@style/button_home"/>
 
         <Button
             android:id="@+id/button_map"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/map_button"
-            android:textSize="25sp"
-            android:layout_marginLeft="50dp"
-            android:layout_marginRight="50dp"
-            android:layout_marginBottom="5dp"
             android:drawableEnd="@mipmap/maps_icon"
-            android:drawablePadding="15sp"/>
-
+            style="@style/button_home"/>
 
         <TextView
             android:id="@+id/textView_entries"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/entries_textview"
-            android:textSize="32sp"
-            android:layout_marginTop="30dp"
-            android:layout_marginBottom="15dp"
-            android:textColor="@color/colorHeadings"
-        />
-
+            style="@style/headerTextView_home"/>
 
         <Button
             android:id="@+id/button_sensitivies"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/sensitivies_button"
-            android:textSize="25sp"
-            android:layout_marginLeft="50dp"
-            android:layout_marginRight="50dp"
-            android:layout_marginBottom="5dp"
             android:drawableEnd="@mipmap/sensitivities_icon"
-            android:drawablePadding="15sp"
-        />
-
+            style="@style/button_home"/>
 
         <Button
             android:id="@+id/button_activities"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/activities_button"
-            android:textSize="25sp"
-            android:layout_marginLeft="50dp"
-            android:layout_marginRight="50dp"
-            android:layout_marginBottom="5dp"
             android:drawableEnd="@mipmap/activities_icon"
-            android:drawablePadding="15sp"
-        />
-
+            style="@style/button_home"/>
 
         <ImageButton
             android:layout_width="wrap_content"
@@ -154,9 +114,7 @@
             android:background="@null"
             android:contentDescription="@string/emergency_activity_label"
             android:layout_gravity="center_horizontal"
-            android:layout_margin="20dp"
-            />
-
+            android:layout_margin="10dp"/>
 
     </LinearLayout>
 </ScrollView>

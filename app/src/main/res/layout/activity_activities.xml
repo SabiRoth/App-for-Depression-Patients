@@ -11,7 +11,7 @@
         xmlns:app="http://schemas.android.com/apk/res-auto"
         xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         android:orientation="vertical"
         android:weightSum="1">
 
@@ -19,13 +19,8 @@
             android:id="@+id/textView_activities_header1"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/actvitites1_textview"
-            android:textColor="@color/colorText"
-            android:textSize="30sp"
-            android:layout_marginBottom="20dp"
-            android:layout_marginLeft="15dp"
-            android:layout_marginTop="15dp"/>
-
+            android:text="@string/activities1_textview"
+            style="@style/headerTextView"/>
 
 
         <com.bachelorarbeit.bachelorarbeit.NonScrollListView
@@ -41,11 +36,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/activities2_textview"
-            android:textColor="@color/colorText"
-            android:textSize="30sp"
-            android:layout_marginBottom="20dp"
-            android:layout_marginLeft="15dp"
-            android:layout_marginTop="15dp"/>
+            style="@style/headerTextView"/>
 
 
         <com.bachelorarbeit.bachelorarbeit.NonScrollListView
@@ -60,11 +51,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/activities3_textview"
-            android:textColor="@color/colorText"
-            android:textSize="30sp"
-            android:layout_marginBottom="20dp"
-            android:layout_marginLeft="15dp"
-            android:layout_marginTop="15dp"/>
+            style="@style/headerTextView"/>
 
 
         <com.bachelorarbeit.bachelorarbeit.NonScrollListView
@@ -79,11 +66,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/activitiesInput_textview"
-            android:textColor="@color/colorText"
-            android:textSize="30sp"
-            android:layout_marginBottom="20dp"
-            android:layout_marginLeft="15dp"
-            android:layout_marginTop="15dp"/>
+            style="@style/headerTextView"/>
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -95,32 +78,23 @@
                 android:id="@+id/editText_activities"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_weight="0.9"/>
+                android:layout_weight="0.9"
+                android:hint="Aktivität eingeben"
+                android:layout_marginStart="15dp"/>
 
             <Button
                 android:id="@+id/saveButton_activities"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/save_button"
-                android:layout_gravity="right"
-                android:textSize="20dp"
-                android:layout_marginLeft="15dp"/>
-
+                style="@style/saveButton"/>
         </LinearLayout>
-
 
         <Button
             android:id="@+id/button_activities_next"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/next"
-            android:textSize="24dp"
-            android:layout_gravity="right"
-            android:layout_marginTop="15dp"
-            android:layout_marginRight="15dp"
-            android:layout_marginBottom="15dp"/>
-
+            style="@style/nextButton"
+            />
 
     </LinearLayout>
-
 </ScrollView>

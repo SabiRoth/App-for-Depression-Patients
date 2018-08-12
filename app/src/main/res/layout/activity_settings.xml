@@ -18,21 +18,14 @@
             android:layout_weight="0.8"
             android:id="@+id/TextView_GPSActivation"
             android:text="@string/gps_activation_textview"
-            android:textColor="@color/colorText"
-            android:textSize="25sp"
-            android:layout_marginBottom="20dp"
-            android:layout_marginStart="15dp"
-            android:layout_marginTop="15dp"/>
+            style="@style/normalText"/>
 
         <Switch
             android:id="@+id/switch_gps"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:layout_weight="0.1"
-
-            />
-
+            android:layout_weight="0.1"/>
     </LinearLayout>
 
 
@@ -48,14 +41,10 @@
             android:layout_weight="0.8"
             android:id="@+id/TextView_pushActivation"
             android:text="@string/push_activation_textview"
-            android:textColor="@color/colorText"
-            android:textSize="25sp"
-            android:layout_marginBottom="20dp"
-            android:layout_marginStart="15dp"
-            android:layout_marginTop="15dp"/>
+            style="@style/normalText"/>
 
         <Switch
-            android:layout_width="0dp"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/switch_push"
             android:layout_gravity="center"
@@ -69,32 +58,20 @@
         android:layout_height="wrap_content"
         android:id="@+id/TextView_recipientMail"
         android:text="@string/recipient_mail_textview"
-        android:textColor="@color/colorText"
-        android:textSize="25sp"
-        android:layout_marginBottom="20dp"
-        android:layout_marginLeft="15dp"
-        android:layout_marginTop="15dp"/>
+        style="@style/normalText"/>
 
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/TextView_privacyPolicy"
         android:text="@string/privacyPolicy_textview"
-        android:textColor="@color/colorText"
-        android:textSize="25sp"
-        android:layout_marginBottom="20dp"
-        android:layout_marginLeft="15dp"
-        android:layout_marginTop="15dp"/>
+        style="@style/normalText"/>
 
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/TextView_siteNotice"
         android:text="@string/siteNotice"
-        android:textColor="@color/colorText"
-        android:textSize="25sp"
-        android:layout_marginBottom="20dp"
-        android:layout_marginLeft="15dp"
-        android:layout_marginTop="15dp"/>
+        style="@style/normalText"/>
 
 </LinearLayout>

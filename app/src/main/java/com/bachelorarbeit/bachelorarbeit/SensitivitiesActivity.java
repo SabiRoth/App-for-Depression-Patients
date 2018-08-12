@@ -41,13 +41,13 @@ public class SensitivitiesActivity extends AppCompatActivity {
         buttonSensitivitiesNext = (Button)findViewById(R.id.button_sensitivies_next);
 
 
-        String[] general = {"Abgeschlagen sein", "Hitzewallungen", "Zittern", "Überempfindlichkeit", "Gefühl von innerer Leere", "Kraftlosigkeit", "Verspannungen im Nacken", "Gliederschmerzen", "verminderter Antrieb", "verminderte Aktivität", "Bewegungsdrang", "Unruhe", "geminderte Leistungsfähigkeit", "Kraftlosigkeit", "Schlafstörungen", "ständige Müdigkeit", "Morgentief", "Appetitsminderung", "Appetitsssteigerung"};
+        String[] general = {"Abgeschlagen sein", "Hitzewallungen", "Zittern", "Überempfindlichkeit", "Gefühl von innerer Leere", "Kraftlosigkeit", "Verspannungen im Nacken", "Gliederschmerzen", "Verminderter Antrieb", "Verminderte Aktivität", "Bewegungsdrang", "Unruhe", "Geminderte Leistungsfähigkeit", "Kraftlosigkeit", "Schlafstörungen", "Ständige Müdigkeit", "Morgentief", "Appetitsminderung", "Appetitsssteigerung"};
         String[] head = {"Kopf wie Blei", "Kopfschmerzen", "Sehstörungen", "Druck auf den Ohren", "Hörstörungen", "Zahnschmerzen", "Zungenbrennen", "Mundgeruch"};
-        String[] chestNeck = {"Druckgefühl", "Beengung im Brustkorb", "Schmerzen in der Herzgegend", "Herzrasen", "unregelmäßiges Atmen", "Kloßgefühl im Hals", "Würgegefühl"};
+        String[] chestNeck = {"Druckgefühl", "Beengung im Brustkorb", "Schmerzen in der Herzgegend", "Herzrasen", "Unregelmäßiges Atmen", "Kloßgefühl im Hals", "Würgegefühl"};
         String[] gastrointestinal = {"Appetitlosigkeit", "Unruhe im Bauchraum", "Völlegefühl/Blähungen", "Sodbrennen/Aufstoßen", "Übelkeit", "Erbrechen", "Durchfall", "Verstopfung", "Gewichtsverlust", "Heißhunger"};
         String[] bladderSexuality = {"Druck in der Blase", "Häufiger Harndrang", "Schmerzen beim Wasserlassen", "Libidoverlust", "Potenzstörungen", "Schmerzen beim Geschlechtsverkehr", "Störungen der Periode"};
-        String[] mental = {"Leeregefühl im Kopf", "Konzentrationsstörungen", "Gedächtnisstörungen", "Gedankenblockade", "Gefühle der Werlosigkeit", "Beeinträchtigtes Selbstvertrauen", "Schuldgefühle", "gedrückte Stimmung", "Versagensgefühle", "Selbstvorwürfe", "Pessimismus", "Unzufriedenheit", "Stress", "Verzweiflung", "Gefühle der Nutzlosigkeit", "geminderte Begeisterungsfähigkeit", "Unentschlossenheit", "Weinen", "Interessenverlust"};
-        String[] social ={"sozialer Rückzug", "verminderte Gesprächigkeit", "Reizbarkeit"};
+        String[] mental = {"Leeregefühl im Kopf", "Konzentrationsstörungen", "Gedächtnisstörungen", "Gedankenblockade", "Gefühle der Werlosigkeit", "Beeinträchtigtes Selbstvertrauen", "Schuldgefühle", "Gedrückte Stimmung", "Versagensgefühle", "Selbstvorwürfe", "Pessimismus", "Unzufriedenheit", "Stress", "Verzweiflung", "Gefühle der Nutzlosigkeit", "Geminderte Begeisterungsfähigkeit", "Unentschlossenheit", "Weinen", "Interessenverlust"};
+        String[] social ={"Sozialer Rückzug", "Verminderte Gesprächigkeit", "Reizbarkeit"};
         String[] ownEntries = {}; //TODO: aus Datenbank holen
 
         arrayListStringArrays.add(general);
@@ -83,7 +83,7 @@ public class SensitivitiesActivity extends AppCompatActivity {
              }
          });
          if(counter == arrayListStringArrays.size()-1){
-             buttonSensitivitiesNext.setText("Abschließen");
+             buttonSensitivitiesNext.setText(R.string.next);
              final EditText editText = (EditText)findViewById(R.id.editText_sensitivities);
              Button saveButtonOwnEntries = (Button)findViewById(R.id.saveButton_sensitivities);
              editText.setVisibility(View.VISIBLE);

@@ -1,7 +1,7 @@
 <resources>
 
     <!-- Base application theme. -->
-    <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
+    <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
         <!-- Customize your theme here. -->
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
@@ -10,14 +10,59 @@
 
     <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar"/>
 
-    <style name="header">
-        <!--TODO: Befüllen mit header-eigenschaften, Textgröße, Farbe, Hintergrund etc. -> Dann style="@style/" im layout verwenden!!-->
+
+    <style name="headerTextView_home" parent="android:Widget.TextView">
+        <item name="android:textColor">@color/colorHeadings</item>
+        <item name="android:textSize">32sp</item>
+        <item name="android:layout_marginBottom">10dp</item>
+        <item name="android:layout_marginTop">20dp</item>
     </style>
 
-    <style name="normalText">
+    <style name="button_home" parent="android:Widget.Button">
+        <item name="android:textSize">30sp</item>
+        <item name="android:layout_marginStart">55dp</item>
+        <item name="android:layout_marginEnd">55dp</item>
+        <item name="android:layout_marginBottom">5dp</item>
+        <item name="android:drawablePadding">15dp</item>
+        <item name="android:background">@drawable/button_background</item>
     </style>
 
-    <style name="buttonStyle">
+
+    <style name="headerTextView" parent="android:Widget.TextView">
+        <item name="android:textColor">@color/colorHeadings</item>
+        <item name="android:textSize">30sp</item>
+        <item name="android:layout_marginBottom">10dp</item>
+        <item name="android:layout_marginStart">15dp</item>
+        <item name="android:layout_marginTop">25dp</item>
+        <item name="android:layout_gravity">start</item>
+    </style>
+
+    <style name="normalText" parent="android:Widget.TextView">
+        <item name="android:textColor">@color/colorText</item>
+        <item name="android:textSize">25sp</item>
+        <item name="android:layout_marginBottom">20dp</item>
+        <item name="android:layout_marginStart">15dp</item>
+        <item name="android:layout_marginTop">15dp</item>
+    </style>
+
+    <style name="nextButton" parent="android:Widget.Button">
+        <item name="android:text">@string/next</item>
+        <item name="android:textSize">30sp</item>
+        <item name="android:layout_marginTop">25dp</item>
+        <item name="android:layout_marginEnd">25dp</item>
+        <item name="android:layout_marginBottom">25dp</item>
+        <item name="android:layout_gravity">end</item>
+        <item name="android:background">@drawable/button_background</item>
+    </style>
+
+    <style name="saveButton" parent="android:Widget.Button">
+        <item name="android:text">@string/save_button</item>
+        <item name="android:textSize">22sp</item>
+        <item name="android:layout_marginStart">15dp</item>
+        <item name="android:layout_gravity">end</item>
+        <item name="android:background">@drawable/button_background</item>
+
 
     </style>
+
 </resources>

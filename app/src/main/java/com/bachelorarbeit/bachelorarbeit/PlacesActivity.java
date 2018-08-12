@@ -75,7 +75,7 @@ public class PlacesActivity extends AppCompatActivity {
     }
 
     private void buildEditText(EditText editText){
-        editText.setHint("Ort eingeben");
+        editText.setHint(R.string.places_edittext);
         editText.setInputType(InputType.TYPE_CLASS_TEXT);
     }
 

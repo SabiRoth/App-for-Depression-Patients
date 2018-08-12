@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 
+<!--TODO: Ganz oben anzeigen-->
 <ScrollView
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="fill_parent"
@@ -15,15 +16,12 @@
         android:orientation="vertical"
         android:weightSum="1">
 
+
         <TextView
             android:id="@+id/textView_sensitivities_header"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:textColor="@color/colorText"
-            android:textSize="30sp"
-            android:layout_marginBottom="20dp"
-            android:layout_marginLeft="15dp"
-            android:layout_marginTop="15dp"/>
+            style="@style/headerTextView"/>
 
 
         <com.bachelorarbeit.bachelorarbeit.NonScrollListView
@@ -39,12 +37,7 @@
             android:id="@+id/button_sensitivies_next"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/next"
-            android:textSize="24dp"
-            android:layout_gravity="right"
-            android:layout_marginTop="25dp"
-            android:layout_marginRight="25dp"
-            android:layout_marginBottom="25dp"/>
+            style="@style/nextButton"/>
 
     </LinearLayout>
 </ScrollView>
