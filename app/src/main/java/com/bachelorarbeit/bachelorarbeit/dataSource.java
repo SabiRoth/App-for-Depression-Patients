@@ -33,8 +33,10 @@ public class dataSource {
 
     private String[] columnsMovementProfile = {
             dbHelper.COLUMN_ID,
-            dbHelper.COLUMN_MOVEMENT_PROFILE,
-            dbHelper.COLUMN_DATE
+            dbHelper.COLUMN_DATE,
+           /* dbHelper.COLUMN_LONGITUDE,
+            dbHelper.COLUMN_LATITUDEÜ*/
+           dbHelper.COLUMN_MOVEMENT_PROFILE
     };
 
 
@@ -63,8 +65,13 @@ public class dataSource {
         database.insert(dbHelper.TABLE_ALL_ENTRIES, null, values);
     }
 
-    public void createMovementProfileEntry(){
-
+    public void createMovementEntry(String date, String longitude, String latitude){
+        ContentValues values = new ContentValues();
+        values.put(dbHelper.COLUMN_DATE, date);
+       /* values.put(dbHelper.COLUMN_LONGITUDE, longitude);
+        values.put(dbHelper.COLUMN_LATITUDE, latitude);*/
+        values.put(dbHelper.COLUMN_MOVEMENT_PROFILE, longitude);
+        database.insert(dbHelper.TABLE_MOVEMENT_PROFILES, null, values);
     }
 
     public void deleteEntry(Entry entry) {
@@ -81,12 +88,29 @@ public class dataSource {
         return cursorToEntry(cursor);
     }
 
+    //provide all entries in the database
+    public ArrayList<String[]> getAllMovementEntries() {
+        Cursor cursor = database.query(dbHelper.TABLE_MOVEMENT_PROFILES, columnsMovementProfile, null, null, null, null, null);
+        return cursorToMovementEntry(cursor);
+    }
+
     public Entry getLastEntry(){
         //TODO: Bessere Lösung mit Cursor
-        ArrayList<Entry> allEntrys = getAllEntries();
-        if(allEntrys.size()>0) {
-            int lastEntryNumber = allEntrys.size() - 1;
-            return allEntrys.get(lastEntryNumber);
+        ArrayList<Entry> allEntries = getAllEntries();
+        if(allEntries.size()>0) {
+            int lastEntryNumber = allEntries.size() - 1;
+            return allEntries.get(lastEntryNumber);
+        }
+        else{
+            return null;
+        }
+    }
+
+    public String[] getLastMovementEntry(){
+        ArrayList<String[]> allEntry = getAllMovementEntries();
+        if(allEntry.size()>0){
+            int lastEntryNumber = allEntry.size() -1;
+            return allEntry.get(lastEntryNumber);
         }
         else{
             return null;
@@ -107,6 +131,23 @@ public class dataSource {
                     entry.setDate(cursor.getString(cursor.getColumnIndex(dbHelper.COLUMN_DATE)));
                     entry.setTime(cursor.getString(cursor.getColumnIndex(dbHelper.COLUMN_TIME)));
                     entry.setDaytime(cursor.getString(cursor.getColumnIndex(dbHelper.COLUMN_DAYTIME)));
+                    entries.add(entry);
+                }
+            }
+        }
+        return entries;
+    }
+
+    private ArrayList<String[]> cursorToMovementEntry(Cursor cursor){
+        ArrayList<String[]> entries = new ArrayList<>();
+        if(cursor!=null){
+            if(cursor.getCount()>0) {
+                while (cursor.moveToNext()) {
+                    long id = cursor.getLong(cursor.getColumnIndex(dbHelper.COLUMN_ID));
+                    String[] entry = new String[2];
+                    entry[0] = cursor.getString(cursor.getColumnIndex(dbHelper.COLUMN_DATE));
+                    entry[1] = cursor.getString(cursor.getColumnIndex(dbHelper.COLUMN_MOVEMENT_PROFILE));
+                    //entry[2] = cursor.getString(cursor.getColumnIndex(dbHelper.COLUMN_LATITUDE));
                     entries.add(entry);
                 }
             }

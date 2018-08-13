@@ -3,14 +3,11 @@ package com.bachelorarbeit.bachelorarbeit;
 import android.content.Context;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
 import android.widget.ListView;
 
 import java.util.ArrayList;
 
-public class showDbClass extends AppCompatActivity {
+public class showDbEntryClass extends AppCompatActivity {
 
 
     private dataSource dataSource;
@@ -19,9 +16,9 @@ public class showDbClass extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_calendar);
+        setContentView(R.layout.activity_show_db_entry);
 
-        entriesListView = (ListView)findViewById(R.id.calendar_listView);
+        entriesListView = (ListView)findViewById(R.id.db_listView);
         dataSource = new dataSource(this); //TODO: Context?
         dataSource.open();
         showAllEntries();
