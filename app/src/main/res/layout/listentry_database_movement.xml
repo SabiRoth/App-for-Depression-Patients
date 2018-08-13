@@ -8,13 +8,19 @@
         android:id="@+id/entry_listing_date"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_weight="0.5"/>
+        android:layout_weight="0.3"/>
 
     <TextView
         android:id="@+id/entry_listing_longitude"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_weight="0.5" />
+        android:layout_weight="0.3" />
+
+    <TextView
+        android:id="@+id/entry_listing_latitude"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="0.3" />
 
 
 </LinearLayout>

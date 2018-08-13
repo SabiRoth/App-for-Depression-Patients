@@ -102,14 +102,15 @@ public class GPSTracker extends AppCompatActivity{
     private void locationInDB(Location l){
         dataSource.open();
         String[] lastMovementEntry = dataSource.getLastMovementEntry();
-        if(lastMovementEntry[1].substring(0,7).equals((String.valueOf(l.getLongitude())).substring(0,7))){//erst ab dritter Nachkommastelle "wirklich" eine Bewegung drin
-            return;
+        //erst ab dritter Nachkommastelle "wirklich" eine Bewegung drin TODO Ändern zu 6!
+        if(lastMovementEntry!=null) {
+            if (lastMovementEntry[1].substring(0, 7).equals((String.valueOf(l.getLongitude())).substring(0, 7)) || lastMovementEntry[2].substring(0, 7).equals((String.valueOf(l.getLatitude())).substring(0, 7))) {
+                return;
+            }
         }
-        else{
-            DateTimePicker  dateTimePicker = DateTimePicker.getInstance();
-            dataSource.createMovementEntry(dateTimePicker.getCurrentDate(), (String.valueOf(l.getLongitude())).substring(0,10), String.valueOf(l.getLatitude()));
-        }
-     showLocationFromDB();
+        DateTimePicker dateTimePicker = DateTimePicker.getInstance();
+        dataSource.createMovementEntry(dateTimePicker.getCurrentDate(), (String.valueOf(l.getLongitude())).substring(0, 10), (String.valueOf(l.getLatitude())).substring(0,10));
+        showLocationFromDB();
     }
 
     private void showLocationFromDB(){

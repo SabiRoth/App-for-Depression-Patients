@@ -26,10 +26,10 @@ public class entryMovementListingArrayAdapter extends ArrayAdapter<String[]> {
         View rowView = inflater.inflate(R.layout.listentry_database_movement, parent, false);
         TextView textViewDate = (TextView) rowView.findViewById(R.id.entry_listing_date);
         TextView textViewLongitude = (TextView) rowView.findViewById(R.id.entry_listing_longitude);
-       // TextView textViewLatitude = (TextView) rowView.findViewById(R.id.entry_listing_latitude);
+        TextView textViewLatitude = (TextView) rowView.findViewById(R.id.entry_listing_latitude);
         textViewDate.setText(entryArrayList.get(position)[0]);
         textViewLongitude.setText(entryArrayList.get(position)[1]);
-      //  textViewLatitude.setText(entryArrayList.get(position)[2]);
+        textViewLatitude.setText(entryArrayList.get(position)[2]);
 
         return rowView;
 

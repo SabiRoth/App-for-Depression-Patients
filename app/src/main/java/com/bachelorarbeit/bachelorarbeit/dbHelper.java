@@ -12,8 +12,6 @@ public class dbHelper extends SQLiteOpenHelper {
     private static final int DB_VERSION = 2;
     public static final String TABLE_ALL_ENTRIES = "Einträgetabelle";
     public static final String TABLE_MOVEMENT_DATA = "Bewegungsdatentabelle";
-    public static final String TABLE_MOVEMENT_PROFILES = "Bewegungsprofiletabelle";
-
 
     public static final String COLUMN_ID = "_id";
     public static final String COLUMN_SENSIBILITIES = "Befindlichkeiten";
@@ -25,8 +23,6 @@ public class dbHelper extends SQLiteOpenHelper {
 
     public static final String COLUMN_LONGITUDE = "Längengrad";
     public static final String COLUMN_LATITUDE = "Breitengrad";
-    public static final String COLUMN_MOVEMENT_PROFILE = "Bewegungsprofil";
-
 
     public static final String SQL_CREATE_TABLE_ENTRIES =
             "CREATE TABLE " + TABLE_ALL_ENTRIES +
@@ -38,15 +34,9 @@ public class dbHelper extends SQLiteOpenHelper {
                     "(" + COLUMN_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " + COLUMN_DATE + " TEXT, " + COLUMN_LONGITUDE + " TEXT,"+
                     COLUMN_LATITUDE + " TEXT" + ")";
 
-    public static final String SQL_CREATE_TABLE_MOVEMENT_PROFILES =
-            "CREATE TABLE " + TABLE_MOVEMENT_PROFILES +
-                    "(" + COLUMN_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " + COLUMN_DATE + " TEXT, " + COLUMN_MOVEMENT_PROFILE + " TEXT" + ")";
-
-
     //constructor
     public dbHelper(Context context) {
         super(context, DB_NAME, null, DB_VERSION);
-
     }
 
     //Create table
@@ -54,7 +44,6 @@ public class dbHelper extends SQLiteOpenHelper {
     public void onCreate(SQLiteDatabase db) {
         try {
             db.execSQL(SQL_CREATE_TABLE_ENTRIES);
-            db.execSQL(SQL_CREATE_TABLE_MOVEMENT_PROFILES);
             db.execSQL(SQL_CREATE_TABLE_MOVEMENT_DATA);
         } catch (Exception ex) {
         }
@@ -64,7 +53,7 @@ public class dbHelper extends SQLiteOpenHelper {
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
         if (oldVersion != newVersion) {
             db.execSQL("DROP TABLE IF EXISTS " + TABLE_ALL_ENTRIES);
-          //  db.execSQL("DROP TABLE IF EXISTS " + TABLE_MOVEMENT_DATA);
+            db.execSQL("DROP TABLE IF EXISTS " + TABLE_MOVEMENT_DATA);
             onCreate(db);
         }
 

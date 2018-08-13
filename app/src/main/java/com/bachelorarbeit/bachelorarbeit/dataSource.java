@@ -34,9 +34,8 @@ public class dataSource {
     private String[] columnsMovementProfile = {
             dbHelper.COLUMN_ID,
             dbHelper.COLUMN_DATE,
-           /* dbHelper.COLUMN_LONGITUDE,
-            dbHelper.COLUMN_LATITUDEÜ*/
-           dbHelper.COLUMN_MOVEMENT_PROFILE
+            dbHelper.COLUMN_LONGITUDE,
+            dbHelper.COLUMN_LATITUDE
     };
 
 
@@ -68,10 +67,9 @@ public class dataSource {
     public void createMovementEntry(String date, String longitude, String latitude){
         ContentValues values = new ContentValues();
         values.put(dbHelper.COLUMN_DATE, date);
-       /* values.put(dbHelper.COLUMN_LONGITUDE, longitude);
-        values.put(dbHelper.COLUMN_LATITUDE, latitude);*/
-        values.put(dbHelper.COLUMN_MOVEMENT_PROFILE, longitude);
-        database.insert(dbHelper.TABLE_MOVEMENT_PROFILES, null, values);
+        values.put(dbHelper.COLUMN_LONGITUDE, longitude);
+        values.put(dbHelper.COLUMN_LATITUDE, latitude);
+        database.insert(dbHelper.TABLE_MOVEMENT_DATA, null, values);
     }
 
     public void deleteEntry(Entry entry) {
@@ -90,7 +88,7 @@ public class dataSource {
 
     //provide all entries in the database
     public ArrayList<String[]> getAllMovementEntries() {
-        Cursor cursor = database.query(dbHelper.TABLE_MOVEMENT_PROFILES, columnsMovementProfile, null, null, null, null, null);
+        Cursor cursor = database.query(dbHelper.TABLE_MOVEMENT_DATA, columnsMovementProfile, null, null, null, null, null);
         return cursorToMovementEntry(cursor);
     }
 
@@ -144,10 +142,10 @@ public class dataSource {
             if(cursor.getCount()>0) {
                 while (cursor.moveToNext()) {
                     long id = cursor.getLong(cursor.getColumnIndex(dbHelper.COLUMN_ID));
-                    String[] entry = new String[2];
+                    String[] entry = new String[3];
                     entry[0] = cursor.getString(cursor.getColumnIndex(dbHelper.COLUMN_DATE));
-                    entry[1] = cursor.getString(cursor.getColumnIndex(dbHelper.COLUMN_MOVEMENT_PROFILE));
-                    //entry[2] = cursor.getString(cursor.getColumnIndex(dbHelper.COLUMN_LATITUDE));
+                    entry[1] = cursor.getString(cursor.getColumnIndex(dbHelper.COLUMN_LONGITUDE));
+                    entry[2] = cursor.getString(cursor.getColumnIndex(dbHelper.COLUMN_LATITUDE));
                     entries.add(entry);
                 }
             }
