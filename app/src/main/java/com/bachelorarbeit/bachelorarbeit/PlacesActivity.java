@@ -1,6 +1,7 @@
 package com.bachelorarbeit.bachelorarbeit;
 
 import android.content.Intent;
+import android.graphics.PorterDuff;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.text.InputType;
@@ -82,6 +83,7 @@ public class PlacesActivity extends AppCompatActivity {
     private void buildEditText(EditText editText){
         editText.setHint(R.string.places_edittext);
         editText.setInputType(InputType.TYPE_CLASS_TEXT);
+        editText.getBackground().setColorFilter(getResources().getColor(R.color.button_pressed), PorterDuff.Mode.SRC_IN);
     }
 
     private void endButtonClicked(){

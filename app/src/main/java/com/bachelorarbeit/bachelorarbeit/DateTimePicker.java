@@ -53,6 +53,21 @@ public class DateTimePicker extends Calendar {
         return daytime;
     }
 
+    public String getDaytime(String time){
+        int hours = Integer.parseInt(time.substring(0,1));
+        String daytime;
+        if(hours < 11 && hours > 2){
+            daytime = "Morgen";
+        }
+        if(hours > 16 || hours < 3){
+            daytime = "Abend";
+        }
+        else{
+            daytime = "Mittag";
+        }
+        return daytime;
+    }
+
 
     @Override
     protected void computeTime() {

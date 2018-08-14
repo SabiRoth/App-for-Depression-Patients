@@ -104,7 +104,7 @@ public class HomeActivity extends AppCompatActivity {
     }
 
     private void clickOverviewCalendar(){
-        Intent i = new Intent(this, showDbEntryClass.class);
+        Intent i = new Intent(this, CalendarActivityDaily.class);
         startActivity(i);
     }
 

@@ -13,25 +13,38 @@
     <string name="save_button">Speichern</string>
     <string name="end_button">Abschließen</string>
 
-    <!--TextViews-->
+    <!--TextViews Home-->
     <string name="overview_textview">Übersichten</string>
     <string name="entries_textview">Zusätzliche Eingaben</string>
-    <string name="movementProfile_textview">Bewegungsprofil</string>
+
+    <!--TextViews Activities-->
     <string name="activities1_textview">Soziale Aktivitäten</string>
     <string name="activities2_textview">Sportliche Aktivitäten</string>
     <string name="activities3_textview">Verpflichtungen</string>
     <string name="activitiesInput_textview">Weitere Eingaben</string>
+
+    <!--TextViews Settings-->
     <string name="gps_activation_textview">GPS-Tracking</string>
     <string name="push_activation_textview">Push-Benachrichtigungen</string>
     <string name="recipient_mail_textview">Standard als E-Mail-Empfänger anlegen</string>
     <string name="privacyPolicy_textview">Datenschutzerklärung</string>
     <string name="siteNotice">Impressum</string>
+
+    <!--TextViews Calendar-->
+    <string name="calendar_daily_morning_textview">Früh</string>
+    <string name="calendar_daily_midday_textview">Mittag</string>
+    <string name="calendar_daily_evening_textview">Abend</string>
+
+    <!--TextViews Movement Profile-->
+    <string name="movementProfile_textview">Bewegungsprofil</string>
     <string name="places_textview">Gib die Orte zu deinen Aktivitäten ein:</string>
     <string name="no_Data_textview"><i>Keine Daten vorhanden.</i></string>
 
     <!--ActivityLabels-->
     <string name="home_activity_label">Home</string>
-    <string name="calendar_activity_label">Kalender</string>
+    <string name="calendar_activity_daily_label">Kalender - Tagesansicht</string>
+    <string name="calendar_activity_weekly_label">Kalender - Wochenansicht</string>
+    <string name="calendar_activity_monthly_label">Kalender - Monatsansicht</string>
     <string name="activities_activity_label">Aktivitäten eingeben</string>
     <string name="graph_activity_label">Verlauf</string>
     <string name="map_activity_label">Kartenansicht</string>

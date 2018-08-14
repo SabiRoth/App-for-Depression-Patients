@@ -40,7 +40,7 @@ public class MapViewActivity extends AppCompatActivity implements OnMapReadyCall
         super.onCreate(savedInstanceState);
         setContentView(R.layout.map_view);
         dateTimePicker = DateTimePicker.getInstance();
-        datePickerButton = (Button) findViewById(R.id.button_date_picker);
+        datePickerButton = (Button) findViewById(R.id.button_date_picker_map);
         initializeClickListenerForDatePickerButton();
         Bundle mapViewBundle = null;
         if (savedInstanceState != null) {

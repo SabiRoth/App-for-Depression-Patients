@@ -97,6 +97,13 @@ public class dataSource {
         return cursorToEntry(cursor);
     }
 
+    public ArrayList<Entry> getAllEntries(String date) {
+        Cursor cursor = database.query(dbHelper.TABLE_ALL_ENTRIES, columnsEntries, null, null, null, null, null);
+        ArrayList<Entry> allEntriesFromDate = cursorToEntryDate(cursor, date);
+        return allEntriesFromDate;
+    }
+
+
     //provide all entries in the database
     public ArrayList<String[]> getAllMovementEntriesViaDate(String date) {
         Cursor cursor = database.query(dbHelper.TABLE_MOVEMENT_DATA, columnsMovementProfile, null, null, null, null, null);
@@ -147,6 +154,28 @@ public class dataSource {
                     entry.setTime(cursor.getString(cursor.getColumnIndex(dbHelper.COLUMN_TIME)));
                     entry.setDaytime(cursor.getString(cursor.getColumnIndex(dbHelper.COLUMN_DAYTIME)));
                     entries.add(entry);
+                }
+            }
+        }
+        return entries;
+    }
+
+    private ArrayList<Entry> cursorToEntryDate  (Cursor cursor, String date) {
+        ArrayList<Entry> entries = new ArrayList<Entry>();
+        if(cursor!=null){
+            if(cursor.getCount()>0){
+                while(cursor.moveToNext()){
+                    if((cursor.getString(cursor.getColumnIndex(dbHelper.COLUMN_DATE))).equals(date)) {
+                        long id = cursor.getLong(cursor.getColumnIndex(dbHelper.COLUMN_ID));
+                        Entry entry = new Entry(id);
+                        entry.setSensitivities(cursor.getString(cursor.getColumnIndex(dbHelper.COLUMN_SENSIBILITIES)));
+                        entry.setActivities(cursor.getString(cursor.getColumnIndex(dbHelper.COLUMN_ACTIVITIES)));
+                        entry.setPlaces(cursor.getString(cursor.getColumnIndex(dbHelper.COLUMN_PLACES)));
+                        entry.setDate(cursor.getString(cursor.getColumnIndex(dbHelper.COLUMN_DATE)));
+                        entry.setTime(cursor.getString(cursor.getColumnIndex(dbHelper.COLUMN_TIME)));
+                        entry.setDaytime(cursor.getString(cursor.getColumnIndex(dbHelper.COLUMN_DAYTIME)));
+                        entries.add(entry);
+                    }
                 }
             }
         }

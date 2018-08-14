@@ -70,7 +70,7 @@
 
         <activity
             android:name=".EmergencyActivity"
-            android:label="@string/settings_activity_label">
+            android:label="@string/emergency_activity_label">
         </activity>
 
         <activity
@@ -82,7 +82,13 @@
         </activity>
 
         <activity
-            android:name=".MapViewActivity">
+            android:name=".MapViewActivity"
+            android:label="@string/map_activity_label">
+        </activity>
+
+        <activity
+            android:name=".CalendarActivityDaily"
+            android:label="@string/calendar_activity_daily_label">
         </activity>
 
         <service
