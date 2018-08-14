@@ -1,6 +1,6 @@
 <resources>
     <string name="app_name">DepTrackApp</string>
-
+    <string name="google_android_map_api_key">AIzaSyCcmGsUb8T5-Si1fmzUMiPKVaYCDKehMNk</string>
 
     <!--Buttons-->
     <string name="calendar_button">Kalender</string>
@@ -54,5 +54,8 @@
     <string name="emergency6">0800/111 0 111 oder 116 123  <i>(kostenlos, 24h)</i></string>
     <string name="emergency7"><u>Info-Telefon Depression</u></string>
     <string name="emergency8">0800 3344533 <i>(kostenlos, Mo, Di, Do: 13:00 – 17:00 Uhr und Mi, Fr: 08:30 – 12:30 Uhr)</i></string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 
 </resources>

@@ -10,6 +10,8 @@ import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.widget.ListView;
 
+import com.google.android.gms.maps.MapView;
+
 import java.io.BufferedOutputStream;
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
@@ -23,11 +25,15 @@ public class GPSTracker extends AppCompatActivity{
     BufferedOutputStream bOut;
     LocationManager locationManager;
     dataSource dataSource;
+    MapView mapView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_show_db_entry);
+        /*mapView = (MapView)findViewById(R.id.db_mapView);
+        mapView.getMapAsync(onMapReadyCallback callback);
+*/
         dataSource = new dataSource(this);
         dataSource.open();
         showLocationFromDB();

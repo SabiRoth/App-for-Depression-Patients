@@ -17,6 +17,10 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
 
+        <meta-data
+            android:name="com.google.android.geo.API_KEY"
+            android:value="@string/google_android_map_api_key"/>
+
         <!-- <service android:name=".BackgroundService" /> -->
 
         <activity android:name=".MainActivity">
@@ -75,6 +79,10 @@
 
         <activity
             android:name=".GPSTracker">
+        </activity>
+
+        <activity
+            android:name=".MapViewActivity">
         </activity>
 
         <service

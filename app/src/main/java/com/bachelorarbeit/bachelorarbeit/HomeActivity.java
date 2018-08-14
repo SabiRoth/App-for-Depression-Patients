@@ -1,6 +1,8 @@
 package com.bachelorarbeit.bachelorarbeit;
 
 import android.os.Bundle;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
 import android.content.Intent;
 import android.view.View;
@@ -112,11 +114,19 @@ public class HomeActivity extends AppCompatActivity {
     }
 
     private void clickMovementProfileMap(){
-        Intent i = new Intent(this, GPSTracker.class);
-        startActivity(i);
-        /*Intent i = new Intent(this, MapActivity.class);
+       /* Intent i = new Intent(this, GPSTracker.class);
         startActivity(i);
         */
+       /* Intent i = new Intent(this, MapActivity.class);
+        startActivity(i);
+        */
+       /* FragmentManager fm = getSupportFragmentManager();
+        FragmentTransaction fragmentTransaction = fm.beginTransaction();
+        fragmentTransaction.replace(R.id.home_layout, new MapView());
+        fragmentTransaction.commit();
+        */
+        Intent i = new Intent(this, MapViewActivity.class);
+        startActivity(i);
     }
 
     private void clickEntriesSensitivies(){

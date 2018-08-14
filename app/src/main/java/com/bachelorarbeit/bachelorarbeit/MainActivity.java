@@ -71,7 +71,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void activateGPSTracking(){
-        //TODO starte sofort Trackingaufnahme
+        //TODO starte sofort Trackingaufnahme via GPSTracker.class
     }
 
 }
