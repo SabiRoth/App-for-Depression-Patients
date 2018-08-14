@@ -26,6 +26,7 @@ public class GPSTracker extends AppCompatActivity{
     LocationManager locationManager;
     dataSource dataSource;
     MapView mapView;
+    DateTimePicker dateTimePicker;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,6 +35,7 @@ public class GPSTracker extends AppCompatActivity{
         /*mapView = (MapView)findViewById(R.id.db_mapView);
         mapView.getMapAsync(onMapReadyCallback callback);
 */
+        dateTimePicker = DateTimePicker.getInstance();
         dataSource = new dataSource(this);
         dataSource.open();
         showLocationFromDB();
@@ -107,14 +109,14 @@ public class GPSTracker extends AppCompatActivity{
 
     private void locationInDB(Location l){
         dataSource.open();
-        String[] lastMovementEntry = dataSource.getLastMovementEntry();
+        String[] lastMovementEntry = dataSource.getLastMovementEntry(dateTimePicker.getCurrentDate());
         //erst ab dritter Nachkommastelle "wirklich" eine Bewegung drin TODO Ändern zu 6!
         if(lastMovementEntry!=null) {
             if (lastMovementEntry[1].substring(0, 7).equals((String.valueOf(l.getLongitude())).substring(0, 7)) || lastMovementEntry[2].substring(0, 7).equals((String.valueOf(l.getLatitude())).substring(0, 7))) {
                 return;
             }
         }
-        DateTimePicker dateTimePicker = DateTimePicker.getInstance();
+
         dataSource.createMovementEntry(dateTimePicker.getCurrentDate(), (String.valueOf(l.getLongitude())).substring(0, 10), (String.valueOf(l.getLatitude())).substring(0,10));
         showLocationFromDB();
     }
@@ -124,7 +126,7 @@ public class GPSTracker extends AppCompatActivity{
         ListView entries = (ListView)findViewById(R.id.db_listView);
         Context context = this;
         if(context!= null){
-            ArrayList<String[]> dbEntries = dataSource.getAllMovementEntries();
+            ArrayList<String[]> dbEntries = dataSource.getAllMovementEntriesViaDate(dateTimePicker.getCurrentDate());
             entryMovementListingArrayAdapter adapter = new entryMovementListingArrayAdapter(context, dbEntries);
             entries.setAdapter(adapter);
         }

@@ -27,6 +27,7 @@
     <string name="privacyPolicy_textview">Datenschutzerklärung</string>
     <string name="siteNotice">Impressum</string>
     <string name="places_textview">Gib die Orte zu deinen Aktivitäten ein:</string>
+    <string name="no_Data_textview"><i>Keine Daten vorhanden.</i></string>
 
     <!--ActivityLabels-->
     <string name="home_activity_label">Home</string>

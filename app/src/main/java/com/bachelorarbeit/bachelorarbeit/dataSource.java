@@ -87,9 +87,10 @@ public class dataSource {
     }
 
     //provide all entries in the database
-    public ArrayList<String[]> getAllMovementEntries() {
+    public ArrayList<String[]> getAllMovementEntriesViaDate(String date) {
         Cursor cursor = database.query(dbHelper.TABLE_MOVEMENT_DATA, columnsMovementProfile, null, null, null, null, null);
-        return cursorToMovementEntry(cursor);
+        ArrayList<String[]> allEntriesFromDate = cursorToMovementEntry(cursor, date);
+        return allEntriesFromDate;
     }
 
     public Entry getLastEntry(){
@@ -104,8 +105,8 @@ public class dataSource {
         }
     }
 
-    public String[] getLastMovementEntry(){
-        ArrayList<String[]> allEntry = getAllMovementEntries();
+    public String[] getLastMovementEntry(String date){
+        ArrayList<String[]> allEntry = getAllMovementEntriesViaDate(date);
         if(allEntry.size()>0){
             int lastEntryNumber = allEntry.size() -1;
             return allEntry.get(lastEntryNumber);
@@ -136,17 +137,19 @@ public class dataSource {
         return entries;
     }
 
-    private ArrayList<String[]> cursorToMovementEntry(Cursor cursor){
+    private ArrayList<String[]> cursorToMovementEntry(Cursor cursor, String date){
         ArrayList<String[]> entries = new ArrayList<>();
         if(cursor!=null){
             if(cursor.getCount()>0) {
                 while (cursor.moveToNext()) {
-                    long id = cursor.getLong(cursor.getColumnIndex(dbHelper.COLUMN_ID));
-                    String[] entry = new String[3];
-                    entry[0] = cursor.getString(cursor.getColumnIndex(dbHelper.COLUMN_DATE));
-                    entry[1] = cursor.getString(cursor.getColumnIndex(dbHelper.COLUMN_LONGITUDE));
-                    entry[2] = cursor.getString(cursor.getColumnIndex(dbHelper.COLUMN_LATITUDE));
-                    entries.add(entry);
+                    if((cursor.getString(cursor.getColumnIndex(dbHelper.COLUMN_DATE))).equals(date)){
+                        long id = cursor.getLong(cursor.getColumnIndex(dbHelper.COLUMN_ID));
+                        String[] entry = new String[3];
+                        entry[0] = cursor.getString(cursor.getColumnIndex(dbHelper.COLUMN_DATE));
+                        entry[1] = cursor.getString(cursor.getColumnIndex(dbHelper.COLUMN_LONGITUDE));
+                        entry[2] = cursor.getString(cursor.getColumnIndex(dbHelper.COLUMN_LATITUDE));
+                        entries.add(entry);
+                    }
                 }
             }
         }
