@@ -54,6 +54,11 @@ public class PlacesActivity extends AppCompatActivity {
         );
         paramsforEditView.setMargins(25, 0, 25, 35);
 
+        if(selectedActivites.size()==0){
+            endButtonClicked();
+            return;
+        }
+
         for(int i = 0; i<selectedActivites.size(); i++){
             TextView entry = new TextView(getApplicationContext());
             entry.setLayoutParams(paramsForTextView);
@@ -80,29 +85,34 @@ public class PlacesActivity extends AppCompatActivity {
     }
 
     private void endButtonClicked(){
-        //TODO: weitergeben: Liste Aktivitäten & Liste Orte
         ArrayList<String> placesArrayList = new ArrayList<String>();
-        for(int i = 0; i<editTextArrayList.size(); i++){
-            if(!(editTextArrayList.get(i).getText().toString().equals(""))) {
-                placesArrayList.add(editTextArrayList.get(i).getText().toString());
+        if(editTextArrayList.size()!=0) {
+            for (int i = 0; i < editTextArrayList.size(); i++) {
+                if (!(editTextArrayList.get(i).getText().toString().equals(""))) {
+                    placesArrayList.add(editTextArrayList.get(i).getText().toString());
+                }
             }
         }
-        Intent i = new Intent(this, HomeActivity.class);
+
         String[] temp = new String[selectedActivites.size()];
         String activitiesString = Arrays.toString(selectedActivites.toArray(temp));
-       // i.putExtra("activitiesString", activitiesString);
+        if(activitiesString == "[]"){
+            activitiesString = null;
+        }
         String[] temp2 = new String[placesArrayList.size()];
         String placesString = Arrays.toString(placesArrayList.toArray(temp2));
-        //i.putExtra("placesString", placesString);
+        if(placesString == "[]"){
+            placesString = null;
+        }
 
+        if(activitiesString != null || sensitivitiesString != null){
+            DateTimePicker  dateTimePicker = DateTimePicker.getInstance();
+            dataSource = new dataSource(this);
+            dataSource.open();
+            dataSource.createEntry(sensitivitiesString, activitiesString, placesString, dateTimePicker.getCurrentDate(),  dateTimePicker.getCurrentTime(), dateTimePicker.getDaytime());
+        }
 
-        DateTimePicker  dateTimePicker = DateTimePicker.getInstance();
-
-        dataSource = new dataSource(this);
-        dataSource.open();
-        dataSource.createEntry(sensitivitiesString, activitiesString, placesString, dateTimePicker.getCurrentDate(),  dateTimePicker.getCurrentTime(), dateTimePicker.getDaytime());
-
-
+        Intent i = new Intent(this, HomeActivity.class);
         startActivity(i);
     }
 }

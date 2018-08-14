@@ -3,6 +3,7 @@ package com.bachelorarbeit.bachelorarbeit;
 import android.app.DatePickerDialog;
 import android.content.Intent;
 import android.content.pm.PackageManager;
+import android.graphics.Paint;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -15,10 +16,12 @@ import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.MapView;
 import com.google.android.gms.maps.OnMapReadyCallback;
+import com.google.android.gms.maps.model.Cap;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
 import com.google.android.gms.maps.model.PolygonOptions;
 import com.google.android.gms.maps.model.PolylineOptions;
+import com.google.android.gms.maps.model.RoundCap;
 
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -115,12 +118,19 @@ public class MapViewActivity extends AppCompatActivity implements OnMapReadyCall
         datePickerButton.setText(pickedDate);
         ArrayList<String[]> allMovementEntries = dataSource.getAllMovementEntriesViaDate(pickedDate);
         if(allMovementEntries.size()!= 0){
+            if(allMovementEntries.size()==1){
+                MarkerOptions mO = new MarkerOptions();
+                mO.position(new LatLng(Double.valueOf(allMovementEntries.get(0)[2]),Double.valueOf(allMovementEntries.get(0)[1])));
+                gm.addMarker(mO);
+            }
+
             for(int i = 0; i<allMovementEntries.size(); i++){
                 LatLng latLng = new LatLng(Double.valueOf(allMovementEntries.get(i)[2]), Double.valueOf(allMovementEntries.get(i)[1]));
                 points.add(latLng);
                 gm.moveCamera(CameraUpdateFactory.newLatLng(latLng));//TODO: BESSERE LÖSUNG FÜR KAMERA!
             }
         }
+
         else{
             TextView noDataTextView = (TextView)findViewById(R.id.map_textView);
             noDataTextView.setVisibility(View.VISIBLE);
@@ -129,6 +139,7 @@ public class MapViewActivity extends AppCompatActivity implements OnMapReadyCall
         polylineOptions.visible(true);
         polylineOptions.color(getResources().getColor(R.color.colorPrimaryDark));
         polylineOptions.width(5);
+        polylineOptions.startCap(new RoundCap());
         polylineOptions.jointType(2);
         gm.addPolyline(polylineOptions);
     }

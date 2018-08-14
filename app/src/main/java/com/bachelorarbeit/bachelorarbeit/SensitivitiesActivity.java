@@ -29,8 +29,9 @@ public class SensitivitiesActivity extends AppCompatActivity {
     int counter = 0;
     public ListView listViewSensitivities;
     public TextView header;
-    public String[] headerString = {"Allgemein", "Kopfbereich", "Hals- und Brustbereich", "Magen-Darm", "Blase und Sexualität", "Psychische Symptome", "Soziale Symptome", "Weitere Eingaben"};;
+    public String[] headerString = {"Somatische Symptome", "Psychische Symptome", "Soziale Symptome", "Weitere Eingaben"};;
     public Button buttonSensitivitiesNext;
+    dataSource dataSource;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,32 +42,37 @@ public class SensitivitiesActivity extends AppCompatActivity {
         buttonSensitivitiesNext = (Button)findViewById(R.id.button_sensitivies_next);
 
 
-        String[] general = {"Abgeschlagen sein", "Hitzewallungen", "Zittern", "Überempfindlichkeit", "Gefühl von innerer Leere", "Kraftlosigkeit", "Verspannungen im Nacken", "Gliederschmerzen", "Verminderter Antrieb", "Verminderte Aktivität", "Bewegungsdrang", "Unruhe", "Geminderte Leistungsfähigkeit", "Kraftlosigkeit", "Schlafstörungen", "Ständige Müdigkeit", "Morgentief", "Appetitsminderung", "Appetitssteigerung"};
-        String[] head = {"Kopf wie Blei", "Kopfschmerzen", "Sehstörungen", "Druck auf den Ohren", "Hörstörungen", "Zahnschmerzen", "Zungenbrennen", "Mundgeruch"};
-        String[] chestNeck = {"Druckgefühl", "Beengung im Brustkorb", "Schmerzen in der Herzgegend", "Herzrasen", "Unregelmäßiges Atmen", "Kloßgefühl im Hals", "Würgegefühl"};
-        String[] gastrointestinal = {"Appetitlosigkeit", "Unruhe im Bauchraum", "Völlegefühl/Blähungen", "Sodbrennen/Aufstoßen", "Übelkeit", "Erbrechen", "Durchfall", "Verstopfung", "Gewichtsverlust", "Heißhunger"};
-        String[] bladderSexuality = {"Druck in der Blase", "Häufiger Harndrang", "Schmerzen beim Wasserlassen", "Libidoverlust", "Potenzstörungen", "Schmerzen beim Geschlechtsverkehr", "Störungen der Periode"};
-        String[] mental = {"Leeregefühl im Kopf", "Konzentrationsstörungen", "Gedächtnisstörungen", "Gedankenblockade", "Gefühle der Wertlosigkeit", "Beeinträchtigtes Selbstvertrauen", "Schuldgefühle", "Gedrückte Stimmung", "Versagensgefühle", "Selbstvorwürfe", "Pessimismus", "Unzufriedenheit", "Stress", "Verzweiflung", "Gefühle der Nutzlosigkeit", "Geminderte Begeisterungsfähigkeit", "Unentschlossenheit", "Weinen", "Interessenverlust"};
+        String[] somatic = {"Verminderter Antrieb (Energieverlust)", "Verminderte Aktivität", "Gesteigerte Aktivität (Bewegungsdrang)", "Anspannung", "Unruhe", "Geminderte Leistungsfähigkeit", "Konzentrationsschwierigkeiten", "Kraftlosigkeit", "Zittern", "Schlafstörungen", "Früherwachen", "Müdigkeit", "Morgentief", "Appetitsminderung", "Appetitssteigerung", "Libidoverlust"};
+        String[] psychic = {"beeinträchtigtes Selbstwertgefühl (Gefühle der Wertlosigkeit)", "Beeinträchtigtes Selbstvertrauen", "Schuldgefühle", "Gedrückte Stimmung/Traurigkeit", "Versagensgefühle", "Selbstvorwürfe", "Gedanken an den Tod oder an Suizid", "Melancholie", "Pessimismus", "Unzufriedenheit", "Verzweiflung", "Stress", "Ängste", "Gedankenschleifen", "Mutlosigkeit", "Gefühle der Nutzlosigkeit", "Geminderte Begeisterungsfähigkeit", "Weinen", "Unentschlossenheit", "Verlust von Freude", "Interessenverlust"};
         String[] social ={"Sozialer Rückzug", "Verminderte Gesprächigkeit", "Reizbarkeit"};
-        String[] ownEntries = {}; //TODO: aus Datenbank holen
+        String[] ownEntries;
 
-        arrayListStringArrays.add(general);
-        arrayListStringArrays.add(head);
-        arrayListStringArrays.add(chestNeck);
-        arrayListStringArrays.add(gastrointestinal);
-        arrayListStringArrays.add(bladderSexuality);
-        arrayListStringArrays.add(mental);
+        arrayListStringArrays.add(somatic);
+        arrayListStringArrays.add(psychic);
         arrayListStringArrays.add(social);
-        arrayListStringArrays.add(ownEntries);
 
+
+        dataSource = new dataSource(this);
+        dataSource.open();
+        ArrayList<String> allOwnSensitivities = dataSource.getAllOwnSensitivities();
+        if(allOwnSensitivities.size() != 0){
+            ownEntries = new String[allOwnSensitivities.size()];
+            for(int i = 0; i<allOwnSensitivities.size(); i++){
+                ownEntries[i] = allOwnSensitivities.get(i);
+            }
+        }
+        else{
+            ownEntries = new String[0];
+        }
+        arrayListStringArrays.add(ownEntries);
         buildActualPage();
 
         buttonSensitivitiesNext.setOnClickListener(new View.OnClickListener() {
              @Override
              public void onClick(View view) {
                  nextButtonClicked();
-    }
-});
+            }
+        });
     }
 
 
@@ -110,12 +116,34 @@ public class SensitivitiesActivity extends AppCompatActivity {
     }
 
     private void saveButtonOwnEntriesClicked(EditText editText){
-        if(!(editText.getText().toString().equals(""))) {
-            allSelectedEntries.add(editText.getText().toString());
-            CharSequence text = "Gespeichert";
-            Toast.makeText(getApplicationContext(), text, Toast.LENGTH_LONG).show();
+        boolean alreadySelected = false;
+        String input = editText.getText().toString();
+        if(!(input.equals(""))) {
+            for(int i = 0; i<allSelectedEntries.size(); i++){
+                if(allSelectedEntries.get(i).equals(input)){
+                    alreadySelected = true;
+                }
+            }
+
+            if(alreadySelected == false) {
+                allSelectedEntries.add(input);
+                checkAndSaveEntry(input);
+                CharSequence text = input +  " gespeichert";
+                Toast.makeText(getApplicationContext(), text, Toast.LENGTH_LONG).show();
+            }
             editText.setText("");
         }
+
+    }
+
+    private void checkAndSaveEntry(String entry){
+        ArrayList<String> allEntries = dataSource.getAllOwnSensitivities();
+        for(int i= 0; i<allEntries.size(); i++){
+            if(allEntries.get(i).equals(entry)){
+                return;
+            }
+        }
+        dataSource.createSensitivityEntry(entry);
     }
 
     private void nextButtonClicked(){
@@ -126,6 +154,9 @@ public class SensitivitiesActivity extends AppCompatActivity {
        else{
            String[] temp = new String[allSelectedEntries.size()];
            String sensitivitiesString = Arrays.toString(allSelectedEntries.toArray(temp));
+           if(sensitivitiesString == "[]"){
+               sensitivitiesString = null;
+           }
            Intent i = new Intent (this, ActivitiesActivity.class);
            i.putExtra("sensitivitiesString", sensitivitiesString);
            startActivity(i);

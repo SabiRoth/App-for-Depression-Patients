@@ -28,10 +28,8 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
+    //    activateGPSTracking();
         proofPopUp();
-        activateGPSTracking();
-
     }
 
 
@@ -44,18 +42,14 @@ public class MainActivity extends AppCompatActivity {
         dataSource dataSource = new dataSource(this);
         dataSource.open();
         Entry lastEntry = dataSource.getLastEntry();
-        if(lastEntry != null){
-            if((lastEntry.getDate().equals(date) && lastEntry.getDaytime().equals(daytime))){
+        if(lastEntry != null) {
+            if ((lastEntry.getDate().equals(date) && lastEntry.getDaytime().equals(daytime))) {
                 goToHomescreen();
+                return;
             }
+        }
+        showDialog();
 
-            else{
-                showDialog();
-            }
-        }
-        else{
-            goToHomescreen();
-        }
     }
 
 
@@ -71,7 +65,8 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void activateGPSTracking(){
-        //TODO starte sofort Trackingaufnahme via GPSTracker.class
+        Intent i = new Intent(this, GPSTracker.class);
+        startActivity(i);
     }
 
 }

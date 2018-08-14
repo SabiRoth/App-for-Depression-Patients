@@ -38,6 +38,11 @@ public class dataSource {
             dbHelper.COLUMN_LATITUDE
     };
 
+    private String[] columnsOwnSensitivities = {
+            dbHelper.COLUMN_ID,
+            dbHelper.COLUMN_OWN_SENSITIVITY
+    };
+
 
     public dataSource(Context context) {
         dbHelper = new dbHelper(context);
@@ -72,6 +77,12 @@ public class dataSource {
         database.insert(dbHelper.TABLE_MOVEMENT_DATA, null, values);
     }
 
+    public void createSensitivityEntry(String sensitivity) {
+        ContentValues values = new ContentValues();
+        values.put(dbHelper.COLUMN_OWN_SENSITIVITY, sensitivity);
+        database.insert(dbHelper.TABLE_OWN_SENSITIVITIES_ENTRIES, null, values);
+    }
+
     public void deleteEntry(Entry entry) {
         long id = entry.getId();
         database.delete(dbHelper.TABLE_ALL_ENTRIES,
@@ -91,6 +102,11 @@ public class dataSource {
         Cursor cursor = database.query(dbHelper.TABLE_MOVEMENT_DATA, columnsMovementProfile, null, null, null, null, null);
         ArrayList<String[]> allEntriesFromDate = cursorToMovementEntry(cursor, date);
         return allEntriesFromDate;
+    }
+
+    public ArrayList<String> getAllOwnSensitivities() {
+        Cursor cursor = database.query(dbHelper.TABLE_OWN_SENSITIVITIES_ENTRIES, columnsOwnSensitivities, null, null, null, null, null);
+        return cursorToOwnSensitivityEntry(cursor);
     }
 
     public Entry getLastEntry(){
@@ -154,5 +170,19 @@ public class dataSource {
             }
         }
         return entries;
+    }
+
+    private ArrayList<String> cursorToOwnSensitivityEntry(Cursor cursor){
+        ArrayList<String> ownSensitivities = new ArrayList<>();
+        if(cursor!=null){
+            if(cursor.getCount()>0) {
+                while (cursor.moveToNext()) {
+                        long id = cursor.getLong(cursor.getColumnIndex(dbHelper.COLUMN_ID));
+                        String entry = cursor.getString(cursor.getColumnIndex(dbHelper.COLUMN_OWN_SENSITIVITY));
+                        ownSensitivities.add(entry);
+                    }
+                }
+            }
+        return ownSensitivities;
     }
 }

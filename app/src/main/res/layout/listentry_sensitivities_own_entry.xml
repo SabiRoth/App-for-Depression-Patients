@@ -14,7 +14,8 @@
         android:layout_weight="0.9"
         android:visibility="gone"
         android:hint="@string/sensibilities_edittext"
-        android:inputType="text"/>
+        android:inputType="text"
+        android:layout_marginStart="20dp"/>
 
     <Button
         android:id="@+id/saveButton_sensitivities"
