@@ -3,7 +3,7 @@
     xmlns:android="http://schemas.android.com/apk/res/android" 
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="horizontal">
+    android:orientation="vertical">
 
     <include layout="@layout/activity_calendar_header"/>
 
@@ -11,7 +11,7 @@
         android:id="@+id/button_date_picker_calendar"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textSize="20sp"
+        android:textSize="25sp"
         android:layout_gravity="center_horizontal" />
 
     <TextView
@@ -19,27 +19,55 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="@string/calendar_daily_morning_textview"
-        style="@style/normalText"
+        style="@style/headerTextView"
         />
 
     <com.bachelorarbeit.bachelorarbeit.NonScrollListView
-        android:id="@+id/listView_calendar_daily_morning"
+        android:id="@+id/listView_calendar_daily_morning_sensivities"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginBottom="20dp"
          />
+    <com.bachelorarbeit.bachelorarbeit.NonScrollListView
+        android:id="@+id/listView_calendar_daily_morning_activities"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="20dp"
+        />
+    <com.bachelorarbeit.bachelorarbeit.NonScrollListView
+        android:id="@+id/listView_calendar_daily_morning_places"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="20dp"
+        />
 
     <TextView
         android:id="@+id/textView_calendar_daily_midday"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="@string/calendar_daily_midday_textview"
-        style="@style/normalText"
+        style="@style/headerTextView"
         />
 
     <com.bachelorarbeit.bachelorarbeit.NonScrollListView
-        android:id="@+id/listView_calendar_daily_midday"
+        android:id="@+id/listView_calendar_daily_midday_sensivities"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginBottom="20dp"
+        />
+
+    <com.bachelorarbeit.bachelorarbeit.NonScrollListView
+        android:id="@+id/listView_calendar_daily_midday_activities"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="20dp"
+        />
+
+    <com.bachelorarbeit.bachelorarbeit.NonScrollListView
+        android:id="@+id/listView_calendar_daily_midday_places"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="20dp"
         />
 
 
@@ -48,13 +76,26 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="@string/calendar_daily_evening_textview"
-        style="@style/normalText"
+        style="@style/headerTextView"
         />
 
     <com.bachelorarbeit.bachelorarbeit.NonScrollListView
-        android:id="@+id/listView_calendar_daily_evening"
+        android:id="@+id/listView_calendar_daily_evening_sensivities"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginBottom="20dp"
+        />
+    <com.bachelorarbeit.bachelorarbeit.NonScrollListView
+        android:id="@+id/listView_calendar_daily_evening_activities"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="20dp"
+        />
+    <com.bachelorarbeit.bachelorarbeit.NonScrollListView
+        android:id="@+id/listView_calendar_daily_evening_places"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="20dp"
         />
 
 

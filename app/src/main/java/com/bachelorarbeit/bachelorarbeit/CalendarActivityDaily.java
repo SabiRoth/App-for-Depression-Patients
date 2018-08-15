@@ -20,9 +20,15 @@ import java.util.List;
 
 public class CalendarActivityDaily extends AppCompatActivity{
 
-    ListView listViewMorning;
-    ListView listViewMidday;
-    ListView listViewEvening;
+    ListView listViewMorningSensivities;
+    ListView listViewMorningActivities;
+    ListView listViewMorningPlaces;
+    ListView listViewMiddaySensivities;
+    ListView listViewMiddayActivities;
+    ListView listViewMiddayPlaces;
+    ListView listViewEveningSensivities;
+    ListView listViewEveningActivities;
+    ListView listViewEveningPlaces;
     Spinner spinner;
     Button datePickerButton;
     dataSource dataSource;
@@ -35,9 +41,15 @@ public class CalendarActivityDaily extends AppCompatActivity{
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_calendar_daily);
         dateTimePicker = DateTimePicker.getInstance();
-        listViewMorning = (ListView) findViewById(R.id.listView_calendar_daily_morning);
-        listViewMidday = (ListView) findViewById(R.id.listView_calendar_daily_midday);
-        listViewEvening = (ListView) findViewById(R.id.listView_calendar_daily_evening);
+        listViewMorningSensivities = (ListView) findViewById(R.id.listView_calendar_daily_morning_sensivities);
+        listViewMorningActivities = (ListView) findViewById(R.id.listView_calendar_daily_morning_activities);
+        listViewMorningPlaces = (ListView) findViewById(R.id.listView_calendar_daily_morning_places);
+        listViewMiddaySensivities = (ListView) findViewById(R.id.listView_calendar_daily_midday_sensivities);
+        listViewMiddayActivities = (ListView) findViewById(R.id.listView_calendar_daily_midday_activities);
+        listViewMiddayPlaces = (ListView) findViewById(R.id.listView_calendar_daily_midday_places);
+        listViewEveningSensivities = (ListView) findViewById(R.id.listView_calendar_daily_evening_sensivities);
+        listViewEveningActivities = (ListView) findViewById(R.id.listView_calendar_daily_evening_activities);
+        listViewEveningPlaces = (ListView) findViewById(R.id.listView_calendar_daily_evening_places);
         datePickerButton = (Button) findViewById(R.id.button_date_picker_calendar);
         spinner = (Spinner) findViewById(R.id.spinner);
         initializeSpinner();
@@ -45,6 +57,7 @@ public class CalendarActivityDaily extends AppCompatActivity{
         if(pickedDate == null){
             pickedDate = dateTimePicker.getCurrentDate();
         }
+        datePickerButton.setText(pickedDate);
         fillListViews();
         initializeClickListenerForDatePickerButton();
     }
@@ -53,37 +66,100 @@ public class CalendarActivityDaily extends AppCompatActivity{
         dataSource = new dataSource(this);
         dataSource.open();
         ArrayList<Entry> allEntries = dataSource.getAllEntries(pickedDate);
-        ArrayList<Entry> morningEntries = new ArrayList<>(), middayEntries = new ArrayList<>(), eveningEntries = new ArrayList<>();
+        ArrayList<String> morningEntriesSensivities = new ArrayList<>(), morningEntriesActivities = new ArrayList<>(), morningEntriesPlaces = new ArrayList<>();
+        ArrayList<String> middayEntriesSensivities = new ArrayList<>(), middayEntriesActivities = new ArrayList<>(), middayEntriesPlaces = new ArrayList<>();
+        ArrayList<String> eveningEntriesSensivities = new ArrayList<>(), eveningEntriesActivities = new ArrayList<>(), eveningEntriesPlaces = new ArrayList<>();
         for(int i = 0; i<allEntries.size(); i++){
             String currentDaytime = dateTimePicker.getDaytime(allEntries.get(i).getTime());
             if(currentDaytime == "Morgen"){
-                morningEntries.add(allEntries.get(i));
+                if(allEntries.get(i).getSensitivies()!=null) {
+                    morningEntriesSensivities.add(allEntries.get(i).getSensitivies());
+                }
+                if(allEntries.get(i).getActivities()!=null) {
+                    morningEntriesActivities.add(allEntries.get(i).getActivities());
+                }
+                if(allEntries.get(i).getPlaces()!=null) {
+                    morningEntriesPlaces.add(allEntries.get(i).getPlaces());
+                }
             }
             if(currentDaytime == "Mittag"){
-                middayEntries.add(allEntries.get(i));
+                if(allEntries.get(i).getSensitivies()!=null) {
+                    middayEntriesSensivities.add(allEntries.get(i).getSensitivies());
+                }
+                if(allEntries.get(i).getActivities()!=null) {
+                    middayEntriesActivities.add(allEntries.get(i).getActivities());
+                }
+                if(allEntries.get(i).getPlaces()!=null) {
+                    middayEntriesPlaces.add(allEntries.get(i).getPlaces());
+                }
             }
             if(currentDaytime == "Abend"){
-                eveningEntries.add(allEntries.get(i));
+                if(allEntries.get(i).getSensitivies()!=null) {
+                    eveningEntriesSensivities.add(allEntries.get(i).getSensitivies());
+                }
+                if(allEntries.get(i).getActivities()!=null) {
+                    eveningEntriesActivities.add(allEntries.get(i).getActivities());
+                }
+                if(allEntries.get(i).getPlaces()!=null) {
+                    eveningEntriesPlaces.add(allEntries.get(i).getPlaces());
+                }
             }
         }
+        if(morningEntriesSensivities.size()!=0) {
+            final ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,
+                    R.layout.listentry_simple_listview, morningEntriesSensivities);
+            listViewMorningSensivities.setAdapter(adapter);
+        }
+        if(morningEntriesActivities.size()!=0) {
+            final ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,
+                    R.layout.listentry_calendar_activities, morningEntriesActivities);
+            listViewMorningActivities.setAdapter(adapter);
+        }
+        if(morningEntriesPlaces.size()!=0) {
+            final ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,
+                    R.layout.listentry_calendar_places, morningEntriesPlaces);
+            listViewMorningPlaces.setAdapter(adapter);
+        }
 
-        final ArrayAdapter<Entry> adapter_morning = new ArrayAdapter<Entry>(this,
-                R.layout.listentry_simple_listview, morningEntries);
-        listViewMorning.setAdapter(adapter_morning);
 
-        final ArrayAdapter<Entry> adapter_midday = new ArrayAdapter<Entry>(this,
-                R.layout.listentry_simple_listview, middayEntries);
-        listViewMidday.setAdapter(adapter_midday);
+        if(middayEntriesSensivities.size()!=0) {
+            final ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,
+                    R.layout.listentry_simple_listview, middayEntriesSensivities);
+            listViewMiddaySensivities.setAdapter(adapter);
+        }
+        if(middayEntriesActivities.size()!=0) {
+            final ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,
+                    R.layout.listentry_calendar_activities, middayEntriesActivities);
+            listViewMiddayActivities.setAdapter(adapter);
+        }
+        if(middayEntriesPlaces.size()!=0) {
+            final ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,
+                    R.layout.listentry_calendar_places, middayEntriesPlaces);
+            listViewMiddayPlaces.setAdapter(adapter);
+        }
 
-        final ArrayAdapter<Entry> adapter_evening = new ArrayAdapter<Entry>(this,
-                R.layout.listentry_simple_listview, eveningEntries);
-        listViewEvening.setAdapter(adapter_evening);
 
+        if(eveningEntriesSensivities.size()!=0) {
+            final ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,
+                    R.layout.listentry_simple_listview, eveningEntriesSensivities);
+            listViewEveningSensivities.setAdapter(adapter);
+        }
+        if(eveningEntriesActivities.size()!=0) {
+            final ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,
+                    R.layout.listentry_calendar_activities, eveningEntriesActivities);
+            listViewEveningActivities.setAdapter(adapter);
+        }
+        if(eveningEntriesPlaces.size()!=0) {
+            final ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,
+                    R.layout.listentry_calendar_places, eveningEntriesPlaces);
+            listViewEveningPlaces.setAdapter(adapter);
+        }
     }
 
 
     private void initializeSpinner(){
-        ArrayAdapter<String>spinnerAdapter = new ArrayAdapter<String>(this, R.layout.listentry_simple_listview, spinnerList);
+        ArrayAdapter<String>spinnerAdapter = new ArrayAdapter<String>(this, R.layout.listentry_spinner, spinnerList);
+        //spinnerAdapter.setDropDownViewResource(R.layout.listentry_simple_listview);
         spinner.setAdapter(spinnerAdapter);
     }
 

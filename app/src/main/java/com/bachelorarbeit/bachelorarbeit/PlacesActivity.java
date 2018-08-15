@@ -108,6 +108,15 @@ public class PlacesActivity extends AppCompatActivity {
         }
 
         if(activitiesString != null || sensitivitiesString != null){
+            if(sensitivitiesString!=null){
+                sensitivitiesString = sensitivitiesString.substring(1, sensitivitiesString.length()-1);
+            }
+            if(activitiesString!=null){
+                activitiesString = activitiesString.substring(1, activitiesString.length()-1);
+            }
+            if(placesString!=null){
+                placesString = placesString.substring(1, placesString.length()-1);
+            }
             DateTimePicker  dateTimePicker = DateTimePicker.getInstance();
             dataSource = new dataSource(this);
             dataSource.open();

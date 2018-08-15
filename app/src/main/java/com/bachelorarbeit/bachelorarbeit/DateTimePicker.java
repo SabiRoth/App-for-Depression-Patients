@@ -54,7 +54,7 @@ public class DateTimePicker extends Calendar {
     }
 
     public String getDaytime(String time){
-        int hours = Integer.parseInt(time.substring(0,1));
+        int hours = Integer.parseInt(time.substring(0,2));
         String daytime;
         if(hours < 11 && hours > 2){
             daytime = "Morgen";

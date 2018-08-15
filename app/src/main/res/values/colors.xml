@@ -8,5 +8,7 @@
     <color name="button_pressed">#bababa</color>
     <color name="colorCheckbox">#4c4c4c</color>
     <color name="backgroundColorTheme">#fffafafa</color>
+    <color name="colorActivites">#008000</color>
+    <color name="colorPlaces">#025F7B</color>
 
 </resources>
