@@ -1,6 +1,7 @@
 package com.bachelorarbeit.bachelorarbeit;
 
 
+import android.app.Activity;
 import android.content.Intent;
 import android.location.Location;
 import android.location.LocationListener;
@@ -28,7 +29,12 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-    //    activateGPSTracking();
+        Intent i = new Intent(this, GPSTracker.class);
+        startActivityForResult(i, 1);
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         proofPopUp();
     }
 
@@ -64,9 +70,12 @@ public class MainActivity extends AppCompatActivity {
         startActivity(i);
     }
 
-    private void activateGPSTracking(){
-        Intent i = new Intent(this, GPSTracker.class);
-        startActivity(i);
+
+    @Override
+    public void onPause() {
+        super.onPause();
+        //  Intent Service = new Intent(this, BackgroundService.class);
+        //  startService(Service);
     }
 
 }

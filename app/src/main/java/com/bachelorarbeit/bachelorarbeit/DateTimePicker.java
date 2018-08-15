@@ -68,6 +68,21 @@ public class DateTimePicker extends Calendar {
         return daytime;
     }
 
+    public String getMonthFromDate(String date){
+        String month;
+        if(date.length()== 9){
+           month = date.substring(3,4);
+        }
+        else{
+            month =date.substring(3,5);
+        }
+        return month;
+    }
+
+    public String getDayFromDate(String date){
+        return date.substring(0,2);
+    }
+
 
     @Override
     protected void computeTime() {

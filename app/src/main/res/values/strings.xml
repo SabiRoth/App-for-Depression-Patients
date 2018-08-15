@@ -69,7 +69,8 @@
     <string name="emergency7"><u>Info-Telefon Depression</u></string>
     <string name="emergency8">0800 3344533 <i>(kostenlos, Mo, Di, Do: 13:00 – 17:00 Uhr und Mi, Fr: 08:30 – 12:30 Uhr)</i></string>
 
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <!--Text Notification-->
+    <string name="notification_part1">Dein letzter Eintrag ist vom </string>
+    <string name="notification_part2">. Aktualisiere deine Eingaben.</string>
 
 </resources>

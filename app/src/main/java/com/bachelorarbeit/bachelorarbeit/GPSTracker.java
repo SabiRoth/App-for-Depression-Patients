@@ -1,6 +1,8 @@
 package com.bachelorarbeit.bachelorarbeit;
 
+import android.app.Activity;
 import android.content.Context;
+import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.location.Location;
 import android.location.LocationListener;
@@ -20,25 +22,19 @@ import java.util.List;
 public class GPSTracker extends AppCompatActivity{
 
 
-    //3. Zahl nach dem Komma muss sich ändern -> dann in DB speichern
-
     BufferedOutputStream bOut;
     LocationManager locationManager;
     dataSource dataSource;
-    MapView mapView;
     DateTimePicker dateTimePicker;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_show_db_entry);
-        /*mapView = (MapView)findViewById(R.id.db_mapView);
-        mapView.getMapAsync(onMapReadyCallback callback);
-*/
+       // setContentView(R.layout.activity_show_db_entry);
+
         dateTimePicker = DateTimePicker.getInstance();
         dataSource = new dataSource(this);
         dataSource.open();
-        showLocationFromDB();
         locationManager = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
         try {
             bOut = new BufferedOutputStream(openFileOutput("location.dat", MODE_PRIVATE));
@@ -67,6 +63,10 @@ public class GPSTracker extends AppCompatActivity{
                 locationInDB(l);
             }
         }
+        dataSource.close();
+        Intent returnIntent = new Intent();
+        setResult(Activity.RESULT_CANCELED, returnIntent);
+        finish();
     }
 
     private Location getLastKnownLocation() {
@@ -116,12 +116,11 @@ public class GPSTracker extends AppCompatActivity{
                 return;
             }
         }
-
         dataSource.createMovementEntry(dateTimePicker.getCurrentDate(), (String.valueOf(l.getLongitude())).substring(0, 10), (String.valueOf(l.getLatitude())).substring(0,10));
-        showLocationFromDB();
+        dataSource.close();
     }
 
-    private void showLocationFromDB(){
+   /* private void showLocationFromDB(){
         dataSource.open();
         ListView entries = (ListView)findViewById(R.id.db_listView);
         Context context = this;
@@ -133,6 +132,7 @@ public class GPSTracker extends AppCompatActivity{
         dataSource.close();
     }
 
+    */
   /*  public Double[] getLocation(){
         Location location  = getLastKnownLocation();
         Double[] locationDouble = new Double[2];
