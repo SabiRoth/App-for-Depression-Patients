@@ -23,10 +23,7 @@ public class ActivitiesActivity extends AppCompatActivity {
     public ListView sportActivititesListView;
     public ListView obligationsActivitiesListView;
     public EditText editTextField;
-    public String[] socialActivitiesArrayString = getResources().getStringArray(R.array.activities_social);
-    public String[] sportActivitiesArrayString = getResources().getStringArray(R.array.activities_sport);
-    public String[] obligationsActivitiesArrayString = getResources().getStringArray(R.array.activities_obligations);
-    public ArrayList<String> allSelectedEntries = new ArrayList<String>();
+    public ArrayList<String> allSelectedEntries;
 
 
     @Override
@@ -34,6 +31,10 @@ public class ActivitiesActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_activities);
 
+        String[] socialActivitiesArrayString = getResources().getStringArray(R.array.activities_social);
+        String[] sportActivitiesArrayString = getResources().getStringArray(R.array.activities_sport);
+        String[] obligationsActivitiesArrayString = getResources().getStringArray(R.array.activities_obligations);
+        allSelectedEntries = new ArrayList<String>();
         Button nextButton = (Button)findViewById(R.id.button_activities_next);
         Button saveButton = (Button)findViewById(R.id.saveButton_activities);
         editTextField = (EditText)findViewById(R.id.editText_activities);
