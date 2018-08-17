@@ -105,7 +105,7 @@ public class BackgroundService extends Service {
         Intent notificationIntent = new Intent(this, HomeActivity.class); //TODO: MAIN?
         notificationIntent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
         PendingIntent pIntent = PendingIntent.getActivity(this, 0, notificationIntent, 0);
-        notificationBuilder.setSmallIcon(R.drawable.sensitivities_icon_colour)
+        notificationBuilder.setSmallIcon(R.drawable.icon)
                 .setContentText(getApplicationContext().getResources().getString(R.string.notification_part1) + lastEntryDate + getApplicationContext().getResources().getString(R.string.notification_part2)) //TODO: strings
                 .setContentTitle(getApplicationContext().getResources().getString(R.string.app_name))
                 .setAutoCancel(true) // hide the notification after its selected
