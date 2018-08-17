@@ -74,6 +74,7 @@
     <string name="notification_part2">. Aktualisiere deine Eingaben.</string>
     <string name="toast_end">gespeichert.</string>
     <string name="toast">Gespeichert</string>
+    <string name="notification_no_entry">Erstelle deinen ersten Eintrag</string>
 
     <!--String arrays-->
     <string-array name="sensivities_header">

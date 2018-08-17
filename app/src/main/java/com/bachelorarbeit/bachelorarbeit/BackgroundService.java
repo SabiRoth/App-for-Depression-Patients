@@ -1,16 +1,13 @@
 package com.bachelorarbeit.bachelorarbeit;
 
-import android.app.IntentService;
 import android.app.NotificationChannel;
 import android.app.NotificationManager;
 import android.app.PendingIntent;
 import android.app.Service;
 import android.content.Intent;
 import android.content.Context;
-import android.graphics.Color;
 import android.os.Build;
 import android.os.IBinder;
-import android.support.annotation.Nullable;
 import android.support.v4.app.NotificationCompat;
 
 import java.util.ArrayList;
@@ -53,16 +50,6 @@ public class BackgroundService extends Service {
         //GPS aufnehmen und in DB speichern
     }
 
-    //send notification if there wasn't sent one before this day
-    public void sendNotification(String lastEntryDate){
-        if(remindNotificationDates.size()!=0){
-           if(remindNotificationDates.get(remindNotificationDates.size()-1).equals(dateTimePicker.getCurrentDate())){
-               return;
-            }
-        }
-        remindNotificationDates.add(dateTimePicker.getCurrentDate());
-        createNotification(lastEntryDate, dateTimePicker.getCurrentDate());
-    }
 
     //if the last entry war 3 days or longer ago a notification is sent
     public void proofLastEntry(){
@@ -72,21 +59,32 @@ public class BackgroundService extends Service {
         String currentDate = dateTimePicker.getCurrentDate();
         if(lastEntryDate!=null) {
             if (!(dateTimePicker.getMonthFromDate(lastEntryDate).equals(dateTimePicker.getMonthFromDate(currentDate)))) {
-                sendNotification(lastEntryDate);
+                proofAlreadyNotified(lastEntryDate, false);
             } else {
                 if ((((Integer.parseInt(dateTimePicker.getDayFromDate(currentDate)))) - Integer.parseInt(dateTimePicker.getDayFromDate(lastEntryDate))) >= 1) {//Zahl ähndern
-                    sendNotification(lastEntryDate);
+                    proofAlreadyNotified(lastEntryDate, false);
                 }
             }
         }
         else{
-            //TODO: Aufforderung zum Erstellen des ersten Eintrags
-            sendNotification("test");
+            proofAlreadyNotified(null, true);
         }
     }
 
 
-    public void createNotification(String lastEntryDate, String channelId){
+    //proof if there was already sent a notification  this day
+    public void proofAlreadyNotified(String lastEntryDate, boolean noDbEntry){
+        if(remindNotificationDates.size()!=0){
+            if(remindNotificationDates.get(remindNotificationDates.size()-1).equals(dateTimePicker.getCurrentDate())){
+                return;
+            }
+        }
+        remindNotificationDates.add(dateTimePicker.getCurrentDate());
+        createNotification(lastEntryDate, dateTimePicker.getCurrentDate(), noDbEntry);
+    }
+
+
+    public void createNotification(String lastEntryDate, String channelId, Boolean noDbEntry){
         NotificationManager notificationManager = (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
 
           if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
@@ -96,6 +94,9 @@ public class BackgroundService extends Service {
             notificationChannel.setVibrationPattern(new long[]{0, 1000, 500, 1000});
             notificationChannel.enableVibration(true);
             notificationManager.createNotificationChannel(notificationChannel);
+            if(noDbEntry){
+                notificationChannel.setDescription(getResources().getString(R.string.notification_no_entry));
+            }
         }
 
         NotificationCompat.Builder notificationBuilder = new NotificationCompat.Builder(this, channelId);
@@ -106,13 +107,17 @@ public class BackgroundService extends Service {
         notificationIntent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
         PendingIntent pIntent = PendingIntent.getActivity(this, 0, notificationIntent, 0);
         notificationBuilder.setSmallIcon(R.drawable.icon)
-                .setContentText(getApplicationContext().getResources().getString(R.string.notification_part1) + lastEntryDate + getApplicationContext().getResources().getString(R.string.notification_part2)) //TODO: strings
+                .setContentText(getApplicationContext().getResources().getString(R.string.notification_part1) + " " + lastEntryDate + getApplicationContext().getResources().getString(R.string.notification_part2)) //TODO: strings
                 .setContentTitle(getApplicationContext().getResources().getString(R.string.app_name))
                 .setAutoCancel(true) // hide the notification after its selected
                 .setVibrate(new long[] { 1000, 1000, 1000 })
                 .setContentIntent(pIntent)
-                //.setColor(Color.BLUE)
                 .setTicker(getApplicationContext().getResources().getString(R.string.app_name));
+
+        if(noDbEntry){
+            notificationBuilder.setContentText(getResources().getString(R.string.notification_no_entry));
+        }
+
         notificationManager.notify(notificationId, notificationBuilder.build());
 
 

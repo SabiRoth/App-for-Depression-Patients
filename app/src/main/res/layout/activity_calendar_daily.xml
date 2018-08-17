@@ -27,6 +27,7 @@
             android:layout_height="wrap_content"
             android:text="@string/calendar_daily_morning_textview"
             style="@style/headerTextView"
+            android:textStyle="bold"
             />
 
         <com.bachelorarbeit.bachelorarbeit.NonScrollListView
@@ -54,6 +55,7 @@
             android:layout_height="wrap_content"
             android:text="@string/calendar_daily_midday_textview"
             style="@style/headerTextView"
+            android:textStyle="bold"
             />
 
         <com.bachelorarbeit.bachelorarbeit.NonScrollListView
@@ -84,6 +86,7 @@
             android:layout_height="wrap_content"
             android:text="@string/calendar_daily_evening_textview"
             style="@style/headerTextView"
+            android:textStyle="bold"
             />
 
         <com.bachelorarbeit.bachelorarbeit.NonScrollListView

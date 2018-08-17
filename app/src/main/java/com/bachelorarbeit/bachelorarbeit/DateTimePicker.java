@@ -7,7 +7,6 @@ import java.util.TimeZone;
 
 public class DateTimePicker extends Calendar {
 
-//TODO: Strings auslagern
     Calendar calendar = Calendar.getInstance();
 
     public DateTimePicker(){
