@@ -72,5 +72,87 @@
     <!--Text Notification-->
     <string name="notification_part1">Dein letzter Eintrag ist vom</string>
     <string name="notification_part2">. Aktualisiere deine Eingaben.</string>
+    <string name="toast_end">gespeichert.</string>
+    <string name="toast">Gespeichert</string>
 
+    <!--String arrays-->
+    <string-array name="sensivities_header">
+        <item>Somatische Symptome</item>
+        <item>Psychische Symptome</item>
+        <item>Soziale Symptome</item>
+        <item>Weitere Eingaben</item>
+    </string-array>
+
+    <string-array name="sensivities_somatic">
+        <item>Verminderter Antrieb (Energieverlust)</item>
+        <item>Verminderte Aktivität</item>
+        <item>Gesteigerte Aktivität (Bewegungsdrang)</item>
+        <item>Anspannung</item>
+        <item>Unruhe</item>
+        <item>Geminderte Leistungsfähigkeit</item>
+        <item>Konzentrationsschwierigkeiten</item>
+        <item>Kraftlosigkeit</item>
+        <item>Zittern</item>
+        <item>Schlafstörungen</item>
+        <item>Früherwachen</item>
+        <item>Müdigkeit</item>
+        <item>Morgentief</item>
+        <item>Appetitsminderung</item>
+        <item>Appetitssteigerung</item>
+        <item>Libidoverlust</item>
+    </string-array>
+
+    <string-array name="sensivities_psychic">
+        <item>Beeinträchtigtes Selbstwertgefühl (Gefühle der Wertlosigkeit)</item>
+        <item>Beeinträchtigtes Selbstvertrauen</item>
+        <item>Schuldgefühle</item>
+        <item>Gedrückte Stimmung/Traurigkeit</item>
+        <item>Versagensgefühle</item>
+        <item>Selbstvorwürfe</item>
+        <item>Gedanken an den Tod oder an Suizid</item>
+        <item>Melancholie</item>
+        <item>Pessimismus</item>
+        <item>Unzufriedenheit</item>
+        <item>Verzweiflung</item>
+        <item>Stress</item>
+        <item>Ängste</item>
+        <item>Gedankenschleifen</item>
+        <item>Mutlosigkeit</item>
+        <item>Gefühle der Nutzlosigkeit</item>
+        <item>Geminderte Begeisterungsfähigkeit</item>
+        <item>Weinen</item>
+        <item>Unentschlossenheit</item>
+        <item>Verlust von Freude</item>
+        <item>Interessenverlust</item>
+    </string-array>
+
+    <string-array name="sensivities_social">
+        <item>Sozialer Rückzug</item>
+        <item>Verminderte Gesprächigkeit</item>
+        <item>Reizbarkeit</item>
+    </string-array>
+
+    <string-array name="activities_social">
+        <item>Mit Freunden/Bekannten getroffen</item>
+        <item>Mit Freunden/Bekannten telefoniert</item>
+        <item>Theater-/Kino-/Konzertbesuch</item>
+        <item>Auswärts Essen gegangen</item>
+        <item>Bar-/Disko-/Kneipenbesuch</item>
+    </string-array>
+
+    <string-array name="activities_sport">
+        <item>Spazieren gehen</item>
+        <item>Schwimmen</item>
+        <item>Laufen</item>
+        <item>Wandern/Bergsteigen</item>
+        <item>Ballsport</item>
+        <item>Tanzen</item>
+        <item>Radfahren</item>
+    </string-array>
+
+    <string-array name="activities_obligations">
+        <item>Zur Arbeit gegangen</item>
+        <item>Einkaufen gegangen</item>
+        <item>Zum Arzt gegangen</item>
+    </string-array>
 </resources>

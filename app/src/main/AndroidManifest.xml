@@ -35,8 +35,6 @@
             android:parentActivityName=".MainActivity">
         </activity>
 
-
-
         <activity
             android:name=".ActivitiesActivity"
             android:label="@string/activities_activity_label">
@@ -65,10 +63,6 @@
         <activity
             android:name=".EmergencyActivity"
             android:label="@string/emergency_activity_label">
-        </activity>
-
-        <activity
-        android:name=".showDbEntryClass">
         </activity>
 
         <activity

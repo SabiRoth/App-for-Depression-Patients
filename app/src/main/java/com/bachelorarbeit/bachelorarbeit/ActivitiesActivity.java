@@ -23,9 +23,9 @@ public class ActivitiesActivity extends AppCompatActivity {
     public ListView sportActivititesListView;
     public ListView obligationsActivitiesListView;
     public EditText editTextField;
-    public String[] socialActivitiesArrayString = {"Mit Freunden/Bekannten getroffen", "Mit Freunden/Bekannten telefoniert", "Theater-/Kino-/Konzertbesuch", "Auswärts Essen gegangen", "Bar-/Disko-/Kneipenbesuch"};
-    public String[] sportActivitiesArrayString = {"Spazieren gehen", "Schwimmen", "Laufen", "Wandern/Bergsteigen", "Ballsport", "Tanzen", "Radfahren"};
-    public String[] obligationsActivitiesArrayString = {"Zur Arbeit gegangen", "Einkaufen gegangen", "Zum Arzt gegangen"};
+    public String[] socialActivitiesArrayString = getResources().getStringArray(R.array.activities_social);
+    public String[] sportActivitiesArrayString = getResources().getStringArray(R.array.activities_sport);
+    public String[] obligationsActivitiesArrayString = getResources().getStringArray(R.array.activities_obligations);
     public ArrayList<String> allSelectedEntries = new ArrayList<String>();
 
 
@@ -118,7 +118,7 @@ public class ActivitiesActivity extends AppCompatActivity {
 
         if(!(editTextField.getText().toString().equals(""))) {
             allSelectedEntries.add(editTextField.getText().toString());
-            CharSequence text = "Gespeichert";
+            CharSequence text = getResources().getString(R.string.toast);
             Toast.makeText(getApplicationContext(), text, Toast.LENGTH_LONG).show();
             editTextField.setText("");
         }

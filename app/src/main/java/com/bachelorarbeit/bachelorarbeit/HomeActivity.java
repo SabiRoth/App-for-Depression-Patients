@@ -11,19 +11,6 @@ import android.widget.ImageButton;
 
 public class HomeActivity extends AppCompatActivity {
 
-   /*
-   TODO: Prüfen ob deklaration hier außen notwendig ist
-    private TextView overview;
-    private Button overview_calendar_button;
-    private Button overview_graph_button;
-    private TextView entries;
-    private Button entries_sensitivies_button;
-    private Button entries_activities_button;
-    private TextView movementProfile;
-    private Button movementProfile_map_button;
-    private Button movementProfile_places_button;
-*/
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

@@ -9,6 +9,8 @@ import android.widget.TextView;
 
 import java.util.ArrayList;
 
+//TODO: LÖSCHEN, WENN GPS FERTIG!
+
 public class entryMovementListingArrayAdapter extends ArrayAdapter<String[]> {
 
     private final Context context;

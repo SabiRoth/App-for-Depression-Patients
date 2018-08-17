@@ -20,7 +20,6 @@ import android.widget.Toast;
 import java.util.ArrayList;
 import java.util.Arrays;
 
-//TODO: ALLE STRINGS AUSLAGERN
 
 public class SensitivitiesActivity extends AppCompatActivity {
 
@@ -29,7 +28,7 @@ public class SensitivitiesActivity extends AppCompatActivity {
     int counter = 0;
     public ListView listViewSensitivities;
     public TextView header;
-    public String[] headerString = {"Somatische Symptome", "Psychische Symptome", "Soziale Symptome", "Weitere Eingaben"};;
+    public String[] headerString;
     public Button buttonSensitivitiesNext;
     dataSource dataSource;
 
@@ -40,11 +39,11 @@ public class SensitivitiesActivity extends AppCompatActivity {
         header = (TextView)findViewById(R.id.textView_sensitivities_header);
         listViewSensitivities = (ListView)findViewById(R.id.listViewCheckboxes);
         buttonSensitivitiesNext = (Button)findViewById(R.id.button_sensitivies_next);
+        headerString = getResources().getStringArray(R.array.sensivities_header);
 
-
-        String[] somatic = {"Verminderter Antrieb (Energieverlust)", "Verminderte Aktivität", "Gesteigerte Aktivität (Bewegungsdrang)", "Anspannung", "Unruhe", "Geminderte Leistungsfähigkeit", "Konzentrationsschwierigkeiten", "Kraftlosigkeit", "Zittern", "Schlafstörungen", "Früherwachen", "Müdigkeit", "Morgentief", "Appetitsminderung", "Appetitssteigerung", "Libidoverlust"};
-        String[] psychic = {"beeinträchtigtes Selbstwertgefühl (Gefühle der Wertlosigkeit)", "Beeinträchtigtes Selbstvertrauen", "Schuldgefühle", "Gedrückte Stimmung/Traurigkeit", "Versagensgefühle", "Selbstvorwürfe", "Gedanken an den Tod oder an Suizid", "Melancholie", "Pessimismus", "Unzufriedenheit", "Verzweiflung", "Stress", "Ängste", "Gedankenschleifen", "Mutlosigkeit", "Gefühle der Nutzlosigkeit", "Geminderte Begeisterungsfähigkeit", "Weinen", "Unentschlossenheit", "Verlust von Freude", "Interessenverlust"};
-        String[] social ={"Sozialer Rückzug", "Verminderte Gesprächigkeit", "Reizbarkeit"};
+        String[] somatic = getResources().getStringArray(R.array.sensivities_somatic);
+        String[] psychic = getResources().getStringArray(R.array.sensivities_psychic);
+        String[] social = getResources().getStringArray(R.array.sensivities_social);
         String[] ownEntries;
 
         arrayListStringArrays.add(somatic);
@@ -128,7 +127,7 @@ public class SensitivitiesActivity extends AppCompatActivity {
             if(alreadySelected == false) {
                 allSelectedEntries.add(input);
                 checkAndSaveEntry(input);
-                CharSequence text = input +  " gespeichert";
+                CharSequence text = input +  " " + getResources().getString(R.string.toast_end);
                 Toast.makeText(getApplicationContext(), text, Toast.LENGTH_LONG).show();
             }
             editText.setText("");
