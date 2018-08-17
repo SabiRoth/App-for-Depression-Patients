@@ -27,6 +27,10 @@ public class GPSTracker extends AppCompatActivity{
     dataSource dataSource;
     DateTimePicker dateTimePicker;
 
+
+    //TODO: Warten bis man die genaue Position hat! Nicht eine ca. Position abspeichern! -> Accuracy
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -53,8 +57,7 @@ public class GPSTracker extends AppCompatActivity{
         if(ContextCompat.checkSelfPermission( this, android.Manifest.permission.ACCESS_FINE_LOCATION ) == PackageManager.PERMISSION_GRANTED)
         {
             try {
-               // locationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, 60000, 50, locationListener);
-                locationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, 6000, 1, locationListener);
+                locationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER, 120000, 40, locationListener);
             } catch (Exception e) {
                 e.printStackTrace();
             }
