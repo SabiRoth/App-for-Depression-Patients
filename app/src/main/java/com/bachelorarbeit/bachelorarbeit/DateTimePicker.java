@@ -40,13 +40,14 @@ public class DateTimePicker extends Calendar {
     public String getDaytime(){
         calendar.setTimeZone(TimeZone.getTimeZone("Europe/Berlin"));
         String daytime ="";
-        if(calendar.get(Calendar.HOUR_OF_DAY) < 11 && calendar.get(Calendar.HOUR_OF_DAY) > 3){
+        Integer curerntHour = calendar.get(Calendar.HOUR_OF_DAY);
+        if(curerntHour < 11 && curerntHour > 3){
             daytime = "Morgen";
         }
-        if(calendar.get(Calendar.HOUR_OF_DAY) > 16 || calendar.get(Calendar.HOUR_OF_DAY) < 4){
+        if(curerntHour > 16 || curerntHour < 4){
             daytime = "Abend";
         }
-        if(calendar.get(Calendar.HOUR_OF_DAY)>10 && calendar.get(Calendar.HOUR_OF_DAY)<5){
+        if(curerntHour > 10 && curerntHour<17){
             daytime = "Mittag";
         }
         return daytime;
