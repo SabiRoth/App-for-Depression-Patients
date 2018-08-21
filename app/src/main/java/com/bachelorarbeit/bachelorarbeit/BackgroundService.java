@@ -55,9 +55,10 @@ public class BackgroundService extends Service {
     public void proofLastEntry(){
         dataSource dataSource = new dataSource(this);
         dataSource.open();
-        String lastEntryDate = dataSource.getLastEntry().getDate();
-        String currentDate = dateTimePicker.getCurrentDate();
-        if(lastEntryDate!=null) {
+        Entry lastEntry = dataSource.getLastEntry();
+        if(lastEntry!=null) {
+            String lastEntryDate = lastEntry.getDate();
+            String currentDate = dateTimePicker.getCurrentDate();
             if (!(dateTimePicker.getMonthFromDate(lastEntryDate).equals(dateTimePicker.getMonthFromDate(currentDate)))) {
                 proofAlreadyNotified(lastEntryDate, false);
             } else {
