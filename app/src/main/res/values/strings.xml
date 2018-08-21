@@ -144,6 +144,7 @@
     <string-array name="activities_sport">
         <item>Spazieren gehen</item>
         <item>Schwimmen</item>
+        <item>Yoga</item>
         <item>Laufen</item>
         <item>Wandern/Bergsteigen</item>
         <item>Ballsport</item>

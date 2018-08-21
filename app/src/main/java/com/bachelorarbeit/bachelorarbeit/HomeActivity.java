@@ -1,8 +1,6 @@
 package com.bachelorarbeit.bachelorarbeit;
 
 import android.os.Bundle;
-import android.support.v4.app.FragmentManager;
-import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
 import android.content.Intent;
 import android.view.View;
@@ -96,7 +94,7 @@ public class HomeActivity extends AppCompatActivity {
     }
 
     private void clickOverviewGraph(){
-        Intent i = new Intent(this, GraphActivity.class);
+        Intent i = new Intent(this, GraphActivityDaily.class);
         startActivity(i);
     }
 

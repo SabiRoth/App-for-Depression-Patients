@@ -12,14 +12,7 @@
         android:layout_height="match_parent"
         android:orientation="vertical">
 
-        <include layout="@layout/activity_calendar_header"/>
-
-        <Button
-            android:id="@+id/button_date_picker_calendar"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textSize="25sp"
-            android:layout_gravity="center_horizontal" />
+        <include layout="@layout/activity_header_calendar_graph"/>
 
         <TextView
             android:id="@+id/textView_calendar_daily_morning"

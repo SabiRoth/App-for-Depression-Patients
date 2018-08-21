@@ -36,6 +36,7 @@ public class CalendarActivityDaily extends AppCompatActivity{
     String pickedDate;
     String[] spinnerList = {"Tagesansicht", "Wochenansicht", "Monatsansicht"};
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -71,7 +72,7 @@ public class CalendarActivityDaily extends AppCompatActivity{
         ArrayList<String> eveningEntriesSensivities = new ArrayList<>(), eveningEntriesActivities = new ArrayList<>(), eveningEntriesPlaces = new ArrayList<>();
         for(int i = 0; i<allEntries.size(); i++){
             String currentDaytime = dateTimePicker.getDaytime(allEntries.get(i).getTime());
-            if(currentDaytime == "Morgen"){
+            if(currentDaytime.equals("Morgen")){
                 if(allEntries.get(i).getSensitivies()!=null) {
                     morningEntriesSensivities.add(allEntries.get(i).getSensitivies());
                 }
@@ -82,7 +83,7 @@ public class CalendarActivityDaily extends AppCompatActivity{
                     morningEntriesPlaces.add(allEntries.get(i).getPlaces());
                 }
             }
-            if(currentDaytime == "Mittag"){
+            if(currentDaytime.equals("Mittag")){
                 if(allEntries.get(i).getSensitivies()!=null) {
                     middayEntriesSensivities.add(allEntries.get(i).getSensitivies());
                 }
@@ -93,7 +94,7 @@ public class CalendarActivityDaily extends AppCompatActivity{
                     middayEntriesPlaces.add(allEntries.get(i).getPlaces());
                 }
             }
-            if(currentDaytime == "Abend"){
+            if(currentDaytime.equals("Abend")){
                 if(allEntries.get(i).getSensitivies()!=null) {
                     eveningEntriesSensivities.add(allEntries.get(i).getSensitivies());
                 }

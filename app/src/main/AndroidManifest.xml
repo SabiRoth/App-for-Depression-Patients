@@ -41,7 +41,7 @@
         </activity>
 
         <activity
-            android:name=".GraphActivity"
+            android:name=".GraphActivityDaily"
             android:label="@string/graph_activity_label">
         </activity>
 
