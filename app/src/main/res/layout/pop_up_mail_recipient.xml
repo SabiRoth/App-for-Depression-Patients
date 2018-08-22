@@ -24,7 +24,7 @@
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/TextView_recipient"
+        android:id="@+id/textView_recipient"
         style="@style/hintTextView"/>
 
     <Button

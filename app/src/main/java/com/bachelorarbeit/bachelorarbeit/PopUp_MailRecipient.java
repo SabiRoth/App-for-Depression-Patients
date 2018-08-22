@@ -2,7 +2,6 @@ package com.bachelorarbeit.bachelorarbeit;
 
 import android.app.AlertDialog;
 import android.app.Dialog;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.DialogFragment;
@@ -36,7 +35,7 @@ public class PopUp_MailRecipient extends DialogFragment {
         LayoutInflater inflater = getActivity().getLayoutInflater();
         View dialogView = inflater.inflate(R.layout.pop_up_mail_recipient, null);
         mailInput = dialogView.findViewById(R.id.inputMail);
-        textView_recipient = dialogView.findViewById(R.id.TextView_recipient);
+        textView_recipient = dialogView.findViewById(R.id.textView_recipient);
         saveButton = dialogView.findViewById(R.id.saveButton_mail);
         dataSource = new dataSource(getContext());
         dataSource.open();
@@ -53,7 +52,7 @@ public class PopUp_MailRecipient extends DialogFragment {
 
     private void saveInDb(){
         if(!(mailInput.getText().toString().equals(""))){
-            dataSource.createSettingsEntry("MailRecipient", mailInput.getText().toString());
+            dataSource.createSettingsEntry("mailRecipient", mailInput.getText().toString());
             CharSequence text = mailInput.getText().toString() +  " " + getResources().getString(R.string.toast_end);
             Toast.makeText(getContext(), text, Toast.LENGTH_LONG).show();
         }
@@ -63,7 +62,7 @@ public class PopUp_MailRecipient extends DialogFragment {
     }
 
     private void proofAlreadySaved(){
-        String recipient = dataSource.getSettingViaName("MailRecipient");
+        String recipient = dataSource.getSettingViaName("mailRecipient");
         if(recipient != null){
             textView_recipient.setVisibility(View.VISIBLE);
             textView_recipient.setText(getResources().getString(R.string.pop_up_mail_already_entry) + " " + recipient);
