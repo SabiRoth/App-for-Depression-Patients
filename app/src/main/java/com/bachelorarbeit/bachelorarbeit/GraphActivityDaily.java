@@ -2,7 +2,6 @@ package com.bachelorarbeit.bachelorarbeit;
 
 import android.app.DatePickerDialog;
 import android.content.Intent;
-import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
@@ -29,8 +28,8 @@ public class GraphActivityDaily extends AppCompatActivity {
     DateTimePicker dateTimePicker;
     String pickedDate;
     GraphView graph;
-    String[] spinnerList = {"Tagesansicht", "Wochenansicht", "Monatsansicht"};
-    String[] spinnerListGraph = {"Bewegungs- und Befindlichkeitsgraph", "Aktivitäts- und Befindlichkeitsgraph"};
+    String[] spinnerList = getResources().getStringArray(R.array.spinner_view);
+    String[] spinnerListGraph = getResources().getStringArray(R.array.spinner_graph);
 
 
     @Override
@@ -50,12 +49,10 @@ public class GraphActivityDaily extends AppCompatActivity {
         initializeSpinner();
         initializeClickListenerForDatePickerButton();
         initializeGraphView();
-
-
     }
 
-    //TODO:STRINGS AUSLAGERN
-    //TODO: Uhrzeit in creteMovementEntry mit aufnehmen für Tagesansicht -> DB VERSION ÄNDERN
+
+    //TODO: Uhrzeit in creteMovementEntry mit aufnehmen für Tagesansicht ?? -> DB VERSION ÄNDERN
 
     private void initializeGraphView(){
         dataSource dataSource = new dataSource(this);
@@ -68,7 +65,7 @@ public class GraphActivityDaily extends AppCompatActivity {
         dataSource.close();
 
         StaticLabelsFormatter staticLabelsFormatter = new StaticLabelsFormatter(graph);
-        staticLabelsFormatter.setHorizontalLabels(new String[]{"Früh", "Mittag", "Abend"});
+        staticLabelsFormatter.setHorizontalLabels(new String[]{getResources().getString(R.string.morning), getResources().getString(R.string.midday), getResources().getString(R.string.evening)});
         graph.getGridLabelRenderer().setLabelFormatter(staticLabelsFormatter);
         graph.getGridLabelRenderer().setVerticalLabelsVisible(false);
 
@@ -76,24 +73,24 @@ public class GraphActivityDaily extends AppCompatActivity {
            for(int i = 0; i<entries.size(); i++){
                if(entries.get(i).getSensitivies()!=null){
                    String[] allSensitivities = entries.get(i).getSensitivies().split(",");
-                   if(entries.get(i).getDaytime().equals("Morgen")){
+                   if(entries.get(i).getDaytime().equals(getResources().getString(R.string.morning))){
                        sensivitiesCounterMorning += allSensitivities.length;
                    }
-                   if(entries.get(i).getDaytime().equals("Mittag")){
+                   if(entries.get(i).getDaytime().equals(getResources().getString(R.string.midday))){
                        sensivitiesCounterMidday += allSensitivities.length;
                    }
-                   if(entries.get(i).getDaytime().equals("Abend")){
+                   if(entries.get(i).getDaytime().equals(getResources().getString(R.string.evening))){
                        sensivitiesCounterEvening += allSensitivities.length;
                    }
               }
                if(entries.get(i).getActivities()!=null){
-                   if(entries.get(i).getDaytime().equals("Morgen")){
+                   if(entries.get(i).getDaytime().equals(getResources().getString(R.string.morning))){
                        activitiesEntriesMorning.add(entries.get(i).getActivities());
                    }
-                   if(entries.get(i).getDaytime().equals("Mittag")){
+                   if(entries.get(i).getDaytime().equals(getResources().getString(R.string.midday))){
                        activitiesEntriesMidday.add(entries.get(i).getActivities());
                    }
-                   if(entries.get(i).getDaytime().equals("Abend")){
+                   if(entries.get(i).getDaytime().equals(getResources().getString(R.string.evening))){
                        activitiesEntriesEvening.add(entries.get(i).getActivities());
                    }
                }
@@ -116,7 +113,7 @@ public class GraphActivityDaily extends AppCompatActivity {
                new DataPoint(1, sensivitiesCounterMidday),
                new DataPoint(2, sensivitiesCounterEvening)
         });
-        seriesSensivities.setTitle("Befindlichkeit");
+        seriesSensivities.setTitle(getResources().getString(R.string.title_sensitivity));
         seriesSensivities.setColor(getResources().getColor(R.color.colorText));
         graph.addSeries(seriesSensivities);
         graph.getLegendRenderer().setVisible(true);
@@ -130,7 +127,7 @@ public class GraphActivityDaily extends AppCompatActivity {
                new DataPoint(1, activitiesEntriesMidday.size()),
                new DataPoint(2, activitiesEntriesEvening.size())
         });
-        seriesActivities.setTitle("Bewegung");
+        seriesActivities.setTitle(getResources().getString(R.string.title_movement));
         seriesActivities.setColor(getResources().getColor(R.color.colorPrimary));
         graph.addSeries(seriesActivities);
     }

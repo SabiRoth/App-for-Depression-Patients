@@ -6,8 +6,6 @@ import android.database.sqlite.SQLiteOpenHelper;
 
 public class dbHelper extends SQLiteOpenHelper {
 
-    //TODO: Wörter aus Strings holen
-
     private static final String DB_NAME = "depTrackAppDB.db";
     private static final int DB_VERSION = 5;
     public static final String TABLE_ALL_ENTRIES = "Einträgetabelle";
@@ -41,12 +39,10 @@ public class dbHelper extends SQLiteOpenHelper {
             "CREATE TABLE " + TABLE_OWN_SENSITIVITIES_ENTRIES +
                     "(" + COLUMN_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " + COLUMN_OWN_SENSITIVITY + " TEXT" + ")";
 
-    //constructor
     public dbHelper(Context context) {
         super(context, DB_NAME, null, DB_VERSION);
     }
 
-    //Create table
     @Override
     public void onCreate(SQLiteDatabase db) {
         try {

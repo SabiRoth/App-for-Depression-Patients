@@ -12,6 +12,8 @@
     <string name="next">Weiter</string>
     <string name="save_button">Speichern</string>
     <string name="end_button">Abschließen</string>
+    <string name="input_button">Zur Eingabe</string>
+    <string name="close_button">Schließen</string>
 
     <!--TextViews Home-->
     <string name="overview_textview">Übersichten</string>
@@ -57,6 +59,7 @@
     <string name="places_edittext">Ort eingeben</string>
     <string name="sensibilities_edittext">Befindlichkeit eingeben</string>
     <string name="activities_edittext">Aktivität eingeben</string>
+    <string name="mail_edittext">Gib eine E-Mail-Adresse ein</string>
 
 
     <!--Text Emegency-->
@@ -75,6 +78,23 @@
     <string name="toast_end">gespeichert.</string>
     <string name="toast">Gespeichert</string>
     <string name="notification_no_entry">Erstelle deinen ersten Eintrag</string>
+    <string name="no_entry_selected">Gib eine Aktivität ein oder wähle aus der Liste.</string>
+
+    <!--Title Graph-->
+    <string name="title_movement">Bewegung</string>
+    <string name="title_sensitivity">Befindlichkeit</string>
+
+    <!--Daytimes-->
+    <string name="morning">Morgen</string>
+    <string name="midday">Mittag</string>
+    <string name="evening">Abend</string>
+
+    <!--PopUps-->
+    <string name="pop_up_mail">Gib einen Standard-E-Mail-Empfänger für das manuelle Versenden der Graphen ein:</string>
+    <string name="pop_up_start_part1">Es ist</string>
+    <string name="pop_up_start_part2">Uhr. Gib deine Befindlichkeit und deine Aktivitäten von heute</string>
+    <string name="pop_up_start_part3">ein!</string>
+
 
     <!--String arrays-->
     <string-array name="sensivities_header">
@@ -157,4 +177,16 @@
         <item>Einkaufen gegangen</item>
         <item>Zum Arzt gegangen</item>
     </string-array>
+
+    <string-array name="spinner_view">
+        <item>Tagesansicht</item>
+        <item>Wochenansicht</item>
+        <item>Monatsansicht</item>
+    </string-array>
+
+    <string-array name="spinner_graph">
+        <item>Bewegungs- und Befindlichkeitsgraph</item>
+        <item>Aktivitäts- und Befindlichkeitsgraph</item>
+    </string-array>
+
 </resources>

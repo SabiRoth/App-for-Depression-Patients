@@ -8,10 +8,10 @@ import android.os.Bundle;
 import android.support.v4.app.DialogFragment;
 
 
-public class MyAlertDialogFragment extends DialogFragment{
+public class PopUp_Start extends DialogFragment{
 
-    public static MyAlertDialogFragment newInstance(String time, String daytime){
-        MyAlertDialogFragment sd = new MyAlertDialogFragment();
+    public static PopUp_Start newInstance(String time, String daytime){
+        PopUp_Start sd = new PopUp_Start();
         Bundle args = new Bundle();
         args.putString("time", time);
         args.putString("daytime", daytime);
@@ -19,21 +19,20 @@ public class MyAlertDialogFragment extends DialogFragment{
         return sd;
     }
 
-    //TODO: Strings aulagern
 
     @Override
     public Dialog onCreateDialog(Bundle savedInstanceState) {
         // Use the Builder class for convenient dialog construction
         AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
-        builder.setMessage("Es ist " + getArguments().getString("time") + " Uhr. Gib deine Befindlichkeit und deine Aktivitäten von heute " + getArguments().getString("daytime") + " ein!" )
+        builder.setMessage(getResources().getString(R.string.pop_up_start_part1)+ " " + getArguments().getString("time") + " " + getResources().getString(R.string.pop_up_start_part2) + " " + getArguments().getString("daytime") + " " + getResources().getString(R.string.pop_up_start_part3))
                 //.setView()
-                .setPositiveButton("Zur Eingabe", new DialogInterface.OnClickListener() {
+                .setPositiveButton(getResources().getString(R.string.input_button), new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int id) {
                         Intent i = new Intent(getActivity(), SensitivitiesActivity.class);
                         startActivity(i);
                     }
                 })
-                .setNegativeButton("Schließen", new DialogInterface.OnClickListener() {
+                .setNegativeButton(getResources().getString(R.string.close_button), new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int id) {
                         Intent i = new Intent(getActivity(), HomeActivity.class);
                         startActivity(i);

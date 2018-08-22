@@ -17,13 +17,12 @@ import java.util.ArrayList;
 
 public class ActivitiesActivity extends AppCompatActivity {
 
-    //TODO: Wörter in strings auslagern
-
     public ListView socialActivitiesListView;
     public ListView sportActivititesListView;
     public ListView obligationsActivitiesListView;
     public EditText editTextField;
     public ArrayList<String> allSelectedEntries;
+    Button nextButton;
 
 
     @Override
@@ -35,7 +34,7 @@ public class ActivitiesActivity extends AppCompatActivity {
         String[] sportActivitiesArrayString = getResources().getStringArray(R.array.activities_sport);
         String[] obligationsActivitiesArrayString = getResources().getStringArray(R.array.activities_obligations);
         allSelectedEntries = new ArrayList<String>();
-        Button nextButton = (Button)findViewById(R.id.button_activities_next);
+        nextButton = (Button)findViewById(R.id.button_activities_next);
         Button saveButton = (Button)findViewById(R.id.saveButton_activities);
         editTextField = (EditText)findViewById(R.id.editText_activities);
         socialActivitiesListView = (ListView)findViewById(R.id.listView_activities1);
@@ -75,6 +74,7 @@ public class ActivitiesActivity extends AppCompatActivity {
             }
         });
 
+        nextButton.setEnabled(false);
         nextButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -96,6 +96,10 @@ public class ActivitiesActivity extends AppCompatActivity {
         }
         else{
             allSelectedEntries.add(clickedEntry);
+            nextButton.setEnabled(true);
+        }
+        if(allSelectedEntries.size()==0){
+            nextButton.setEnabled(false);
         }
         CheckedTextView checkedTextView = (CheckedTextView) viewListEntry;
         checkedTextView.toggle();
@@ -103,25 +107,22 @@ public class ActivitiesActivity extends AppCompatActivity {
     }
 
     private void nextButtonClicked(){
-        Intent i;
-       /* if(allSelectedEntries.size()==0){
-            i = new Intent(this, HomeActivity.class);
-        }
-        else {*/
+        if(allSelectedEntries.size()!=0){
+            Intent i;
             i = new Intent(this, PlacesActivity.class);
             i.putExtra("selectedActivities", allSelectedEntries);
             i.putExtra("sensitivitiesString", getIntent().getStringExtra("sensitivitiesString"));
-        /*}*/
-        startActivity(i);
+            startActivity(i);
+        }
     }
 
     private void saveButtonClicked(){
-
         if(!(editTextField.getText().toString().equals(""))) {
             allSelectedEntries.add(editTextField.getText().toString());
             CharSequence text = getResources().getString(R.string.toast);
             Toast.makeText(getApplicationContext(), text, Toast.LENGTH_LONG).show();
             editTextField.setText("");
+            nextButton.setEnabled(true);
         }
     }
 }
