@@ -53,6 +53,13 @@
 
     </LinearLayout>
 
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/TextView_mainSymptoms"
+        android:text="@string/main_symptoms"
+        style="@style/normalText"/>
+
 
     <TextView
         android:layout_width="match_parent"

@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Gib bis zu 3 Hauptsymptome ein:"
+        style="@style/normalText"
+        android:textStyle="italic"
+        android:textSize="22sp"/>
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/input_main_symptoms1"
+        android:hint="Symptom eingeben"
+        android:inputType="text"
+        android:layout_margin="15dp"/>
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/input_main_symptoms2"
+        android:hint="Symptom eingeben"
+        android:inputType="text"
+        android:layout_margin="15dp"/>
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/input_main_symptoms3"
+        android:hint="Symptom eingeben"
+        android:inputType="text"
+        android:layout_margin="15dp"/>
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/saveButton_main_symptoms"
+        style="@style/saveButton"
+        android:layout_margin="15dp"/>
+
+</LinearLayout>

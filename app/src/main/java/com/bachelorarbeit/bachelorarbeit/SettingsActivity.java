@@ -21,6 +21,7 @@ public class SettingsActivity extends AppCompatActivity {
         setContentView(R.layout.activity_settings);
         switchButtonGPS= (Switch)findViewById(R.id.switch_gps);
         switchButtonPush = (Switch)findViewById(R.id.switch_push);
+        TextView mainSymptoms = (TextView)findViewById(R.id.TextView_mainSymptoms);
         TextView recipientMail = (TextView)findViewById(R.id.TextView_recipientMail);
         dataSource = new dataSource(this);
         dataSource.open();
@@ -47,6 +48,14 @@ public class SettingsActivity extends AppCompatActivity {
                 } else {
                     deactivatePush();
                 }
+            }
+        });
+
+        mainSymptoms.setClickable(true);
+        mainSymptoms.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                changeMainSymptoms();
             }
         });
 
@@ -78,6 +87,12 @@ public class SettingsActivity extends AppCompatActivity {
     private void getCurrentSettings(){
         //TODO AUS DB HOLEN und Schalter einstellen
 
+    }
+
+    private void changeMainSymptoms(){
+        FragmentManager fm = getSupportFragmentManager();
+        PopUp_MainSymptoms popUp_mainSymptoms = PopUp_MainSymptoms.newInstance();
+        popUp_mainSymptoms.show(fm, "popUpMail");
     }
 
     private void openRecipientMailInput(){

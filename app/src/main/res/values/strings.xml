@@ -20,14 +20,16 @@
     <string name="entries_textview">Zusätzliche Eingaben</string>
 
     <!--TextViews Activities-->
-    <string name="activities1_textview">Soziale Aktivitäten</string>
-    <string name="activities2_textview">Sportliche Aktivitäten</string>
-    <string name="activities3_textview">Verpflichtungen</string>
+    <string name="activities_social_textview">Soziale Aktivitäten</string>
+    <string name="activities_sport_textview">Sportliche Aktivitäten</string>
+    <string name="activities_relaxation_textview">Entspannungsverfahren</string>
+    <string name="activities_obligations_textview">Verpflichtungen</string>
     <string name="activitiesInput_textview">Weitere Eingaben</string>
 
     <!--TextViews Settings-->
     <string name="gps_activation_textview">GPS-Tracking</string>
     <string name="push_activation_textview">Push-Benachrichtigungen</string>
+    <string name="main_symptoms">Hauptsymptome ändern</string>
     <string name="recipient_mail_textview">Standard als E-Mail-Empfänger anlegen</string>
     <string name="privacyPolicy_textview">Datenschutzerklärung</string>
     <string name="siteNotice">Impressum</string>
@@ -160,6 +162,12 @@
         <item>Auswärts Essen gegangen</item>
         <item>Bar-/Disko-/Kneipenbesuch</item>
     </string-array>
+    
+    <string-array name="activities_relaxation">
+        <item>Autogenes Training</item>
+        <item>Achtsamkeit</item>
+        <item>Progressive Muskelrelaxation</item>
+    </string-array>
 
     <string-array name="activities_sport">
         <item>Spazieren gehen</item>
@@ -181,7 +189,6 @@
     <string-array name="spinner_view">
         <item>Tagesansicht</item>
         <item>Wochenansicht</item>
-        <item>Monatsansicht</item>
     </string-array>
 
     <string-array name="spinner_graph">

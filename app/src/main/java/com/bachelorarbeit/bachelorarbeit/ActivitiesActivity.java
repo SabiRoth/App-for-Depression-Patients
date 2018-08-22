@@ -13,12 +13,14 @@ import android.widget.ListView;
 import android.widget.Toast;
 
 import java.util.ArrayList;
+import java.util.List;
 
 
 public class ActivitiesActivity extends AppCompatActivity {
 
     public ListView socialActivitiesListView;
     public ListView sportActivititesListView;
+    public ListView relaxationActivitiesListView;
     public ListView obligationsActivitiesListView;
     public EditText editTextField;
     public ArrayList<String> allSelectedEntries;
@@ -32,14 +34,16 @@ public class ActivitiesActivity extends AppCompatActivity {
 
         String[] socialActivitiesArrayString = getResources().getStringArray(R.array.activities_social);
         String[] sportActivitiesArrayString = getResources().getStringArray(R.array.activities_sport);
+        String[] relaxationActivitiesArrayString = getResources().getStringArray(R.array.activities_relaxation);
         String[] obligationsActivitiesArrayString = getResources().getStringArray(R.array.activities_obligations);
         allSelectedEntries = new ArrayList<String>();
         nextButton = (Button)findViewById(R.id.button_activities_next);
         Button saveButton = (Button)findViewById(R.id.saveButton_activities);
         editTextField = (EditText)findViewById(R.id.editText_activities);
-        socialActivitiesListView = (ListView)findViewById(R.id.listView_activities1);
-        sportActivititesListView = (ListView)findViewById(R.id.listView_activities2);
-        obligationsActivitiesListView = (ListView)findViewById(R.id.listView_activities3);
+        socialActivitiesListView = (ListView)findViewById(R.id.listView_activities_social);
+        sportActivititesListView = (ListView)findViewById(R.id.listView_activities_sport);
+        relaxationActivitiesListView = (ListView)findViewById(R.id.listView_activities_relaxation);
+        obligationsActivitiesListView = (ListView)findViewById(R.id.listView_activities_obligations);
 
         final ArrayAdapter<String> adapter_socialActivities = new ArrayAdapter<String>(this,
                 R.layout.listentry_sensitivities, socialActivitiesArrayString);
@@ -60,6 +64,17 @@ public class ActivitiesActivity extends AppCompatActivity {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
                 entryClicked(adapter_sportActivities.getItem(i), view);
+            }
+        });
+
+        final ArrayAdapter<String> adapter_relaxationActivities = new ArrayAdapter<String>(this,
+                R.layout.listentry_sensitivities, relaxationActivitiesArrayString);
+
+        relaxationActivitiesListView.setAdapter(adapter_relaxationActivities);
+        relaxationActivitiesListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+                entryClicked(adapter_relaxationActivities.getItem(i), view);
             }
         });
 

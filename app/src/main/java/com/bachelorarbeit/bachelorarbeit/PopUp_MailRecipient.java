@@ -17,12 +17,12 @@ public class PopUp_MailRecipient extends DialogFragment {
     Button saveButton;
 
     public static PopUp_MailRecipient newInstance(){
-        PopUp_MailRecipient sd = new PopUp_MailRecipient();
+        PopUp_MailRecipient popUp_mailRecipient = new PopUp_MailRecipient();
         Bundle args = new Bundle();
        // args.putString("time", time);
        // args.putString("daytime", daytime);
-        sd.setArguments(args);
-        return sd;
+        popUp_mailRecipient.setArguments(args);
+        return popUp_mailRecipient;
     }
 
 

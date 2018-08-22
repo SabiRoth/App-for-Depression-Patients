@@ -16,15 +16,15 @@
         android:weightSum="1">
 
         <TextView
-            android:id="@+id/textView_activities_header1"
+            android:id="@+id/textView_activities_header_socail"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/activities1_textview"
+            android:text="@string/activities_social_textview"
             style="@style/headerTextView"/>
 
 
         <com.bachelorarbeit.bachelorarbeit.NonScrollListView
-            android:id="@+id/listView_activities1"
+            android:id="@+id/listView_activities_social"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             tools:layout_editor_absoluteX="8dp"
@@ -32,30 +32,45 @@
 
 
         <TextView
-            android:id="@+id/textView_activities_header2"
+            android:id="@+id/textView_activities_header_sport"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/activities2_textview"
+            android:text="@string/activities_sport_textview"
             style="@style/headerTextView"/>
 
 
         <com.bachelorarbeit.bachelorarbeit.NonScrollListView
-            android:id="@+id/listView_activities2"
+            android:id="@+id/listView_activities_sport"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             tools:layout_editor_absoluteX="8dp"
             tools:layout_editor_absoluteY="8dp" />
 
         <TextView
-            android:id="@+id/textView_activities_header3"
+            android:id="@+id/textView_activities_header_relaxation"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/activities3_textview"
+            android:text="@string/activities_relaxation_textview"
             style="@style/headerTextView"/>
 
 
         <com.bachelorarbeit.bachelorarbeit.NonScrollListView
-            android:id="@+id/listView_activities3"
+            android:id="@+id/listView_activities_relaxation"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            tools:layout_editor_absoluteX="8dp"
+            tools:layout_editor_absoluteY="8dp" />
+
+        <TextView
+            android:id="@+id/textView_activities_header_obligations"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/activities_obligations_textview"
+            style="@style/headerTextView"/>
+
+
+        <com.bachelorarbeit.bachelorarbeit.NonScrollListView
+            android:id="@+id/listView_activities_obligations"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             tools:layout_editor_absoluteX="8dp"
