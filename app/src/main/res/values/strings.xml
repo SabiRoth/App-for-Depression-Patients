@@ -96,6 +96,7 @@
     <string name="pop_up_start_part1">Es ist</string>
     <string name="pop_up_start_part2">Uhr. Gib deine Befindlichkeit und deine Aktivitäten von heute</string>
     <string name="pop_up_start_part3">ein!</string>
+    <string name="pop_up_mail_already_entry">Aktuell:</string>
 
 
     <!--String arrays-->

@@ -21,37 +21,21 @@ public class dataSource {
     private dbHelper dbHelper;
 
 
-    private String[] columnsEntries = {
-            dbHelper.COLUMN_ID,
-            dbHelper.COLUMN_SENSIBILITIES,
-            dbHelper.COLUMN_PLACES,
-            dbHelper.COLUMN_ACTIVITIES,
-            dbHelper.COLUMN_DATE,
-            dbHelper.COLUMN_TIME,
-            dbHelper.COLUMN_DAYTIME
-    };
-
-    private String[] columnsMovementProfile = {
-            dbHelper.COLUMN_ID,
-            dbHelper.COLUMN_DATE,
-            dbHelper.COLUMN_LONGITUDE,
-            dbHelper.COLUMN_LATITUDE
-    };
-
-    private String[] columnsOwnSensitivities = {
-            dbHelper.COLUMN_ID,
-            dbHelper.COLUMN_OWN_SENSITIVITY
-    };
-
+    private String[] columnsEntries = {dbHelper.COLUMN_ID, dbHelper.COLUMN_SENSIBILITIES, dbHelper.COLUMN_PLACES, dbHelper.COLUMN_ACTIVITIES,
+            dbHelper.COLUMN_DATE, dbHelper.COLUMN_TIME, dbHelper.COLUMN_DAYTIME};
+    private String[] columnsMovementProfile = {dbHelper.COLUMN_ID, dbHelper.COLUMN_DATE, dbHelper.COLUMN_LONGITUDE, dbHelper.COLUMN_LATITUDE};
+    private String[] columnsOwnSensitivities = {dbHelper.COLUMN_ID, dbHelper.COLUMN_OWN_SENSITIVITY};
+    private String[] columnsOwnActivities = {dbHelper.COLUMN_ID, dbHelper.COLUMN_OWN_ACTIVITIES};
+    private String[] columnsMainSymptoms = {dbHelper.COLUMN_ID, dbHelper.COLUMN_SENSIBILITIES, dbHelper.COLUMN_SCORE, dbHelper.COLUMN_DATE, dbHelper.COLUMN_TIME};
+    private String[] columnsSettings = {dbHelper.COLUMN_ID, dbHelper.COLUMN_NAME, dbHelper.COLUMN_VALUE};
+    private String[] columnsScore = {dbHelper.COLUMN_ID, dbHelper.COLUMN_SCORE, dbHelper.COLUMN_DATE, dbHelper.COLUMN_TIME};
 
     public dataSource(Context context) {
         dbHelper = new dbHelper(context);
     }
-
     public void open() {
         database = dbHelper.getWritableDatabase();
     }
-
     public void close() {
         dbHelper.close();
     }
@@ -83,6 +67,37 @@ public class dataSource {
         database.insert(dbHelper.TABLE_OWN_SENSITIVITIES_ENTRIES, null, values);
     }
 
+    public void createActivityEntry(String actvitiy) {
+        ContentValues values = new ContentValues();
+        values.put(dbHelper.COLUMN_OWN_ACTIVITIES, actvitiy);
+        database.insert(dbHelper.TABLE_OWN_ACTIVITIES_ENTRIES, null, values);
+    }
+
+    public void createMainSymptomsEntry(String sensibility, String score, String date, String time) {
+        ContentValues values = new ContentValues();
+        values.put(dbHelper.COLUMN_SENSIBILITIES, sensibility);
+        values.put(dbHelper.COLUMN_SCORE, score);
+        values.put(dbHelper.COLUMN_DATE, date);
+        values.put(dbHelper.COLUMN_TIME, time);
+        database.insert(dbHelper.TABLE_MAIN_SYMPTOMS, null, values);
+    }
+
+    public void createSettingsEntry(String name, String value) {
+        deleteSettingsEntry(name);
+        ContentValues values = new ContentValues();
+        values.put(dbHelper.COLUMN_NAME, name);
+        values.put(dbHelper.COLUMN_VALUE, value);
+        database.insert(dbHelper.TABLE_SETTINGS, null, values);
+
+    }
+
+    public void createScoreEntry(String score, String date, String time){
+        ContentValues values = new ContentValues();
+        values.put(dbHelper.COLUMN_SCORE, score);
+        values.put(dbHelper.COLUMN_DATE, date);
+        values.put(dbHelper.COLUMN_TIME, time);
+    }
+
     public void deleteEntry(Entry entry) {
         long id = entry.getId();
         database.delete(dbHelper.TABLE_ALL_ENTRIES,
@@ -99,16 +114,14 @@ public class dataSource {
 
     public ArrayList<Entry> getAllEntries(String date) {
         Cursor cursor = database.query(dbHelper.TABLE_ALL_ENTRIES, columnsEntries, null, null, null, null, null);
-        ArrayList<Entry> allEntriesFromDate = cursorToEntryDate(cursor, date);
-        return allEntriesFromDate;
+        return cursorToEntryDate(cursor, date);
     }
 
 
     //provide all entries in the database
     public ArrayList<String[]> getAllMovementEntriesViaDate(String date) {
         Cursor cursor = database.query(dbHelper.TABLE_MOVEMENT_DATA, columnsMovementProfile, null, null, null, null, null);
-        ArrayList<String[]> allEntriesFromDate = cursorToMovementEntry(cursor, date);
-        return allEntriesFromDate;
+        return cursorToMovementEntry(cursor, date);
     }
 
     public ArrayList<String> getAllOwnSensitivities() {
@@ -128,6 +141,8 @@ public class dataSource {
         }
     }
 
+
+    //TODO: BESSERE LÖSUNG SIEHE SettingViaName
     public String[] getLastMovementEntry(String date){
         ArrayList<String[]> allEntry = getAllMovementEntriesViaDate(date);
         if(allEntry.size()>0){
@@ -137,6 +152,20 @@ public class dataSource {
         else{
             return null;
         }
+    }
+
+    public String getSettingViaName(String settingName){
+        Cursor cursor = database.query(dbHelper.TABLE_SETTINGS, columnsSettings, null, null, null, null, null);
+        if(cursor!=null){
+            if(cursor.getCount()>0){
+                while(cursor.moveToNext()){
+                    if((cursor.getString(cursor.getColumnIndex(dbHelper.COLUMN_NAME))).equals(settingName)) {
+                        return cursor.getString(cursor.getColumnIndex(dbHelper.COLUMN_VALUE));
+                    }
+                }
+            }
+        }
+        return null;
     }
 
 
@@ -213,5 +242,21 @@ public class dataSource {
                 }
             }
         return ownSensitivities;
+    }
+
+    private void deleteSettingsEntry(String name){
+        Cursor cursor = database.query(dbHelper.TABLE_SETTINGS, columnsSettings, null, null, null, null, null);
+        if(cursor!=null){
+            if(cursor.getCount()>0){
+                while(cursor.moveToNext()){
+                    if((cursor.getString(cursor.getColumnIndex(dbHelper.COLUMN_NAME))).equals(name)) {
+                        long id = cursor.getLong(cursor.getColumnIndex(dbHelper.COLUMN_ID));
+                        database.delete(dbHelper.TABLE_SETTINGS,
+                                dbHelper.COLUMN_ID + "=" + id,
+                                null);
+                    }
+                }
+            }
+        }
     }
 }

@@ -72,6 +72,7 @@ public class CalendarActivityDaily extends AppCompatActivity{
         ArrayList<String> eveningEntriesSensivities = new ArrayList<>(), eveningEntriesActivities = new ArrayList<>(), eveningEntriesPlaces = new ArrayList<>();
         for(int i = 0; i<allEntries.size(); i++){
             String currentDaytime = dateTimePicker.getDaytime(allEntries.get(i).getTime());
+            //TODO: DAYTIME AUS DB?!
             if(currentDaytime.equals("Morgen")){
                 if(allEntries.get(i).getSensitivies()!=null) {
                     morningEntriesSensivities.add(allEntries.get(i).getSensitivies());

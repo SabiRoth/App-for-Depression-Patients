@@ -69,4 +69,12 @@
         <item name="android:layout_gravity">start</item>
     </style>
 
+    <style name="hintTextView">
+        <item name="android:textColor">@color/hintColor</item>
+        <item name="android:textSize">18sp</item>
+        <item name="android:layout_margin">15dp</item>
+        <item name="android:visibility">gone</item>
+        <item name="android:textStyle">italic</item>
+    </style>
+
 </resources>
