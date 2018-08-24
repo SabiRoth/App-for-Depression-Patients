@@ -79,6 +79,10 @@
             android:label="@string/calendar_activity_daily_label">
         </activity>
 
+        <activity
+            android:name=".ScoreActivity"
+            android:label="@string/score_activity_label">
+        </activity>
 
         <service
             android:name=".BackgroundService"

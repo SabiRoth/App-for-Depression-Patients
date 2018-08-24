@@ -13,6 +13,8 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 
+import com.jjoe64.graphview.GridLabelRenderer;
+
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Calendar;
@@ -23,8 +25,8 @@ import java.util.TimeZone;
 public class PlacesActivity extends AppCompatActivity {
 
 
-    public ArrayList<EditText> editTextArrayList = new ArrayList<EditText>();
-    public ArrayList<String> selectedActivites = new ArrayList<String>();
+    public ArrayList<EditText> editTextArrayList;
+    public ArrayList<String> selectedActivites;
     public String sensitivitiesString;
     private dataSource dataSource;
 
@@ -41,6 +43,7 @@ public class PlacesActivity extends AppCompatActivity {
         });;
         LinearLayout layout = (LinearLayout)findViewById(R.id.layout_listentry_places);
         Intent intent = getIntent();
+        editTextArrayList  = new ArrayList<EditText>();
         selectedActivites = intent.getStringArrayListExtra("selectedActivities");
         sensitivitiesString = intent.getStringExtra("sensitivitiesString");
         LinearLayout.LayoutParams paramsForTextView = new LinearLayout.LayoutParams(

@@ -11,5 +11,6 @@
     <color name="colorActivites">#008000</color>
     <color name="colorPlaces">#025F7B</color>
     <color name="hintColor">#828282</color>
+    <color name="weightButtonColor">#b3dbe7</color>
 
 </resources>

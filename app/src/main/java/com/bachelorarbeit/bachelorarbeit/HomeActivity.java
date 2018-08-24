@@ -104,7 +104,7 @@ public class HomeActivity extends AppCompatActivity {
     }
 
     private void clickEntriesSensitivies(){
-        Intent i = new Intent(this, SensitivitiesActivity.class);
+        Intent i = new Intent(this, ScoreActivity.class);
         startActivity(i);
     }
 

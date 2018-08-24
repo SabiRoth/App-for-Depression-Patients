@@ -15,6 +15,21 @@
     <string name="input_button">Zur Eingabe</string>
     <string name="close_button">Schließen</string>
 
+
+    <!--Buttons score TODO: evlt löschen-->
+    <string name="zero_button">0</string>
+    <string name="one_button">1</string>
+    <string name="two_button">2</string>
+    <string name="three_button">3</string>
+    <string name="four_button">4</string>
+    <string name="five_button">5</string>
+
+
+    <!-- TextViews score-->
+    <string name="totalScore">Wie geht es dir gerade?</string>
+    <string name="score_start_textview">Wie stark schätzt du dein/e</string>
+    <string name="score_end_textview">ein?</string>
+
     <!--TextViews Home-->
     <string name="overview_textview">Übersichten</string>
     <string name="entries_textview">Zusätzliche Eingaben</string>
@@ -48,7 +63,6 @@
     <string name="home_activity_label">Home</string>
     <string name="calendar_activity_daily_label">Kalender - Tagesansicht</string>
     <string name="calendar_activity_weekly_label">Kalender - Wochenansicht</string>
-    <string name="calendar_activity_monthly_label">Kalender - Monatsansicht</string>
     <string name="activities_activity_label">Aktivitäten eingeben</string>
     <string name="graph_activity_label">Verlauf</string>
     <string name="map_activity_label">Kartenansicht</string>
@@ -56,6 +70,7 @@
     <string name="sensitivities_activity_label">Befindlichkeiten eingeben</string>
     <string name="settings_activity_label">Einstellungen</string>
     <string name="emergency_activity_label">Notrufnummern</string>
+    <string name="score_activity_label">Scores eingeben</string>
 
     <!--EditText Hint-->
     <string name="places_edittext">Ort eingeben</string>

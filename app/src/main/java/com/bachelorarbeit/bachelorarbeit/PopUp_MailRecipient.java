@@ -52,6 +52,7 @@ public class PopUp_MailRecipient extends DialogFragment {
 
     private void saveInDb(){
         if(!(mailInput.getText().toString().equals(""))){
+            //TODO PRÜFEN OB MAILADRESSE
             dataSource.createSettingsEntry("mailRecipient", mailInput.getText().toString());
             CharSequence text = mailInput.getText().toString() +  " " + getResources().getString(R.string.toast_end);
             Toast.makeText(getContext(), text, Toast.LENGTH_LONG).show();
