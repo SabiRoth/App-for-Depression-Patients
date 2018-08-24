@@ -74,16 +74,15 @@ public class PopUp_MainSymptoms extends DialogFragment {
         String inputsString = Arrays.toString(inputs.toArray(temp));
         dataSource.createSettingsEntry("mainSymptoms", inputsString.substring(1, inputsString.length()-1));
 
-        if(inputs.size()>0){
             Toast.makeText(getContext(), getResources().getString(R.string.toast), Toast.LENGTH_LONG).show();
             Intent i = new Intent(getActivity(), SettingsActivity.class);
             startActivity(i);
-        }
+
     }
 
     private void proofAlreadySaved(){
         String mainSymptomsString = dataSource.getSettingViaName("mainSymptoms");
-        if(mainSymptomsString!=null){
+        if(!mainSymptomsString.equals("")){
             textView_mainSymptoms.setVisibility(View.VISIBLE);
             textView_mainSymptoms.setText(getResources().getString(R.string.pop_up_mail_already_entry) + " " + mainSymptomsString);
         }

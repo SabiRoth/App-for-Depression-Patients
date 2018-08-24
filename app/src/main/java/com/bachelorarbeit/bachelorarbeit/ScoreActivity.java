@@ -1,20 +1,16 @@
 package com.bachelorarbeit.bachelorarbeit;
 
-import android.content.Context;
 import android.content.Intent;
-import android.content.res.Resources;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
-import android.util.EventLog;
 import android.view.View;
-import android.view.ViewStub;
 import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import java.util.ArrayList;
-import java.util.EventObject;
+
 
 public class ScoreActivity extends AppCompatActivity {
 
@@ -22,7 +18,6 @@ public class ScoreActivity extends AppCompatActivity {
     TextView firstMainSymptom;
     TextView secondMainSymptom;
     TextView thirdMainSymptom;
-    Button endButton;
     Button nextButton;
     String[] mainSymptomsArray;
     DateTimePicker dateTimePicker;
@@ -62,8 +57,11 @@ public class ScoreActivity extends AppCompatActivity {
         }
 
         String mainSymptomsString  = dataSource.getSettingViaName("mainSymptoms");
-        if(mainSymptomsString.length()!=0) {
+        if(!mainSymptomsString.equals("")) {
             mainSymptomsArray = mainSymptomsString.split(",");
+        }
+        else{
+            mainSymptomsArray = new String[0];
         }
 
         getMainSymptoms();
@@ -80,7 +78,7 @@ public class ScoreActivity extends AppCompatActivity {
     }
 
     private void getMainSymptoms(){
-        if(mainSymptomsArray.length!=0){
+        if(mainSymptomsArray.length>0){
             for(int i = 0; i < mainSymptomsArray.length; i++){
                 if(i==0){
                     layoutFirstMainSymptom = (LinearLayout)findViewById(R.id.score_listentry_first_symptom);
