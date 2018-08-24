@@ -36,14 +36,14 @@ public class GraphActivityDaily extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_graph);
-        spinnerList = getResources().getStringArray(R.array.spinner_view);
+        spinnerList = getResources().getStringArray(R.array.spinner_view_daily);
         spinnerListGraph = getResources().getStringArray(R.array.spinner_graph);
         graph = (GraphView) findViewById(R.id.graph);
         datePickerButton = (Button) findViewById(R.id.button_date_picker_calendar);
         spinnerView = (Spinner) findViewById(R.id.spinner);
         spinnerGraph = (Spinner) findViewById(R.id.spinner_graph);
         dateTimePicker = DateTimePicker.getInstance();
-        pickedDate = getIntent().getStringExtra("date");
+        pickedDate = getIntent().getStringExtra(getResources().getString(R.string.key_date));
         if(pickedDate == null){
             pickedDate = dateTimePicker.getCurrentDate();
         }
@@ -157,7 +157,7 @@ public class GraphActivityDaily extends AppCompatActivity {
                         datePickerButton.setText(dayOfMonth + "." + (monthOfYear + 1) + "." + year);
                         String newDate = dayOfMonth + "." + (monthOfYear + 1) + "." + year;
                         Intent reloadIntent = new Intent(GraphActivityDaily.this, GraphActivityDaily.class);
-                        reloadIntent.putExtra("date", newDate);
+                        reloadIntent.putExtra(getResources().getString(R.string.key_date), newDate);
                         GraphActivityDaily.this.finish();
                         startActivity(reloadIntent);
                     }

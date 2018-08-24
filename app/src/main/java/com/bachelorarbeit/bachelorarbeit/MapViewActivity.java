@@ -108,7 +108,7 @@ public class MapViewActivity extends AppCompatActivity implements OnMapReadyCall
         dataSource dataSource = new dataSource(this);
         dataSource.open();
         ArrayList<LatLng> points = new ArrayList<>();
-        String pickedDate = getIntent().getStringExtra("date");
+        String pickedDate = getIntent().getStringExtra(getResources().getString(R.string.key_date));
         if(pickedDate == null){
             pickedDate = dateTimePicker.getCurrentDate();
         }
@@ -160,7 +160,7 @@ public class MapViewActivity extends AppCompatActivity implements OnMapReadyCall
                                 datePickerButton.setText(dayOfMonth + "." + (monthOfYear + 1) + "." + year);
                                 String newDate = dayOfMonth + "." + (monthOfYear + 1) + "." + year;
                                 Intent reloadIntent = new Intent(MapViewActivity.this, MapViewActivity.class);
-                                reloadIntent.putExtra("date", newDate);
+                                reloadIntent.putExtra(getResources().getString(R.string.key_date), newDate);
                                 MapViewActivity.this.finish();
                                 startActivity(reloadIntent);
                             }

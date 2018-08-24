@@ -34,7 +34,15 @@ public class DateTimePicker extends Calendar {
 
     public String getCurrentDate(){
         calendar.setTimeZone(TimeZone.getTimeZone("Europe/Berlin"));
-        return calendar.get(Calendar.DAY_OF_MONTH) + "." + (calendar.get(Calendar.MONTH)+1) + "." +  calendar.get(Calendar.YEAR);
+        String day = Integer.toString(calendar.get(Calendar.DAY_OF_MONTH));
+        if(day.length()==1){
+           day = "0" + day;
+        }
+        String month = Integer.toString(calendar.get(Calendar.MONTH)+1);
+        if(month.length()==1){
+            month = "0" + month;
+        }
+        return day + "." + month + "." +  calendar.get(Calendar.YEAR);
     }
 
     public String getDaytime(){

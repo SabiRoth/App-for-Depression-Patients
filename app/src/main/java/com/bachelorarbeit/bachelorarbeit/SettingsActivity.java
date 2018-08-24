@@ -92,12 +92,12 @@ public class SettingsActivity extends AppCompatActivity {
     private void changeMainSymptoms(){
         FragmentManager fm = getSupportFragmentManager();
         PopUp_MainSymptoms popUp_mainSymptoms = PopUp_MainSymptoms.newInstance();
-        popUp_mainSymptoms.show(fm, "popUpMail");
+        popUp_mainSymptoms.show(fm, getResources().getString(R.string.key_popUpMainSymptoms));
     }
 
     private void openRecipientMailInput(){
         FragmentManager fm = getSupportFragmentManager();
         PopUp_MailRecipient popUp_mailRecipient = PopUp_MailRecipient.newInstance();
-        popUp_mailRecipient.show(fm, "popUpMail");
+        popUp_mailRecipient.show(fm, getResources().getString(R.string.key_popUpMail));
     }
 }

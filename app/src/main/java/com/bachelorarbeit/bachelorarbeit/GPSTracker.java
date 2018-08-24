@@ -41,7 +41,7 @@ public class GPSTracker extends AppCompatActivity{
         dataSource.open();
         locationManager = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
         try {
-            bOut = new BufferedOutputStream(openFileOutput("location.dat", MODE_PRIVATE));
+            bOut = new BufferedOutputStream(openFileOutput(getResources().getString(R.string.key_location), MODE_PRIVATE));
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         }

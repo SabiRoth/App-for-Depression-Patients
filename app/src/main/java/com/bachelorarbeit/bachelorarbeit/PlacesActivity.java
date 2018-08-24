@@ -28,7 +28,6 @@ public class PlacesActivity extends AppCompatActivity {
     public ArrayList<EditText> editTextArrayList;
     public ArrayList<String> selectedActivites;
     public String sensitivitiesString;
-    private dataSource dataSource;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,19 +43,19 @@ public class PlacesActivity extends AppCompatActivity {
         LinearLayout layout = (LinearLayout)findViewById(R.id.layout_listentry_places);
         Intent intent = getIntent();
         editTextArrayList  = new ArrayList<EditText>();
-        selectedActivites = intent.getStringArrayListExtra("selectedActivities");
-        sensitivitiesString = intent.getStringExtra("sensitivitiesString");
+        selectedActivites = intent.getStringArrayListExtra(getResources().getString(R.string.key_selectedActivities));
+        sensitivitiesString = intent.getStringExtra(getResources().getString(R.string.key_sensitivitiesString));
         LinearLayout.LayoutParams paramsForTextView = new LinearLayout.LayoutParams(
                 LinearLayout.LayoutParams.WRAP_CONTENT,
                 LinearLayout.LayoutParams.WRAP_CONTENT
          );
-        paramsForTextView.setMargins(25,40,25,15);
+        paramsForTextView.setMargins(15,40,15,15);
 
         LinearLayout.LayoutParams paramsforEditView = new LinearLayout.LayoutParams(
                 LinearLayout.LayoutParams.MATCH_PARENT,
                 LinearLayout.LayoutParams.WRAP_CONTENT
         );
-        paramsforEditView.setMargins(25, 0, 25, 35);
+        paramsforEditView.setMargins(15, 0, 15, 35);
 
         if(selectedActivites.size()==0){
             endButtonClicked();
@@ -101,12 +100,12 @@ public class PlacesActivity extends AppCompatActivity {
 
         String[] temp = new String[selectedActivites.size()];
         String activitiesString = Arrays.toString(selectedActivites.toArray(temp));
-        if(activitiesString == "[]"){
+        if(activitiesString.equals("[]")){
             activitiesString = null;
         }
         String[] temp2 = new String[placesArrayList.size()];
         String placesString = Arrays.toString(placesArrayList.toArray(temp2));
-        if(placesString == "[]"){
+        if(placesString.equals("[]")){
             placesString = null;
         }
 
@@ -121,7 +120,7 @@ public class PlacesActivity extends AppCompatActivity {
                 placesString = placesString.substring(1, placesString.length()-1);
             }
             DateTimePicker  dateTimePicker = DateTimePicker.getInstance();
-            dataSource = new dataSource(this);
+            dataSource dataSource = new dataSource(this);
             dataSource.open();
             dataSource.createEntry(sensitivitiesString, activitiesString, placesString, dateTimePicker.getCurrentDate(),  dateTimePicker.getCurrentTime(), dateTimePicker.getDaytime());
         }

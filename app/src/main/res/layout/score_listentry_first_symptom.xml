@@ -5,5 +5,6 @@
     android:layout_height="wrap_content"
     android:orientation="horizontal"
     android:gravity="center_horizontal"
-    android:id="@+id/score_listentry_first_symptom">
+    android:id="@+id/score_listentry_first_symptom"
+    android:weightSum="1">
 </LinearLayout>

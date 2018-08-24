@@ -125,8 +125,8 @@ public class ActivitiesActivity extends AppCompatActivity {
         if(allSelectedEntries.size()!=0){
             Intent i;
             i = new Intent(this, PlacesActivity.class);
-            i.putExtra("selectedActivities", allSelectedEntries);
-            i.putExtra("sensitivitiesString", getIntent().getStringExtra("sensitivitiesString"));
+            i.putExtra(getResources().getString(R.string.key_selectedActivities), allSelectedEntries);
+            i.putExtra(getResources().getString(R.string.key_sensitivitiesString), getIntent().getStringExtra("sensitivitiesString"));
             startActivity(i);
         }
     }

@@ -153,11 +153,11 @@ public class SensitivitiesActivity extends AppCompatActivity {
        else{
            String[] temp = new String[allSelectedEntries.size()];
            String sensitivitiesString = Arrays.toString(allSelectedEntries.toArray(temp));
-           if(sensitivitiesString == "[]"){
+           if(sensitivitiesString.equals("[]")){
                sensitivitiesString = null;
            }
            Intent i = new Intent (this, ActivitiesActivity.class);
-           i.putExtra("sensitivitiesString", sensitivitiesString);
+           i.putExtra(getResources().getString(R.string.key_sensitivitiesString), sensitivitiesString);
            startActivity(i);
        }
     }

@@ -50,7 +50,7 @@ public class MainActivity extends AppCompatActivity {
     private void showDialog(){
         FragmentManager fm = getSupportFragmentManager();
         PopUp_Start popUpStart = PopUp_Start.newInstance(time, daytime);
-        popUpStart.show(fm, "popUpStart");
+        popUpStart.show(fm, getResources().getString(R.string.key_popUpStart));
     }
 
     private void goToHomescreen(){

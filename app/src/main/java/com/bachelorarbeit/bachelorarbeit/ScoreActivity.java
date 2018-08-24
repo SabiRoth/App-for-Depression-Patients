@@ -56,12 +56,12 @@ public class ScoreActivity extends AppCompatActivity {
             });
         }
 
-        String mainSymptomsString  = dataSource.getSettingViaName("mainSymptoms");
-        if(!mainSymptomsString.equals("")) {
-            mainSymptomsArray = mainSymptomsString.split(",");
+        String mainSymptomsString  = dataSource.getSettingViaName(getResources().getString(R.string.key_mainSymptomsinSettingsTable));
+        if(mainSymptomsString==null || mainSymptomsString.equals("")) {
+            mainSymptomsArray = new String[0];
         }
         else{
-            mainSymptomsArray = new String[0];
+            mainSymptomsArray = mainSymptomsString.split(",");
         }
 
         getMainSymptoms();
@@ -83,7 +83,7 @@ public class ScoreActivity extends AppCompatActivity {
                 if(i==0){
                     layoutFirstMainSymptom = (LinearLayout)findViewById(R.id.score_listentry_first_symptom);
                     firstMainSymptom = (TextView)findViewById(R.id.textView_firstMainSymptom);
-                    firstMainSymptom.setText(getResources().getString(R.string.score_start_textview) + " " + mainSymptomsArray[i] + " " + getResources().getString(R.string.score_end_textview));
+                    firstMainSymptom.setText(mainSymptomsArray[i] + ": " + getResources().getString(R.string.score_textview));
                     firstMainSymptom.setVisibility(View.VISIBLE);
                     for(int j = 0; j<6; j++){
                         Button buttonFirstMainSymptom = new Button(this);
@@ -102,7 +102,7 @@ public class ScoreActivity extends AppCompatActivity {
                 if(i==1){
                     LinearLayout layoutSecondMainSymptom = (LinearLayout)findViewById(R.id.score_listentry_second_symptom);
                     secondMainSymptom = (TextView)findViewById(R.id.textView_secondMainSymptom);
-                    secondMainSymptom.setText(getResources().getString(R.string.score_start_textview) + " " + mainSymptomsArray[i] + " " + getResources().getString(R.string.score_end_textview));
+                    secondMainSymptom.setText(mainSymptomsArray[i].substring(1) + ": " + getResources().getString(R.string.score_textview));
                     secondMainSymptom.setVisibility(View.VISIBLE);
                     for(int j = 0; j<6; j++){
                         Button buttonSecondMainSymptom = new Button(this);
@@ -120,14 +120,14 @@ public class ScoreActivity extends AppCompatActivity {
                 if(i==2){
                     LinearLayout layoutThirdMainSymptom = (LinearLayout)findViewById(R.id.score_listentry_third_symptom);
                     thirdMainSymptom = (TextView)findViewById(R.id.textView_thirdMainSymptom);
-                    thirdMainSymptom.setText(getResources().getString(R.string.score_start_textview) + " " + mainSymptomsArray[i] + " " + getResources().getString(R.string.score_end_textview));
+                    thirdMainSymptom.setText(mainSymptomsArray[i].substring(1) + ": " + getResources().getString(R.string.score_textview));
                     thirdMainSymptom.setVisibility(View.VISIBLE);
                     for(int j = 0; j<6; j++){
                         Button buttonThirdMainSymptom = new Button(this);
                         buttonThirdMainSymptom.setText(Integer.toString(j));
                         buildButton(buttonThirdMainSymptom);
                         layoutThirdMainSymptom.addView(buttonThirdMainSymptom);
-                        thirdMainSymptom.setOnClickListener(new View.OnClickListener() {
+                        buttonThirdMainSymptom.setOnClickListener(new View.OnClickListener() {
                             @Override
                             public void onClick(View view) {
                                 thirdMainSymptomButtonClicked(view);
@@ -144,14 +144,11 @@ public class ScoreActivity extends AppCompatActivity {
             for (int i = 0; i < allEntries.size(); i++) {
                 dataSource.createMainSymptomsEntry(allEntries.get(i)[0], allEntries.get(i)[1], allEntries.get(i)[2], allEntries.get(i)[3]);
             }
-
             Intent i = new Intent(this, SensitivitiesActivity.class);
             startActivity(i);
         }
-
         else{
-            CharSequence text = "Bitte alle Eingaben tätigen";
-            Toast.makeText(getApplicationContext(), text, Toast.LENGTH_LONG).show();
+            Toast.makeText(getApplicationContext(), getResources().getString(R.string.missing_entry_score), Toast.LENGTH_LONG).show();
         }
     }
 
@@ -161,8 +158,9 @@ public class ScoreActivity extends AppCompatActivity {
 
     private void buildButton(Button button){
         LinearLayout.LayoutParams paramsForButton = new LinearLayout.LayoutParams(
+                0,
                 LinearLayout.LayoutParams.WRAP_CONTENT,
-                LinearLayout.LayoutParams.WRAP_CONTENT
+                (float)0.16
         );
         paramsForButton.setMargins(5, 5,5, 5);
         button.setLayoutParams(paramsForButton);
@@ -219,7 +217,7 @@ public class ScoreActivity extends AppCompatActivity {
         clickedButtonScore.add(clickedButton);
         String buttonText = clickedButton.getText().toString();
         clickedButton.setBackgroundColor(getResources().getColor(R.color.colorPrimary));
-        String[] entry = {"score", buttonText, dateTimePicker.getCurrentDate(), dateTimePicker.getCurrentTime()};
+        String[] entry = {getResources().getString(R.string.key_score), buttonText, dateTimePicker.getCurrentDate(), dateTimePicker.getCurrentTime()};
         allEntries.add(entry);
     }
 

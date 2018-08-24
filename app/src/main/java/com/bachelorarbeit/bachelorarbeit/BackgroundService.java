@@ -89,7 +89,7 @@ public class BackgroundService extends Service {
         NotificationManager notificationManager = (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
 
           if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-            NotificationChannel notificationChannel = new NotificationChannel(channelId, "My Notifications", NotificationManager.IMPORTANCE_HIGH);
+            NotificationChannel notificationChannel = new NotificationChannel(channelId, getResources().getString(R.string.key_myNotifications), NotificationManager.IMPORTANCE_HIGH);
             notificationChannel.setName(getApplication().getResources().getString(R.string.app_name));
             notificationChannel.setDescription(getApplicationContext().getResources().getString(R.string.notification_part1) + lastEntryDate + getApplicationContext().getResources().getString(R.string.notification_part2));
             notificationChannel.setVibrationPattern(new long[]{0, 1000, 500, 1000});

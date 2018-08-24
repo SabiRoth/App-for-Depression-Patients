@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.DatePicker;
@@ -18,7 +19,7 @@ import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
 
-public class CalendarActivityDaily extends AppCompatActivity{
+public class CalendarActivityDaily extends AppCompatActivity implements AdapterView.OnItemSelectedListener{
 
     ListView listViewMorningSensivities;
     ListView listViewMorningActivities;
@@ -34,7 +35,8 @@ public class CalendarActivityDaily extends AppCompatActivity{
     dataSource dataSource;
     DateTimePicker dateTimePicker;
     String pickedDate;
-    String[] spinnerList = {"Tagesansicht", "Wochenansicht", "Monatsansicht"};
+    String[] spinnerList;
+    int check = 0;
 
 
     @Override
@@ -53,8 +55,9 @@ public class CalendarActivityDaily extends AppCompatActivity{
         listViewEveningPlaces = (ListView) findViewById(R.id.listView_calendar_daily_evening_places);
         datePickerButton = (Button) findViewById(R.id.button_date_picker_calendar);
         spinner = (Spinner) findViewById(R.id.spinner);
+        spinnerList = getResources().getStringArray(R.array.spinner_view_daily);
         initializeSpinner();
-        pickedDate = getIntent().getStringExtra("date");
+        pickedDate = getIntent().getStringExtra(getResources().getString(R.string.key_date));
         if(pickedDate == null){
             pickedDate = dateTimePicker.getCurrentDate();
         }
@@ -163,7 +166,24 @@ public class CalendarActivityDaily extends AppCompatActivity{
         ArrayAdapter<String>spinnerAdapter = new ArrayAdapter<String>(this, R.layout.listentry_spinner, spinnerList);
         //spinnerAdapter.setDropDownViewResource(R.layout.listentry_simple_listview);
         spinner.setAdapter(spinnerAdapter);
+        spinner.setOnItemSelectedListener(this);
     }
+
+    @Override
+    public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+        if(++check > 1) {
+            if (parent.getItemAtPosition(position).toString().equals("Wochenansicht")) {
+                Intent i = new Intent(getApplicationContext(), CalendarActivityWeekly.class);
+                startActivity(i);
+            }
+        }
+    }
+
+    @Override
+    public void onNothingSelected(AdapterView<?> arg0) {
+        // TODO Auto-generated method stub
+    }
+
 
 
     private void initializeClickListenerForDatePickerButton(){
@@ -185,7 +205,7 @@ public class CalendarActivityDaily extends AppCompatActivity{
                         datePickerButton.setText(dayOfMonth + "." + (monthOfYear + 1) + "." + year);
                         String newDate = dayOfMonth + "." + (monthOfYear + 1) + "." + year;
                         Intent reloadIntent = new Intent(CalendarActivityDaily.this, CalendarActivityDaily.class);
-                        reloadIntent.putExtra("date", newDate);
+                        reloadIntent.putExtra(getResources().getString(R.string.key_date), newDate);
                         CalendarActivityDaily.this.finish();
                         startActivity(reloadIntent);
                     }

@@ -26,9 +26,8 @@
 
 
     <!-- TextViews score-->
-    <string name="totalScore">Wie geht es dir gerade?</string>
-    <string name="score_start_textview">Wie stark schätzt du dein/e</string>
-    <string name="score_end_textview">ein?</string>
+    <string name="totalScore">Wie geht es dir?</string>
+    <string name="score_textview">Wähle die Stärke!</string>
 
     <!--TextViews Home-->
     <string name="overview_textview">Übersichten</string>
@@ -50,7 +49,7 @@
     <string name="siteNotice">Impressum</string>
 
     <!--TextViews Calendar-->
-    <string name="calendar_daily_morning_textview">Früh</string>
+    <string name="calendar_daily_morning_textview">Morgen</string>
     <string name="calendar_daily_midday_textview">Mittag</string>
     <string name="calendar_daily_evening_textview">Abend</string>
 
@@ -58,6 +57,12 @@
     <string name="movementProfile_textview">Bewegungsprofil</string>
     <string name="places_textview">Gib die Orte zu deinen Aktivitäten ein:</string>
     <string name="no_Data_textview"><i>Keine Daten vorhanden.</i></string>
+
+    <!--TextViews CalenderActivityWeekly-->
+    <string name="today">Heute</string>
+    <string name="yesterday">Gestern</string>
+    <string name="average">Durchschnittlicher Score:</string>
+    <string name="noEntry">Keine Eingaben</string>
 
     <!--ActivityLabels-->
     <string name="home_activity_label">Home</string>
@@ -89,13 +94,14 @@
     <string name="emergency7"><u>Info-Telefon Depression</u></string>
     <string name="emergency8">0800 3344533 <i>(kostenlos, Mo, Di, Do: 13:00 – 17:00 Uhr und Mi, Fr: 08:30 – 12:30 Uhr)</i></string>
 
-    <!--Text Notification-->
+    <!--Text Notification/Toast-->
     <string name="notification_part1">Dein letzter Eintrag ist vom</string>
     <string name="notification_part2">. Aktualisiere deine Eingaben.</string>
     <string name="toast_end">gespeichert.</string>
     <string name="toast">Gespeichert</string>
     <string name="notification_no_entry">Erstelle deinen ersten Eintrag</string>
     <string name="no_entry_selected">Gib eine Aktivität ein oder wähle aus der Liste.</string>
+    <string name="missing_entry_score">Bitte alle Eingaben tätigen</string>
 
     <!--Title Graph-->
     <string name="title_movement">Bewegung</string>
@@ -113,6 +119,19 @@
     <string name="pop_up_start_part3">ein!</string>
     <string name="pop_up_mail_already_entry">Aktuell:</string>
 
+    <!--Keys-->
+    <string name="key_score">score</string>
+    <string name="key_mainSymptomsinSettingsTable">mainSymptoms</string>
+    <string name="key_date">date</string>
+    <string name="key_selectedActivities">selectedActivities</string>
+    <string name="key_sensitivitiesString">sensitivitiesString</string>
+    <string name="key_myNotifications">My Notifications</string>
+    <string name="key_location">location.dat</string>
+    <string name="key_popUpStart">popUpStart</string>
+    <string name="key_popUpMainSymptoms">popUpMainSymptoms</string>
+    <string name="key_popUpMail">popUpMail</string>
+    <string name="key_mailRecipient">mailRecipient</string>
+    <string name="key_mainSymptoms">mainSymptoms</string>
 
     <!--String arrays-->
     <string-array name="sensivities_header">
@@ -202,9 +221,14 @@
         <item>Zum Arzt gegangen</item>
     </string-array>
 
-    <string-array name="spinner_view">
+    <string-array name="spinner_view_daily">
         <item>Tagesansicht</item>
         <item>Wochenansicht</item>
+    </string-array>
+
+    <string-array name="spinner_view_weekly">
+        <item>Wochenansicht</item>
+        <item>Tagesansicht</item>
     </string-array>
 
     <string-array name="spinner_graph">

@@ -27,10 +27,6 @@ public class PopUp_MainSymptoms extends DialogFragment {
 
     public static PopUp_MainSymptoms newInstance(){
         PopUp_MainSymptoms popUp_mainSymptoms = new PopUp_MainSymptoms();
-        Bundle args = new Bundle();
-        // args.putString("time", time);
-        // args.putString("daytime", daytime);
-        popUp_mainSymptoms.setArguments(args);
         return popUp_mainSymptoms;
     }
 
@@ -72,7 +68,7 @@ public class PopUp_MainSymptoms extends DialogFragment {
 
         String[] temp = new String[inputs.size()];
         String inputsString = Arrays.toString(inputs.toArray(temp));
-        dataSource.createSettingsEntry("mainSymptoms", inputsString.substring(1, inputsString.length()-1));
+        dataSource.createSettingsEntry(getResources().getString(R.string.key_mainSymptoms), inputsString.substring(1, inputsString.length()-1));
 
             Toast.makeText(getContext(), getResources().getString(R.string.toast), Toast.LENGTH_LONG).show();
             Intent i = new Intent(getActivity(), SettingsActivity.class);
@@ -81,8 +77,11 @@ public class PopUp_MainSymptoms extends DialogFragment {
     }
 
     private void proofAlreadySaved(){
-        String mainSymptomsString = dataSource.getSettingViaName("mainSymptoms");
-        if(!mainSymptomsString.equals("")){
+        String mainSymptomsString = dataSource.getSettingViaName(getResources().getString(R.string.key_mainSymptoms));
+        if(mainSymptomsString==null || mainSymptomsString.equals("")) {
+            return;
+        }
+        else{
             textView_mainSymptoms.setVisibility(View.VISIBLE);
             textView_mainSymptoms.setText(getResources().getString(R.string.pop_up_mail_already_entry) + " " + mainSymptomsString);
         }

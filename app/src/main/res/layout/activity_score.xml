@@ -10,7 +10,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/textView_score"
-        android:text="Wie geht es dir?"
+        android:text="@string/totalScore"
         style="@style/scoreTextView"/>
 
     <include layout="@layout/score_listentry_score"/>

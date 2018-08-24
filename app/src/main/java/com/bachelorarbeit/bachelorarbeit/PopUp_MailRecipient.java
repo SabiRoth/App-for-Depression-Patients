@@ -21,10 +21,6 @@ public class PopUp_MailRecipient extends DialogFragment {
 
     public static PopUp_MailRecipient newInstance(){
         PopUp_MailRecipient popUp_mailRecipient = new PopUp_MailRecipient();
-        Bundle args = new Bundle();
-       // args.putString("time", time);
-       // args.putString("daytime", daytime);
-        popUp_mailRecipient.setArguments(args);
         return popUp_mailRecipient;
     }
 
@@ -53,7 +49,7 @@ public class PopUp_MailRecipient extends DialogFragment {
     private void saveInDb(){
         if(!(mailInput.getText().toString().equals(""))){
             //TODO PRÜFEN OB MAILADRESSE
-            dataSource.createSettingsEntry("mailRecipient", mailInput.getText().toString());
+            dataSource.createSettingsEntry(getResources().getString(R.string.key_mailRecipient), mailInput.getText().toString());
             CharSequence text = mailInput.getText().toString() +  " " + getResources().getString(R.string.toast_end);
             Toast.makeText(getContext(), text, Toast.LENGTH_LONG).show();
         }
@@ -63,7 +59,7 @@ public class PopUp_MailRecipient extends DialogFragment {
     }
 
     private void proofAlreadySaved(){
-        String recipient = dataSource.getSettingViaName("mailRecipient");
+        String recipient = dataSource.getSettingViaName(getResources().getString(R.string.key_mailRecipient));
         if(recipient != null){
             textView_recipient.setVisibility(View.VISIBLE);
             textView_recipient.setText(getResources().getString(R.string.pop_up_mail_already_entry) + " " + recipient);

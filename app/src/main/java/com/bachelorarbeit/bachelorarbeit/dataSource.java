@@ -168,6 +168,23 @@ public class dataSource {
         return null;
     }
 
+    public ArrayList<String[]> getMainSymptomScoresViaNameAndDate(String name, String date){
+        Cursor cursor = database.query(dbHelper.TABLE_MAIN_SYMPTOMS, columnsMainSymptoms, null, null, null, null, null);
+        ArrayList<String[]> result = new ArrayList<>();
+        if(cursor!=null) {
+            if (cursor.getCount() > 0) {
+                while (cursor.moveToNext()) {
+                    if (((cursor.getString(cursor.getColumnIndex(dbHelper.COLUMN_SENSIBILITIES))).equals(name)) && ((cursor.getString(cursor.getColumnIndex(dbHelper.COLUMN_DATE))).equals(date))) {
+                        String[] temp = {cursor.getString(cursor.getColumnIndex(dbHelper.COLUMN_SENSIBILITIES)), cursor.getString(cursor.getColumnIndex(dbHelper.COLUMN_SCORE))};
+                        result.add(temp);
+                    }
+                }
+            }
+        }
+        return result;
+    }
+
+
 
     private ArrayList<Entry> cursorToEntry(Cursor cursor) {
         ArrayList<Entry> entries = new ArrayList<Entry>();
