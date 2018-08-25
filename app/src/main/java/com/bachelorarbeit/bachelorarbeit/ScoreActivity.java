@@ -145,6 +145,8 @@ public class ScoreActivity extends AppCompatActivity {
                 dataSource.createMainSymptomsEntry(allEntries.get(i)[0], allEntries.get(i)[1], allEntries.get(i)[2], allEntries.get(i)[3]);
             }
             Intent i = new Intent(this, SensitivitiesActivity.class);
+            i.putExtra(getResources().getString(R.string.key_intentSource),  getIntent().getStringExtra(getResources().getString(R.string.key_intentSource)));
+            String temp = getIntent().getStringExtra(getResources().getString(R.string.key_intentSource));
             startActivity(i);
         }
         else{

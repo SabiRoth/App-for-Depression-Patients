@@ -33,6 +33,7 @@ public class PopUp_Start extends DialogFragment{
                 .setPositiveButton(getResources().getString(R.string.input_button), new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int id) {
                         Intent i = new Intent(getActivity(), ScoreActivity.class);
+                        i.putExtra(getResources().getString(R.string.key_intentSource), getResources().getString(R.string.key_popUp_value));
                         startActivity(i);
                     }
                 })

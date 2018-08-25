@@ -89,7 +89,7 @@ public class HomeActivity extends AppCompatActivity {
     }
 
     private void clickOverviewCalendar(){
-        Intent i = new Intent(this, CalendarActivityWeekly.class);
+        Intent i = new Intent(this, CalendarActivityDaily.class);
         startActivity(i);
     }
 
@@ -105,11 +105,13 @@ public class HomeActivity extends AppCompatActivity {
 
     private void clickEntriesSensitivies(){
         Intent i = new Intent(this, ScoreActivity.class);
+        i.putExtra(getResources().getString(R.string.key_intentSource), getResources().getString(R.string.key_home_value));
         startActivity(i);
     }
 
     private void clickEntriesActivities(){
         Intent i = new Intent(this, ActivitiesActivity.class);
+        i.putExtra(getResources().getString(R.string.key_intentSource), getResources().getString(R.string.key_home_value));
         startActivity(i);
     }
 

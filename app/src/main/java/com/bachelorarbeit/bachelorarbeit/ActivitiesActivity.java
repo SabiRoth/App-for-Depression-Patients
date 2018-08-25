@@ -107,15 +107,15 @@ public class ActivitiesActivity extends AppCompatActivity {
             });
         }
 
-
-        nextButton.setEnabled(false);
+        if(getIntent().getStringExtra(getResources().getString(R.string.key_intentSource)).equals(getResources().getString(R.string.key_home_value))){
+            nextButton.setEnabled(false);
+        }
         nextButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 nextButtonClicked();
             }
         });
-
         saveButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -132,7 +132,7 @@ public class ActivitiesActivity extends AppCompatActivity {
             allSelectedEntries.add(clickedEntry);
             nextButton.setEnabled(true);
         }
-        if(allSelectedEntries.size()==0){
+        if(allSelectedEntries.size()==0 && getIntent().getStringExtra(getResources().getString(R.string.key_intentSource)).equals(getResources().getString(R.string.key_home_value))){
             nextButton.setEnabled(false);
         }
         CheckedTextView checkedTextView = (CheckedTextView) viewListEntry;
@@ -145,7 +145,7 @@ public class ActivitiesActivity extends AppCompatActivity {
             Intent i;
             i = new Intent(this, PlacesActivity.class);
             i.putExtra(getResources().getString(R.string.key_selectedActivities), allSelectedEntries);
-            i.putExtra(getResources().getString(R.string.key_sensitivitiesString), getIntent().getStringExtra("sensitivitiesString"));
+            i.putExtra(getResources().getString(R.string.key_sensitivitiesString), getIntent().getStringExtra(getResources().getString(R.string.key_sensitivitiesString)));
             startActivity(i);
         }
     }

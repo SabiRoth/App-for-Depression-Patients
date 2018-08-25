@@ -138,6 +138,9 @@
     <string name="key_push_notification">push</string>
     <string name="key_activated">activated</string>
     <string name="key_deactivated">deactivated</string>
+    <string name="key_intentSource">intentSource</string>
+    <string name="key_home_value">home</string>
+    <string name="key_popUp_value">popUp</string>
 
     <!--String arrays-->
     <string-array name="sensivities_header">

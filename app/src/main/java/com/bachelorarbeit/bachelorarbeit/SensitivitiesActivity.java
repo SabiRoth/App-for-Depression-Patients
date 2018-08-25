@@ -16,6 +16,7 @@ import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Date;
 
 
 public class SensitivitiesActivity extends AppCompatActivity {
@@ -85,7 +86,10 @@ public class SensitivitiesActivity extends AppCompatActivity {
              }
          });
          if(counter == arrayListStringArrays.size()-1){
-             buttonSensitivitiesNext.setText(R.string.next);
+             String temp = getIntent().getStringExtra(getResources().getString(R.string.key_intentSource));
+             if(getIntent().getStringExtra(getResources().getString(R.string.key_intentSource)).equals(getResources().getString(R.string.key_home_value))){
+                 buttonSensitivitiesNext.setText(getResources().getString(R.string.end_button));
+             }
              final EditText editText = (EditText)findViewById(R.id.editText_sensitivities);
              Button saveButtonOwnEntries = (Button)findViewById(R.id.saveButton_sensitivities);
              editText.setVisibility(View.VISIBLE);
@@ -121,7 +125,7 @@ public class SensitivitiesActivity extends AppCompatActivity {
                 }
             }
 
-            if(alreadySelected == false) {
+            if(!alreadySelected) {
                 allSelectedEntries.add(input);
                 checkAndSaveEntry(input);
                 CharSequence text = input +  " " + getResources().getString(R.string.toast_end);
@@ -147,15 +151,28 @@ public class SensitivitiesActivity extends AppCompatActivity {
        if(counter<arrayListStringArrays.size()) {
            buildActualPage();
        }
-       else{
+       if(counter==arrayListStringArrays.size()){
            String[] temp = new String[allSelectedEntries.size()];
            String sensitivitiesString = Arrays.toString(allSelectedEntries.toArray(temp));
            if(sensitivitiesString.equals("[]")){
                sensitivitiesString = null;
            }
-           Intent i = new Intent (this, ActivitiesActivity.class);
-           i.putExtra(getResources().getString(R.string.key_sensitivitiesString), sensitivitiesString);
-           startActivity(i);
+
+           if(getIntent().getStringExtra(getResources().getString(R.string.key_intentSource)).equals(getResources().getString(R.string.key_home_value))){
+               DateTimePicker dateTimePicker = DateTimePicker.getInstance();
+               if(sensitivitiesString!=null){
+                   sensitivitiesString = sensitivitiesString.substring(1, sensitivitiesString.length()-1);
+                   dataSource.createEntry(sensitivitiesString, null, null, dateTimePicker.getCurrentDate(), dateTimePicker.getCurrentTime(), dateTimePicker.getDaytime());
+               }
+               Intent i = new Intent(this, HomeActivity.class);
+               startActivity(i);
+           }
+           else {
+               Intent i = new Intent(this, ActivitiesActivity.class);
+               i.putExtra(getResources().getString(R.string.key_sensitivitiesString), sensitivitiesString);
+               i.putExtra(getResources().getString(R.string.key_intentSource), getIntent().getStringExtra(getResources().getString(R.string.key_intentSource)));
+               startActivity(i);
+           }
        }
     }
 }
