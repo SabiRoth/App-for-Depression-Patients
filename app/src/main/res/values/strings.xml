@@ -132,6 +132,10 @@
     <string name="key_popUpMail">popUpMail</string>
     <string name="key_mailRecipient">mailRecipient</string>
     <string name="key_mainSymptoms">mainSymptoms</string>
+    <string name="key_tracking_settings">tracking</string>
+    <string name="key_push_notification">push</string>
+    <string name="key_activated">activated</string>
+    <string name="key_deactivated">deactivated</string>
 
     <!--String arrays-->
     <string-array name="sensivities_header">

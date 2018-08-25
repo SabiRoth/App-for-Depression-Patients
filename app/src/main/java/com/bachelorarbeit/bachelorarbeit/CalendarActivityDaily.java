@@ -214,4 +214,10 @@ public class CalendarActivityDaily extends AppCompatActivity implements AdapterV
             }
         });
     }
+
+    @Override
+    public void onBackPressed(){
+        Intent i = new Intent(this, HomeActivity.class);
+        startActivity(i);
+    }
 }

@@ -23,6 +23,8 @@ public class SettingsActivity extends AppCompatActivity {
         switchButtonPush = (Switch)findViewById(R.id.switch_push);
         TextView mainSymptoms = (TextView)findViewById(R.id.TextView_mainSymptoms);
         TextView recipientMail = (TextView)findViewById(R.id.TextView_recipientMail);
+        TextView privacyPolicy = (TextView)findViewById(R.id.TextView_privacyPolicy);
+        TextView siteNotice = (TextView)findViewById(R.id.TextView_siteNotice);
         dataSource = new dataSource(this);
         dataSource.open();
 
@@ -67,26 +69,59 @@ public class SettingsActivity extends AppCompatActivity {
                 openRecipientMailInput();
             }
         });
+
+        privacyPolicy.setClickable(true);
+        privacyPolicy.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                openPrivacyPolicy();
+            }
+        });
+
+        siteNotice.setClickable(true);
+        siteNotice.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                openSiteNotice();
+            }
+        });
     }
 
     private void activateTracking(){
-        //TODO: In DB speichern & tracking aktivieren
+        dataSource.createSettingsEntry(getResources().getString(R.string.key_tracking_settings), getResources().getString(R.string.key_activated));
+        //tracking aktivieren
     }
     private void deactivateTracking(){
-
+        dataSource.createSettingsEntry(getResources().getString(R.string.key_tracking_settings), getResources().getString(R.string.key_deactivated));
+        //tracking deaktivieren
     }
 
     private void activatePush(){
-
+        dataSource.createSettingsEntry(getResources().getString(R.string.key_push_notification), getResources().getString(R.string.key_activated));
+        //push aktivieren
     }
 
     private void deactivatePush(){
-
+        dataSource.createSettingsEntry(getResources().getString(R.string.key_push_notification), getResources().getString(R.string.key_deactivated));
+        //push deaktivieren
     }
 
     private void getCurrentSettings(){
-        //TODO AUS DB HOLEN und Schalter einstellen
+       String trackingSetting = dataSource.getSettingViaName(getResources().getString(R.string.key_tracking_settings));
+       if(trackingSetting==null || trackingSetting.equals(getResources().getString(R.string.key_activated))){
+           switchButtonGPS.setChecked(true);
+       }
+       else{
+           switchButtonGPS.setChecked(false);
+       }
 
+       String pushSetting = dataSource.getSettingViaName(getResources().getString(R.string.key_push_notification));
+       if(pushSetting==null || pushSetting.equals(getResources().getString(R.string.key_activated))){
+           switchButtonPush.setChecked(true);
+       }
+       else{
+           switchButtonPush.setChecked(false);
+       }
     }
 
     private void changeMainSymptoms(){
@@ -99,5 +134,13 @@ public class SettingsActivity extends AppCompatActivity {
         FragmentManager fm = getSupportFragmentManager();
         PopUp_MailRecipient popUp_mailRecipient = PopUp_MailRecipient.newInstance();
         popUp_mailRecipient.show(fm, getResources().getString(R.string.key_popUpMail));
+    }
+
+    private void openPrivacyPolicy(){
+
+    }
+
+    private void openSiteNotice(){
+        
     }
 }

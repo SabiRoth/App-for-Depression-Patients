@@ -83,7 +83,13 @@
             android:text="@string/activitiesInput_textview"
             style="@style/headerTextView"/>
 
-        <!--TODO ListView für eine Eingaben-->
+        <com.bachelorarbeit.bachelorarbeit.NonScrollListView
+            android:id="@+id/listView_activities_own_entries"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            tools:layout_editor_absoluteX="8dp"
+            tools:layout_editor_absoluteY="8dp"
+            android:visibility="gone"/>
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -106,6 +112,7 @@
                 android:layout_height="wrap_content"
                 style="@style/saveButton"/>
         </LinearLayout>
+
 
         <Button
             android:id="@+id/button_activities_next"

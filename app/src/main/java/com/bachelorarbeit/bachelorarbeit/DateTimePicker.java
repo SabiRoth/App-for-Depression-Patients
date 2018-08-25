@@ -91,6 +91,41 @@ public class DateTimePicker extends Calendar {
         return date.substring(0,2);
     }
 
+    public String getTheDayBefore(String latestDate){
+        Integer currentDayInt = Integer.parseInt(latestDate.substring(0,2));
+        if(currentDayInt>1) {
+            currentDayInt -= 1;
+            return currentDayInt.toString() + getCurrentDate().substring(2, getCurrentDate().length());
+        }
+        else{
+            Integer currentMonthInt = Integer.parseInt(getCurrentDate().substring(3,5))-1;
+            switch (currentMonthInt){
+                case 1: currentDayInt = 31;
+                case 2: currentDayInt = 28;
+                case 3: currentDayInt = 31;
+                case 4: currentDayInt = 30;
+                case 5: currentDayInt = 31;
+                case 6: currentDayInt = 30;
+                case 7: currentDayInt = 31;
+                case 8: currentDayInt = 31;
+                case 9: currentDayInt = 30;
+                case 10: currentDayInt = 31;
+                case 11: currentDayInt = 30;
+                case 12: currentDayInt = 31;
+            }
+
+            String currentDayString = currentDayInt.toString();
+            if(currentDayString.length()==1){
+                currentDayString = "0" + currentDayString;
+            }
+            String currentMonthString = currentMonthInt.toString();
+            if(currentMonthString.length()==1){
+                currentMonthString = "0" + currentMonthString;
+            }
+
+            return currentDayString + "." + currentMonthString + getCurrentDate().substring(getCurrentDate().length()-5, getCurrentDate().length());
+        }
+    }
 
     @Override
     protected void computeTime() {

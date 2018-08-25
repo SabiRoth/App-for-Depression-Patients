@@ -9,6 +9,7 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.CheckedTextView;
 import android.widget.EditText;
+import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.Toast;
 
@@ -22,9 +23,11 @@ public class ActivitiesActivity extends AppCompatActivity {
     public ListView sportActivititesListView;
     public ListView relaxationActivitiesListView;
     public ListView obligationsActivitiesListView;
+    public ListView ownEntriesActivitiesListView;
     public EditText editTextField;
     public ArrayList<String> allSelectedEntries;
     Button nextButton;
+    dataSource dataSource;
 
 
     @Override
@@ -44,6 +47,9 @@ public class ActivitiesActivity extends AppCompatActivity {
         sportActivititesListView = (ListView)findViewById(R.id.listView_activities_sport);
         relaxationActivitiesListView = (ListView)findViewById(R.id.listView_activities_relaxation);
         obligationsActivitiesListView = (ListView)findViewById(R.id.listView_activities_obligations);
+        ownEntriesActivitiesListView = (ListView) findViewById(R.id.listView_activities_own_entries);
+        dataSource = new dataSource(this);
+        dataSource.open();
 
         final ArrayAdapter<String> adapter_socialActivities = new ArrayAdapter<String>(this,
                 R.layout.listentry_sensitivities, socialActivitiesArrayString);
@@ -88,6 +94,21 @@ public class ActivitiesActivity extends AppCompatActivity {
                 entryClicked(adapter_obligationsActivities.getItem(i), view);
             }
         });
+
+        ArrayList<String> allOwnActivities = dataSource.getAllOwnActivities();
+        if(allOwnActivities.size()>0){
+            final ArrayAdapter<String> adapter_ownActivities = new ArrayAdapter<String>(this,
+                    R.layout.listentry_sensitivities, allOwnActivities);
+            ownEntriesActivitiesListView.setAdapter(adapter_ownActivities);
+            ownEntriesActivitiesListView.setVisibility(View.VISIBLE);
+            ownEntriesActivitiesListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                @Override
+                public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+                    entryClicked(adapter_ownActivities.getItem(i), view);
+                }
+            });
+        }
+
 
         nextButton.setEnabled(false);
         nextButton.setOnClickListener(new View.OnClickListener() {
@@ -134,6 +155,7 @@ public class ActivitiesActivity extends AppCompatActivity {
     private void saveButtonClicked(){
         if(!(editTextField.getText().toString().equals(""))) {
             allSelectedEntries.add(editTextField.getText().toString());
+            dataSource.createActivityEntry(editTextField.getText().toString());
             CharSequence text = getResources().getString(R.string.toast);
             Toast.makeText(getApplicationContext(), text, Toast.LENGTH_LONG).show();
             editTextField.setText("");

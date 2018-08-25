@@ -70,8 +70,8 @@ public class CalendarActivityWeekly  extends AppCompatActivity implements Adapte
         LinearLayout layoutCalendarWeekly = (LinearLayout)findViewById(R.id.layout_listentry_calendar_weekly);
         for(int i = 0; i<DAYS_OF_WEEK; i++){
             TextView header_textView = new TextView(this);
-            calendar.add(Calendar.DAY_OF_WEEK, -1);
             header_textView.setText(calendar.getDisplayName(Calendar.DAY_OF_WEEK, Calendar.LONG, Locale.GERMANY));
+            calendar.add(Calendar.DAY_OF_WEEK, -1);
             if(i==0){
                 header_textView.setText(getResources().getString(R.string.today));
             }
@@ -111,46 +111,11 @@ public class CalendarActivityWeekly  extends AppCompatActivity implements Adapte
 
                 }
             }
-           newDate = calculateNewDate(newDate);
+           newDate = dateTimePicker.getTheDayBefore(newDate);
 
         }
     }
 
-    private String calculateNewDate(String latestDate){
-        Integer currentDayInt = Integer.parseInt(latestDate.substring(0,2));
-        if(currentDayInt>1) {
-            currentDayInt -= 1;
-            return currentDayInt.toString() + dateTimePicker.getCurrentDate().substring(2, dateTimePicker.getCurrentDate().length());
-        }
-        else{
-            Integer currentMonthInt = Integer.parseInt(dateTimePicker.getCurrentDate().substring(3,5))-1;
-            switch (currentMonthInt){
-                case 1: currentDayInt = 31;
-                case 2: currentDayInt = 28;
-                case 3: currentDayInt = 31;
-                case 4: currentDayInt = 30;
-                case 5: currentDayInt = 31;
-                case 6: currentDayInt = 30;
-                case 7: currentDayInt = 31;
-                case 8: currentDayInt = 31;
-                case 9: currentDayInt = 30;
-                case 10: currentDayInt = 31;
-                case 11: currentDayInt = 30;
-                case 12: currentDayInt = 31;
-            }
-
-            String currentDayString = currentDayInt.toString();
-            if(currentDayString.length()==1){
-                currentDayString = "0" + currentDayString;
-            }
-            String currentMonthString = currentMonthInt.toString();
-            if(currentMonthString.length()==1){
-                currentMonthString = "0" + currentMonthString;
-            }
-
-            return currentDayString + "." + currentMonthString + dateTimePicker.getCurrentDate().substring(dateTimePicker.getCurrentDate().length()-5, dateTimePicker.getCurrentDate().length());
-        }
-    }
 
 
     private int calculateAverage(ArrayList<String[]> scoresOfDate){
@@ -236,4 +201,10 @@ public class CalendarActivityWeekly  extends AppCompatActivity implements Adapte
 
     }
     */
+
+   @Override
+    public void onBackPressed(){
+        Intent i = new Intent(this, HomeActivity.class);
+        startActivity(i);
+   }
 }

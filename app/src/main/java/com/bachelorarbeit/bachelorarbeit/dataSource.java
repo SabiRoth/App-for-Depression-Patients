@@ -126,11 +126,35 @@ public class dataSource {
 
     public ArrayList<String> getAllOwnSensitivities() {
         Cursor cursor = database.query(dbHelper.TABLE_OWN_SENSITIVITIES_ENTRIES, columnsOwnSensitivities, null, null, null, null, null);
-        return cursorToOwnSensitivityEntry(cursor);
+        ArrayList<String> ownSensitivities = new ArrayList<>();
+        if(cursor!=null){
+            if(cursor.getCount()>0) {
+                while (cursor.moveToNext()) {
+                    long id = cursor.getLong(cursor.getColumnIndex(dbHelper.COLUMN_ID));
+                    String entry = cursor.getString(cursor.getColumnIndex(dbHelper.COLUMN_OWN_SENSITIVITY));
+                    ownSensitivities.add(entry);
+                }
+            }
+        }
+        return ownSensitivities;
+    }
+
+    public ArrayList<String> getAllOwnActivities() {
+        Cursor cursor = database.query(dbHelper.TABLE_OWN_ACTIVITIES_ENTRIES, columnsOwnActivities, null, null, null, null, null);
+        ArrayList<String> ownActvities = new ArrayList<>();
+        if(cursor!=null){
+            if(cursor.getCount()>0) {
+                while (cursor.moveToNext()) {
+                    long id = cursor.getLong(cursor.getColumnIndex(dbHelper.COLUMN_ID));
+                    String entry = cursor.getString(cursor.getColumnIndex(dbHelper.COLUMN_OWN_ACTIVITIES));
+                    ownActvities.add(entry);
+                }
+            }
+        }
+        return ownActvities;
     }
 
     public Entry getLastEntry(){
-        //TODO: Bessere Lösung mit Cursor
         ArrayList<Entry> allEntries = getAllEntries();
         if(allEntries.size()>0) {
             int lastEntryNumber = allEntries.size() - 1;
@@ -142,7 +166,6 @@ public class dataSource {
     }
 
 
-    //TODO: BESSERE LÖSUNG SIEHE SettingViaName
     public String[] getLastMovementEntry(String date){
         ArrayList<String[]> allEntry = getAllMovementEntriesViaDate(date);
         if(allEntry.size()>0){
@@ -247,19 +270,6 @@ public class dataSource {
         return entries;
     }
 
-    private ArrayList<String> cursorToOwnSensitivityEntry(Cursor cursor){
-        ArrayList<String> ownSensitivities = new ArrayList<>();
-        if(cursor!=null){
-            if(cursor.getCount()>0) {
-                while (cursor.moveToNext()) {
-                        long id = cursor.getLong(cursor.getColumnIndex(dbHelper.COLUMN_ID));
-                        String entry = cursor.getString(cursor.getColumnIndex(dbHelper.COLUMN_OWN_SENSITIVITY));
-                        ownSensitivities.add(entry);
-                    }
-                }
-            }
-        return ownSensitivities;
-    }
 
     private void deleteSettingsEntry(String name){
         Cursor cursor = database.query(dbHelper.TABLE_SETTINGS, columnsSettings, null, null, null, null, null);
