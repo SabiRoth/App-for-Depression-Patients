@@ -29,7 +29,6 @@ public class ScoreActivity extends AppCompatActivity {
     ArrayList<Button> clickedButtonListThirdSymptom;
 
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -42,6 +41,20 @@ public class ScoreActivity extends AppCompatActivity {
         clickedButtonListThirdSymptom = new ArrayList<>();
         dataSource = new dataSource(this);
         dataSource.open();
+        getScoreView();
+        getMainSymptoms();
+        nextButton = (Button)findViewById(R.id.button_score_next);
+        nextButton.setOnClickListener(
+                new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        nextButtonClicked();
+                    }
+                });
+        initializeButtonClickListener();
+    }
+
+    private void getScoreView(){
         LinearLayout layoutScore = (LinearLayout)findViewById(R.id.score_listentry);
         for(int j = 0; j<6; j++){
             Button buttonScore = new Button(this);
@@ -55,30 +68,17 @@ public class ScoreActivity extends AppCompatActivity {
                 }
             });
         }
-
-        String mainSymptomsString  = dataSource.getSettingViaName(getResources().getString(R.string.key_mainSymptomsinSettingsTable));
-        if(mainSymptomsString==null || mainSymptomsString.equals("")) {
-            mainSymptomsArray = new String[0];
-        }
-        else{
-            mainSymptomsArray = mainSymptomsString.split(",");
-        }
-
-        getMainSymptoms();
-
-        nextButton = (Button)findViewById(R.id.button_score_next);
-        nextButton.setOnClickListener(
-                new View.OnClickListener() {
-                    @Override
-                    public void onClick(View view) {
-                        nextButtonClicked();
-                    }
-                });
-        initializeButtonClickListener();
     }
 
     private void getMainSymptoms(){
-        if(mainSymptomsArray.length>0){
+        String mainSymptomsString  = dataSource.getSettingViaName(getResources().getString(R.string.key_mainSymptomsinSettingsTable));
+        if(mainSymptomsString==null || mainSymptomsString.equals("")) {
+            mainSymptomsArray = new String[0];
+            TextView hint = (TextView)findViewById(R.id.textView_score_hint);
+            hint.setVisibility(View.VISIBLE);
+        }
+        else{
+            mainSymptomsArray = mainSymptomsString.split(",");
             for(int i = 0; i < mainSymptomsArray.length; i++){
                 if(i==0){
                     layoutFirstMainSymptom = (LinearLayout)findViewById(R.id.score_listentry_first_symptom);

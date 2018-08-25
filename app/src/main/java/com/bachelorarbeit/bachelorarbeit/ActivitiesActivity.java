@@ -9,12 +9,10 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.CheckedTextView;
 import android.widget.EditText;
-import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.Toast;
 
 import java.util.ArrayList;
-import java.util.List;
 
 
 public class ActivitiesActivity extends AppCompatActivity {
@@ -52,7 +50,7 @@ public class ActivitiesActivity extends AppCompatActivity {
         dataSource.open();
 
         final ArrayAdapter<String> adapter_socialActivities = new ArrayAdapter<String>(this,
-                R.layout.listentry_sensitivities, socialActivitiesArrayString);
+                R.layout.listentry_sensitivities_activities, socialActivitiesArrayString);
 
         socialActivitiesListView.setAdapter(adapter_socialActivities);
         socialActivitiesListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
@@ -63,7 +61,7 @@ public class ActivitiesActivity extends AppCompatActivity {
         });
 
         final ArrayAdapter<String> adapter_sportActivities = new ArrayAdapter<String>(this,
-                R.layout.listentry_sensitivities, sportActivitiesArrayString);
+                R.layout.listentry_sensitivities_activities, sportActivitiesArrayString);
 
         sportActivititesListView.setAdapter(adapter_sportActivities);
         sportActivititesListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
@@ -74,7 +72,7 @@ public class ActivitiesActivity extends AppCompatActivity {
         });
 
         final ArrayAdapter<String> adapter_relaxationActivities = new ArrayAdapter<String>(this,
-                R.layout.listentry_sensitivities, relaxationActivitiesArrayString);
+                R.layout.listentry_sensitivities_activities, relaxationActivitiesArrayString);
 
         relaxationActivitiesListView.setAdapter(adapter_relaxationActivities);
         relaxationActivitiesListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
@@ -85,7 +83,7 @@ public class ActivitiesActivity extends AppCompatActivity {
         });
 
         final ArrayAdapter<String> adapter_obligationsActivities = new ArrayAdapter<String>(this,
-                R.layout.listentry_sensitivities, obligationsActivitiesArrayString);
+                R.layout.listentry_sensitivities_activities, obligationsActivitiesArrayString);
 
         obligationsActivitiesListView.setAdapter(adapter_obligationsActivities);
         obligationsActivitiesListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
@@ -98,7 +96,7 @@ public class ActivitiesActivity extends AppCompatActivity {
         ArrayList<String> allOwnActivities = dataSource.getAllOwnActivities();
         if(allOwnActivities.size()>0){
             final ArrayAdapter<String> adapter_ownActivities = new ArrayAdapter<String>(this,
-                    R.layout.listentry_sensitivities, allOwnActivities);
+                    R.layout.listentry_sensitivities_activities, allOwnActivities);
             ownEntriesActivitiesListView.setAdapter(adapter_ownActivities);
             ownEntriesActivitiesListView.setVisibility(View.VISIBLE);
             ownEntriesActivitiesListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {

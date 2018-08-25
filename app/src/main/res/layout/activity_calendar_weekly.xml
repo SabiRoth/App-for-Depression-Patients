@@ -12,7 +12,7 @@
         android:layout_height="match_parent"
         android:orientation="vertical">
 
-        <include layout="@layout/activity_header_calendar_graph"/>
+        <include layout="@layout/header_calendar_graph"/>
 
         <include layout="@layout/listentry_calendar_weekly"/>
 

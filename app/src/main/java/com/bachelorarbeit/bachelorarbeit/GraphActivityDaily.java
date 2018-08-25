@@ -54,7 +54,6 @@ public class GraphActivityDaily extends AppCompatActivity {
     }
 
 
-    //TODO: Uhrzeit in creteMovementEntry mit aufnehmen für Tagesansicht ?? -> DB VERSION ÄNDERN
 
     private void initializeGraphView(){
         dataSource dataSource = new dataSource(this);
@@ -172,7 +171,6 @@ public class GraphActivityDaily extends AppCompatActivity {
         ArrayAdapter<String> spinnerAdapter = new ArrayAdapter<String>(this, R.layout.listentry_spinner, spinnerList);
         //spinnerAdapter.setDropDownViewResource(R.layout.listentry_simple_listview);
         spinnerView.setAdapter(spinnerAdapter);
-
         ArrayAdapter<String> spinnerGraphAdapter = new ArrayAdapter<String>(this, R.layout.listentry_spinner, spinnerListGraph);
         spinnerGraph.setAdapter(spinnerGraphAdapter);
     }

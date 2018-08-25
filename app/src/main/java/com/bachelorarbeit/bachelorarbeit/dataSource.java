@@ -28,7 +28,6 @@ public class dataSource {
     private String[] columnsOwnActivities = {dbHelper.COLUMN_ID, dbHelper.COLUMN_OWN_ACTIVITIES};
     private String[] columnsMainSymptoms = {dbHelper.COLUMN_ID, dbHelper.COLUMN_SENSIBILITIES, dbHelper.COLUMN_SCORE, dbHelper.COLUMN_DATE, dbHelper.COLUMN_TIME};
     private String[] columnsSettings = {dbHelper.COLUMN_ID, dbHelper.COLUMN_NAME, dbHelper.COLUMN_VALUE};
-    private String[] columnsScore = {dbHelper.COLUMN_ID, dbHelper.COLUMN_SCORE, dbHelper.COLUMN_DATE, dbHelper.COLUMN_TIME};
 
     public dataSource(Context context) {
         dbHelper = new dbHelper(context);

@@ -3,15 +3,12 @@ package com.bachelorarbeit.bachelorarbeit;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
-import android.view.Gravity;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.LinearLayout;
 import android.widget.ListView;
-import android.widget.ScrollView;
 import android.widget.TextView;
 import android.widget.CheckedTextView;
 import android.widget.Toast;
@@ -78,7 +75,7 @@ public class SensitivitiesActivity extends AppCompatActivity {
     private void buildActualPage(){
          header.setText(headerString[counter]);
          final ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,
-                 R.layout.listentry_sensitivities, arrayListStringArrays.get(counter));
+                 R.layout.listentry_sensitivities_activities, arrayListStringArrays.get(counter));
 
          listViewSensitivities.setAdapter(adapter);
          listViewSensitivities.setOnItemClickListener(new AdapterView.OnItemClickListener() {

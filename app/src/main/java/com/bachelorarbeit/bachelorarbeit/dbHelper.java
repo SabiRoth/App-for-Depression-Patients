@@ -14,7 +14,6 @@ public class dbHelper extends SQLiteOpenHelper {
     public static final String TABLE_OWN_ACTIVITIES_ENTRIES = "EigeneAktivitätentabelle";
     public static final String TABLE_MAIN_SYMPTOMS ="Hauptsymptometabelle";
     public static final String TABLE_SETTINGS = "Einstellungentabelle";
-    public static final String TABLE_SCORE = "Scoretabelle";
 
     public static final String COLUMN_ID = "_id";
     public static final String COLUMN_SENSIBILITIES = "Befindlichkeiten";
@@ -59,12 +58,6 @@ public class dbHelper extends SQLiteOpenHelper {
             "CREATE TABLE " + TABLE_SETTINGS +
                     "(" + COLUMN_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " + COLUMN_NAME + " TEXT NOT NULL," + COLUMN_VALUE + " TEXT NOT NULL"+ ")";
 
-    public static final String SQL_CREATE_TABLE_SCORE =
-            "CREATE TABLE " + TABLE_SCORE +
-                    "(" + COLUMN_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " + COLUMN_SCORE + " TEXT NOT NULL," + COLUMN_DATE + " TEXT NOT NULL," +
-                    COLUMN_TIME + " TEXT NOT NULL"+ ")";
-
-
 
 
     public dbHelper(Context context) {
@@ -80,7 +73,6 @@ public class dbHelper extends SQLiteOpenHelper {
             db.execSQL(SQL_CREATE_TABLE_OWN_ACTIVITIES_ENTRIES);
             db.execSQL(SQL_CREATE_TABLE_MAIN_SYMPTOMS);
             db.execSQL(SQL_CREATE_TABLE_SETTINGS);
-            db.execSQL(SQL_CREATE_TABLE_SCORE);
         } catch (Exception ex) {
         }
     }
@@ -94,7 +86,6 @@ public class dbHelper extends SQLiteOpenHelper {
             db.execSQL("DROP TABLE IF EXISTS " + TABLE_OWN_ACTIVITIES_ENTRIES);
             db.execSQL("DROP TABLE IF EXISTS " + TABLE_MAIN_SYMPTOMS);
             db.execSQL("DROP TABLE IF EXISTS " + TABLE_SETTINGS);
-            db.execSQL("DROP TABLE IF EXISTS " + TABLE_SCORE);
             onCreate(db);
         }
     }

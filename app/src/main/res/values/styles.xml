@@ -28,7 +28,7 @@
 
     <style name="headerTextView" parent="android:Widget.TextView">
         <item name="android:textColor">@color/colorHeadings</item>
-        <item name="android:textSize">30sp</item>
+        <item name="android:textSize">23sp</item>
         <item name="android:layout_marginBottom">10dp</item>
         <item name="android:layout_marginStart">15dp</item>
         <item name="android:layout_marginTop">25dp</item>
@@ -37,7 +37,7 @@
 
     <style name="normalText" parent="android:Widget.TextView">
         <item name="android:textColor">@color/colorText</item>
-        <item name="android:textSize">25sp</item>
+        <item name="android:textSize">21sp</item>
         <item name="android:layout_marginBottom">20dp</item>
         <item name="android:layout_marginStart">15dp</item>
         <item name="android:layout_marginTop">15dp</item>
@@ -46,7 +46,7 @@
 
     <style name="nextButton" parent="android:Widget.Button">
         <item name="android:text">@string/next</item>
-        <item name="android:textSize">30sp</item>
+        <item name="android:textSize">22sp</item>
         <item name="android:layout_marginTop">25dp</item>
         <item name="android:layout_marginEnd">25dp</item>
         <item name="android:layout_marginBottom">25dp</item>
@@ -56,7 +56,7 @@
 
     <style name="saveButton" parent="android:Widget.Button">
         <item name="android:text">@string/save_button</item>
-        <item name="android:textSize">22sp</item>
+        <item name="android:textSize">19sp</item>
         <item name="android:layout_marginStart">15dp</item>
         <item name="android:layout_gravity">end</item>
         <item name="android:background">@drawable/button_background</item>
@@ -67,6 +67,8 @@
         <item name="android:layout_marginEnd">15dp</item>
         <item name="android:layout_marginBottom">20dp</item>
         <item name="android:layout_gravity">start</item>
+        <item name="android:dividerHeight">0dp</item>
+        <item name="android:divider">@null</item>
     </style>
 
     <style name="hintTextView">
@@ -79,12 +81,36 @@
 
     <style name="scoreTextView">
         <item name="android:textColor">@color/colorText</item>
-        <item name="android:textSize">25sp</item>
+        <item name="android:textSize">23sp</item>
         <item name="android:layout_marginBottom">20dp</item>
         <item name="android:layout_marginStart">15dp</item>
         <item name="android:layout_marginTop">50dp</item>
         <item name="android:layout_marginEnd">15dp</item>
         <item name="android:gravity">center_horizontal</item>
+    </style>
+
+    <style name="spinner_textView">
+        <item name="android:textSize">23sp</item>
+        <item name="android:textColor">@color/colorText</item>
+        <item name="android:gravity">center</item>
+        <item name="android:paddingTop">20dp</item>
+        <item name="android:paddingBottom">20dp</item>
+        <item name="android:paddingLeft">10dp</item>
+        <item name="android:paddingRight">10dp</item>
+        <item name="android:textAlignment">center</item>
+    </style>
+
+    <style name="spinner">
+        <item name="android:layout_gravity">center</item>
+        <item name="android:gravity">center</item>
+        <item name="android:layout_marginEnd">10dp</item>
+        <item name="android:layout_marginStart">10dp</item>
+        <item name="android:textAlignment">center</item>
+    </style>
+
+    <style name="main_symptom_edittext">
+        <item name="android:inputType">text</item>
+        <item name="android:layout_margin">15dp</item>
     </style>
 
 </resources>

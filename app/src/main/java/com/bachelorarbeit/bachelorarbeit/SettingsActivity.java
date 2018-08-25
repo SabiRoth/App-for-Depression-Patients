@@ -1,5 +1,6 @@
 package com.bachelorarbeit.bachelorarbeit;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.FragmentManager;
 import android.support.v7.app.AppCompatActivity;
@@ -141,6 +142,13 @@ public class SettingsActivity extends AppCompatActivity {
     }
 
     private void openSiteNotice(){
-        
+
+    }
+
+
+    @Override
+    public void onBackPressed(){
+        Intent i = new Intent(this, HomeActivity.class);
+        startActivity(i);
     }
 }

@@ -28,6 +28,7 @@
     <!-- TextViews score-->
     <string name="totalScore">Wie geht es dir?</string>
     <string name="score_textview">Wähle die Stärke!</string>
+    <string name="score_no_symptoms">Für detailreichere Eingaben speichere deine Hauptsymptome in den Einstellungen.</string>
 
     <!--TextViews Home-->
     <string name="overview_textview">Übersichten</string>
@@ -47,6 +48,7 @@
     <string name="recipient_mail_textview">Standard als E-Mail-Empfänger anlegen</string>
     <string name="privacyPolicy_textview">Datenschutzerklärung</string>
     <string name="siteNotice">Impressum</string>
+    <string name="input_call_textview">Gib bis zu 3 Hauptsymptome ein:</string>
 
     <!--TextViews Calendar-->
     <string name="calendar_daily_morning_textview">Morgen</string>
@@ -82,7 +84,7 @@
     <string name="sensibilities_edittext">Befindlichkeit eingeben</string>
     <string name="activities_edittext">Aktivität eingeben</string>
     <string name="mail_edittext">Gib eine E-Mail-Adresse ein</string>
-
+    <string name="main_symptoms_edittext">Symptom eingeben</string>
 
     <!--Text Emegency-->
     <string name="emergency1"><b>In Notfällen:</b></string>
@@ -236,8 +238,8 @@
     </string-array>
 
     <string-array name="spinner_graph">
-        <item>Bewegungs- und Befindlichkeitsgraph</item>
-        <item>Aktivitäts- und Befindlichkeitsgraph</item>
+        <item>Nur Befindlichkeiten</item>
+        <item>Befindlichkeiten und Aktivitäten</item>
     </string-array>
 
 </resources>

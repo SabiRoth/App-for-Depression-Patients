@@ -12,7 +12,7 @@
         android:layout_height="match_parent"
         android:orientation="vertical">
 
-        <include layout="@layout/activity_header_calendar_graph"/>
+        <include layout="@layout/header_calendar_graph"/>
 
         <TextView
             android:id="@+id/textView_calendar_daily_morning"
@@ -28,6 +28,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             style="@style/listViewCalendar"
+
+
              />
         <com.bachelorarbeit.bachelorarbeit.NonScrollListView
             android:id="@+id/listView_calendar_daily_morning_activities"
