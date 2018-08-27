@@ -1,5 +1,10 @@
 package com.bachelorarbeit.bachelorarbeit;
 
+import android.app.DatePickerDialog;
+import android.content.Intent;
+import android.widget.Button;
+import android.widget.DatePicker;
+
 import java.util.Calendar;
 import java.util.Locale;
 import java.util.Map;
@@ -7,7 +12,7 @@ import java.util.TimeZone;
 
 public class DateTimePicker extends Calendar {
 
-    Calendar calendar = Calendar.getInstance();
+    private Calendar calendar = Calendar.getInstance();
 
     public DateTimePicker(){
     }
@@ -61,22 +66,9 @@ public class DateTimePicker extends Calendar {
         return daytime;
     }
 
-    public String getDaytime(String time){
-        int hours = Integer.parseInt(time.substring(0,2));
-        String daytime;
-        if(hours < 11 && hours > 2){
-            daytime = "Morgen";
-        }
-        if(hours > 16 || hours < 3){
-            daytime = "Abend";
-        }
-        else{
-            daytime = "Mittag";
-        }
-        return daytime;
-    }
 
     public String getMonthFromDate(String date){
+        calendar.setTimeZone(TimeZone.getTimeZone("Europe/Berlin"));
         String month;
         if(date.length()== 9){
            month = date.substring(3,4);
@@ -88,10 +80,12 @@ public class DateTimePicker extends Calendar {
     }
 
     public String getDayFromDate(String date){
+        calendar.setTimeZone(TimeZone.getTimeZone("Europe/Berlin"));
         return date.substring(0,2);
     }
 
     public String getTheDayBefore(String latestDate){
+        calendar.setTimeZone(TimeZone.getTimeZone("Europe/Berlin"));
         Integer currentDayInt = Integer.parseInt(latestDate.substring(0,2));
         if(currentDayInt>1) {
             currentDayInt -= 1;
@@ -126,6 +120,7 @@ public class DateTimePicker extends Calendar {
             return currentDayString + "." + currentMonthString + getCurrentDate().substring(getCurrentDate().length()-5, getCurrentDate().length());
         }
     }
+
 
     @Override
     protected void computeTime() {

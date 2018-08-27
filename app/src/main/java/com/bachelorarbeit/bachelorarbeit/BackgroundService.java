@@ -62,7 +62,7 @@ public class BackgroundService extends Service {
             if (!(dateTimePicker.getMonthFromDate(lastEntryDate).equals(dateTimePicker.getMonthFromDate(currentDate)))) {
                 proofAlreadyNotified(lastEntryDate, false);
             } else {
-                if ((((Integer.parseInt(dateTimePicker.getDayFromDate(currentDate)))) - Integer.parseInt(dateTimePicker.getDayFromDate(lastEntryDate))) >= 1) {//Zahl ähndern
+                if ((((Integer.parseInt(dateTimePicker.getDayFromDate(currentDate)))) - Integer.parseInt(dateTimePicker.getDayFromDate(lastEntryDate))) >= 3) {
                     proofAlreadyNotified(lastEntryDate, false);
                 }
             }
@@ -104,11 +104,11 @@ public class BackgroundService extends Service {
 
 
         //calls the HomeActivity if the notification is clicked
-        Intent notificationIntent = new Intent(this, HomeActivity.class); //TODO: MAIN?
+        Intent notificationIntent = new Intent(this, ScoreActivity.class);
         notificationIntent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
         PendingIntent pIntent = PendingIntent.getActivity(this, 0, notificationIntent, 0);
         notificationBuilder.setSmallIcon(R.drawable.icon)
-                .setContentText(getApplicationContext().getResources().getString(R.string.notification_part1) + " " + lastEntryDate + getApplicationContext().getResources().getString(R.string.notification_part2)) //TODO: strings
+                .setContentText(getApplicationContext().getResources().getString(R.string.notification_part1) + " " + lastEntryDate + getApplicationContext().getResources().getString(R.string.notification_part2))
                 .setContentTitle(getApplicationContext().getResources().getString(R.string.app_name))
                 .setAutoCancel(true) // hide the notification after its selected
                 .setVibrate(new long[] { 1000, 1000, 1000 })

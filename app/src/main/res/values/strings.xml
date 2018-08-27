@@ -15,16 +15,6 @@
     <string name="input_button">Zur Eingabe</string>
     <string name="close_button">Schließen</string>
 
-
-    <!--Buttons score TODO: evlt löschen-->
-    <string name="zero_button">0</string>
-    <string name="one_button">1</string>
-    <string name="two_button">2</string>
-    <string name="three_button">3</string>
-    <string name="four_button">4</string>
-    <string name="five_button">5</string>
-
-
     <!-- TextViews score-->
     <string name="totalScore">Wie geht es dir?</string>
     <string name="score_textview">Wähle die Stärke!</string>

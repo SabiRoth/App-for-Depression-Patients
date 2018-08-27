@@ -177,7 +177,6 @@ public class GraphActivityDaily extends AppCompatActivity {
 
     @Override
     public void onBackPressed(){
-        Intent i = new Intent(this, HomeActivity.class);
-        startActivity(i);
+        this.finish();
     }
 }

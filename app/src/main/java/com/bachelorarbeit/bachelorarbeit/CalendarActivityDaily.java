@@ -74,8 +74,7 @@ public class CalendarActivityDaily extends AppCompatActivity implements AdapterV
         ArrayList<String> middayEntriesSensivities = new ArrayList<>(), middayEntriesActivities = new ArrayList<>(), middayEntriesPlaces = new ArrayList<>();
         ArrayList<String> eveningEntriesSensivities = new ArrayList<>(), eveningEntriesActivities = new ArrayList<>(), eveningEntriesPlaces = new ArrayList<>();
         for(int i = 0; i<allEntries.size(); i++){
-            String currentDaytime = dateTimePicker.getDaytime(allEntries.get(i).getTime());
-            //TODO: DAYTIME AUS DB?!
+            String currentDaytime = allEntries.get(i).getDaytime();
             if(currentDaytime.equals("Morgen")){
                 if(allEntries.get(i).getSensitivies()!=null) {
                     morningEntriesSensivities.add(allEntries.get(i).getSensitivies());
@@ -174,6 +173,7 @@ public class CalendarActivityDaily extends AppCompatActivity implements AdapterV
         if(++check > 1) {
             if (parent.getItemAtPosition(position).toString().equals("Wochenansicht")) {
                 Intent i = new Intent(getApplicationContext(), CalendarActivityWeekly.class);
+                this.finish();
                 startActivity(i);
             }
         }
@@ -181,7 +181,6 @@ public class CalendarActivityDaily extends AppCompatActivity implements AdapterV
 
     @Override
     public void onNothingSelected(AdapterView<?> arg0) {
-        // TODO Auto-generated method stub
     }
 
 
@@ -217,7 +216,6 @@ public class CalendarActivityDaily extends AppCompatActivity implements AdapterV
 
     @Override
     public void onBackPressed(){
-        Intent i = new Intent(this, HomeActivity.class);
-        startActivity(i);
+        this.finish();
     }
 }

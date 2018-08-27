@@ -158,6 +158,7 @@ public class CalendarActivityWeekly  extends AppCompatActivity implements Adapte
         if(++check > 1) {   //Source: https://stackoverflow.com/questions/13397933/android-spinner-avoid-onitemselected-calls-during-initialization
             if (parent.getItemAtPosition(position).toString().equals("Tagesansicht")) {
                 Intent i = new Intent(getApplicationContext(), CalendarActivityDaily.class);
+                this.finish();
                 startActivity(i);
             }
         }
@@ -165,7 +166,6 @@ public class CalendarActivityWeekly  extends AppCompatActivity implements Adapte
 
     @Override
     public void onNothingSelected(AdapterView<?> arg0) {
-        // TODO Auto-generated method stub
     }
 
 
@@ -202,9 +202,8 @@ public class CalendarActivityWeekly  extends AppCompatActivity implements Adapte
     }
     */
 
-   @Override
+    @Override
     public void onBackPressed(){
-        Intent i = new Intent(this, HomeActivity.class);
-        startActivity(i);
-   }
+        this.finish();
+    }
 }
