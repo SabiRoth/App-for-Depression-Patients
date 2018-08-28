@@ -1,70 +1,86 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
+
+<ScrollView
     xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:id="@+id/activity_score">
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:fillViewport="true">
 
-    <TextView
+    <LinearLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/textView_score"
-        android:text="@string/totalScore"
-        style="@style/scoreTextView"/>
+        android:orientation="vertical"
+        android:id="@+id/activity_score">
 
-    <include layout="@layout/score_listentry_score"/>
-
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/textView_score_hint"
-        android:text="@string/score_no_symptoms"
-        style="@style/hintTextView"
-        android:gravity="center_horizontal"
-        android:textSize="21sp"
-        android:layout_marginTop="25dp"/>
-
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/textView_firstMainSymptom"
-        android:visibility="gone"
-        style="@style/scoreTextView"/>
-
-
-    <include layout="@layout/score_listentry_first_symptom"/>
-
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/textView_secondMainSymptom"
-        android:visibility="gone"
-        style="@style/scoreTextView"/>
-
-    <include layout="@layout/score_listentry_second_symptom"/>
-
-
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/textView_thirdMainSymptom"
-        android:visibility="gone"
-        style="@style/scoreTextView"/>
-
-
-    <include layout="@layout/score_listentry_third_symptom"/>
-
-
-
-        <Button
-            android:id="@+id/button_score_next"
-            android:layout_width="wrap_content"
+        <TextView
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            style="@style/nextButton"
-            android:layout_marginTop="50dp"/>
+            android:text="@string/sensitivities_activity_label"
+            style="@style/headerTextView"
+            android:gravity="center_horizontal"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/textView_score"
+            android:text="@string/totalScore"
+            style="@style/scoreTextView"
+            android:layout_marginTop="25dp"/>
+
+        <include layout="@layout/score_listentry_score"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/textView_score_hint"
+            android:text="@string/score_no_symptoms"
+            style="@style/hintTextView"
+            android:gravity="center_horizontal"
+            android:textSize="21sp"
+            android:layout_marginTop="25dp"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/textView_firstMainSymptom"
+            android:visibility="gone"
+            style="@style/scoreTextView"/>
+
+
+        <include layout="@layout/score_listentry_first_symptom"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/textView_secondMainSymptom"
+            android:visibility="gone"
+            style="@style/scoreTextView"/>
+
+        <include layout="@layout/score_listentry_second_symptom"/>
+
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/textView_thirdMainSymptom"
+            android:visibility="gone"
+            style="@style/scoreTextView"/>
+
+
+        <include layout="@layout/score_listentry_third_symptom"/>
+
+
+
+            <Button
+                android:id="@+id/button_score_next"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                style="@style/nextButton"
+                android:layout_marginTop="50dp"/>
 
 
 
 
-</LinearLayout>
+    </LinearLayout>
+</ScrollView>
