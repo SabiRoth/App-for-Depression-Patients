@@ -17,8 +17,22 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        Intent i = new Intent(this, GPSTracker.class);
-        startActivityForResult(i, 1);
+        dataSource dataSource = new dataSource(this);
+        dataSource.open();
+        String trackingSetting = dataSource.getSettingViaName(getResources().getString(R.string.key_tracking_settings));
+        if(trackingSetting!=null){
+            if(trackingSetting.equals(getResources().getString(R.string.key_activated))) {
+                Intent i = new Intent(this, GPSTracker.class);
+                startActivityForResult(i, 1);
+            }
+            else{
+                proofPopUp();
+            }
+        }
+        else{
+            Intent i = new Intent(this, GPSTracker.class);
+            startActivityForResult(i, 1);
+        }
     }
 
     @Override

@@ -121,7 +121,8 @@ public class HomeActivity extends AppCompatActivity {
     }
 
     private void clickEmergency(){
-        Intent i = new Intent(this, EmergencyActivity.class);
+        Intent i = new Intent(this, Policy_Notice_EmergencyActivity.class);
+        i.putExtra(getResources().getString(R.string.key_called_activity), getResources().getString(R.string.key_emergency));
         startActivity(i);
     }
 

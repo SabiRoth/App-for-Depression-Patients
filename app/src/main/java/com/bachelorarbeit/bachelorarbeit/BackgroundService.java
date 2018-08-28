@@ -25,8 +25,26 @@ public class BackgroundService extends Service {
     public void onCreate(){
         dateTimePicker = DateTimePicker.getInstance();
         remindNotificationDates = new ArrayList<>();
-        proofLastEntry();
-        startGPSTracker();
+        dataSource dataSource = new dataSource(this);
+        dataSource.open();
+        String trackingSetting = dataSource.getSettingViaName(getResources().getString(R.string.key_tracking_settings));
+        if(trackingSetting!=null){
+            if(trackingSetting.equals(getResources().getString(R.string.key_activated))) {
+                startGPSTracker();
+            }
+        }
+        else{
+            startGPSTracker();
+        }
+        String pushSetting = dataSource.getSettingViaName(getResources().getString(R.string.key_push_notification));
+        if(pushSetting!=null){
+            if(pushSetting.equals(getResources().getString(R.string.key_activated))){
+                proofLastEntry();
+            }
+        }
+        else{
+            proofLastEntry();
+        }
         notificationId = 0;
     }
 
@@ -47,9 +65,7 @@ public class BackgroundService extends Service {
 
     public void startGPSTracker(){
         GPSTracker gpsTracker = new GPSTracker();
-        //GPS aufnehmen und in DB speichern
     }
-
 
     //if the last entry war 3 days or longer ago a notification is sent
     public void proofLastEntry(){

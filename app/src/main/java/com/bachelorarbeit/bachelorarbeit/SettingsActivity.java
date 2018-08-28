@@ -90,21 +90,21 @@ public class SettingsActivity extends AppCompatActivity {
 
     private void activateTracking(){
         dataSource.createSettingsEntry(getResources().getString(R.string.key_tracking_settings), getResources().getString(R.string.key_activated));
-        //tracking aktivieren
+        Intent i = new Intent(this, GPSTracker.class);
+        startActivityForResult(i, 1);
     }
+
     private void deactivateTracking(){
         dataSource.createSettingsEntry(getResources().getString(R.string.key_tracking_settings), getResources().getString(R.string.key_deactivated));
-        //tracking deaktivieren
+        //TODO tracking deaktivieren
     }
 
     private void activatePush(){
         dataSource.createSettingsEntry(getResources().getString(R.string.key_push_notification), getResources().getString(R.string.key_activated));
-        //push aktivieren
     }
 
     private void deactivatePush(){
         dataSource.createSettingsEntry(getResources().getString(R.string.key_push_notification), getResources().getString(R.string.key_deactivated));
-        //push deaktivieren
     }
 
     private void getCurrentSettings(){
@@ -138,11 +138,15 @@ public class SettingsActivity extends AppCompatActivity {
     }
 
     private void openPrivacyPolicy(){
-
+        Intent i = new Intent(this, Policy_Notice_EmergencyActivity.class);
+        i.putExtra(getResources().getString(R.string.key_called_activity), getResources().getString(R.string.key_privacy_policy));
+        startActivity(i);
     }
 
     private void openSiteNotice(){
-
+        Intent i = new Intent(this, Policy_Notice_EmergencyActivity.class);
+        i.putExtra(getResources().getString(R.string.key_called_activity), getResources().getString(R.string.key_site_notice));
+        startActivity(i);
     }
 
 

@@ -121,6 +121,18 @@ public class DateTimePicker extends Calendar {
         }
     }
 
+    public String setDateFormat(int day, int month, int year){
+        String dayString = Integer.toString(day);
+        if(dayString.length()==1){
+            dayString = "0" + dayString;
+        }
+        String monthString = Integer.toString(month);
+        if(monthString.length()==1){
+            monthString = "0" + monthString;
+        }
+        return dayString + "." + monthString + "." + year;
+    }
+
 
     @Override
     protected void computeTime() {

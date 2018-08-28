@@ -68,6 +68,7 @@
     <string name="settings_activity_label">Einstellungen</string>
     <string name="emergency_activity_label">Notrufnummern</string>
     <string name="score_activity_label">Scores eingeben</string>
+    <string name="privacy_policy_label">Datenschutzerklärung</string>
 
     <!--EditText Hint-->
     <string name="places_edittext">Ort eingeben</string>
@@ -85,6 +86,23 @@
     <string name="emergency6">0800/111 0 111 oder 116 123  <i>(kostenlos, 24h)</i></string>
     <string name="emergency7"><u>Info-Telefon Depression</u></string>
     <string name="emergency8">0800 3344533 <i>(kostenlos, Mo, Di, Do: 13:00 – 17:00 Uhr und Mi, Fr: 08:30 – 12:30 Uhr)</i></string>
+    
+    <!-- Text Privacy Polidy-->
+    <string name="privacy_policy_header">Datenschutzerklärung</string>
+    <string name="privacy_policy_caption">Informationen zur Datenverarbeitung</string>
+    <string name="privacy_policy_text">Die Eingabe personenbezogener Daten erfolgt stets auf freiwilliger Basis. Ihre bei Nutzung der App eingegebenen Daten werden ausschließlich lokal auf Ihrem Endgerät gespeichert. Der Upload zu einem Server wird aus datenschutzrechtlichen Gründen und zum Schutz Ihrer sensiblen Daten und Ihrer Privatsphäre nicht erfolgen. Die Daten werden zur Anzeige der Übersichten lokal ausgelesen und angezeigt. Eine Weitergabe Ihrer Daten an Dritte erfolgt lediglich, bei fakultativen Option des Versendens der eigenen Daten eines gewissen Zeitraums. Die Datenübertagung via E-Mail kann Sicherheitslücken seitens der Betreiber aufweisen. Die App speichert in geöffnetem oder minimierten Zustand die GPS-Position des Smartphones. Diese wird zur Auswertung des Bewegungsprofils benötigt. In den Einstellungen der Anwendung oder durch Abschaltung der GPS-Funktion auf Ihrem Endgerät kann dieses Feature deaktiviert werden.</string>
+    <string name="privacy_policy_caption_maps">Google Maps</string>
+    <string name="privacy_policy_text_maps">Zur Darstellung des Bewegungsprofils wird Google Maps verwendet Es handelt sich hierbei um einen Dienst der Google LLC, 1600 Amphitheatre Parkway, Mountain View, CA 94043 USA, nachfolgend nur „Google“ genannt. Durch die Zertifizierung nach dem EU-US-Datenschutzschild („EU-US Privacy Shield“) garantiert Google, dass die Datenschutzvorgaben der EU auch bei der Verarbeitung von Daten in den USA eingehalten werden. Um die Darstellung bestimmter Schriften in unserem Internetauftritt zu ermöglichen, wird bei Aufruf unseres Internetauftritts eine Verbindung zu dem Google-Server in den USA aufgebaut. Sofern Sie die in unseren Internetauftritt eingebundene Komponente Google Maps aufrufen, speichert Google über Ihren Internet-Browser ein Cookie auf Ihrem Endgerät. Um Ihren Standort anzuzeigen werden Ihre Nutzereinstellungen und -daten verarbeitet. Hierbei können wir nicht ausschließen, dass Google Server in den USA einsetzt. Zudem erfolgt die Nutzung von Google Maps sowie der über Google Maps erlangten Informationen nach den Google-Nutzungsbedingungen <i>https://policies.google.com/</i></string>
+
+    <!--Text site notice-->
+    <string name="site_notice_header">Impressum</string>
+    <string name="site_notice_caption1">Informationen über den Anbieter</string>
+    <string name="site_notice_contact_name">Sabine Roth</string>
+    <string name="site_notice_contact_address">Wöhrdstraße 46, 93059 Regensburg</string>
+    <string name="site_notice_contact_mail">E-Mail: roth_sabine@outlook.de</string>
+    <string name="site_notice_caption2">Haftung für Inhalte</string>
+    <string name="site_notice_text">Für die Richtigkeit, Vollständigkeit und Aktualität der Inhalte wird keine Haftung übernommen. Nach §§ 8 bis 10 TMG ist der Dienstanbieter nicht verpflichtet, übermittelte oder gespeicherte fremde Informationen zu überwachen oder nach Umständen zu forschen, die auf eine rechtswidrige Tätigkeit hinweisen. Verpflichtungen zur Entfernung oder Sperrung der Nutzung von Informationen nach den allgemeinen Gesetzen bleiben hiervon unberührt. Eine diesbezügliche Haftung ist jedoch erst ab dem Zeitpunkt der Kenntnis einer konkreten Rechtsverletzung möglich. Der Nutzung von im Rahmen der Impressumspflicht veröffentlichten Kontaktdaten durch Dritte zur Übersendung von nicht ausdrücklich angeforderter Werbung und Informationsmaterialien wird hiermit ausdrücklich widersprochen. Das Verwenden oder Verbreiten der appeigenen Icons und Bilder ist untersagt.</string>
+
 
     <!--Text Notification/Toast-->
     <string name="notification_part1">Dein letzter Eintrag ist vom</string>
@@ -131,6 +149,10 @@
     <string name="key_intentSource">intentSource</string>
     <string name="key_home_value">home</string>
     <string name="key_popUp_value">popUp</string>
+    <string name="key_emergency">emergency</string>
+    <string name="key_site_notice">siteNotice</string>
+    <string name="key_privacy_policy">privacyPolicy</string>
+    <string name="key_called_activity">calledActivity</string>
 
     <!--String arrays-->
     <string-array name="sensivities_header">

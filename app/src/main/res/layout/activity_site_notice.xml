@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:fillViewport="true">
+
+
+    <LinearLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/site_notice_header"
+            style="@style/headerTextView"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/site_notice_caption1"
+            style="@style/normalText"
+            android:textStyle="bold"
+            android:layout_marginBottom="0dp"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/site_notice_contact_name"
+            style="@style/normalText"
+            android:layout_marginBottom="0dp"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/site_notice_contact_address"
+            style="@style/normalText"
+            android:layout_marginBottom="0dp"
+            android:layout_marginTop="0dp"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/site_notice_contact_mail"
+            style="@style/normalText"
+            android:layout_marginTop="0dp"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/site_notice_caption2"
+            style="@style/normalText"
+            android:textStyle="bold"
+            android:layout_marginBottom="0dp"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/site_notice_text"
+            style="@style/normalText"/>
+
+    </LinearLayout>
+</ScrollView>

@@ -27,10 +27,6 @@ public class GPSTracker extends AppCompatActivity{
     dataSource dataSource;
     DateTimePicker dateTimePicker;
 
-
-    //TODO: Warten bis man die genaue Position hat! Nicht eine ca. Position abspeichern! -> Accuracy
-
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

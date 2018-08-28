@@ -158,7 +158,7 @@ public class MapViewActivity extends AppCompatActivity implements OnMapReadyCall
                                                   int monthOfYear, int dayOfMonth) {
                                 // set day of month , month and year value in the edit text
                                 datePickerButton.setText(dayOfMonth + "." + (monthOfYear + 1) + "." + year);
-                                String newDate = dayOfMonth + "." + (monthOfYear + 1) + "." + year;
+                                String newDate = dateTimePicker.setDateFormat(dayOfMonth, (monthOfYear + 1),  year);
                                 Intent reloadIntent = new Intent(MapViewActivity.this, MapViewActivity.class);
                                 reloadIntent.putExtra(getResources().getString(R.string.key_date), newDate);
                                 MapViewActivity.this.finish();

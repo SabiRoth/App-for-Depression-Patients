@@ -202,7 +202,7 @@ public class CalendarActivityDaily extends AppCompatActivity implements AdapterV
                                           int monthOfYear, int dayOfMonth) {
                         // set day of month , month and year value in the edit text
                         datePickerButton.setText(dayOfMonth + "." + (monthOfYear + 1) + "." + year);
-                        String newDate = dayOfMonth + "." + (monthOfYear + 1) + "." + year;
+                        String newDate = dateTimePicker.setDateFormat(dayOfMonth, (monthOfYear + 1),  year);
                         Intent reloadIntent = new Intent(CalendarActivityDaily.this, CalendarActivityDaily.class);
                         reloadIntent.putExtra(getResources().getString(R.string.key_date), newDate);
                         CalendarActivityDaily.this.finish();

@@ -154,7 +154,7 @@ public class GraphActivityDaily extends AppCompatActivity {
                                           int monthOfYear, int dayOfMonth) {
                         // set day of month , month and year value in the edit text
                         datePickerButton.setText(dayOfMonth + "." + (monthOfYear + 1) + "." + year);
-                        String newDate = dayOfMonth + "." + (monthOfYear + 1) + "." + year;
+                        String newDate = dateTimePicker.setDateFormat(dayOfMonth, (monthOfYear + 1),  year);
                         Intent reloadIntent = new Intent(GraphActivityDaily.this, GraphActivityDaily.class);
                         reloadIntent.putExtra(getResources().getString(R.string.key_date), newDate);
                         GraphActivityDaily.this.finish();

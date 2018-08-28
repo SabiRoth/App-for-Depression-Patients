@@ -60,7 +60,7 @@
         </activity>
 
         <activity
-            android:name=".EmergencyActivity"
+            android:name=".Policy_Notice_EmergencyActivity"
             android:label="@string/emergency_activity_label">
         </activity>
 
