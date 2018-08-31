@@ -110,7 +110,25 @@ public class GraphActivityDaily extends AppCompatActivity implements AdapterView
                 graphView.setGraph(graph);
             }
 
-            if(scorePoints.length==0){
+            else if(scorePoints.length!=0 && activityPoints.length!=0){
+                Graph graph = new Graph.Builder()
+                        .setWorldCoordinates(-0.4, 4, -1, 6)
+                        .addLineGraph(scorePoints, getResources().getColor(R.color.colorPrimary))
+                        .addLineGraph(activityPoints, getResources().getColor(R.color.colorActivites))
+                        .setXLabels(xLabels)
+                        .setYTicks(new double[]{0, 1, 2, 3, 4, 5})
+                        .build();
+                GraphView graphView = findViewById(R.id.graph_view);
+                graphView.setGraph(graph);
+                TextView textView = findViewById(R.id.graph_view_label_symptom);
+                textView.setTextColor(getResources().getColor(R.color.colorPrimary));
+                textView.setText(contentIntent);
+                TextView textViewActivity = findViewById(R.id.graph_view_label_activity);
+                textViewActivity.setTextColor(getResources().getColor(R.color.colorActivites));
+                textViewActivity.setVisibility(View.VISIBLE);
+            }
+
+            else if(scorePoints.length==0){
                 Graph graph = new Graph.Builder()
                         .setWorldCoordinates(-0.4, 4, -1, 6)
                         .addLineGraph(activityPoints, getResources().getColor(R.color.colorActivites))
@@ -126,7 +144,7 @@ public class GraphActivityDaily extends AppCompatActivity implements AdapterView
                 textViewActivity.setVisibility(View.VISIBLE);
             }
 
-            if(activityPoints.length==0) {
+            else if(activityPoints.length==0) {
                 Graph graph = new Graph.Builder()
                         .setWorldCoordinates(-0.4, 4, -1, 6)
                         .addLineGraph(scorePoints, getResources().getColor(R.color.colorPrimary))
@@ -138,26 +156,9 @@ public class GraphActivityDaily extends AppCompatActivity implements AdapterView
                 TextView textView = findViewById(R.id.graph_view_label_symptom);
                 textView.setTextColor(getResources().getColor(R.color.colorPrimary));
                 textView.setText(contentIntent);
-            }
-
-            else{
-                Graph graph = new Graph.Builder()
-                        .setWorldCoordinates(-0.4, 4, -1, 6)
-                        .addLineGraph(scorePoints, getResources().getColor(R.color.colorPrimary))
-                        .addLineGraph(activityPoints, getResources().getColor(R.color.colorActivites))
-                        .setXLabels(xLabels)
-                        .setYTicks(new double[]{0, 1, 2, 3, 4, 5})
-                        .build();
-                GraphView graphView = findViewById(R.id.graph_view);
-                graphView.setGraph(graph);
-                TextView textView = findViewById(R.id.graph_view_label_symptom);
-                textView.setTextColor(getResources().getColor(R.color.colorPrimary));
-                textView.setText(contentIntent);
-                TextView textViewActivity = findViewById(R.id.graph_view_label_activity);
-                textViewActivity.setTextColor(getResources().getColor(R.color.colorActivites));
-                textViewActivity.setVisibility(View.VISIBLE);
             }
         }
+
         else{
             Point[] pointString;
             ArrayList<String[]> currentMainSymptomData = dataSource.getMainSymptomScoresViaNameAndDate(contentIntent, pickedDate);
@@ -265,6 +266,7 @@ public class GraphActivityDaily extends AppCompatActivity implements AdapterView
                         String newDate = dateTimePicker.setDateFormat(dayOfMonth, (monthOfYear + 1),  year);
                         Intent reloadIntent = new Intent(GraphActivityDaily.this, GraphActivityDaily.class);
                         reloadIntent.putExtra(getResources().getString(R.string.key_date), newDate);
+                        reloadIntent.putExtra(getResources().getString(R.string.key_spinner_graph), getIntent().getStringExtra(getResources().getString(R.string.key_spinner_graph)));
                         GraphActivityDaily.this.finish();
                         startActivity(reloadIntent);
                     }

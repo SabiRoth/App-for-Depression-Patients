@@ -133,4 +133,11 @@ public class HomeActivity extends AppCompatActivity {
     public void onPause() {
         super.onPause();
     }
+
+
+    @Override
+    public void onBackPressed(){
+
+        //APP MINIMIEREN
+    }
 }
