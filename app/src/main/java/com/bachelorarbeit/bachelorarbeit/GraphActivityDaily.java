@@ -37,7 +37,6 @@ public class GraphActivityDaily extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_graph);
         spinnerList = getResources().getStringArray(R.array.spinner_view_daily);
-        spinnerListGraph = getResources().getStringArray(R.array.spinner_graph);
         graph = (GraphView) findViewById(R.id.graph);
         datePickerButton = (Button) findViewById(R.id.button_date_picker_calendar);
         spinnerView = (Spinner) findViewById(R.id.spinner);

@@ -94,7 +94,8 @@ public class HomeActivity extends AppCompatActivity {
     }
 
     private void clickOverviewGraph(){
-        Intent i = new Intent(this, GraphActivityDaily.class);
+        Intent i = new Intent(this, GraphActivityDaily_new.class);
+        i.putExtra(getResources().getString(R.string.key_spinner_graph), "Übersicht");
         startActivity(i);
     }
 

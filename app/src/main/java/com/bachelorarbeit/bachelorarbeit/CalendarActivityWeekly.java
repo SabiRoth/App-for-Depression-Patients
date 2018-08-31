@@ -39,7 +39,7 @@ public class CalendarActivityWeekly  extends AppCompatActivity implements Adapte
         setContentView(R.layout.activity_calendar_weekly);
         dataSource = new dataSource(this);
         dataSource.open();
-        String mainSymptomsString  = dataSource.getSettingViaName(getResources().getString(R.string.key_mainSymptomsinSettingsTable));
+        String mainSymptomsString  = dataSource.getSettingViaName(getResources().getString(R.string.key_mainSymptoms));
         if(mainSymptomsString==null || mainSymptomsString.equals("")){
             mainSymptomsArray = new String[0];
         }

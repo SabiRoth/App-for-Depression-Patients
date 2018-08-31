@@ -71,7 +71,7 @@ public class ScoreActivity extends AppCompatActivity {
     }
 
     private void getMainSymptoms(){
-        String mainSymptomsString  = dataSource.getSettingViaName(getResources().getString(R.string.key_mainSymptomsinSettingsTable));
+        String mainSymptomsString  = dataSource.getSettingViaName(getResources().getString(R.string.key_mainSymptoms));
         if(mainSymptomsString==null || mainSymptomsString.equals("")) {
             mainSymptomsArray = new String[0];
             TextView hint = (TextView)findViewById(R.id.textView_score_hint);

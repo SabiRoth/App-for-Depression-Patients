@@ -129,9 +129,10 @@
     <string name="pop_up_start_part3">ein!</string>
     <string name="pop_up_mail_already_entry">Aktuell:</string>
 
+    <string name="spinner_overview">Übersicht</string>
+
     <!--Keys-->
-    <string name="key_score">score</string>
-    <string name="key_mainSymptomsinSettingsTable">mainSymptoms</string>
+    <string name="key_score">Gesamtscore</string>
     <string name="key_date">date</string>
     <string name="key_selectedActivities">selectedActivities</string>
     <string name="key_sensitivitiesString">sensitivitiesString</string>
@@ -153,6 +154,7 @@
     <string name="key_site_notice">siteNotice</string>
     <string name="key_privacy_policy">privacyPolicy</string>
     <string name="key_called_activity">calledActivity</string>
+    <string name="key_spinner_graph">spinnerGraph</string>
 
     <!--String arrays-->
     <string-array name="sensivities_header">
@@ -252,9 +254,5 @@
         <item>Tagesansicht</item>
     </string-array>
 
-    <string-array name="spinner_graph">
-        <item>Nur Befindlichkeiten</item>
-        <item>Befindlichkeiten und Aktivitäten</item>
-    </string-array>
 
 </resources>

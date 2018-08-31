@@ -197,7 +197,7 @@ public class dataSource {
             if (cursor.getCount() > 0) {
                 while (cursor.moveToNext()) {
                     if (((cursor.getString(cursor.getColumnIndex(dbHelper.COLUMN_SENSIBILITIES))).equals(name)) && ((cursor.getString(cursor.getColumnIndex(dbHelper.COLUMN_DATE))).equals(date))) {
-                        String[] temp = {cursor.getString(cursor.getColumnIndex(dbHelper.COLUMN_SENSIBILITIES)), cursor.getString(cursor.getColumnIndex(dbHelper.COLUMN_SCORE))};
+                        String[] temp = {cursor.getString(cursor.getColumnIndex(dbHelper.COLUMN_SENSIBILITIES)), cursor.getString(cursor.getColumnIndex(dbHelper.COLUMN_SCORE)), cursor.getString(cursor.getColumnIndex(dbHelper.COLUMN_TIME))};
                         result.add(temp);
                     }
                 }

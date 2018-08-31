@@ -74,18 +74,23 @@
         </activity>
 
         <activity
-            android:name=".CalendarActivityDaily"
-            android:label="@string/calendar_activity_daily_label">
-        </activity>
-
-        <activity
             android:name=".CalendarActivityWeekly"
             android:label="@string/calendar_activity_weekly_label">
         </activity>
 
         <activity
+            android:name=".CalendarActivityDaily"
+            android:label="@string/calendar_activity_daily_label">
+        </activity>
+
+        <activity
             android:name=".ScoreActivity"
             android:label="@string/score_activity_label">
+        </activity>
+
+        <activity
+            android:name=".GraphActivityDaily_new"
+            android:label="@string/graph_activity_label">
         </activity>
 
         <service
