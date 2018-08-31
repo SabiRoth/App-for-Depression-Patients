@@ -40,11 +40,6 @@
         </activity>
 
         <activity
-            android:name=".GraphActivityDaily"
-            android:label="@string/graph_activity_label">
-        </activity>
-
-        <activity
             android:name=".PlacesActivity"
             android:label="@string/places_activity_label">
         </activity>
@@ -89,7 +84,7 @@
         </activity>
 
         <activity
-            android:name=".GraphActivityDaily_new"
+            android:name=".GraphActivityDaily"
             android:label="@string/graph_activity_label">
         </activity>
 
