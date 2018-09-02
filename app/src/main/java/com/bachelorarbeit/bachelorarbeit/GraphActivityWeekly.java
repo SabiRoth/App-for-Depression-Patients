@@ -33,6 +33,7 @@ public class GraphActivityWeekly extends AppCompatActivity implements AdapterVie
     String[] mainSymptoms;
     final int DAYS_OF_WEEK = 7;
     String newDate;
+    String contentIntent;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -47,6 +48,7 @@ public class GraphActivityWeekly extends AppCompatActivity implements AdapterVie
         symptomListInDb = new ArrayList<>();
         dataSource = new dataSource(this);
         dataSource.open();
+        contentIntent = getIntent().getStringExtra(getResources().getString(R.string.key_spinner_graph));
         mainSymptoms = (getResources().getString(R.string.key_score) + "," + dataSource.getSettingViaName(getResources().getString(R.string.key_mainSymptoms))).split(",");
         newDate = dateTimePicker.getCurrentDate();
         createGraph();
@@ -54,7 +56,6 @@ public class GraphActivityWeekly extends AppCompatActivity implements AdapterVie
     }
 
     private void createGraph(){
-        String contentIntent = getIntent().getStringExtra(getResources().getString(R.string.key_spinner_graph));
         Calendar calendar = Calendar.getInstance();
         Point[] activityPoints, scorePoints;
         Label[] xLabels = new Label[7];
@@ -106,7 +107,7 @@ public class GraphActivityWeekly extends AppCompatActivity implements AdapterVie
         for (int k = 0; k < scoreList.size(); k++) {
             scorePoints[k] = scoreList.get(k);
         }
-        double[] yTicks = new double[]{0, 1, 2, 3, 4, 5};
+        double[] yTicks = new double[]{1, 2, 3, 4, 5};
 
         if(scorePoints.length==0 && activityPoints.length==0) {
             TextView textView = (TextView) findViewById(R.id.noDataTextView);
@@ -193,10 +194,18 @@ public class GraphActivityWeekly extends AppCompatActivity implements AdapterVie
 
     private void initializeSpinner(){
         String[] allSpinnerEntries = new String[mainSymptoms.length+1];
-        allSpinnerEntries[0] = getResources().getString(R.string.spinner_overview);
-        for (int i = 0; i < mainSymptoms.length; i++) {
-            allSpinnerEntries[i+1] = mainSymptoms[i];
+        int overviewNumber = 0;
+        allSpinnerEntries[0] = contentIntent;
+        for(int i = 0; i < mainSymptoms.length; i++) {
+            allSpinnerEntries[i + 1] = mainSymptoms[i];
+            if (mainSymptoms[i].equals(contentIntent)) {
+                overviewNumber = i+1;
+            }
         }
+        if(!(contentIntent.equals(getResources().getString(R.string.spinner_overview)))){
+            allSpinnerEntries[overviewNumber] = getResources().getString(R.string.spinner_overview);
+        }
+
         ArrayAdapter<String> spinnerViewAdapter = new ArrayAdapter<String>(this, R.layout.listentry_spinner, spinnerList);
         spinnerView.setAdapter(spinnerViewAdapter);
         spinnerView.setOnItemSelectedListener(this);
@@ -229,6 +238,8 @@ public class GraphActivityWeekly extends AppCompatActivity implements AdapterVie
         }
     }
 
+
+
     @Override
     public void onNothingSelected(AdapterView<?> arg0) {
     }
@@ -239,5 +250,4 @@ public class GraphActivityWeekly extends AppCompatActivity implements AdapterVie
     public void onBackPressed(){
         this.finish();
     }
-
 }

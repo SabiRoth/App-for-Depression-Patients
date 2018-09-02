@@ -30,6 +30,7 @@ public class GraphActivityDaily extends AppCompatActivity implements AdapterView
     int check = 0;
     dataSource dataSource;
     String[] mainSymptoms;
+    String contentIntent;
 
 
 
@@ -51,6 +52,7 @@ public class GraphActivityDaily extends AppCompatActivity implements AdapterView
             pickedDate = dateTimePicker.getCurrentDate();
         }
         datePickerButton.setText(pickedDate);
+        contentIntent = getIntent().getStringExtra(getResources().getString(R.string.key_spinner_graph));
         initializeClickListenerForDatePickerButton();
         createGraph();
         initializeSpinner();
@@ -58,7 +60,7 @@ public class GraphActivityDaily extends AppCompatActivity implements AdapterView
 
 
     private void createGraph(){
-        String contentIntent = getIntent().getStringExtra(getResources().getString(R.string.key_spinner_graph));
+        double[] yTicks = new double[]{1, 2, 3, 4, 5};
         Label[] xLabels = {new Label(1, getResources().getString(R.string.morning)), new Label(2, getResources().getString(R.string.midday)), new Label(3, getResources().getString(R.string.evening))};
 
         if(contentIntent.equals("Übersicht")){
@@ -98,7 +100,7 @@ public class GraphActivityDaily extends AppCompatActivity implements AdapterView
 
             ArrayList<String[]> scoreEntries = dataSource.getMainSymptomScoresViaNameAndDate(getResources().getString(R.string.key_score), pickedDate);
             scorePoints = getPoints(scoreEntries);
-            double[] yTicks = new double[]{0, 1, 2, 3, 4, 5};
+
 
             if(scorePoints.length==0 && activityPoints.length==0){
                 TextView textView = (TextView)findViewById(R.id.noDataTextView);
@@ -189,7 +191,7 @@ public class GraphActivityDaily extends AppCompatActivity implements AdapterView
                             .setWorldCoordinates(-0.4, 4, -1, 6)
                             .addLineGraph(pointString, getResources().getColor(R.color.colorPrimary))
                             .setXLabels(xLabels)
-                            .setYTicks(new double[]{0, 1, 2, 3, 4, 5})
+                            .setYTicks(yTicks)
                             .build();
                     GraphView graphView = findViewById(R.id.graph_view);
                     graphView.setGraph(graph);
@@ -205,7 +207,7 @@ public class GraphActivityDaily extends AppCompatActivity implements AdapterView
                 Graph graph = new Graph.Builder()
                         .setWorldCoordinates(-0.4, 4, -1, 6)
                         .setXLabels(xLabels)
-                        .setYTicks(new double[] {0, 1, 2, 3, 4, 5})
+                        .setYTicks(yTicks)
                         .build();
                 GraphView graphView = findViewById(R.id.graph_view);
                 graphView.setGraph(graph);
@@ -298,9 +300,16 @@ public class GraphActivityDaily extends AppCompatActivity implements AdapterView
 
     private void initializeSpinner(){
         String[] allSpinnerEntries = new String[mainSymptoms.length+1];
-        allSpinnerEntries[0] = getResources().getString(R.string.spinner_overview);
-        for (int i = 0; i < mainSymptoms.length; i++) {
-            allSpinnerEntries[i+1] = mainSymptoms[i];
+        int overviewNumber = 0;
+        allSpinnerEntries[0] = contentIntent;
+        for(int i = 0; i < mainSymptoms.length; i++) {
+            allSpinnerEntries[i + 1] = mainSymptoms[i];
+            if (mainSymptoms[i].equals(contentIntent)) {
+                overviewNumber = i+1;
+            }
+        }
+        if(!(contentIntent.equals(getResources().getString(R.string.spinner_overview)))){
+            allSpinnerEntries[overviewNumber] = getResources().getString(R.string.spinner_overview);
         }
         ArrayAdapter<String> spinnerAdapter = new ArrayAdapter<String>(this, R.layout.listentry_spinner, spinnerList);
         spinnerView.setAdapter(spinnerAdapter);
