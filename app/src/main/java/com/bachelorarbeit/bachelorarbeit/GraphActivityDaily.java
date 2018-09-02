@@ -344,8 +344,6 @@ public class GraphActivityDaily extends AppCompatActivity implements AdapterView
     public void onNothingSelected(AdapterView<?> arg0) {
     }
 
-
-
     @Override
     public void onBackPressed(){
         this.finish();

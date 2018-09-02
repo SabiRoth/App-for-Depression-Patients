@@ -11,6 +11,7 @@ import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.ListView;
 import android.widget.Spinner;
+import android.widget.TextView;
 
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -109,50 +110,68 @@ public class CalendarActivityDaily extends AppCompatActivity implements AdapterV
             final ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,
                     R.layout.listentry_simple_listview, morningEntriesSensivities);
             listViewMorningSensivities.setAdapter(adapter);
+            listViewMorningSensivities.setVisibility(View.VISIBLE);
         }
         if(morningEntriesActivities.size()!=0) {
             final ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,
                     R.layout.listentry_calendar_activities, morningEntriesActivities);
             listViewMorningActivities.setAdapter(adapter);
+            listViewMorningActivities.setVisibility(View.VISIBLE);
         }
         if(morningEntriesPlaces.size()!=0) {
             final ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,
                     R.layout.listentry_calendar_places, morningEntriesPlaces);
             listViewMorningPlaces.setAdapter(adapter);
+            listViewMorningPlaces.setVisibility(View.VISIBLE);
         }
-
-
         if(middayEntriesSensivities.size()!=0) {
             final ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,
                     R.layout.listentry_simple_listview, middayEntriesSensivities);
             listViewMiddaySensivities.setAdapter(adapter);
+            listViewMiddaySensivities.setVisibility(View.VISIBLE);
         }
         if(middayEntriesActivities.size()!=0) {
             final ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,
                     R.layout.listentry_calendar_activities, middayEntriesActivities);
             listViewMiddayActivities.setAdapter(adapter);
+            listViewMiddayActivities.setVisibility(View.VISIBLE);
         }
         if(middayEntriesPlaces.size()!=0) {
             final ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,
                     R.layout.listentry_calendar_places, middayEntriesPlaces);
             listViewMiddayPlaces.setAdapter(adapter);
+            listViewMiddayPlaces.setVisibility(View.VISIBLE);
         }
-
-
         if(eveningEntriesSensivities.size()!=0) {
             final ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,
                     R.layout.listentry_simple_listview, eveningEntriesSensivities);
             listViewEveningSensivities.setAdapter(adapter);
+            listViewEveningSensivities.setVisibility(View.VISIBLE);
         }
         if(eveningEntriesActivities.size()!=0) {
             final ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,
                     R.layout.listentry_calendar_activities, eveningEntriesActivities);
             listViewEveningActivities.setAdapter(adapter);
+            listViewEveningActivities.setVisibility(View.VISIBLE);
         }
         if(eveningEntriesPlaces.size()!=0) {
             final ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,
                     R.layout.listentry_calendar_places, eveningEntriesPlaces);
             listViewEveningPlaces.setAdapter(adapter);
+            listViewEveningPlaces.setVisibility(View.VISIBLE);
+        }
+
+        if(morningEntriesSensivities.size()==0 && morningEntriesActivities.size()==0 && morningEntriesPlaces.size() ==0){
+            TextView noMorningEntry = (TextView) findViewById(R.id.noMorningEntry);
+            noMorningEntry.setVisibility(View.VISIBLE);
+        }
+        if(middayEntriesSensivities.size() == 0 && middayEntriesActivities.size() == 0 && middayEntriesPlaces.size() == 0){
+            TextView noMiddayEntry = (TextView) findViewById(R.id.noMiddayEntry);
+            noMiddayEntry.setVisibility(View.VISIBLE);
+        }
+        if(eveningEntriesSensivities.size() == 0 && eveningEntriesActivities.size() == 0 && eveningEntriesPlaces.size() == 0){
+            TextView noEveningEntry = (TextView)findViewById(R.id.noEveningEntry);
+            noEveningEntry.setVisibility(View.VISIBLE);
         }
     }
 

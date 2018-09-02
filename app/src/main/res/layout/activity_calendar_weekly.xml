@@ -4,7 +4,8 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
-    android:fillViewport="true">
+    android:fillViewport="true"
+    android:layout_marginStart="10dp">
 
     <LinearLayout
         xmlns:android="http://schemas.android.com/apk/res/android"
@@ -13,52 +14,7 @@
         android:orientation="vertical">
 
         <include layout="@layout/header_calendar_graph"/>
-
         <include layout="@layout/listentry_calendar_weekly"/>
 
-        <!--
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Montag"
-            style="@style/headerTextView"/>
-
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Dienstag"
-            style="@style/headerTextView"/>
-
-
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Mittwoch"
-            style="@style/headerTextView"/>
-
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Donnerstag"
-            style="@style/headerTextView"/>
-
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Freitag"
-            style="@style/headerTextView"/>
-
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Samstag"
-            style="@style/headerTextView"/>
-
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Sonntag"
-            style="@style/headerTextView"/>
--->
     </LinearLayout>
 </ScrollView>

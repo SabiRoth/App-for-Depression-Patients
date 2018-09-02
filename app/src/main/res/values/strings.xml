@@ -44,6 +44,7 @@
     <string name="calendar_daily_morning_textview">Morgen</string>
     <string name="calendar_daily_midday_textview">Mittag</string>
     <string name="calendar_daily_evening_textview">Abend</string>
+    <string name="separation">__  __  __  __  __  __  __  __  __  __  __  __  __</string>
 
     <!--TextViews Movement Profile-->
     <string name="movementProfile_textview">Bewegungsprofil</string>

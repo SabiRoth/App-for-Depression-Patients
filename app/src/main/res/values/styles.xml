@@ -28,11 +28,12 @@
 
     <style name="headerTextView" parent="android:Widget.TextView">
         <item name="android:textColor">@color/colorHeadings</item>
-        <item name="android:textSize">24sp</item>
+        <item name="android:textSize">22sp</item>
         <item name="android:layout_marginBottom">10dp</item>
         <item name="android:layout_marginStart">15dp</item>
         <item name="android:layout_marginTop">25dp</item>
         <item name="android:layout_gravity">start</item>
+        <item name="android:textStyle">bold</item>
     </style>
 
     <style name="normalText" parent="android:Widget.TextView">
@@ -65,10 +66,11 @@
     <style name="listViewCalendar">
         <item name="android:layout_marginStart">15dp</item>
         <item name="android:layout_marginEnd">15dp</item>
-        <item name="android:layout_marginBottom">20dp</item>
+        <item name="android:layout_marginBottom">15dp</item>
         <item name="android:layout_gravity">start</item>
         <item name="android:dividerHeight">0dp</item>
         <item name="android:divider">@null</item>
+        <item name="android:visibility">gone</item>
     </style>
 
     <style name="hintTextView">
@@ -76,6 +78,13 @@
         <item name="android:textSize">18sp</item>
         <item name="android:layout_margin">15dp</item>
         <item name="android:visibility">gone</item>
+        <item name="android:textStyle">italic</item>
+    </style>
+
+    <style name="hintTextViewCalendar">
+        <item name="android:textColor">@color/hintColor</item>
+        <item name="android:textSize">20sp</item>
+        <item name="android:layout_margin">15dp</item>
         <item name="android:textStyle">italic</item>
     </style>
 
@@ -130,5 +139,12 @@
         <item name="android:layout_marginTop">10dp</item>
         <item name="android:layout_marginEnd">15dp</item>
         <item name="android:gravity">center_horizontal</item>
+    </style>
+
+    <style name="separationTextView">
+        <item name="android:layout_marginBottom">5dp</item>
+        <item name="android:layout_marginStart">15dp</item>
+        <item name="android:gravity">start</item>
+        <item name="android:text">@string/separation</item>
     </style>
 </resources>

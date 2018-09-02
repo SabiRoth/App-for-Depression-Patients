@@ -3,6 +3,7 @@ package com.bachelorarbeit.bachelorarbeit;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.view.Gravity;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -77,6 +78,7 @@ public class CalendarActivityWeekly  extends AppCompatActivity implements Adapte
             setHeaderTextViewStyle(header_textView);
             layoutCalendarWeekly.addView(header_textView);
             TextView score_textView = new TextView(this);
+            setContentTextViewStyle(score_textView);
 
             ArrayList<String[]> scoresOfDate = dataSource.getMainSymptomScoresViaNameAndDate(getResources().getString(R.string.key_score), newDate);
             if (scoresOfDate.size()!=0) {
@@ -85,8 +87,9 @@ public class CalendarActivityWeekly  extends AppCompatActivity implements Adapte
             }
             else{
                 score_textView.setText(getResources().getString(R.string.noEntry));
+                score_textView.setTextAppearance(getApplicationContext(), R.style.hintTextViewCalendar);
             }
-            setContentTextViewStyle(score_textView);
+
             layoutCalendarWeekly.addView(score_textView);
 
             if(mainSymptomsArray.length!=0) {
@@ -107,8 +110,21 @@ public class CalendarActivityWeekly  extends AppCompatActivity implements Adapte
 
                 }
             }
-           newDate = dateTimePicker.getTheDayBefore(newDate);
 
+            TextView line_textView = new TextView(this);
+            line_textView.setText(getResources().getString(R.string.separation));
+            LinearLayout.LayoutParams paramsForTextView = new LinearLayout.LayoutParams(
+                    LinearLayout.LayoutParams.WRAP_CONTENT,
+                    LinearLayout.LayoutParams.WRAP_CONTENT
+            );
+            paramsForTextView.setMargins(15, 0, 0, 5);
+            if(i ==DAYS_OF_WEEK-1) {
+                line_textView.setText("");
+            }
+            line_textView.setLayoutParams(paramsForTextView);
+            layoutCalendarWeekly.addView(line_textView);
+
+            newDate = dateTimePicker.getTheDayBefore(newDate);
         }
     }
 
