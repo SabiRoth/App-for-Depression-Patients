@@ -104,7 +104,11 @@ public class DateTimePicker extends Calendar {
         Integer currentDayInt = Integer.parseInt(latestDate.substring(0,2));
         if(currentDayInt>1) {
             currentDayInt -= 1;
-            return currentDayInt.toString() + getCurrentDate().substring(2, getCurrentDate().length());
+            String currentDayString = currentDayInt.toString(currentDayInt);
+            if(currentDayString.length()==1){
+                currentDayString = "0" + currentDayString;
+            }
+            return currentDayString + getCurrentDate().substring(2, getCurrentDate().length());
         }
         else{
             Integer currentMonthInt = Integer.parseInt(getCurrentDate().substring(3,5))-1;

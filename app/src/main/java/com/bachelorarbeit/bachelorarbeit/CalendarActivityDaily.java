@@ -2,22 +2,18 @@ package com.bachelorarbeit.bachelorarbeit;
 
 import android.app.DatePickerDialog;
 import android.content.Intent;
-import android.database.DataSetObserver;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
-import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.ListView;
 import android.widget.Spinner;
-import android.widget.SpinnerAdapter;
 
 import java.util.ArrayList;
 import java.util.Calendar;
-import java.util.List;
 
 public class CalendarActivityDaily extends AppCompatActivity implements AdapterView.OnItemSelectedListener{
 
@@ -171,7 +167,7 @@ public class CalendarActivityDaily extends AppCompatActivity implements AdapterV
     @Override
     public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
         if(++check > 1) {
-            if (parent.getItemAtPosition(position).toString().equals("Wochenansicht")) {
+            if (parent.getItemAtPosition(position).toString().equals(getResources().getString(R.string.key_weekView))) {
                 Intent i = new Intent(getApplicationContext(), CalendarActivityWeekly.class);
                 this.finish();
                 startActivity(i);

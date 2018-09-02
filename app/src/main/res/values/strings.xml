@@ -113,9 +113,11 @@
     <string name="no_entry_selected">Gib eine Aktivität ein oder wähle aus der Liste.</string>
     <string name="missing_entry_score">Bitte alle Eingaben tätigen</string>
 
-    <!--Title Graph-->
-    <string name="title_movement">Bewegung</string>
-    <string name="title_sensitivity">Befindlichkeit</string>
+    <!--Graph-->
+    <string name="spinner_overview">Übersicht</string>
+    <string name="graph_activities">Aktivitäten</string>
+    <string name="graph_sameGraph">Übersichts- und Aktivitätengraph sind identisch</string>
+
 
     <!--Daytimes-->
     <string name="morning">Morgen</string>
@@ -129,7 +131,6 @@
     <string name="pop_up_start_part3">ein!</string>
     <string name="pop_up_mail_already_entry">Aktuell:</string>
 
-    <string name="spinner_overview">Übersicht</string>
 
     <!--Keys-->
     <string name="key_score">Gesamtscore</string>
@@ -155,6 +156,9 @@
     <string name="key_privacy_policy">privacyPolicy</string>
     <string name="key_called_activity">calledActivity</string>
     <string name="key_spinner_graph">spinnerGraph</string>
+    <string name="key_dayView">Tagesansicht</string>
+    <string name="key_weekView">Wochenansicht</string>
+
 
     <!--String arrays-->
     <string-array name="sensivities_header">

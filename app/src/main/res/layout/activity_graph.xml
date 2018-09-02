@@ -4,8 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:gravity="center_horizontal"
-   >
+    android:gravity="center_horizontal">
 
     <include
         layout="@layout/header_calendar_graph"/>
@@ -23,18 +22,34 @@
         android:weightSum="1"
         android:gravity="center_horizontal">
 
-
         <com.softmoore.android.graphlib.GraphView
             android:id="@+id/graph_view"
             android:layout_width="0dp"
-            android:layout_weight="0.8"
-            android:layout_height="200dp"
-            />
-
-
+            android:layout_weight="0.9"
+            android:layout_height="300dp"/>
     </LinearLayout>
 
 
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center_horizontal">
+
+        <TextView
+            android:id="@+id/graph_view_label_symptom"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            style="@style/graphTextView"/>
+
+        <TextView
+            android:id="@+id/graph_view_label_activity"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/graph_activities"
+            style="@style/graphTextView"
+            android:visibility="gone"/>
+    </LinearLayout>
 
     <TextView
         android:id="@+id/noDataTextView"
@@ -44,25 +59,5 @@
         style="@style/normalText"
         android:layout_gravity="center_horizontal"
         android:visibility="gone"/>
-
-<!--style-->
-    <TextView
-        android:id="@+id/graph_view_label_symptom"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:gravity="center_horizontal"
-        android:textStyle="bold"
-        android:layout_marginTop="15dp"/>
-
-
-    <TextView
-        android:id="@+id/graph_view_label_activity"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:gravity="center_horizontal"
-        android:textStyle="bold"
-        android:text="@string/activities_button"
-        android:visibility="gone"
-        android:layout_marginTop="15dp"/>
 
 </LinearLayout>

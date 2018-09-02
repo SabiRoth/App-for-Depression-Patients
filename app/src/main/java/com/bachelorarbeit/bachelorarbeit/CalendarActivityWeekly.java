@@ -1,6 +1,5 @@
 package com.bachelorarbeit.bachelorarbeit;
 
-import android.app.DatePickerDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -8,7 +7,6 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
-import android.widget.DatePicker;
 import android.widget.LinearLayout;
 import android.widget.Spinner;
 import android.widget.TextView;
@@ -57,8 +55,6 @@ public class CalendarActivityWeekly  extends AppCompatActivity implements Adapte
         if(pickedDate == null){
             pickedDate = dateTimePicker.getCurrentDate();
         }
-      //  datePickerButton.setText(pickedDate);
-        //initializeClickListenerForDatePickerButton();
         getWeekView();
     }
 
@@ -156,7 +152,7 @@ public class CalendarActivityWeekly  extends AppCompatActivity implements Adapte
     @Override
     public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
         if(++check > 1) {   //Source: https://stackoverflow.com/questions/13397933/android-spinner-avoid-onitemselected-calls-during-initialization
-            if (parent.getItemAtPosition(position).toString().equals("Tagesansicht")) {
+            if (parent.getItemAtPosition(position).toString().equals(getResources().getString(R.string.key_dayView))) {
                 Intent i = new Intent(getApplicationContext(), CalendarActivityDaily.class);
                 this.finish();
                 startActivity(i);
@@ -168,39 +164,6 @@ public class CalendarActivityWeekly  extends AppCompatActivity implements Adapte
     public void onNothingSelected(AdapterView<?> arg0) {
     }
 
-
-
-
-   /* private void initializeClickListenerForDatePickerButton(){
-        datePickerButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                // calender class's instance and get current date , month and year from calender
-                final Calendar c = Calendar.getInstance();
-                int mYear = c.get(Calendar.YEAR); // current year
-                int mMonth = c.get(Calendar.MONTH); // current month
-                int mDay = c.get(Calendar.DAY_OF_MONTH); // current day
-                // date picker dialog
-                DatePickerDialog datePickerDialog = new DatePickerDialog(CalendarActivityWeekly.this, new DatePickerDialog.OnDateSetListener() {
-
-                    @Override
-                    public void onDateSet(DatePicker view, int year,
-                                          int monthOfYear, int dayOfMonth) {
-                        // set day of month , month and year value in the edit text
-                        datePickerButton.setText(dayOfMonth + "." + (monthOfYear + 1) + "." + year);
-                        String newDate = dayOfMonth + "." + (monthOfYear + 1) + "." + year;
-                        Intent reloadIntent = new Intent(CalendarActivityWeekly.this, CalendarActivityDaily.class);
-                        reloadIntent.putExtra(getResources().getString(R.string.key_date), newDate);
-                        CalendarActivityWeekly.this.finish();
-                        startActivity(reloadIntent);
-                    }
-                }, mYear, mMonth, mDay);
-                datePickerDialog.show();
-            }
-        });
-
-    }
-    */
 
     @Override
     public void onBackPressed(){

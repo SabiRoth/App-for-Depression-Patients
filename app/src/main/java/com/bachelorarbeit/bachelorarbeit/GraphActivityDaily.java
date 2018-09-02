@@ -15,6 +15,7 @@ import android.widget.TextView;
 import com.softmoore.android.graphlib.*;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Calendar;
 
 public class GraphActivityDaily extends AppCompatActivity implements AdapterView.OnItemSelectedListener{
@@ -35,7 +36,7 @@ public class GraphActivityDaily extends AppCompatActivity implements AdapterView
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_graph_daily);
+        setContentView(R.layout.activity_graph);
         datePickerButton = (Button) findViewById(R.id.button_date_picker_calendar);
         spinnerList = getResources().getStringArray(R.array.spinner_view_daily);
         spinnerView = (Spinner) findViewById(R.id.spinner);
@@ -97,6 +98,7 @@ public class GraphActivityDaily extends AppCompatActivity implements AdapterView
 
             ArrayList<String[]> scoreEntries = dataSource.getMainSymptomScoresViaNameAndDate(getResources().getString(R.string.key_score), pickedDate);
             scorePoints = getPoints(scoreEntries);
+            double[] yTicks = new double[]{0, 1, 2, 3, 4, 5};
 
             if(scorePoints.length==0 && activityPoints.length==0){
                 TextView textView = (TextView)findViewById(R.id.noDataTextView);
@@ -104,7 +106,7 @@ public class GraphActivityDaily extends AppCompatActivity implements AdapterView
                 Graph graph = new Graph.Builder()
                         .setWorldCoordinates(-0.4, 4, -1, 6)
                         .setXLabels(xLabels)
-                        .setYTicks(new double[] {0, 1, 2, 3, 4, 5})
+                        .setYTicks(yTicks)
                         .build();
                 GraphView graphView = findViewById(R.id.graph_view);
                 graphView.setGraph(graph);
@@ -116,16 +118,33 @@ public class GraphActivityDaily extends AppCompatActivity implements AdapterView
                         .addLineGraph(scorePoints, getResources().getColor(R.color.colorPrimary))
                         .addLineGraph(activityPoints, getResources().getColor(R.color.colorActivites))
                         .setXLabels(xLabels)
-                        .setYTicks(new double[]{0, 1, 2, 3, 4, 5})
+                        .setYTicks(yTicks)
                         .build();
                 GraphView graphView = findViewById(R.id.graph_view);
                 graphView.setGraph(graph);
-                TextView textView = findViewById(R.id.graph_view_label_symptom);
-                textView.setTextColor(getResources().getColor(R.color.colorPrimary));
-                textView.setText(contentIntent);
+                TextView textViewSymptom = findViewById(R.id.graph_view_label_symptom);
+                textViewSymptom.setTextColor(getResources().getColor(R.color.colorPrimary));
+                textViewSymptom.setText(contentIntent);
                 TextView textViewActivity = findViewById(R.id.graph_view_label_activity);
                 textViewActivity.setTextColor(getResources().getColor(R.color.colorActivites));
                 textViewActivity.setVisibility(View.VISIBLE);
+
+                if(activityPoints.length==scorePoints.length) {
+                    boolean same = false;
+                    for (int t = 0; t < activityPoints.length; t++) {
+                        if(activityPoints[t].equals(scorePoints[t])){
+                            same = true;
+                        }
+                        else{
+                            same = false;
+                        }
+                    }
+                    if(same){
+                        TextView textViewSameGraph = (TextView)findViewById(R.id.noDataTextView);
+                        textViewSameGraph.setVisibility(View.VISIBLE);
+                        textViewSameGraph.setText(getResources().getString(R.string.graph_sameGraph));
+                    }
+                }
             }
 
             else if(scorePoints.length==0){
@@ -133,7 +152,7 @@ public class GraphActivityDaily extends AppCompatActivity implements AdapterView
                         .setWorldCoordinates(-0.4, 4, -1, 6)
                         .addLineGraph(activityPoints, getResources().getColor(R.color.colorActivites))
                         .setXLabels(xLabels)
-                        .setYTicks(new double[]{0, 1, 2, 3, 4, 5})
+                        .setYTicks(yTicks)
                         .build();
                 GraphView graphView = findViewById(R.id.graph_view);
                 graphView.setGraph(graph);
@@ -149,7 +168,7 @@ public class GraphActivityDaily extends AppCompatActivity implements AdapterView
                         .setWorldCoordinates(-0.4, 4, -1, 6)
                         .addLineGraph(scorePoints, getResources().getColor(R.color.colorPrimary))
                         .setXLabels(xLabels)
-                        .setYTicks(new double[]{0, 1, 2, 3, 4, 5})
+                        .setYTicks(yTicks)
                         .build();
                 GraphView graphView = findViewById(R.id.graph_view);
                 graphView.setGraph(graph);
@@ -285,6 +304,7 @@ public class GraphActivityDaily extends AppCompatActivity implements AdapterView
         }
         ArrayAdapter<String> spinnerAdapter = new ArrayAdapter<String>(this, R.layout.listentry_spinner, spinnerList);
         spinnerView.setAdapter(spinnerAdapter);
+        spinnerView.setOnItemSelectedListener(this);
         ArrayAdapter<String> spinnerGraphAdapter = new ArrayAdapter<String>(this, R.layout.listentry_spinner, allSpinnerEntries);
         spinnerGraph.setAdapter(spinnerGraphAdapter);
         spinnerGraph.setOnItemSelectedListener(this);
@@ -292,11 +312,22 @@ public class GraphActivityDaily extends AppCompatActivity implements AdapterView
 
     @Override
     public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-        if(++check > 1) {
-            Intent i = new Intent(getApplicationContext(), GraphActivityDaily.class);
-            i.putExtra(getResources().getString(R.string.key_spinner_graph), parent.getItemAtPosition(position).toString());
-            this.finish();
-            startActivity(i);
+        if(++check > 2) {
+            if(parent.getItemAtPosition(position).toString().equals(getResources().getString(R.string.key_dayView))){
+                return;
+            }
+            if(parent.getItemAtPosition(position).toString().equals(getResources().getString(R.string.key_weekView))){
+                Intent i = new Intent(getApplicationContext(), GraphActivityWeekly.class);
+                i.putExtra(getResources().getString(R.string.key_spinner_graph), getIntent().getStringExtra(getResources().getString(R.string.key_spinner_graph)));
+                this.finish();
+                startActivity(i);
+            }
+            else {
+                Intent i = new Intent(getApplicationContext(), GraphActivityDaily.class);
+                i.putExtra(getResources().getString(R.string.key_spinner_graph), parent.getItemAtPosition(position).toString());
+                this.finish();
+                startActivity(i);
+            }
         }
     }
 
