@@ -35,7 +35,7 @@ public class PopUp_MailRecipient extends DialogFragment {
         saveButton = dialogView.findViewById(R.id.saveButton_mail);
         dataSource = new dataSource(getContext());
         dataSource.open();
-        proofAlreadySaved();
+        showLastRecipient();
         builder.setView(dialogView);
         saveButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -53,12 +53,11 @@ public class PopUp_MailRecipient extends DialogFragment {
             CharSequence text = mailInput.getText().toString() +  " " + getResources().getString(R.string.toast_end);
             Toast.makeText(getContext(), text, Toast.LENGTH_LONG).show();
         }
-        //TODO: FRAGMENT AUSBLENDEN MÖGLICH?
         Intent i = new Intent(getActivity(), SettingsActivity.class);
         startActivity(i);
     }
 
-    private void proofAlreadySaved(){
+    private void showLastRecipient(){
         String recipient = dataSource.getSettingViaName(getResources().getString(R.string.key_mailRecipient));
         if(recipient != null){
             textView_recipient.setVisibility(View.VISIBLE);

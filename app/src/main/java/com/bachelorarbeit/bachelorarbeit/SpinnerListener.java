@@ -26,7 +26,5 @@ public class SpinnerListener extends AppCompatActivity implements AdapterView.On
 
     @Override
     public void onNothingSelected(AdapterView<?> arg0) {
-        // TODO Auto-generated method stub
     }
-
 }

@@ -14,6 +14,7 @@
     <string name="end_button">Abschließen</string>
     <string name="input_button">Zur Eingabe</string>
     <string name="close_button">Schließen</string>
+    <string name="ok_button">Ok</string>
 
     <!-- TextViews score-->
     <string name="totalScore">Wie geht es dir?</string>
@@ -131,6 +132,7 @@
     <string name="pop_up_start_part2">Uhr. Gib deine Befindlichkeit und deine Aktivitäten von heute</string>
     <string name="pop_up_start_part3">ein!</string>
     <string name="pop_up_mail_already_entry">Aktuell:</string>
+    <string name="pop_up_restart">Zum Deaktivieren der GPS-Aufzeichnung bitte die App neu starten.</string>
 
 
     <!--Keys-->
@@ -159,6 +161,7 @@
     <string name="key_spinner_graph">spinnerGraph</string>
     <string name="key_dayView">Tagesansicht</string>
     <string name="key_weekView">Wochenansicht</string>
+    <string name="key_popUp_restart">popUpRestart</string>
 
 
     <!--String arrays-->

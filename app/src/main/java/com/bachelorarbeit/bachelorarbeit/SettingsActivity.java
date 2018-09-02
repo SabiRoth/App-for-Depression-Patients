@@ -96,7 +96,9 @@ public class SettingsActivity extends AppCompatActivity {
 
     private void deactivateTracking(){
         dataSource.createSettingsEntry(getResources().getString(R.string.key_tracking_settings), getResources().getString(R.string.key_deactivated));
-        //TODO tracking deaktivieren
+        FragmentManager fm = getSupportFragmentManager();
+        PopUp_Restart popUp_restart = PopUp_Restart.newInstance();
+        popUp_restart.show(fm, getResources().getString(R.string.key_popUp_restart));
     }
 
     private void activatePush(){

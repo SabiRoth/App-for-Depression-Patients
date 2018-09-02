@@ -17,9 +17,6 @@ import java.util.Arrays;
 
 public class PopUp_MainSymptoms extends DialogFragment {
 
-
-    //TODO: Aus DB Werte holen und anzeigen (als Hint oder Textview mit ändern-Funktion)
-
     EditText input1, input2, input3;
     TextView textView_mainSymptoms;
     Button saveButton;
@@ -44,7 +41,7 @@ public class PopUp_MainSymptoms extends DialogFragment {
         builder.setView(dialogView);
         dataSource = new dataSource(getContext());
         dataSource.open();
-        proofAlreadySaved();
+        showLastMainSymptoms();
         saveButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -76,7 +73,7 @@ public class PopUp_MainSymptoms extends DialogFragment {
 
     }
 
-    private void proofAlreadySaved(){
+    private void showLastMainSymptoms(){
         String mainSymptomsString = dataSource.getSettingViaName(getResources().getString(R.string.key_mainSymptoms));
         if(mainSymptomsString==null || mainSymptomsString.equals("")) {
             return;

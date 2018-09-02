@@ -87,31 +87,11 @@ public class GPSTracker extends AppCompatActivity{
         return bestLocation;
     }
 
-   /* private void printSaveLocation(Location l) {
-        TextView tv_longitude = (TextView)findViewById(R.id.longitude);
-        TextView tv_latitude = (TextView)findViewById(R.id.latidude);
-
-
-        tv_longitude.setText(String.valueOf(l.getLatitude()));
-        tv_latitude.setText(String.valueOf(l.getLongitude()));
-
-        try {
-            String temp = String.valueOf(l.getTime()) + ":" + String.valueOf(l.getLatitude()) + "," + String.valueOf(l.getLongitude() + "");
-            bOut.write(temp.getBytes());
-        }
-         catch (IOException e) {
-            // TODO Auto-generated catch block
-            e.printStackTrace();
-        }
-    }
-*/
-
     private void locationInDB(Location l){
         dataSource.open();
         String[] lastMovementEntry = dataSource.getLastMovementEntry(dateTimePicker.getCurrentDate());
-        //erst ab dritter Nachkommastelle "wirklich" eine Bewegung drin TODO Ändern zu 6!
         if(lastMovementEntry!=null) {
-            if (lastMovementEntry[1].substring(0, 7).equals((String.valueOf(l.getLongitude())).substring(0, 7)) || lastMovementEntry[2].substring(0, 7).equals((String.valueOf(l.getLatitude())).substring(0, 7))) {
+            if (lastMovementEntry[1].substring(0, 7).equals((String.valueOf(l.getLongitude())).substring(0, 7)) && lastMovementEntry[2].substring(0, 7).equals((String.valueOf(l.getLatitude())).substring(0, 7))) {
                 return;
             }
         }
