@@ -270,7 +270,7 @@ public class dataSource {
     }
 
 
-    private void deleteSettingsEntry(String name){
+    public void deleteSettingsEntry(String name){
         Cursor cursor = database.query(dbHelper.TABLE_SETTINGS, columnsSettings, null, null, null, null, null);
         if(cursor!=null){
             if(cursor.getCount()>0){

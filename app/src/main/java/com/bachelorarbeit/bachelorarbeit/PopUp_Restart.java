@@ -13,8 +13,7 @@ public class PopUp_Restart extends DialogFragment {
 
 
     public static PopUp_Restart newInstance(){
-        PopUp_Restart popUp_restart = new PopUp_Restart();
-        return popUp_restart;
+        return new PopUp_Restart();
     }
 
     @Override
@@ -23,8 +22,7 @@ public class PopUp_Restart extends DialogFragment {
         builder.setMessage(getResources().getString(R.string.pop_up_restart))
                 .setPositiveButton(getResources().getString(R.string.ok_button), new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int id) {
-                        Intent i = new Intent(getActivity(), SettingsActivity.class);
-                        startActivity(i);
+                        getDialog().dismiss();
                     }
                 });
         return builder.create();

@@ -2,7 +2,6 @@ package com.bachelorarbeit.bachelorarbeit;
 
 import android.app.AlertDialog;
 import android.app.Dialog;
-import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.DialogFragment;
 import android.view.LayoutInflater;
@@ -20,11 +19,11 @@ public class PopUp_MainSymptoms extends DialogFragment {
     EditText input1, input2, input3;
     TextView textView_mainSymptoms;
     Button saveButton;
+    Button deleteButton;
     dataSource dataSource;
 
     public static PopUp_MainSymptoms newInstance(){
-        PopUp_MainSymptoms popUp_mainSymptoms = new PopUp_MainSymptoms();
-        return popUp_mainSymptoms;
+        return new PopUp_MainSymptoms();
     }
 
 
@@ -38,6 +37,7 @@ public class PopUp_MainSymptoms extends DialogFragment {
         input3 = dialogView.findViewById(R.id.input_main_symptoms3);
         textView_mainSymptoms = dialogView.findViewById(R.id.textView_mainSymptoms);
         saveButton = dialogView.findViewById(R.id.saveButton_main_symptoms);
+        deleteButton = dialogView.findViewById(R.id.deleteButton_main_symptoms);
         builder.setView(dialogView);
         dataSource = new dataSource(getContext());
         dataSource.open();
@@ -49,6 +49,12 @@ public class PopUp_MainSymptoms extends DialogFragment {
             }
         });
         return builder.create();
+    }
+
+    private void deleteEntry(){
+        dataSource.deleteSettingsEntry(getResources().getString(R.string.key_mainSymptoms));
+        Toast.makeText(getContext(), getResources().getString(R.string.toast_deleted), Toast.LENGTH_LONG).show();
+        this.dismiss();
     }
 
     private void saveInDb(){
@@ -68,19 +74,25 @@ public class PopUp_MainSymptoms extends DialogFragment {
         dataSource.createSettingsEntry(getResources().getString(R.string.key_mainSymptoms), inputsString.substring(1, inputsString.length()-1));
 
             Toast.makeText(getContext(), getResources().getString(R.string.toast), Toast.LENGTH_LONG).show();
-            Intent i = new Intent(getActivity(), SettingsActivity.class);
-            startActivity(i);
+            this.dismiss();
 
     }
 
     private void showLastMainSymptoms(){
         String mainSymptomsString = dataSource.getSettingViaName(getResources().getString(R.string.key_mainSymptoms));
         if(mainSymptomsString==null || mainSymptomsString.equals("")) {
-            return;
+            deleteButton.setVisibility(View.GONE);
         }
         else{
             textView_mainSymptoms.setVisibility(View.VISIBLE);
             textView_mainSymptoms.setText(getResources().getString(R.string.pop_up_mail_already_entry) + " " + mainSymptomsString);
+
+            deleteButton.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    deleteEntry();
+                }
+            });
         }
     }
 }

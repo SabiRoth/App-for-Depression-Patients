@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:layout_gravity="center_horizontal">
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/sendButtonStandard"
+        style="@style/saveButton"
+        android:layout_gravity="center_horizontal"
+        android:text="@string/pop_up_send_Standard"
+        android:layout_margin="15dp"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/TextView_send_alternative"
+        android:text="@string/pop_up_send_Alternative"
+        style="@style/normalText"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="25dp"/>
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/input_send"
+        android:inputType="textEmailAddress"
+        android:hint="@string/mail_edittext"
+        android:layout_marginStart="17dp"
+        android:layout_marginBottom="15dp"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/hinttext_sendMail"
+        android:text="@string/pop_up_send_hint"
+        style="@style/hintTextView"
+        android:visibility="gone"/>
+
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/sendButtonManual"
+        style="@style/saveButton"
+        android:layout_margin="15dp"
+        android:text="@string/send_button"/>
+
+</LinearLayout>

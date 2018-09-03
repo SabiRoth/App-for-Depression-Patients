@@ -15,6 +15,9 @@
     <string name="input_button">Zur Eingabe</string>
     <string name="close_button">Schließen</string>
     <string name="ok_button">Ok</string>
+    <string name="delete_button">Gespeicherte Eingaben löschen</string>
+    <string name="send_button">Senden</string>
+    <string name="sendEmail_button">Per E-Mail versenden</string>
 
     <!-- TextViews score-->
     <string name="totalScore">Wie geht es dir?</string>
@@ -114,6 +117,14 @@
     <string name="notification_no_entry">Erstelle deinen ersten Eintrag</string>
     <string name="no_entry_selected">Gib eine Aktivität ein oder wähle aus der Liste.</string>
     <string name="missing_entry_score">Bitte alle Eingaben tätigen</string>
+    <string name="toast_deleted">Gelöscht</string>
+    <string name="toast_sent">E-Mail gesendet</string>
+    <string name="toast_sent_error">Kein E-Mail client installiert</string>
+    <string name="toast_noRecipient">Kein Empfänger eingegeben</string>
+    <string name="toast_noValideAddress">Keine gültige E-Mail-Adresse</string>
+    <string name="toast_noClient">Kein E-Mail-Client verfügbar</string>
+    <string name="toast_chooseClient">Wähle einen E-Mail-Client:</string>
+    <string name="mail_subject">E-Mail-Wochenreport</string>
 
     <!--Graph-->
     <string name="spinner_overview">Übersicht</string>
@@ -133,7 +144,10 @@
     <string name="pop_up_start_part3">ein!</string>
     <string name="pop_up_mail_already_entry">Aktuell:</string>
     <string name="pop_up_restart">Zum Deaktivieren der GPS-Aufzeichnung bitte die App neu starten.</string>
-
+    <string name="pop_up_send_Standard">An Standard-Empfänger senden</string>
+    <string name="pop_up_send_Alternative">Oder Empfänger eingeben:</string>
+    <string name="pop_up_send_AlternativeNoStandard">Empfänger eingeben:</string>
+    <string name="pop_up_send_hint">In den Einstellungen kann ein Standard-Empfänger festgelegt werden!</string>
 
     <!--Keys-->
     <string name="key_score">Gesamtscore</string>
@@ -154,6 +168,7 @@
     <string name="key_intentSource">intentSource</string>
     <string name="key_home_value">home</string>
     <string name="key_popUp_value">popUp</string>
+    <string name="key_calendar_value">calendar</string>
     <string name="key_emergency">emergency</string>
     <string name="key_site_notice">siteNotice</string>
     <string name="key_privacy_policy">privacyPolicy</string>
@@ -162,6 +177,8 @@
     <string name="key_dayView">Tagesansicht</string>
     <string name="key_weekView">Wochenansicht</string>
     <string name="key_popUp_restart">popUpRestart</string>
+    <string name="key_popUp_send">popUpSend</string>
+    <string name="key_content">content</string>
 
 
     <!--String arrays-->

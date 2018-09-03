@@ -10,11 +10,19 @@
     <LinearLayout
         xmlns:android="http://schemas.android.com/apk/res/android"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         android:orientation="vertical">
 
         <include layout="@layout/header_calendar_graph"/>
         <include layout="@layout/listentry_calendar_weekly"/>
+
+
+        <Button
+            android:id="@+id/button_sendButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            style="@style/nextButton"
+            android:text="@string/sendEmail_button"/>
 
     </LinearLayout>
 </ScrollView>

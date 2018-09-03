@@ -1,7 +1,9 @@
 package com.bachelorarbeit.bachelorarbeit;
 
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
+import android.support.v4.app.FragmentManager;
 import android.support.v7.app.AppCompatActivity;
 import android.view.Gravity;
 import android.view.View;
@@ -11,6 +13,7 @@ import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.Spinner;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -29,6 +32,7 @@ public class CalendarActivityWeekly  extends AppCompatActivity implements Adapte
     String[] spinnerList;
     String[] mainSymptomsArray;
     String newDate;
+    LinearLayout layoutCalendarWeekly;
     int check = 0;
 
 
@@ -50,6 +54,13 @@ public class CalendarActivityWeekly  extends AppCompatActivity implements Adapte
         newDate = dateTimePicker.getCurrentDate();
         datePickerButton = (Button) findViewById(R.id.button_date_picker_calendar);
         datePickerButton.setVisibility(View.GONE);
+        Button sendButton = (Button) findViewById(R.id.button_sendButton);
+        sendButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                sendButtonClicked();
+            }
+        });
         spinner = (Spinner) findViewById(R.id.spinner);
         initializeSpinner();
         pickedDate = getIntent().getStringExtra(getResources().getString(R.string.key_date));
@@ -60,11 +71,9 @@ public class CalendarActivityWeekly  extends AppCompatActivity implements Adapte
     }
 
 
-
-
     private void getWeekView(){
         Calendar calendar = Calendar.getInstance();
-        LinearLayout layoutCalendarWeekly = (LinearLayout)findViewById(R.id.layout_listentry_calendar_weekly);
+        layoutCalendarWeekly = (LinearLayout)findViewById(R.id.layout_listentry_calendar_weekly);
         for(int i = 0; i<DAYS_OF_WEEK; i++){
             TextView header_textView = new TextView(this);
             header_textView.setText(calendar.getDisplayName(Calendar.DAY_OF_WEEK, Calendar.LONG, Locale.GERMANY));
@@ -163,6 +172,19 @@ public class CalendarActivityWeekly  extends AppCompatActivity implements Adapte
         ArrayAdapter<String> spinnerAdapter = new ArrayAdapter<String>(this, R.layout.listentry_spinner, spinnerList);
         spinner.setAdapter(spinnerAdapter);
         spinner.setOnItemSelectedListener(this);
+    }
+
+    private void sendButtonClicked(){
+        final int childCount = layoutCalendarWeekly.getChildCount();
+        String viewContents = new String();
+        for (int i = 0; i < childCount; i++) {
+            View v = layoutCalendarWeekly.getChildAt(i);
+            TextView temp = (TextView) v;
+            viewContents = viewContents + " " + temp.getText().toString();
+        }
+        FragmentManager fm = getSupportFragmentManager();
+        PopUp_Send popUp_send = PopUp_Send.newInstance(viewContents);
+        popUp_send.show(fm, getResources().getString(R.string.key_popUp_send));
     }
 
     @Override

@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:id="@+id/toast_layout">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/textView_toast"
+        android:textSize="21sp"
+        android:textStyle="italic"
+        android:textColor="@color/colorText"
+        android:background="@color/button_pressed"
+        android:paddingRight="10dp"
+        android:paddingLeft="10dp"/>
+
+</android.support.constraint.ConstraintLayout>
