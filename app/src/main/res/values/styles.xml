@@ -35,6 +35,16 @@
         <item name="android:textStyle">bold</item>
     </style>
 
+    <style name="headerTextViewActivities" parent="android:Widget.TextView">
+        <item name="android:textColor">@color/colorHeadings</item>
+        <item name="android:textSize">22sp</item>
+        <item name="android:layout_marginBottom">10dp</item>
+        <item name="android:layout_marginStart">15dp</item>
+        <item name="android:layout_marginTop">35dp</item>
+        <item name="android:layout_gravity">start</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
     <style name="normalText" parent="android:Widget.TextView">
         <item name="android:textColor">@color/colorText</item>
         <item name="android:textSize">21sp</item>

@@ -18,6 +18,7 @@
     <string name="delete_button">Gespeicherte Eingaben löschen</string>
     <string name="send_button">Senden</string>
     <string name="sendEmail_button">Per E-Mail versenden</string>
+    <string name="saveAndNext_button">Speichern und weiter</string>
 
     <!-- TextViews score-->
     <string name="totalScore">Wie geht es dir?</string>
@@ -224,8 +225,7 @@
     </string-array>
 
     <string-array name="activities_social">
-        <item>Mit Freunden/Bekannten getroffen</item>
-        <item>Mit Freunden/Bekannten telefoniert</item>
+        <item>Mit Bekannten getroffen/telefoniert</item>
         <item>Theater-/Kino-/Konzertbesuch</item>
         <item>Auswärts Essen gegangen</item>
         <item>Bar-/Disko-/Kneipenbesuch</item>
@@ -240,11 +240,7 @@
     <string-array name="activities_sport">
         <item>Spazieren gehen</item>
         <item>Schwimmen</item>
-        <item>Yoga</item>
-        <item>Laufen</item>
-        <item>Wandern/Bergsteigen</item>
-        <item>Ballsport</item>
-        <item>Tanzen</item>
+        <item>Laufen/Joggen</item>
         <item>Radfahren</item>
     </string-array>
 

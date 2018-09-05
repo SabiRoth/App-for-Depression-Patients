@@ -82,7 +82,6 @@ public class SensitivitiesActivity extends AppCompatActivity {
              }
          });
          if(counter == arrayListStringArrays.size()-1){
-             String temp = getIntent().getStringExtra(getResources().getString(R.string.key_intentSource));
              if(getIntent().getStringExtra(getResources().getString(R.string.key_intentSource)).equals(getResources().getString(R.string.key_home_value))){
                  buttonSensitivitiesNext.setText(getResources().getString(R.string.end_button));
              }
@@ -171,5 +170,17 @@ public class SensitivitiesActivity extends AppCompatActivity {
                startActivity(i);
            }
        }
+    }
+
+    @Override
+    public void onBackPressed(){
+        if(counter>0){
+            counter--;
+            buildActualPage();
+        }
+        else{
+            Intent i = new Intent(this, HomeActivity.class);
+            startActivity(i);
+        }
     }
 }

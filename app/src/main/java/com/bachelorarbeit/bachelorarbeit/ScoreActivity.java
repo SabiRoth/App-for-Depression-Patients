@@ -137,6 +137,7 @@ public class ScoreActivity extends AppCompatActivity {
             Intent i = new Intent(this, SensitivitiesActivity.class);
             i.putExtra(getResources().getString(R.string.key_intentSource),  getIntent().getStringExtra(getResources().getString(R.string.key_intentSource)));
             dataSource.close();
+            Toast.makeText(getApplicationContext(), getResources().getString(R.string.toast), Toast.LENGTH_LONG).show();
             startActivity(i);
         }
         else{
@@ -206,5 +207,10 @@ public class ScoreActivity extends AppCompatActivity {
         clickedButton.setBackgroundColor(getResources().getColor(R.color.colorPrimary));
         String[] entry = {getResources().getString(R.string.key_score), buttonText, dateTimePicker.getCurrentDate(), dateTimePicker.getCurrentTime()};
         allEntries.add(entry);
+    }
+
+    @Override
+    public void onBackPressed(){
+        this.finish();
     }
 }

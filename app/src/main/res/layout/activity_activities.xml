@@ -10,8 +10,7 @@
         xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:weightSum="1">
+        android:orientation="vertical">
 
         <TextView
             android:id="@+id/textView_activities_header_socail"
@@ -23,58 +22,50 @@
         <com.bachelorarbeit.bachelorarbeit.NonScrollListView
             android:id="@+id/listView_activities_social"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            tools:layout_editor_absoluteX="8dp"
-            tools:layout_editor_absoluteY="8dp" />
+            android:layout_height="wrap_content"/>
 
         <TextView
             android:id="@+id/textView_activities_header_sport"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/activities_sport_textview"
-            style="@style/headerTextView"/>
+            style="@style/headerTextViewActivities"/>
 
         <com.bachelorarbeit.bachelorarbeit.NonScrollListView
             android:id="@+id/listView_activities_sport"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            tools:layout_editor_absoluteX="8dp"
-            tools:layout_editor_absoluteY="8dp" />
+            android:layout_height="wrap_content" />
 
         <TextView
             android:id="@+id/textView_activities_header_relaxation"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/activities_relaxation_textview"
-            style="@style/headerTextView"/>
+            style="@style/headerTextViewActivities"/>
 
         <com.bachelorarbeit.bachelorarbeit.NonScrollListView
             android:id="@+id/listView_activities_relaxation"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            tools:layout_editor_absoluteX="8dp"
-            tools:layout_editor_absoluteY="8dp" />
+            android:layout_height="wrap_content"/>
 
         <TextView
             android:id="@+id/textView_activities_header_obligations"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/activities_obligations_textview"
-            style="@style/headerTextView"/>
+            style="@style/headerTextViewActivities"/>
 
         <com.bachelorarbeit.bachelorarbeit.NonScrollListView
             android:id="@+id/listView_activities_obligations"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            tools:layout_editor_absoluteX="8dp"
-            tools:layout_editor_absoluteY="8dp" />
+            android:layout_height="wrap_content"/>
 
         <TextView
             android:id="@+id/textView_activities_headerInput"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/activitiesInput_textview"
-            style="@style/headerTextView"/>
+            style="@style/headerTextViewActivities"/>
 
         <com.bachelorarbeit.bachelorarbeit.NonScrollListView
             android:id="@+id/listView_activities_own_entries"

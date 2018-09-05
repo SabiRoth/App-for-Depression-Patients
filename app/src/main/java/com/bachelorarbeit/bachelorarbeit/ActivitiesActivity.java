@@ -152,8 +152,7 @@ public class ActivitiesActivity extends AppCompatActivity {
         if(!(editTextField.getText().toString().equals(""))) {
             allSelectedEntries.add(editTextField.getText().toString());
             dataSource.createActivityEntry(editTextField.getText().toString());
-            CharSequence text = getResources().getString(R.string.toast);
-            Toast.makeText(getApplicationContext(), text, Toast.LENGTH_LONG).show();
+            Toast.makeText(getApplicationContext(), getResources().getString(R.string.toast), Toast.LENGTH_LONG).show();
             editTextField.setText("");
             nextButton.setEnabled(true);
         }
