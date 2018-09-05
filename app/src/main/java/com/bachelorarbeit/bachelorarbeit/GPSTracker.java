@@ -10,37 +10,20 @@ import android.location.LocationManager;
 import android.os.Bundle;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
-import android.widget.ListView;
 
-import com.google.android.gms.maps.MapView;
-
-import java.io.BufferedOutputStream;
-import java.io.FileNotFoundException;
-import java.util.ArrayList;
 import java.util.List;
 
 public class GPSTracker extends AppCompatActivity{
 
-
-    BufferedOutputStream bOut;
-    LocationManager locationManager;
-    dataSource dataSource;
-    DateTimePicker dateTimePicker;
+    private LocationManager locationManager;
+    private dataSource dataSource;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-       // setContentView(R.layout.activity_show_db_entry);
-
-        dateTimePicker = DateTimePicker.getInstance();
         dataSource = new dataSource(this);
         dataSource.open();
         locationManager = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
-        try {
-            bOut = new BufferedOutputStream(openFileOutput(getResources().getString(R.string.key_location), MODE_PRIVATE));
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
-        }
         final LocationListener locationListener = new LocationListener() {
             public void onLocationChanged(Location l) {
                 locationInDB(l);
@@ -49,7 +32,6 @@ public class GPSTracker extends AppCompatActivity{
             public void onProviderEnabled(String provider) {}
             public void onStatusChanged(String provider, int status, Bundle extras) {}
         };
-
         if(ContextCompat.checkSelfPermission( this, android.Manifest.permission.ACCESS_FINE_LOCATION ) == PackageManager.PERMISSION_GRANTED)
         {
             try {
@@ -87,8 +69,13 @@ public class GPSTracker extends AppCompatActivity{
         return bestLocation;
     }
 
+    /*
+       Save location in database if it has changed at least one of the first 7 numbers.
+       The last numbers of the location means not enough movement to be important for the app (movement in the flat/house shouldn't be saved).
+     */
     private void locationInDB(Location l){
         dataSource.open();
+        DateTimePicker dateTimePicker = new DateTimePicker();
         String[] lastMovementEntry = dataSource.getLastMovementEntry(dateTimePicker.getCurrentDate());
         if(lastMovementEntry!=null) {
             if (lastMovementEntry[1].substring(0, 7).equals((String.valueOf(l.getLongitude())).substring(0, 7)) && lastMovementEntry[2].substring(0, 7).equals((String.valueOf(l.getLatitude())).substring(0, 7))) {
@@ -98,28 +85,4 @@ public class GPSTracker extends AppCompatActivity{
         dataSource.createMovementEntry(dateTimePicker.getCurrentDate(), (String.valueOf(l.getLongitude())).substring(0, 10), (String.valueOf(l.getLatitude())).substring(0,10));
         dataSource.close();
     }
-
-   /* private void showLocationFromDB(){
-        dataSource.open();
-        ListView entries = (ListView)findViewById(R.id.db_listView);
-        Context context = this;
-        if(context!= null){
-            ArrayList<String[]> dbEntries = dataSource.getAllMovementEntriesViaDate(dateTimePicker.getCurrentDate());
-            entryMovementListingArrayAdapter adapter = new entryMovementListingArrayAdapter(context, dbEntries);
-            entries.setAdapter(adapter);
-        }
-        dataSource.close();
-    }
-
-    */
-  /*  public Double[] getLocation(){
-        Location location  = getLastKnownLocation();
-        Double[] locationDouble = new Double[2];
-        locationDouble[0] = location.getLatitude();
-        locationDouble[1] = location.getLongitude();
-        return locationDouble;
-    }
-    */
-
-
 }

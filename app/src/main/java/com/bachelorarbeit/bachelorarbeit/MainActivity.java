@@ -1,6 +1,5 @@
 package com.bachelorarbeit.bachelorarbeit;
 
-
 import android.content.Intent;
 import android.support.v4.app.FragmentManager;
 import android.support.v7.app.AppCompatActivity;
@@ -11,17 +10,18 @@ import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity {
 
-    String time;
-    String daytime;
-
+    private String time;
+    private String daytime;
+    private dataSource dataSource;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        dataSource dataSource = new dataSource(this);
+        dataSource = new dataSource(this);
         dataSource.open();
         String trackingSetting = dataSource.getSettingViaName(getResources().getString(R.string.key_tracking_settings));
+        dataSource.close();
         if(trackingSetting!=null){
             if(trackingSetting.equals(getResources().getString(R.string.key_activated))) {
                 Intent i = new Intent(this, GPSTracker.class);
@@ -42,14 +42,14 @@ public class MainActivity extends AppCompatActivity {
         proofPopUp();
     }
 
-
+    /*
+       Checking if there is an entry of the current daytime in the database
+     */
     private void proofPopUp(){
         DateTimePicker dateTimePicker = DateTimePicker.getInstance();
         time = dateTimePicker.getCurrentTime();
         String date = dateTimePicker.getCurrentDate();
         daytime = dateTimePicker.getDaytime();
-
-        dataSource dataSource = new dataSource(this);
         dataSource.open();
         Entry lastEntry = dataSource.getLastEntry();
         if(lastEntry != null) {
@@ -59,6 +59,7 @@ public class MainActivity extends AppCompatActivity {
             }
         }
         ArrayList<String[]> lastScoreEntry = dataSource.getMainSymptomScoresViaNameAndDate(getResources().getString(R.string.key_score), date);
+        dataSource.close();
         if(lastScoreEntry.size()!=0){
             if(dateTimePicker.getDaytime(lastScoreEntry.get(lastScoreEntry.size()-1)[2]).equals(daytime)){
                 goToHomescreen();
@@ -68,7 +69,9 @@ public class MainActivity extends AppCompatActivity {
         showDialog();
     }
 
-
+    /*
+      If there isn't an entry of the current daytime in the database the user gets asked to create an entry for now
+    */
     private void showDialog(){
         FragmentManager fm = getSupportFragmentManager();
         PopUp_Start popUpStart = PopUp_Start.newInstance(time, daytime);
@@ -79,7 +82,6 @@ public class MainActivity extends AppCompatActivity {
         Intent i = new Intent(this, HomeActivity.class);
         startActivity(i);
     }
-
 
     @Override
     public void onPause() {

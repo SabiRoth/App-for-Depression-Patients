@@ -14,17 +14,6 @@ public class HomeActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
-
-       /* Toolbar toolbar = (Toolbar)findViewById(R.id.toolbar);
-        toolbar.setNavigationIcon(R.drawable.ic_launcher_background);
-        toolbar.setNavigationOnClickListener(new View.OnClickListener(){
-            @Override
-            public void onClick(View v) {
-                finish();
-            }
-        });
-        */
-
         Button overview_calendar_button = (Button)findViewById(R.id.button_overview_calendar);
         Button overview_graph_button = (Button)findViewById(R.id.button_overview_graph);
         Button movementProfile_map_button = (Button)findViewById(R.id.button_map);
@@ -32,9 +21,6 @@ public class HomeActivity extends AppCompatActivity {
         Button entries_activities_button = (Button)findViewById(R.id.button_activities);
         ImageButton settingsButton = (ImageButton)findViewById(R.id.settings_imageButton);
         ImageButton emergencyButton = (ImageButton)findViewById(R.id.button_emergency);
-
-
-        //clickListener for all buttons
 
         overview_calendar_button.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -84,8 +70,6 @@ public class HomeActivity extends AppCompatActivity {
                 clickEmergency();
             }
         });
-
-
     }
 
     private void clickOverviewCalendar(){
@@ -127,17 +111,13 @@ public class HomeActivity extends AppCompatActivity {
         startActivity(i);
     }
 
-
-
     @Override
     public void onPause() {
         super.onPause();
     }
 
-
     @Override
     public void onBackPressed(){
-
-        //APP MINIMIEREN
+        this.moveTaskToBack(true);
     }
 }

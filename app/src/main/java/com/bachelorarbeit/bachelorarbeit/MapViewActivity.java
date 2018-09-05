@@ -26,10 +26,8 @@ import java.util.Calendar;
 
 public class MapViewActivity extends AppCompatActivity implements OnMapReadyCallback{
     private MapView mapView;
-    private GoogleMap googleMap;
     private DateTimePicker dateTimePicker;
     private Button datePickerButton;
-
     private static final String MAP_VIEW_BUNDLE_KEY = "@string/google_android_map_api_key";
 
     @Override
@@ -94,10 +92,9 @@ public class MapViewActivity extends AppCompatActivity implements OnMapReadyCall
     }
 
     @Override
-    public void onMapReady(GoogleMap gm) {
-        googleMap = gm;
+    public void onMapReady(GoogleMap googleMap) {
         googleMap.setMinZoomPreference(16);
-        setPolyline(gm);
+        setPolyline(googleMap);
         if(ContextCompat.checkSelfPermission( this, android.Manifest.permission.ACCESS_FINE_LOCATION ) == PackageManager.PERMISSION_GRANTED) {
             googleMap.setMyLocationEnabled(true);
         }
@@ -124,7 +121,7 @@ public class MapViewActivity extends AppCompatActivity implements OnMapReadyCall
             for(int i = 0; i<allMovementEntries.size(); i++){
                 LatLng latLng = new LatLng(Double.valueOf(allMovementEntries.get(i)[2]), Double.valueOf(allMovementEntries.get(i)[1]));
                 points.add(latLng);
-                gm.moveCamera(CameraUpdateFactory.newLatLng(latLng));//TODO: BESSERE LÖSUNG FÜR KAMERA!
+                gm.moveCamera(CameraUpdateFactory.newLatLng(latLng));
             }
         }
 
@@ -145,18 +142,15 @@ public class MapViewActivity extends AppCompatActivity implements OnMapReadyCall
         datePickerButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                // calender class's instance and get current date , month and year from calender
                 final Calendar c = Calendar.getInstance();
-                int mYear = c.get(Calendar.YEAR); // current year
-                int mMonth = c.get(Calendar.MONTH); // current month
-                int mDay = c.get(Calendar.DAY_OF_MONTH); // current day
-                // date picker dialog
+                int mYear = c.get(Calendar.YEAR);
+                int mMonth = c.get(Calendar.MONTH);
+                int mDay = c.get(Calendar.DAY_OF_MONTH);
                 DatePickerDialog datePickerDialog = new DatePickerDialog(MapViewActivity.this, new DatePickerDialog.OnDateSetListener() {
 
                             @Override
                             public void onDateSet(DatePicker view, int year,
                                                   int monthOfYear, int dayOfMonth) {
-                                // set day of month , month and year value in the edit text
                                 datePickerButton.setText(dayOfMonth + "." + (monthOfYear + 1) + "." + year);
                                 String newDate = dateTimePicker.setDateFormat(dayOfMonth, (monthOfYear + 1),  year);
                                 Intent reloadIntent = new Intent(MapViewActivity.this, MapViewActivity.class);

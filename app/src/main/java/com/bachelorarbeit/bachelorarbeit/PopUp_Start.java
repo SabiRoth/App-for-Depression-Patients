@@ -5,6 +5,7 @@ import android.app.Dialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.support.v4.app.DialogFragment;
 
 
@@ -19,13 +20,10 @@ public class PopUp_Start extends DialogFragment{
         return sd;
     }
 
-
     @Override
+    @NonNull
     public Dialog onCreateDialog(Bundle savedInstanceState) {
-        // Use the Builder class for convenient dialog construction
-
         AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
-
         builder.setMessage(getResources().getString(R.string.pop_up_start_part1)+ " " + getArguments().getString("time") + " " + getResources().getString(R.string.pop_up_start_part2) + " " + getArguments().getString("daytime") + " " + getResources().getString(R.string.pop_up_start_part3))
                 .setPositiveButton(getResources().getString(R.string.input_button), new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int id) {
@@ -40,7 +38,6 @@ public class PopUp_Start extends DialogFragment{
                         startActivity(i);
                     }
                 });
-
         return builder.create();
     }
 }

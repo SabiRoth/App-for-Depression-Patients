@@ -33,7 +33,6 @@
         style="@style/headerTextView"
         android:gravity="center_horizontal"/>
 
-
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -41,13 +40,11 @@
         android:text="@string/emergency5"
         style="@style/emergencyTextView"/>
 
-
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/emergency6"
         style="@style/emergencyTextView"/>
-
 
     <TextView
         android:layout_width="wrap_content"
@@ -55,12 +52,10 @@
         android:text="@string/emergency7"
         style="@style/emergencyTextView"/>
 
-
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/emergency8"
         style="@style/emergencyTextView"/>
-
 
 </LinearLayout>

@@ -1,11 +1,9 @@
 package com.bachelorarbeit.bachelorarbeit;
 
 import android.content.Intent;
-import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.FragmentManager;
 import android.support.v7.app.AppCompatActivity;
-import android.view.Gravity;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -13,28 +11,22 @@ import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.Spinner;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Locale;
 
 
-
 public class CalendarActivityWeekly  extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
 
     final int DAYS_OF_WEEK = 7;
-    Spinner spinner;
-    Button datePickerButton;
-    dataSource dataSource;
-    DateTimePicker dateTimePicker;
-    String pickedDate;
-    String[] spinnerList;
-    String[] mainSymptomsArray;
-    String newDate;
-    LinearLayout layoutCalendarWeekly;
+    private Spinner spinner;
+    private dataSource dataSource;
+    private DateTimePicker dateTimePicker;
+    private String[] spinnerList, mainSymptomsArray;
+    private String newDate;
+    private LinearLayout layoutCalendarWeekly;
     int check = 0;
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -52,7 +44,7 @@ public class CalendarActivityWeekly  extends AppCompatActivity implements Adapte
         spinnerList = getResources().getStringArray(R.array.spinner_view_weekly);
         dateTimePicker = DateTimePicker.getInstance();
         newDate = dateTimePicker.getCurrentDate();
-        datePickerButton = (Button) findViewById(R.id.button_date_picker_calendar);
+        Button datePickerButton = (Button) findViewById(R.id.button_date_picker_calendar);
         datePickerButton.setVisibility(View.GONE);
         Button sendButton = (Button) findViewById(R.id.button_sendButton);
         sendButton.setOnClickListener(new View.OnClickListener() {
@@ -63,11 +55,8 @@ public class CalendarActivityWeekly  extends AppCompatActivity implements Adapte
         });
         spinner = (Spinner) findViewById(R.id.spinner);
         initializeSpinner();
-        pickedDate = getIntent().getStringExtra(getResources().getString(R.string.key_date));
-        if(pickedDate == null){
-            pickedDate = dateTimePicker.getCurrentDate();
-        }
         getWeekView();
+        dataSource.close();
     }
 
 
@@ -137,8 +126,6 @@ public class CalendarActivityWeekly  extends AppCompatActivity implements Adapte
         }
     }
 
-
-
     private int calculateAverage(ArrayList<String[]> scoresOfDate){
         float average = 0;
         for(int i = 0; i<scoresOfDate.size(); i++){
@@ -146,7 +133,6 @@ public class CalendarActivityWeekly  extends AppCompatActivity implements Adapte
         }
         return Math.round(average / scoresOfDate.size());
     }
-
 
     private void setHeaderTextViewStyle(TextView textView){
         textView.setTextAppearance(getApplicationContext(), R.style.headerTextView);
@@ -174,6 +160,9 @@ public class CalendarActivityWeekly  extends AppCompatActivity implements Adapte
         spinner.setOnItemSelectedListener(this);
     }
 
+    /*
+       Open fragment to send the entries of the week via e-mail-client
+     */
     private void sendButtonClicked(){
         final int childCount = layoutCalendarWeekly.getChildCount();
         String viewContents = new String();
@@ -201,7 +190,6 @@ public class CalendarActivityWeekly  extends AppCompatActivity implements Adapte
     @Override
     public void onNothingSelected(AdapterView<?> arg0) {
     }
-
 
     @Override
     public void onBackPressed(){

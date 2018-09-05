@@ -15,24 +15,18 @@ import android.widget.TextView;
 import com.softmoore.android.graphlib.*;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Calendar;
 
 public class GraphActivityDaily extends AppCompatActivity implements AdapterView.OnItemSelectedListener{
 
-
-    Button datePickerButton;
-    String[] spinnerList;
-    Spinner spinnerView, spinnerGraph;
-    String pickedDate;
-    DateTimePicker dateTimePicker;
-    ArrayList<String> symptomListInDb;
+    private Button datePickerButton;
+    private String[] spinnerList, mainSymptoms;
+    private Spinner spinnerView, spinnerGraph;
+    private String pickedDate;
+    private DateTimePicker dateTimePicker;
     int check = 0;
-    dataSource dataSource;
-    String[] mainSymptoms;
-    String contentIntent;
-
-
+    private dataSource dataSource;
+    private String contentIntent;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,7 +37,6 @@ public class GraphActivityDaily extends AppCompatActivity implements AdapterView
         spinnerView = (Spinner) findViewById(R.id.spinner);
         spinnerGraph = (Spinner) findViewById(R.id.spinner_graph);
         dateTimePicker = DateTimePicker.getInstance();
-        symptomListInDb = new ArrayList<>();
         dataSource = new dataSource(this);
         dataSource.open();
         mainSymptoms = (getResources().getString(R.string.key_score) + "," + dataSource.getSettingViaName(getResources().getString(R.string.key_mainSymptoms))).split(",");
@@ -58,12 +51,11 @@ public class GraphActivityDaily extends AppCompatActivity implements AdapterView
         initializeSpinner();
     }
 
-
     private void createGraph(){
         double[] yTicks = new double[]{1, 2, 3, 4, 5};
         Label[] xLabels = {new Label(1, getResources().getString(R.string.morning)), new Label(2, getResources().getString(R.string.midday)), new Label(3, getResources().getString(R.string.evening))};
 
-        if(contentIntent.equals("Übersicht")){
+        if(contentIntent.equals(getResources().getString(R.string.spinner_overview))){
             Point[] activityPoints = new Point[0];
             Point[] scorePoints;
             ArrayList<Entry> entries  = dataSource.getAllEntries(pickedDate);
@@ -97,10 +89,8 @@ public class GraphActivityDaily extends AppCompatActivity implements AdapterView
                     activityPoints[k] = temp.get(k);
                 }
             }
-
             ArrayList<String[]> scoreEntries = dataSource.getMainSymptomScoresViaNameAndDate(getResources().getString(R.string.key_score), pickedDate);
             scorePoints = getPoints(scoreEntries);
-
 
             if(scorePoints.length==0 && activityPoints.length==0){
                 TextView textView = (TextView)findViewById(R.id.noDataTextView);
@@ -214,8 +204,8 @@ public class GraphActivityDaily extends AppCompatActivity implements AdapterView
 
             }
         }
+        dataSource.close();
     }
-
 
     private Point[] getPoints(ArrayList<String[]> currentMainSymptomData){
         Point[] pointString;
@@ -236,8 +226,6 @@ public class GraphActivityDaily extends AppCompatActivity implements AdapterView
                     sumEvening += Integer.parseInt(currentMainSymptomData.get(j)[1]);
                 }
             }
-
-
             ArrayList<Point> temp = new ArrayList<>();
             if (counterMorning > 0) {
                 temp.add(new Point(1, calculateAverage(sumMorning, counterMorning)));
@@ -252,37 +240,29 @@ public class GraphActivityDaily extends AppCompatActivity implements AdapterView
             for (int k = 0; k < temp.size(); k++) {
                 pointString[k] = temp.get(k);
             }
-
         return pointString;
         }
         pointString = new Point[0];
         return pointString;
     }
 
-
-
     private int calculateAverage(float sum, float divisor){
         return Math.round(sum / divisor);
     }
-
-
 
     private void initializeClickListenerForDatePickerButton(){
         datePickerButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                // calender class's instance and get current date , month and year from calender
                 final Calendar c = Calendar.getInstance();
-                int mYear = c.get(Calendar.YEAR); // current year
-                int mMonth = c.get(Calendar.MONTH); // current month
-                int mDay = c.get(Calendar.DAY_OF_MONTH); // current day
-                // date picker dialog
+                int mYear = c.get(Calendar.YEAR);
+                int mMonth = c.get(Calendar.MONTH);
+                int mDay = c.get(Calendar.DAY_OF_MONTH);
                 DatePickerDialog datePickerDialog = new DatePickerDialog(GraphActivityDaily.this, new DatePickerDialog.OnDateSetListener() {
 
                     @Override
                     public void onDateSet(DatePicker view, int year,
                                           int monthOfYear, int dayOfMonth) {
-                        // set day of month , month and year value in the edit text
                         datePickerButton.setText(dayOfMonth + "." + (monthOfYear + 1) + "." + year);
                         String newDate = dateTimePicker.setDateFormat(dayOfMonth, (monthOfYear + 1),  year);
                         Intent reloadIntent = new Intent(GraphActivityDaily.this, GraphActivityDaily.class);
@@ -296,7 +276,6 @@ public class GraphActivityDaily extends AppCompatActivity implements AdapterView
             }
         });
     }
-
 
     private void initializeSpinner(){
         String[] allSpinnerEntries = new String[mainSymptoms.length+1];

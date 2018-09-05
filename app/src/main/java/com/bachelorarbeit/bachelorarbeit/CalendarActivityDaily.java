@@ -18,21 +18,13 @@ import java.util.Calendar;
 
 public class CalendarActivityDaily extends AppCompatActivity implements AdapterView.OnItemSelectedListener{
 
-    ListView listViewMorningSensivities;
-    ListView listViewMorningActivities;
-    ListView listViewMorningPlaces;
-    ListView listViewMiddaySensivities;
-    ListView listViewMiddayActivities;
-    ListView listViewMiddayPlaces;
-    ListView listViewEveningSensivities;
-    ListView listViewEveningActivities;
-    ListView listViewEveningPlaces;
-    Spinner spinner;
-    Button datePickerButton;
-    dataSource dataSource;
-    DateTimePicker dateTimePicker;
-    String pickedDate;
-    String[] spinnerList;
+    private ListView listViewMorningSensivities, listViewMorningActivities, listViewMorningPlaces, listViewMiddaySensivities, listViewMiddayActivities,
+                     listViewMiddayPlaces, listViewEveningSensivities, listViewEveningActivities, listViewEveningPlaces;
+    private Spinner spinner;
+    private Button datePickerButton;
+    private DateTimePicker dateTimePicker;
+    private String pickedDate;
+    private String[] spinnerList;
     int check = 0;
 
 
@@ -64,15 +56,16 @@ public class CalendarActivityDaily extends AppCompatActivity implements AdapterV
     }
 
     private void fillListViews(){
-        dataSource = new dataSource(this);
+        dataSource dataSource = new dataSource(this);
         dataSource.open();
         ArrayList<Entry> allEntries = dataSource.getAllEntries(pickedDate);
+        dataSource.close();
         ArrayList<String> morningEntriesSensivities = new ArrayList<>(), morningEntriesActivities = new ArrayList<>(), morningEntriesPlaces = new ArrayList<>();
         ArrayList<String> middayEntriesSensivities = new ArrayList<>(), middayEntriesActivities = new ArrayList<>(), middayEntriesPlaces = new ArrayList<>();
         ArrayList<String> eveningEntriesSensivities = new ArrayList<>(), eveningEntriesActivities = new ArrayList<>(), eveningEntriesPlaces = new ArrayList<>();
         for(int i = 0; i<allEntries.size(); i++){
             String currentDaytime = allEntries.get(i).getDaytime();
-            if(currentDaytime.equals("Morgen")){
+            if(currentDaytime.equals(getResources().getString(R.string.calendar_daily_morning_textview))){
                 if(allEntries.get(i).getSensitivies()!=null) {
                     morningEntriesSensivities.add(allEntries.get(i).getSensitivies());
                 }
@@ -83,7 +76,7 @@ public class CalendarActivityDaily extends AppCompatActivity implements AdapterV
                     morningEntriesPlaces.add(allEntries.get(i).getPlaces());
                 }
             }
-            if(currentDaytime.equals("Mittag")){
+            if(currentDaytime.equals(getResources().getString(R.string.calendar_daily_midday_textview))){
                 if(allEntries.get(i).getSensitivies()!=null) {
                     middayEntriesSensivities.add(allEntries.get(i).getSensitivies());
                 }
@@ -94,7 +87,7 @@ public class CalendarActivityDaily extends AppCompatActivity implements AdapterV
                     middayEntriesPlaces.add(allEntries.get(i).getPlaces());
                 }
             }
-            if(currentDaytime.equals("Abend")){
+            if(currentDaytime.equals(getResources().getString(R.string.calendar_daily_evening_textview))){
                 if(allEntries.get(i).getSensitivies()!=null) {
                     eveningEntriesSensivities.add(allEntries.get(i).getSensitivies());
                 }
@@ -175,10 +168,8 @@ public class CalendarActivityDaily extends AppCompatActivity implements AdapterV
         }
     }
 
-
     private void initializeSpinner(){
         ArrayAdapter<String>spinnerAdapter = new ArrayAdapter<String>(this, R.layout.listentry_spinner, spinnerList);
-        //spinnerAdapter.setDropDownViewResource(R.layout.listentry_simple_listview);
         spinner.setAdapter(spinnerAdapter);
         spinner.setOnItemSelectedListener(this);
     }
@@ -198,24 +189,19 @@ public class CalendarActivityDaily extends AppCompatActivity implements AdapterV
     public void onNothingSelected(AdapterView<?> arg0) {
     }
 
-
-
     private void initializeClickListenerForDatePickerButton(){
         datePickerButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                // calender class's instance and get current date , month and year from calender
                 final Calendar c = Calendar.getInstance();
-                int mYear = c.get(Calendar.YEAR); // current year
-                int mMonth = c.get(Calendar.MONTH); // current month
-                int mDay = c.get(Calendar.DAY_OF_MONTH); // current day
-                // date picker dialog
+                int mYear = c.get(Calendar.YEAR);
+                int mMonth = c.get(Calendar.MONTH);
+                int mDay = c.get(Calendar.DAY_OF_MONTH);
                 DatePickerDialog datePickerDialog = new DatePickerDialog(CalendarActivityDaily.this, new DatePickerDialog.OnDateSetListener() {
 
                     @Override
                     public void onDateSet(DatePicker view, int year,
                                           int monthOfYear, int dayOfMonth) {
-                        // set day of month , month and year value in the edit text
                         datePickerButton.setText(dayOfMonth + "." + (monthOfYear + 1) + "." + year);
                         String newDate = dateTimePicker.setDateFormat(dayOfMonth, (monthOfYear + 1),  year);
                         Intent reloadIntent = new Intent(CalendarActivityDaily.this, CalendarActivityDaily.class);

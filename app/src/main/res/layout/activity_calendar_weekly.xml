@@ -16,7 +16,6 @@
         <include layout="@layout/header_calendar_graph"/>
         <include layout="@layout/listentry_calendar_weekly"/>
 
-
         <Button
             android:id="@+id/button_sendButton"
             android:layout_width="wrap_content"

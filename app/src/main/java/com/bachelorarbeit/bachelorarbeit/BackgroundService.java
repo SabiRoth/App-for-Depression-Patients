@@ -16,9 +16,9 @@ import java.util.ArrayList;
 public class BackgroundService extends Service {
 
 
-    DateTimePicker dateTimePicker;
-    ArrayList<String> remindNotificationDates;
-    int notificationId;
+    private DateTimePicker dateTimePicker;
+    private ArrayList<String> remindNotificationDates;
+    private int notificationId;
 
 
     @Override
@@ -46,6 +46,7 @@ public class BackgroundService extends Service {
             proofLastEntry();
         }
         notificationId = 0;
+        dataSource.close();
     }
 
     @Override
@@ -67,7 +68,9 @@ public class BackgroundService extends Service {
         GPSTracker gpsTracker = new GPSTracker();
     }
 
-    //if the last entry war 3 days or longer ago a notification is sent
+    /*
+      if the last entry was 3 days or longer ago a notification is sent
+    */
     public void proofLastEntry(){
         dataSource dataSource = new dataSource(this);
         dataSource.open();
@@ -88,8 +91,9 @@ public class BackgroundService extends Service {
         }
     }
 
-
-    //proof if there was already sent a notification  this day
+    /*
+       proof if there was already sent a notification this day
+    */
     public void proofAlreadyNotified(String lastEntryDate, boolean noDbEntry){
         if(remindNotificationDates.size()!=0){
             if(remindNotificationDates.get(remindNotificationDates.size()-1).equals(dateTimePicker.getCurrentDate())){
@@ -100,10 +104,8 @@ public class BackgroundService extends Service {
         createNotification(lastEntryDate, dateTimePicker.getCurrentDate(), noDbEntry);
     }
 
-
     public void createNotification(String lastEntryDate, String channelId, Boolean noDbEntry){
         NotificationManager notificationManager = (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
-
           if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
             NotificationChannel notificationChannel = new NotificationChannel(channelId, getResources().getString(R.string.key_myNotifications), NotificationManager.IMPORTANCE_HIGH);
             notificationChannel.setName(getApplication().getResources().getString(R.string.app_name));
@@ -115,11 +117,12 @@ public class BackgroundService extends Service {
                 notificationChannel.setDescription(getResources().getString(R.string.notification_no_entry));
             }
         }
-
         NotificationCompat.Builder notificationBuilder = new NotificationCompat.Builder(this, channelId);
 
 
-        //calls the HomeActivity if the notification is clicked
+        /*
+          calls the HomeActivity if the notification is clicked
+        */
         Intent notificationIntent = new Intent(this, ScoreActivity.class);
         notificationIntent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
         PendingIntent pIntent = PendingIntent.getActivity(this, 0, notificationIntent, 0);
@@ -130,15 +133,10 @@ public class BackgroundService extends Service {
                 .setVibrate(new long[] { 1000, 1000, 1000 })
                 .setContentIntent(pIntent)
                 .setTicker(getApplicationContext().getResources().getString(R.string.app_name));
-
         if(noDbEntry){
             notificationBuilder.setContentText(getResources().getString(R.string.notification_no_entry));
         }
 
         notificationManager.notify(notificationId, notificationBuilder.build());
-
-
     }
-
-
 }

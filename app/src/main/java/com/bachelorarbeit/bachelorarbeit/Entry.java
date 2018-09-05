@@ -1,14 +1,9 @@
 package com.bachelorarbeit.bachelorarbeit;
 
 public class Entry {
-    private String sensitivies;
-    private String activities;
-    private String places;
-    private String date;
-    private String daytime;
-    private String time;
+
+    private String sensitivies, activities, places, date, daytime, time;
     private long id;
-    private boolean manual;
 
 
     public Entry(String sensitivies, String activities, String places, String date, String time){
@@ -26,14 +21,6 @@ public class Entry {
     public Entry(){
         Entry entry = new Entry ("", "", "", "", "");
     }
-
-    /*public Entry(ArrayList sensitivies, ArrayList activities, Date date, String time, boolean manual){
-        this.sensitivies = sensitivies;
-        this.activities = activities;
-        this.date = date;
-        this.time = time;
-        this.manual = manual;
-    }*/
 
     public void setId(long id)
     {this.id = id;}
@@ -89,5 +76,4 @@ public class Entry {
     public void setDaytime(String daytime) {
         this.daytime = daytime;
     }
-
 }

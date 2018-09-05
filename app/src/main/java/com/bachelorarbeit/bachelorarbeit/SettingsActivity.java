@@ -12,9 +12,8 @@ import android.widget.TextView;
 public class SettingsActivity extends AppCompatActivity {
 
 
-    Switch switchButtonGPS;
-    Switch switchButtonPush;
-    dataSource dataSource;
+    private Switch switchButtonGPS, switchButtonPush;
+    private dataSource dataSource;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -28,9 +27,7 @@ public class SettingsActivity extends AppCompatActivity {
         TextView siteNotice = (TextView)findViewById(R.id.TextView_siteNotice);
         dataSource = new dataSource(this);
         dataSource.open();
-
         getCurrentSettings();
-
         switchButtonGPS.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton compoundButton, boolean bChecked) {
@@ -42,7 +39,6 @@ public class SettingsActivity extends AppCompatActivity {
                 }
             }
         });
-
         switchButtonPush.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(CompoundButton compoundButton, boolean bChecked) {
@@ -53,7 +49,6 @@ public class SettingsActivity extends AppCompatActivity {
                 }
             }
         });
-
         mainSymptoms.setClickable(true);
         mainSymptoms.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -61,7 +56,6 @@ public class SettingsActivity extends AppCompatActivity {
                 changeMainSymptoms();
             }
         });
-
 
         recipientMail.setClickable(true);
         recipientMail.setOnClickListener(new View.OnClickListener() {
@@ -109,6 +103,9 @@ public class SettingsActivity extends AppCompatActivity {
         dataSource.createSettingsEntry(getResources().getString(R.string.key_push_notification), getResources().getString(R.string.key_deactivated));
     }
 
+    /*
+       Reads the last preferences of the settings from the database and set them as default value of the switch-buttons
+     */
     private void getCurrentSettings(){
        String trackingSetting = dataSource.getSettingViaName(getResources().getString(R.string.key_tracking_settings));
        if(trackingSetting==null || trackingSetting.equals(getResources().getString(R.string.key_activated))){
@@ -151,9 +148,9 @@ public class SettingsActivity extends AppCompatActivity {
         startActivity(i);
     }
 
-
     @Override
     public void onBackPressed(){
+        dataSource.close();
         Intent i = new Intent(this, HomeActivity.class);
         startActivity(i);
     }

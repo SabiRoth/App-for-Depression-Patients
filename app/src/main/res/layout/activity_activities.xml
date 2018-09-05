@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-
 <ScrollView
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="fill_parent"
@@ -8,7 +7,6 @@
     android:fillViewport="true">
 
     <LinearLayout
-        xmlns:app="http://schemas.android.com/apk/res-auto"
         xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -22,7 +20,6 @@
             android:text="@string/activities_social_textview"
             style="@style/headerTextView"/>
 
-
         <com.bachelorarbeit.bachelorarbeit.NonScrollListView
             android:id="@+id/listView_activities_social"
             android:layout_width="match_parent"
@@ -30,14 +27,12 @@
             tools:layout_editor_absoluteX="8dp"
             tools:layout_editor_absoluteY="8dp" />
 
-
         <TextView
             android:id="@+id/textView_activities_header_sport"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/activities_sport_textview"
             style="@style/headerTextView"/>
-
 
         <com.bachelorarbeit.bachelorarbeit.NonScrollListView
             android:id="@+id/listView_activities_sport"
@@ -53,7 +48,6 @@
             android:text="@string/activities_relaxation_textview"
             style="@style/headerTextView"/>
 
-
         <com.bachelorarbeit.bachelorarbeit.NonScrollListView
             android:id="@+id/listView_activities_relaxation"
             android:layout_width="match_parent"
@@ -67,7 +61,6 @@
             android:layout_height="wrap_content"
             android:text="@string/activities_obligations_textview"
             style="@style/headerTextView"/>
-
 
         <com.bachelorarbeit.bachelorarbeit.NonScrollListView
             android:id="@+id/listView_activities_obligations"
@@ -113,13 +106,11 @@
                 style="@style/saveButton"/>
         </LinearLayout>
 
-
         <Button
             android:id="@+id/button_activities_next"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            style="@style/nextButton"
-            />
+            style="@style/nextButton"/>
 
     </LinearLayout>
 </ScrollView>

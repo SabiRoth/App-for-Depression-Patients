@@ -14,20 +14,11 @@ import java.util.ArrayList;
 
 public class ScoreActivity extends AppCompatActivity {
 
-    dataSource dataSource;
-    TextView firstMainSymptom;
-    TextView secondMainSymptom;
-    TextView thirdMainSymptom;
-    Button nextButton;
-    String[] mainSymptomsArray;
-    DateTimePicker dateTimePicker;
-    ArrayList<String[]> allEntries;
-    LinearLayout layoutFirstMainSymptom;
-    ArrayList<Button> clickedButtonScore;
-    ArrayList<Button> clickedButtonListFirstSymptom;
-    ArrayList<Button> clickedButtonListSecondSymptom;
-    ArrayList<Button> clickedButtonListThirdSymptom;
-
+    private dataSource dataSource;
+    private String[] mainSymptomsArray;
+    private DateTimePicker dateTimePicker;
+    private ArrayList<String[]> allEntries;
+    private ArrayList<Button> clickedButtonScore, clickedButtonListFirstSymptom, clickedButtonListSecondSymptom, clickedButtonListThirdSymptom;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,7 +34,7 @@ public class ScoreActivity extends AppCompatActivity {
         dataSource.open();
         getScoreView();
         getMainSymptoms();
-        nextButton = (Button)findViewById(R.id.button_score_next);
+        Button nextButton = (Button)findViewById(R.id.button_score_next);
         nextButton.setOnClickListener(
                 new View.OnClickListener() {
                     @Override
@@ -51,7 +42,6 @@ public class ScoreActivity extends AppCompatActivity {
                         nextButtonClicked();
                     }
                 });
-        initializeButtonClickListener();
     }
 
     private void getScoreView(){
@@ -81,8 +71,8 @@ public class ScoreActivity extends AppCompatActivity {
             mainSymptomsArray = mainSymptomsString.split(",");
             for(int i = 0; i < mainSymptomsArray.length; i++){
                 if(i==0){
-                    layoutFirstMainSymptom = (LinearLayout)findViewById(R.id.score_listentry_first_symptom);
-                    firstMainSymptom = (TextView)findViewById(R.id.textView_firstMainSymptom);
+                    LinearLayout layoutFirstMainSymptom = (LinearLayout)findViewById(R.id.score_listentry_first_symptom);
+                    TextView firstMainSymptom = (TextView)findViewById(R.id.textView_firstMainSymptom);
                     firstMainSymptom.setText(mainSymptomsArray[i] + ": " + getResources().getString(R.string.score_textview));
                     firstMainSymptom.setVisibility(View.VISIBLE);
                     for(int j = 0; j<6; j++){
@@ -101,7 +91,7 @@ public class ScoreActivity extends AppCompatActivity {
                 }
                 if(i==1){
                     LinearLayout layoutSecondMainSymptom = (LinearLayout)findViewById(R.id.score_listentry_second_symptom);
-                    secondMainSymptom = (TextView)findViewById(R.id.textView_secondMainSymptom);
+                    TextView secondMainSymptom = (TextView)findViewById(R.id.textView_secondMainSymptom);
                     secondMainSymptom.setText(mainSymptomsArray[i].substring(1) + ": " + getResources().getString(R.string.score_textview));
                     secondMainSymptom.setVisibility(View.VISIBLE);
                     for(int j = 0; j<6; j++){
@@ -119,7 +109,7 @@ public class ScoreActivity extends AppCompatActivity {
                 }
                 if(i==2){
                     LinearLayout layoutThirdMainSymptom = (LinearLayout)findViewById(R.id.score_listentry_third_symptom);
-                    thirdMainSymptom = (TextView)findViewById(R.id.textView_thirdMainSymptom);
+                    TextView thirdMainSymptom = (TextView)findViewById(R.id.textView_thirdMainSymptom);
                     thirdMainSymptom.setText(mainSymptomsArray[i].substring(1) + ": " + getResources().getString(R.string.score_textview));
                     thirdMainSymptom.setVisibility(View.VISIBLE);
                     for(int j = 0; j<6; j++){
@@ -146,16 +136,12 @@ public class ScoreActivity extends AppCompatActivity {
             }
             Intent i = new Intent(this, SensitivitiesActivity.class);
             i.putExtra(getResources().getString(R.string.key_intentSource),  getIntent().getStringExtra(getResources().getString(R.string.key_intentSource)));
-            String temp = getIntent().getStringExtra(getResources().getString(R.string.key_intentSource));
+            dataSource.close();
             startActivity(i);
         }
         else{
             Toast.makeText(getApplicationContext(), getResources().getString(R.string.missing_entry_score), Toast.LENGTH_LONG).show();
         }
-    }
-
-    private void initializeButtonClickListener(){
-
     }
 
     private void buildButton(Button button){
@@ -181,7 +167,6 @@ public class ScoreActivity extends AppCompatActivity {
         clickedButton.setBackgroundColor(getResources().getColor(R.color.colorPrimary));
         String[] entry = {mainSymptomsArray[0], buttonText, dateTimePicker.getCurrentDate(), dateTimePicker.getCurrentTime()};
         allEntries.add(entry);
-
     }
 
     private void secondMainSymptomButtonClicked(View view){
@@ -222,5 +207,4 @@ public class ScoreActivity extends AppCompatActivity {
         String[] entry = {getResources().getString(R.string.key_score), buttonText, dateTimePicker.getCurrentDate(), dateTimePicker.getCurrentTime()};
         allEntries.add(entry);
     }
-
 }

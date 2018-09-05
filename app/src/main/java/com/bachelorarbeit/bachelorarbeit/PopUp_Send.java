@@ -5,30 +5,25 @@ import android.app.Dialog;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.support.v4.app.DialogFragment;
-import android.text.Layout;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import java.util.ArrayList;
 import java.util.regex.Pattern;
 
 public class PopUp_Send extends DialogFragment {
 
-    dataSource dataSource;
-    String recipient;
-    Button sendButtonManual, sendButtonStandard;
-    EditText input;
-    TextView sendAlternative, hinttext;
-    View layout;
-    String content;
+    private String recipient;
+    private EditText input;
+    private View layout;
+    private String content;
 
     public static PopUp_Send newInstance(String content){
         PopUp_Send popUp_send = new PopUp_Send();
@@ -39,19 +34,21 @@ public class PopUp_Send extends DialogFragment {
     }
 
     @Override
+    @NonNull
     public Dialog onCreateDialog(Bundle savedInstanceState) {
         AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
         LayoutInflater inflater = getActivity().getLayoutInflater();
         View dialogView = inflater.inflate(R.layout.pop_up_send, null);
-        sendButtonStandard = dialogView.findViewById(R.id.sendButtonStandard);
+        Button sendButtonStandard = dialogView.findViewById(R.id.sendButtonStandard);
         input = dialogView.findViewById(R.id.input_send);
-        hinttext = dialogView.findViewById(R.id.hinttext_sendMail);
-        sendAlternative = dialogView.findViewById(R.id.TextView_send_alternative);
+        TextView hinttext = dialogView.findViewById(R.id.hinttext_sendMail);
+        TextView sendAlternative = dialogView.findViewById(R.id.TextView_send_alternative);
         layout = inflater.inflate(R.layout.toast, (ViewGroup) dialogView.findViewById(R.id.toast_layout));
         content = getArguments().getString(getResources().getString(R.string.key_content));
-        dataSource = new dataSource(getContext());
+        dataSource dataSource = new dataSource(getContext());
         dataSource.open();
         recipient =  dataSource.getSettingViaName(getResources().getString(R.string.key_mailRecipient));
+        dataSource.close();
         if(recipient==null || recipient.equals("")){
            sendButtonStandard.setVisibility(View.GONE);
            sendAlternative.setText(getResources().getString(R.string.pop_up_send_AlternativeNoStandard));
@@ -65,7 +62,7 @@ public class PopUp_Send extends DialogFragment {
                 }
             });
         }
-        sendButtonManual = dialogView.findViewById(R.id.sendButtonManual);
+        Button sendButtonManual = dialogView.findViewById(R.id.sendButtonManual);
         sendButtonManual.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -108,6 +105,9 @@ public class PopUp_Send extends DialogFragment {
        "[a-zA-Z0-9\\+\\.\\_\\%\\-\\+]{1,256}" + "\\@" + "[a-zA-Z0-9][a-zA-Z0-9\\-]{0,64}" + "(" + "\\." + "[a-zA-Z0-9][a-zA-Z0-9\\-]{0,25}" + ")+"
     );
 
+    /*
+       Sending an email with the entries of the week via email-client of the smartphone
+     */
     private void sendEmail(){
         Intent emailIntent = new Intent(Intent.ACTION_SENDTO,  Uri.fromParts("mailto",recipient, null));
         emailIntent.putExtra(Intent.EXTRA_TEXT, content);

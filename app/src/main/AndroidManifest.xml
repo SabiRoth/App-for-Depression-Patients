@@ -7,7 +7,6 @@
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
     <uses-permission android:name="android.permission.ACCESS_INTERNET"/>
 
-    <!--TODO: Info über Backup durchlesen-->
     <application
         android:allowBackup="true"
         android:icon="@drawable/icon"
@@ -18,8 +17,6 @@
         <meta-data
             android:name="com.google.android.geo.API_KEY"
             android:value="@string/google_android_map_api_key"/>
-
-        <!-- <service android:name=".BackgroundService" /> -->
 
         <activity android:name=".MainActivity">
             <intent-filter>

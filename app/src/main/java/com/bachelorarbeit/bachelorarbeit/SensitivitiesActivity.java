@@ -13,22 +13,20 @@ import android.widget.TextView;
 import android.widget.CheckedTextView;
 import android.widget.Toast;
 
-
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.Date;
 
 
 public class SensitivitiesActivity extends AppCompatActivity {
 
-    public ArrayList<String> allSelectedEntries = new ArrayList<String>();
-    public ArrayList<String[]> arrayListStringArrays = new ArrayList<>();
+    private ArrayList<String> allSelectedEntries = new ArrayList<String>();
+    private ArrayList<String[]> arrayListStringArrays = new ArrayList<>();
     int counter = 0;
-    public ListView listViewSensitivities;
-    public TextView header;
-    public String[] headerString;
-    public Button buttonSensitivitiesNext;
-    dataSource dataSource;
+    private ListView listViewSensitivities;
+    private TextView header;
+    private String[] headerString;
+    private Button buttonSensitivitiesNext;
+    private dataSource dataSource;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,17 +36,13 @@ public class SensitivitiesActivity extends AppCompatActivity {
         listViewSensitivities = (ListView)findViewById(R.id.listViewCheckboxes);
         buttonSensitivitiesNext = (Button)findViewById(R.id.button_sensitivies_next);
         headerString = getResources().getStringArray(R.array.sensivities_header);
-
         String[] somatic = getResources().getStringArray(R.array.sensivities_somatic);
         String[] psychic = getResources().getStringArray(R.array.sensivities_psychic);
         String[] social = getResources().getStringArray(R.array.sensivities_social);
         String[] ownEntries;
-
         arrayListStringArrays.add(somatic);
         arrayListStringArrays.add(psychic);
         arrayListStringArrays.add(social);
-
-
         dataSource = new dataSource(this);
         dataSource.open();
         ArrayList<String> allOwnSensitivities = dataSource.getAllOwnSensitivities();
@@ -72,7 +66,9 @@ public class SensitivitiesActivity extends AppCompatActivity {
         });
     }
 
-
+    /*
+       Refreshing the page with the new heading and listentries
+     */
     private void buildActualPage(){
          header.setText(headerString[counter]);
          final ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,
@@ -124,7 +120,6 @@ public class SensitivitiesActivity extends AppCompatActivity {
                     alreadySelected = true;
                 }
             }
-
             if(!alreadySelected) {
                 allSelectedEntries.add(input);
                 checkAndSaveEntry(input);
@@ -133,9 +128,11 @@ public class SensitivitiesActivity extends AppCompatActivity {
             }
             editText.setText("");
         }
-
     }
 
+    /*
+      Proofs if the input from the user is already saved in the database of the own entries and save it if it isn't
+    */
     private void checkAndSaveEntry(String entry){
         ArrayList<String> allEntries = dataSource.getAllOwnSensitivities();
         for(int i= 0; i<allEntries.size(); i++){

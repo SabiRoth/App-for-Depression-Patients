@@ -41,7 +41,6 @@
         android:id="@+id/textView_mainSymptoms"
         style="@style/hintTextView"/>
 
-
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"

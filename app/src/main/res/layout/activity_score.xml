@@ -47,7 +47,6 @@
             android:visibility="gone"
             style="@style/scoreTextView"/>
 
-
         <include layout="@layout/score_listentry_first_symptom"/>
 
         <TextView
@@ -59,7 +58,6 @@
 
         <include layout="@layout/score_listentry_second_symptom"/>
 
-
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -67,20 +65,14 @@
             android:visibility="gone"
             style="@style/scoreTextView"/>
 
-
         <include layout="@layout/score_listentry_third_symptom"/>
 
-
-
-            <Button
-                android:id="@+id/button_score_next"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                style="@style/nextButton"
-                android:layout_marginTop="50dp"/>
-
-
-
+        <Button
+            android:id="@+id/button_score_next"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            style="@style/nextButton"
+            android:layout_marginTop="50dp"/>
 
     </LinearLayout>
 </ScrollView>

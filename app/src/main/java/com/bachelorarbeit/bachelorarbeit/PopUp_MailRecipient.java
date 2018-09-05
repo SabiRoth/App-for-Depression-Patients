@@ -3,6 +3,7 @@ package com.bachelorarbeit.bachelorarbeit;
 import android.app.AlertDialog;
 import android.app.Dialog;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.support.v4.app.DialogFragment;
 import android.view.Gravity;
 import android.view.LayoutInflater;
@@ -17,12 +18,11 @@ import java.util.regex.Pattern;
 
 public class PopUp_MailRecipient extends DialogFragment {
 
-    EditText mailInput;
-    TextView textView_recipient;
-    Button saveButton;
-    Button deleteButton;
-    dataSource dataSource;
-    View layout;
+    private EditText mailInput;
+    private TextView textView_recipient;
+    private Button deleteButton;
+    private dataSource dataSource;
+    private View layout;
 
     public static PopUp_MailRecipient newInstance(){
         return new PopUp_MailRecipient();
@@ -30,6 +30,7 @@ public class PopUp_MailRecipient extends DialogFragment {
 
 
     @Override
+    @NonNull
     public Dialog onCreateDialog(Bundle savedInstanceState) {
         AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
         LayoutInflater inflater = getActivity().getLayoutInflater();
@@ -37,7 +38,7 @@ public class PopUp_MailRecipient extends DialogFragment {
         layout = inflater.inflate(R.layout.toast, (ViewGroup) dialogView.findViewById(R.id.toast_layout));
         mailInput = dialogView.findViewById(R.id.inputMail);
         textView_recipient = dialogView.findViewById(R.id.textView_recipient);
-        saveButton = dialogView.findViewById(R.id.saveButton_mail);
+        Button saveButton = dialogView.findViewById(R.id.saveButton_mail);
         deleteButton = dialogView.findViewById(R.id.deleteButton_mail);
         dataSource = new dataSource(getContext());
         dataSource.open();
@@ -50,6 +51,26 @@ public class PopUp_MailRecipient extends DialogFragment {
             }
         });
         return builder.create();
+    }
+
+    /*
+       If already an email-recipient is saved display the address
+     */
+    private void showLastRecipient(){
+        String recipient = dataSource.getSettingViaName(getResources().getString(R.string.key_mailRecipient));
+        if(recipient != null){
+            textView_recipient.setVisibility(View.VISIBLE);
+            textView_recipient.setText(getResources().getString(R.string.pop_up_mail_already_entry) + " " + recipient);
+            deleteButton.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    deleteEntry();
+                }
+            });
+        }
+        else {
+            deleteButton.setVisibility(View.GONE);
+        }
     }
 
     private void saveInDb(){
@@ -75,29 +96,13 @@ public class PopUp_MailRecipient extends DialogFragment {
             toastTextView.setText(getResources().getString(R.string.toast_noRecipient));
             toast.show();
         }
+        dataSource.close();
     }
 
     private void deleteEntry(){
         dataSource.deleteSettingsEntry(getResources().getString(R.string.key_mailRecipient));
         Toast.makeText(getContext(), getResources().getString(R.string.toast_deleted), Toast.LENGTH_LONG).show();
         this.dismiss();
-    }
-
-    private void showLastRecipient(){
-        String recipient = dataSource.getSettingViaName(getResources().getString(R.string.key_mailRecipient));
-        if(recipient != null){
-            textView_recipient.setVisibility(View.VISIBLE);
-            textView_recipient.setText(getResources().getString(R.string.pop_up_mail_already_entry) + " " + recipient);
-            deleteButton.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    deleteEntry();
-                }
-            });
-        }
-        else {
-            deleteButton.setVisibility(View.GONE);
-        }
     }
 
     private boolean checkEmail(String email) {

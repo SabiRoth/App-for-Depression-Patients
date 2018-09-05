@@ -3,6 +3,7 @@ package com.bachelorarbeit.bachelorarbeit;
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
+import android.util.Log;
 
 public class dbHelper extends SQLiteOpenHelper {
 
@@ -31,30 +32,30 @@ public class dbHelper extends SQLiteOpenHelper {
     public static final String COLUMN_VALUE = "Value";
 
 
-    public static final String SQL_CREATE_TABLE_ENTRIES =
+    private static final String SQL_CREATE_TABLE_ENTRIES =
             "CREATE TABLE " + TABLE_ALL_ENTRIES +
                     "(" + COLUMN_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " + COLUMN_SENSIBILITIES + " TEXT,"+ COLUMN_ACTIVITIES + " TEXT,"+
                     COLUMN_PLACES + " TEXT," + COLUMN_DATE + " TEXT NOT NULL," + COLUMN_TIME + " TEXT NOT NULL," +COLUMN_DAYTIME + " TEXT NOT NULL"+ ")";
 
-    public static final String SQL_CREATE_TABLE_MOVEMENT_DATA =
+    private static final String SQL_CREATE_TABLE_MOVEMENT_DATA =
             "CREATE TABLE " + TABLE_MOVEMENT_DATA +
                     "(" + COLUMN_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " + COLUMN_DATE + " TEXT, " + COLUMN_LONGITUDE + " TEXT,"+
                     COLUMN_LATITUDE + " TEXT" + ")";
 
-    public static final String SQL_CREATE_TABLE_OWN_SENSITIVITIES_ENTRIES =
+    private static final String SQL_CREATE_TABLE_OWN_SENSITIVITIES_ENTRIES =
             "CREATE TABLE " + TABLE_OWN_SENSITIVITIES_ENTRIES +
                     "(" + COLUMN_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " + COLUMN_OWN_SENSITIVITY + " TEXT" + ")";
 
-    public static final String SQL_CREATE_TABLE_OWN_ACTIVITIES_ENTRIES =
+    private static final String SQL_CREATE_TABLE_OWN_ACTIVITIES_ENTRIES =
             "CREATE TABLE " + TABLE_OWN_ACTIVITIES_ENTRIES +
                     "(" + COLUMN_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " + COLUMN_OWN_ACTIVITIES + " TEXT" + ")";
 
-    public static final String SQL_CREATE_TABLE_MAIN_SYMPTOMS =
+    private static final String SQL_CREATE_TABLE_MAIN_SYMPTOMS =
             "CREATE TABLE "+ TABLE_MAIN_SYMPTOMS +
                     "(" + COLUMN_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " + COLUMN_SENSIBILITIES + " TEXT NOT NULL," + COLUMN_SCORE +  " TEXT NOT NULL," +
                     COLUMN_DATE + " TEXT NOT NULL," + COLUMN_TIME + " TEXT NOT NULL"+ ")";
 
-    public static final String SQL_CREATE_TABLE_SETTINGS =
+    private static final String SQL_CREATE_TABLE_SETTINGS =
             "CREATE TABLE " + TABLE_SETTINGS +
                     "(" + COLUMN_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " + COLUMN_NAME + " TEXT NOT NULL," + COLUMN_VALUE + " TEXT NOT NULL"+ ")";
 
@@ -73,7 +74,8 @@ public class dbHelper extends SQLiteOpenHelper {
             db.execSQL(SQL_CREATE_TABLE_OWN_ACTIVITIES_ENTRIES);
             db.execSQL(SQL_CREATE_TABLE_MAIN_SYMPTOMS);
             db.execSQL(SQL_CREATE_TABLE_SETTINGS);
-        } catch (Exception ex) {
+        } catch (Exception e) {
+            e.printStackTrace();
         }
     }
 

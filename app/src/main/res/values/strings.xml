@@ -14,7 +14,7 @@
     <string name="end_button">Abschließen</string>
     <string name="input_button">Zur Eingabe</string>
     <string name="close_button">Schließen</string>
-    <string name="ok_button">Ok</string>
+    <string name="ok_button">OK</string>
     <string name="delete_button">Gespeicherte Eingaben löschen</string>
     <string name="send_button">Senden</string>
     <string name="sendEmail_button">Per E-Mail versenden</string>
@@ -108,7 +108,6 @@
     <string name="site_notice_caption2">Haftung für Inhalte</string>
     <string name="site_notice_text">Für die Richtigkeit, Vollständigkeit und Aktualität der Inhalte wird keine Haftung übernommen. Nach §§ 8 bis 10 TMG ist der Dienstanbieter nicht verpflichtet, übermittelte oder gespeicherte fremde Informationen zu überwachen oder nach Umständen zu forschen, die auf eine rechtswidrige Tätigkeit hinweisen. Verpflichtungen zur Entfernung oder Sperrung der Nutzung von Informationen nach den allgemeinen Gesetzen bleiben hiervon unberührt. Eine diesbezügliche Haftung ist jedoch erst ab dem Zeitpunkt der Kenntnis einer konkreten Rechtsverletzung möglich. Der Nutzung von im Rahmen der Impressumspflicht veröffentlichten Kontaktdaten durch Dritte zur Übersendung von nicht ausdrücklich angeforderter Werbung und Informationsmaterialien wird hiermit ausdrücklich widersprochen. Das Verwenden oder Verbreiten der appeigenen Icons und Bilder ist untersagt.</string>
 
-
     <!--Text Notification/Toast-->
     <string name="notification_part1">Dein letzter Eintrag ist vom</string>
     <string name="notification_part2">. Aktualisiere deine Eingaben.</string>
@@ -130,7 +129,6 @@
     <string name="spinner_overview">Übersicht</string>
     <string name="graph_activities">Aktivitäten</string>
     <string name="graph_sameGraph">Übersichts- und Aktivitätengraph sind identisch</string>
-
 
     <!--Daytimes-->
     <string name="morning">Morgen</string>
@@ -190,46 +188,33 @@
     </string-array>
 
     <string-array name="sensivities_somatic">
-        <item>Verminderter Antrieb (Energieverlust)</item>
-        <item>Verminderte Aktivität</item>
-        <item>Gesteigerte Aktivität (Bewegungsdrang)</item>
-        <item>Anspannung</item>
-        <item>Unruhe</item>
-        <item>Geminderte Leistungsfähigkeit</item>
         <item>Konzentrationsschwierigkeiten</item>
+        <item>Verminderte/Gesteigerte Aktivität</item>
+        <item>Anspannung/Unruhe</item>
+        <item>Geminderte Leistungsfähigkeit</item>
         <item>Kraftlosigkeit</item>
         <item>Zittern</item>
         <item>Schlafstörungen</item>
         <item>Früherwachen</item>
-        <item>Müdigkeit</item>
-        <item>Morgentief</item>
-        <item>Appetitsminderung</item>
-        <item>Appetitssteigerung</item>
+        <item>Appetitsminderung/-steigerung</item>
         <item>Libidoverlust</item>
     </string-array>
 
     <string-array name="sensivities_psychic">
-        <item>Beeinträchtigtes Selbstwertgefühl (Gefühle der Wertlosigkeit)</item>
+        <item>Interessenverlust</item>
+        <item>Beeinträchtigtes Selbstwertgefühl</item>
         <item>Beeinträchtigtes Selbstvertrauen</item>
+        <item>Ängste</item>
+        <item>Gefühllosigkeit</item>
         <item>Schuldgefühle</item>
         <item>Gedrückte Stimmung/Traurigkeit</item>
-        <item>Versagensgefühle</item>
-        <item>Selbstvorwürfe</item>
         <item>Gedanken an den Tod oder an Suizid</item>
-        <item>Melancholie</item>
-        <item>Pessimismus</item>
-        <item>Unzufriedenheit</item>
-        <item>Verzweiflung</item>
-        <item>Stress</item>
-        <item>Ängste</item>
-        <item>Gedankenschleifen</item>
-        <item>Mutlosigkeit</item>
-        <item>Gefühle der Nutzlosigkeit</item>
-        <item>Geminderte Begeisterungsfähigkeit</item>
+        <item>Unzufriedenheit/Verzweiflung</item>
         <item>Weinen</item>
-        <item>Unentschlossenheit</item>
         <item>Verlust von Freude</item>
-        <item>Interessenverlust</item>
+        <item>Gedankenschleifen</item>
+        <item>Gefühle der Nutzlosigkeit</item>
+        <item>Unentschlossenheit</item>
     </string-array>
 
     <string-array name="sensivities_social">
@@ -278,6 +263,4 @@
         <item>Wochenansicht</item>
         <item>Tagesansicht</item>
     </string-array>
-
-
 </resources>

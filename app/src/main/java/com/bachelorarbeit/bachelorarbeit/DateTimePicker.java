@@ -1,9 +1,5 @@
 package com.bachelorarbeit.bachelorarbeit;
 
-import android.app.DatePickerDialog;
-import android.content.Intent;
-import android.widget.Button;
-import android.widget.DatePicker;
 
 import java.util.Calendar;
 import java.util.Locale;
@@ -18,10 +14,8 @@ public class DateTimePicker extends Calendar {
     }
 
     public static DateTimePicker getInstance(){
-        DateTimePicker dateTimePicker = new DateTimePicker();
-        return dateTimePicker;
+        return new DateTimePicker();
     }
-
 
     public String getCurrentTime() {
         calendar.setTimeZone(TimeZone.getTimeZone("Europe/Berlin"));
@@ -54,10 +48,10 @@ public class DateTimePicker extends Calendar {
         calendar.setTimeZone(TimeZone.getTimeZone("Europe/Berlin"));
         String daytime ="";
         Integer curerntHour = calendar.get(Calendar.HOUR_OF_DAY);
-        if(curerntHour < 11 && curerntHour > 3){
+        if(curerntHour < 11 && curerntHour > 2){
             daytime = "Morgen";
         }
-        if(curerntHour > 16 || curerntHour < 4){
+        if(curerntHour > 16 || curerntHour < 3){
             daytime = "Abend";
         }
         if(curerntHour > 10 && curerntHour<17){
@@ -68,19 +62,18 @@ public class DateTimePicker extends Calendar {
 
     public String getDaytime(String time){
         int hours = Integer.parseInt(time.substring(0,2));
-        String daytime;
+        String daytime = "";
         if(hours < 11 && hours > 2){
             daytime = "Morgen";
         }
         if(hours > 16 || hours < 3){
             daytime = "Abend";
         }
-        else{
+        if(hours > 10 && hours <17){
             daytime = "Mittag";
         }
         return daytime;
     }
-
 
     public String getMonthFromDate(String date){
         calendar.setTimeZone(TimeZone.getTimeZone("Europe/Berlin"));
@@ -99,6 +92,9 @@ public class DateTimePicker extends Calendar {
         return date.substring(0,2);
     }
 
+    /*
+       Calculating the day before the passed date for the overviews
+     */
     public String getTheDayBefore(String latestDate){
         calendar.setTimeZone(TimeZone.getTimeZone("Europe/Berlin"));
         Integer currentDayInt = Integer.parseInt(latestDate.substring(0,2));
@@ -114,17 +110,29 @@ public class DateTimePicker extends Calendar {
             Integer currentMonthInt = Integer.parseInt(getCurrentDate().substring(3,5))-1;
             switch (currentMonthInt){
                 case 1: currentDayInt = 31;
+                        break;
                 case 2: currentDayInt = 28;
+                        break;
                 case 3: currentDayInt = 31;
+                        break;
                 case 4: currentDayInt = 30;
+                        break;
                 case 5: currentDayInt = 31;
+                        break;
                 case 6: currentDayInt = 30;
+                        break;
                 case 7: currentDayInt = 31;
+                        break;
                 case 8: currentDayInt = 31;
+                        break;
                 case 9: currentDayInt = 30;
+                        break;
                 case 10: currentDayInt = 31;
+                         break;
                 case 11: currentDayInt = 30;
+                         break;
                 case 12: currentDayInt = 31;
+                         break;
             }
 
             String currentDayString = currentDayInt.toString();
@@ -152,15 +160,12 @@ public class DateTimePicker extends Calendar {
         return dayString + "." + monthString + "." + year;
     }
 
-
     @Override
     protected void computeTime() {
-
     }
 
     @Override
     protected void computeFields() {
-
     }
 
     @Override
@@ -230,12 +235,10 @@ public class DateTimePicker extends Calendar {
 
     @Override
     public void add(int i, int i1) {
-
     }
 
     @Override
     public void roll(int i, boolean b) {
-
     }
 
     @Override
@@ -342,5 +345,4 @@ public class DateTimePicker extends Calendar {
     public String toString() {
         return super.toString();
     }
-
 }

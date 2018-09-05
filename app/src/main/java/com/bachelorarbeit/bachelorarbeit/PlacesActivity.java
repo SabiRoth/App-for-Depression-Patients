@@ -11,17 +11,15 @@ import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
-
 import java.util.ArrayList;
 import java.util.Arrays;
 
 
 public class PlacesActivity extends AppCompatActivity {
 
-
-    public ArrayList<EditText> editTextArrayList;
-    public ArrayList<String> selectedActivites;
-    public String sensitivitiesString;
+    private ArrayList<EditText> editTextArrayList;
+    private ArrayList<String> selectedActivites;
+    private String sensitivitiesString;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -55,7 +53,6 @@ public class PlacesActivity extends AppCompatActivity {
             endButtonClicked();
             return;
         }
-
         for(int i = 0; i<selectedActivites.size(); i++){
             TextView entry = new TextView(getApplicationContext());
             entry.setLayoutParams(paramsForTextView);
@@ -91,7 +88,6 @@ public class PlacesActivity extends AppCompatActivity {
                 }
             }
         }
-
         String[] temp = new String[selectedActivites.size()];
         String activitiesString = Arrays.toString(selectedActivites.toArray(temp));
         if(activitiesString.equals("[]")){
@@ -102,7 +98,6 @@ public class PlacesActivity extends AppCompatActivity {
         if(placesString.equals("[]")){
             placesString = null;
         }
-
         if(activitiesString != null || sensitivitiesString != null){
             if(sensitivitiesString!=null){
                 sensitivitiesString = sensitivitiesString.substring(1, sensitivitiesString.length()-1);
@@ -117,8 +112,8 @@ public class PlacesActivity extends AppCompatActivity {
             dataSource dataSource = new dataSource(this);
             dataSource.open();
             dataSource.createEntry(sensitivitiesString, activitiesString, placesString, dateTimePicker.getCurrentDate(),  dateTimePicker.getCurrentTime(), dateTimePicker.getDaytime());
+            dataSource.close();
         }
-
         Intent i = new Intent(this, HomeActivity.class);
         startActivity(i);
     }

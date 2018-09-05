@@ -17,22 +17,16 @@ import java.util.ArrayList;
 
 public class ActivitiesActivity extends AppCompatActivity {
 
-    public ListView socialActivitiesListView;
-    public ListView sportActivititesListView;
-    public ListView relaxationActivitiesListView;
-    public ListView obligationsActivitiesListView;
-    public ListView ownEntriesActivitiesListView;
-    public EditText editTextField;
-    public ArrayList<String> allSelectedEntries;
-    Button nextButton;
-    dataSource dataSource;
+    private EditText editTextField;
+    private ArrayList<String> allSelectedEntries;
+    private Button nextButton;
+    private dataSource dataSource;
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_activities);
-
         String[] socialActivitiesArrayString = getResources().getStringArray(R.array.activities_social);
         String[] sportActivitiesArrayString = getResources().getStringArray(R.array.activities_sport);
         String[] relaxationActivitiesArrayString = getResources().getStringArray(R.array.activities_relaxation);
@@ -41,11 +35,11 @@ public class ActivitiesActivity extends AppCompatActivity {
         nextButton = (Button)findViewById(R.id.button_activities_next);
         Button saveButton = (Button)findViewById(R.id.saveButton_activities);
         editTextField = (EditText)findViewById(R.id.editText_activities);
-        socialActivitiesListView = (ListView)findViewById(R.id.listView_activities_social);
-        sportActivititesListView = (ListView)findViewById(R.id.listView_activities_sport);
-        relaxationActivitiesListView = (ListView)findViewById(R.id.listView_activities_relaxation);
-        obligationsActivitiesListView = (ListView)findViewById(R.id.listView_activities_obligations);
-        ownEntriesActivitiesListView = (ListView) findViewById(R.id.listView_activities_own_entries);
+        ListView socialActivitiesListView = (ListView)findViewById(R.id.listView_activities_social);
+        ListView sportActivititesListView = (ListView)findViewById(R.id.listView_activities_sport);
+        ListView relaxationActivitiesListView = (ListView)findViewById(R.id.listView_activities_relaxation);
+        ListView obligationsActivitiesListView = (ListView)findViewById(R.id.listView_activities_obligations);
+        ListView ownEntriesActivitiesListView = (ListView) findViewById(R.id.listView_activities_own_entries);
         dataSource = new dataSource(this);
         dataSource.open();
 
@@ -142,6 +136,7 @@ public class ActivitiesActivity extends AppCompatActivity {
 
     private void nextButtonClicked(){
         if(allSelectedEntries.size()!=0){
+            dataSource.close();
             Intent i;
             i = new Intent(this, PlacesActivity.class);
             i.putExtra(getResources().getString(R.string.key_selectedActivities), allSelectedEntries);
@@ -150,6 +145,9 @@ public class ActivitiesActivity extends AppCompatActivity {
         }
     }
 
+    /*
+      Save own entry in database
+    */
     private void saveButtonClicked(){
         if(!(editTextField.getText().toString().equals(""))) {
             allSelectedEntries.add(editTextField.getText().toString());

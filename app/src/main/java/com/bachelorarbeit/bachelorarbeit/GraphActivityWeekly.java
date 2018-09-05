@@ -1,6 +1,5 @@
 package com.bachelorarbeit.bachelorarbeit;
 
-import android.app.DatePickerDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -8,7 +7,6 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
-import android.widget.DatePicker;
 import android.widget.Spinner;
 import android.widget.TextView;
 
@@ -17,23 +15,19 @@ import com.softmoore.android.graphlib.*;
 import com.softmoore.android.graphlib.Label;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Calendar;
 import java.util.Locale;
 
 public class GraphActivityWeekly extends AppCompatActivity implements AdapterView.OnItemSelectedListener{
 
 
-    String[] spinnerList;
-    Spinner spinnerView, spinnerGraph;
-    DateTimePicker dateTimePicker;
-    ArrayList<String> symptomListInDb;
+    private String[] spinnerList, mainSymptoms;
+    private Spinner spinnerView, spinnerGraph;
+    private DateTimePicker dateTimePicker;
     int check = 0;
-    dataSource dataSource;
-    String[] mainSymptoms;
+    private dataSource dataSource;
     final int DAYS_OF_WEEK = 7;
-    String newDate;
-    String contentIntent;
+    private String newDate, contentIntent;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,7 +39,6 @@ public class GraphActivityWeekly extends AppCompatActivity implements AdapterVie
         spinnerView = (Spinner) findViewById(R.id.spinner);
         spinnerGraph = (Spinner) findViewById(R.id.spinner_graph);
         dateTimePicker = DateTimePicker.getInstance();
-        symptomListInDb = new ArrayList<>();
         dataSource = new dataSource(this);
         dataSource.open();
         contentIntent = getIntent().getStringExtra(getResources().getString(R.string.key_spinner_graph));
@@ -53,6 +46,7 @@ public class GraphActivityWeekly extends AppCompatActivity implements AdapterVie
         newDate = dateTimePicker.getCurrentDate();
         createGraph();
         initializeSpinner();
+        dataSource.close();
     }
 
     private void createGraph(){
@@ -187,7 +181,6 @@ public class GraphActivityWeekly extends AppCompatActivity implements AdapterVie
         }
     }
 
-
     private int calculateAverage(float sum, float divisor){
         return Math.round(sum / divisor);
     }
@@ -232,19 +225,12 @@ public class GraphActivityWeekly extends AppCompatActivity implements AdapterVie
                 this.finish();
                 startActivity(i);
             }
-
-
-
         }
     }
-
-
 
     @Override
     public void onNothingSelected(AdapterView<?> arg0) {
     }
-
-
 
     @Override
     public void onBackPressed(){

@@ -5,24 +5,17 @@ import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
-import android.util.Log;
 
-import java.lang.reflect.Array;
 import java.util.ArrayList;
-import java.util.Date;
-
-import static android.content.ContentValues.TAG;
 
 
 public class dataSource {
 
-
     private SQLiteDatabase database;
     private dbHelper dbHelper;
 
-
     private String[] columnsEntries = {dbHelper.COLUMN_ID, dbHelper.COLUMN_SENSIBILITIES, dbHelper.COLUMN_PLACES, dbHelper.COLUMN_ACTIVITIES,
-            dbHelper.COLUMN_DATE, dbHelper.COLUMN_TIME, dbHelper.COLUMN_DAYTIME};
+                                       dbHelper.COLUMN_DATE, dbHelper.COLUMN_TIME, dbHelper.COLUMN_DAYTIME};
     private String[] columnsMovementProfile = {dbHelper.COLUMN_ID, dbHelper.COLUMN_DATE, dbHelper.COLUMN_LONGITUDE, dbHelper.COLUMN_LATITUDE};
     private String[] columnsOwnSensitivities = {dbHelper.COLUMN_ID, dbHelper.COLUMN_OWN_SENSITIVITY};
     private String[] columnsOwnActivities = {dbHelper.COLUMN_ID, dbHelper.COLUMN_OWN_ACTIVITIES};
@@ -39,7 +32,6 @@ public class dataSource {
         dbHelper.close();
     }
 
-    //write a new entry in the database
     public void createEntry(String sensitivies, String activities, String places, String date, String time, String daytime) {
         ContentValues values = new ContentValues();
         values.put(dbHelper.COLUMN_SENSIBILITIES, sensitivies);
@@ -48,7 +40,6 @@ public class dataSource {
         values.put(dbHelper.COLUMN_DATE, date);
         values.put(dbHelper.COLUMN_TIME, time);
         values.put(dbHelper.COLUMN_DAYTIME, daytime);
-
         database.insert(dbHelper.TABLE_ALL_ENTRIES, null, values);
     }
 
@@ -81,43 +72,27 @@ public class dataSource {
         database.insert(dbHelper.TABLE_MAIN_SYMPTOMS, null, values);
     }
 
+    /*
+       First delete old entry of this setting, so just one entry to spezific setting exists
+     */
     public void createSettingsEntry(String name, String value) {
         deleteSettingsEntry(name);
         ContentValues values = new ContentValues();
         values.put(dbHelper.COLUMN_NAME, name);
         values.put(dbHelper.COLUMN_VALUE, value);
         database.insert(dbHelper.TABLE_SETTINGS, null, values);
-
     }
 
-    public void createScoreEntry(String score, String date, String time){
-        ContentValues values = new ContentValues();
-        values.put(dbHelper.COLUMN_SCORE, score);
-        values.put(dbHelper.COLUMN_DATE, date);
-        values.put(dbHelper.COLUMN_TIME, time);
-    }
-
-    public void deleteEntry(Entry entry) {
-        long id = entry.getId();
-        database.delete(dbHelper.TABLE_ALL_ENTRIES,
-                dbHelper.COLUMN_ID + "=" + id,
-                null);
-    }
-
-
-    //provide all entries in the database
-    public ArrayList<Entry> getAllEntries() {
+    private ArrayList<Entry> getAllEntries() {
         Cursor cursor = database.query(dbHelper.TABLE_ALL_ENTRIES, columnsEntries, null, null, null, null, null);
         return cursorToEntry(cursor);
     }
 
     public ArrayList<Entry> getAllEntries(String date) {
         Cursor cursor = database.query(dbHelper.TABLE_ALL_ENTRIES, columnsEntries, null, null, null, null, null);
-        return cursorToEntryDate(cursor, date);
+        return cursorToEntryOfDate(cursor, date);
     }
 
-
-    //provide all entries in the database
     public ArrayList<String[]> getAllMovementEntriesViaDate(String date) {
         Cursor cursor = database.query(dbHelper.TABLE_MOVEMENT_DATA, columnsMovementProfile, null, null, null, null, null);
         return cursorToMovementEntry(cursor, date);
@@ -134,6 +109,7 @@ public class dataSource {
                     ownSensitivities.add(entry);
                 }
             }
+            cursor.close();
         }
         return ownSensitivities;
     }
@@ -149,6 +125,7 @@ public class dataSource {
                     ownActvities.add(entry);
                 }
             }
+            cursor.close();
         }
         return ownActvities;
     }
@@ -163,7 +140,6 @@ public class dataSource {
             return null;
         }
     }
-
 
     public String[] getLastMovementEntry(String date){
         ArrayList<String[]> allEntry = getAllMovementEntriesViaDate(date);
@@ -186,6 +162,7 @@ public class dataSource {
                     }
                 }
             }
+            cursor.close();
         }
         return null;
     }
@@ -202,11 +179,10 @@ public class dataSource {
                     }
                 }
             }
+            cursor.close();
         }
         return result;
     }
-
-
 
     private ArrayList<Entry> cursorToEntry(Cursor cursor) {
         ArrayList<Entry> entries = new ArrayList<Entry>();
@@ -228,7 +204,7 @@ public class dataSource {
         return entries;
     }
 
-    private ArrayList<Entry> cursorToEntryDate  (Cursor cursor, String date) {
+    private ArrayList<Entry> cursorToEntryOfDate(Cursor cursor, String date) {
         ArrayList<Entry> entries = new ArrayList<Entry>();
         if(cursor!=null){
             if(cursor.getCount()>0){
@@ -269,7 +245,6 @@ public class dataSource {
         return entries;
     }
 
-
     public void deleteSettingsEntry(String name){
         Cursor cursor = database.query(dbHelper.TABLE_SETTINGS, columnsSettings, null, null, null, null, null);
         if(cursor!=null){
@@ -283,6 +258,7 @@ public class dataSource {
                     }
                 }
             }
+            cursor.close();
         }
     }
 }
