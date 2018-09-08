@@ -39,7 +39,13 @@ public class GraphActivityDaily extends AppCompatActivity implements AdapterView
         dateTimePicker = DateTimePicker.getInstance();
         dataSource = new dataSource(this);
         dataSource.open();
-        mainSymptoms = (getResources().getString(R.string.key_score) + "," + dataSource.getSettingViaName(getResources().getString(R.string.key_mainSymptoms))).split(",");
+        if(dataSource.getSettingViaName(getResources().getString(R.string.key_mainSymptoms))!=null){
+            mainSymptoms = (getResources().getString(R.string.key_score) + "," + dataSource.getSettingViaName(getResources().getString(R.string.key_mainSymptoms))).split(",");
+        }
+        else{
+            mainSymptoms = new String[1];
+            mainSymptoms[0] = getResources().getString(R.string.key_score);
+        }
         pickedDate = getIntent().getStringExtra(getResources().getString(R.string.key_date));
         if(pickedDate == null){
             pickedDate = dateTimePicker.getCurrentDate();

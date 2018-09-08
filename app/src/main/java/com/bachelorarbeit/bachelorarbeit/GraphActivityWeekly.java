@@ -42,7 +42,13 @@ public class GraphActivityWeekly extends AppCompatActivity implements AdapterVie
         dataSource = new dataSource(this);
         dataSource.open();
         contentIntent = getIntent().getStringExtra(getResources().getString(R.string.key_spinner_graph));
-        mainSymptoms = (getResources().getString(R.string.key_score) + "," + dataSource.getSettingViaName(getResources().getString(R.string.key_mainSymptoms))).split(",");
+        if(dataSource.getSettingViaName(getResources().getString(R.string.key_mainSymptoms))!=null){
+            mainSymptoms = (getResources().getString(R.string.key_score) + "," + dataSource.getSettingViaName(getResources().getString(R.string.key_mainSymptoms))).split(",");
+        }
+        else{
+            mainSymptoms = new String[1];
+            mainSymptoms[0] = getResources().getString(R.string.key_score);
+        }
         newDate = dateTimePicker.getCurrentDate();
         createGraph();
         initializeSpinner();

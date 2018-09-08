@@ -1,63 +1,70 @@
 <?xml version="1.0" encoding="utf-8"?>
-
-<LinearLayout
+<ScrollView
     xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:gravity="center_horizontal">
-
-    <include
-        layout="@layout/header_calendar_graph"/>
-
-    <android.support.v7.widget.AppCompatSpinner
-        android:id="@+id/spinner_graph"
-        style="@style/spinner"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"/>
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:fillViewport="true">
 
     <LinearLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:weightSum="1"
+        android:orientation="vertical"
         android:gravity="center_horizontal">
 
-        <com.softmoore.android.graphlib.GraphView
-            android:id="@+id/graph_view"
-            android:layout_width="0dp"
-            android:layout_weight="0.9"
-            android:layout_height="300dp"/>
-    </LinearLayout>
+        <include
+            layout="@layout/header_calendar_graph"/>
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:gravity="center_horizontal">
+        <android.support.v7.widget.AppCompatSpinner
+            android:id="@+id/spinner_graph"
+            style="@style/spinner"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:weightSum="1"
+            android:gravity="center_horizontal">
+
+            <com.softmoore.android.graphlib.GraphView
+                android:id="@+id/graph_view"
+                android:layout_width="0dp"
+                android:layout_weight="0.9"
+                android:layout_height="300dp"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center_horizontal">
+
+            <TextView
+                android:id="@+id/graph_view_label_symptom"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                style="@style/graphTextView"/>
+
+            <TextView
+                android:id="@+id/graph_view_label_activity"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/graph_activities"
+                style="@style/graphTextView"
+                android:visibility="gone"/>
+        </LinearLayout>
 
         <TextView
-            android:id="@+id/graph_view_label_symptom"
+            android:id="@+id/noDataTextView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            style="@style/graphTextView"/>
-
-        <TextView
-            android:id="@+id/graph_view_label_activity"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/graph_activities"
-            style="@style/graphTextView"
+            android:text="@string/no_Data_textview"
+            style="@style/normalText"
+            android:layout_gravity="center_horizontal"
             android:visibility="gone"/>
+
+
     </LinearLayout>
-
-    <TextView
-        android:id="@+id/noDataTextView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/no_Data_textview"
-        style="@style/normalText"
-        android:layout_gravity="center_horizontal"
-        android:visibility="gone"/>
-
-</LinearLayout>
+</ScrollView>

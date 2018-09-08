@@ -93,7 +93,7 @@ public class MapViewActivity extends AppCompatActivity implements OnMapReadyCall
 
     @Override
     public void onMapReady(GoogleMap googleMap) {
-        googleMap.setMinZoomPreference(16);
+        googleMap.setMaxZoomPreference(16);
         setPolyline(googleMap);
         if(ContextCompat.checkSelfPermission( this, android.Manifest.permission.ACCESS_FINE_LOCATION ) == PackageManager.PERMISSION_GRANTED) {
             googleMap.setMyLocationEnabled(true);
