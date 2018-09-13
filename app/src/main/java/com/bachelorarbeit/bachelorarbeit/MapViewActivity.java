@@ -122,6 +122,7 @@ public class MapViewActivity extends AppCompatActivity implements OnMapReadyCall
                 LatLng latLng = new LatLng(Double.valueOf(allMovementEntries.get(i)[2]), Double.valueOf(allMovementEntries.get(i)[1]));
                 points.add(latLng);
                 gm.moveCamera(CameraUpdateFactory.newLatLng(latLng));
+                gm.animateCamera(CameraUpdateFactory.newLatLngZoom(new LatLng(Double.valueOf(allMovementEntries.get(i)[2]),Double.valueOf(allMovementEntries.get(i)[1])),16));
             }
         }
 

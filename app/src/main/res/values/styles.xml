@@ -11,15 +11,18 @@
 
     <style name="headerTextView_home" parent="android:Widget.TextView">
         <item name="android:textColor">@color/colorHeadings</item>
-        <item name="android:textSize">32sp</item>
+        <item name="android:textSize">27sp</item>
         <item name="android:layout_marginBottom">10dp</item>
-        <item name="android:layout_marginTop">20dp</item>
+        <item name="android:layout_marginTop">15dp</item>
+        <item name="android:textStyle">bold</item>
     </style>
 
     <style name="button_home" parent="android:Widget.Button">
-        <item name="android:textSize">30sp</item>
-        <item name="android:layout_marginStart">55dp</item>
-        <item name="android:layout_marginEnd">55dp</item>
+        <item name="android:textSize">27sp</item>
+        <item name="android:layout_marginStart">43dp</item>
+        <item name="android:layout_marginLeft">43dp</item>
+        <item name="android:layout_marginEnd">43dp</item>
+        <item name="android:layout_marginRight">43dp</item>
         <item name="android:layout_marginBottom">5dp</item>
         <item name="android:drawablePadding">15dp</item>
         <item name="android:background">@drawable/button_background</item>
@@ -30,6 +33,7 @@
         <item name="android:textSize">22sp</item>
         <item name="android:layout_marginBottom">10dp</item>
         <item name="android:layout_marginStart">15dp</item>
+        <item name="android:layout_marginLeft">15dp</item>
         <item name="android:layout_marginTop">25dp</item>
         <item name="android:layout_gravity">start</item>
         <item name="android:textStyle">bold</item>
@@ -40,6 +44,7 @@
         <item name="android:textSize">22sp</item>
         <item name="android:layout_marginBottom">10dp</item>
         <item name="android:layout_marginStart">15dp</item>
+        <item name="android:layout_marginLeft">15dp</item>
         <item name="android:layout_marginTop">35dp</item>
         <item name="android:layout_gravity">start</item>
         <item name="android:textStyle">bold</item>
@@ -50,15 +55,30 @@
         <item name="android:textSize">21sp</item>
         <item name="android:layout_marginBottom">20dp</item>
         <item name="android:layout_marginStart">15dp</item>
+        <item name="android:layout_marginLeft">15dp</item>
         <item name="android:layout_marginTop">15dp</item>
         <item name="android:layout_marginEnd">15dp</item>
+        <item name="android:layout_marginRight">15dp</item>
     </style>
+
+    <style name="smallText" parent="android:Widget.TextView">
+        <item name="android:textColor">@color/colorText</item>
+        <item name="android:textSize">15sp</item>
+        <item name="android:layout_marginBottom">20dp</item>
+        <item name="android:layout_marginStart">15dp</item>
+        <item name="android:layout_marginLeft">15dp</item>
+        <item name="android:layout_marginTop">15dp</item>
+        <item name="android:layout_marginEnd">15dp</item>
+        <item name="android:layout_marginRight">15dp</item>
+    </style>
+
 
     <style name="nextButton" parent="android:Widget.Button">
         <item name="android:text">@string/next</item>
         <item name="android:textSize">22sp</item>
         <item name="android:layout_marginTop">25dp</item>
         <item name="android:layout_marginEnd">25dp</item>
+        <item name="android:layout_marginRight">25dp</item>
         <item name="android:layout_marginBottom">25dp</item>
         <item name="android:layout_gravity">end</item>
         <item name="android:background">@drawable/button_background</item>
@@ -68,6 +88,7 @@
         <item name="android:text">@string/save_button</item>
         <item name="android:textSize">20sp</item>
         <item name="android:layout_marginStart">15dp</item>
+        <item name="android:layout_marginLeft">15dp</item>
         <item name="android:layout_gravity">end</item>
         <item name="android:background">@drawable/button_background</item>
     </style>
@@ -76,13 +97,16 @@
         <item name="android:text">@string/delete_button</item>
         <item name="android:textSize">16sp</item>
         <item name="android:layout_marginStart">15dp</item>
+        <item name="android:layout_marginLeft">15dp</item>
         <item name="android:layout_gravity">start</item>
         <item name="android:background">@drawable/button_background</item>
     </style>
 
     <style name="listViewCalendar">
         <item name="android:layout_marginStart">15dp</item>
+        <item name="android:layout_marginLeft">15dp</item>
         <item name="android:layout_marginEnd">15dp</item>
+        <item name="android:layout_marginRight">15dp</item>
         <item name="android:layout_marginBottom">15dp</item>
         <item name="android:layout_gravity">start</item>
         <item name="android:dividerHeight">0dp</item>
@@ -110,7 +134,9 @@
         <item name="android:textStyle">bold</item>
         <item name="android:layout_marginTop">15dp</item>
         <item name="android:layout_marginStart">25dp</item>
+        <item name="android:layout_marginLeft">25dp</item>
         <item name="android:layout_marginEnd">25dp</item>
+        <item name="android:layout_marginRight">25dp</item>
         <item name="android:textSize">17sp</item>
     </style>
 
@@ -119,8 +145,10 @@
         <item name="android:textSize">23sp</item>
         <item name="android:layout_marginBottom">20dp</item>
         <item name="android:layout_marginStart">15dp</item>
+        <item name="android:layout_marginLeft">15dp</item>
         <item name="android:layout_marginTop">50dp</item>
         <item name="android:layout_marginEnd">15dp</item>
+        <item name="android:layout_marginRight">15dp</item>
         <item name="android:gravity">center_horizontal</item>
     </style>
 
@@ -139,6 +167,8 @@
         <item name="android:layout_gravity">center</item>
         <item name="android:gravity">center</item>
         <item name="android:layout_marginEnd">10dp</item>
+        <item name="android:layout_marginLeft">10dp</item>
+        <item name="android:layout_marginRight">10dp</item>
         <item name="android:layout_marginStart">10dp</item>
         <item name="android:textAlignment">center</item>
     </style>

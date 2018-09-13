@@ -30,14 +30,14 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/site_notice_contact_name"
-            style="@style/normalText"
+            style="@style/smallText"
             android:layout_marginBottom="0dp"/>
 
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/site_notice_contact_address"
-            style="@style/normalText"
+            style="@style/smallText"
             android:layout_marginBottom="0dp"
             android:layout_marginTop="0dp"/>
 
@@ -45,7 +45,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/site_notice_contact_mail"
-            style="@style/normalText"
+            style="@style/smallText"
             android:layout_marginTop="0dp"/>
 
         <TextView
@@ -60,7 +60,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/site_notice_text"
-            style="@style/normalText"/>
+            style="@style/smallText"/>
 
     </LinearLayout>
 </ScrollView>

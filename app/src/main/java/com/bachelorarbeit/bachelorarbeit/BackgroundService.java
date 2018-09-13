@@ -106,27 +106,12 @@ public class BackgroundService extends Service {
 
     public void createNotification(String lastEntryDate, String channelId, Boolean noDbEntry){
         NotificationManager notificationManager = (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
-          if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-            NotificationChannel notificationChannel = new NotificationChannel(channelId, getResources().getString(R.string.key_myNotifications), NotificationManager.IMPORTANCE_HIGH);
-            notificationChannel.setName(getApplication().getResources().getString(R.string.app_name));
-            notificationChannel.setDescription(getApplicationContext().getResources().getString(R.string.notification_part1) + lastEntryDate + getApplicationContext().getResources().getString(R.string.notification_part2));
-            notificationChannel.setVibrationPattern(new long[]{0, 1000, 500, 1000});
-            notificationChannel.enableVibration(true);
-            notificationManager.createNotificationChannel(notificationChannel);
-            if(noDbEntry){
-                notificationChannel.setDescription(getResources().getString(R.string.notification_no_entry));
-            }
-        }
         NotificationCompat.Builder notificationBuilder = new NotificationCompat.Builder(this, channelId);
-
-
-        /*
-          calls the HomeActivity if the notification is clicked
-        */
         Intent notificationIntent = new Intent(this, ScoreActivity.class);
         notificationIntent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
         PendingIntent pIntent = PendingIntent.getActivity(this, 0, notificationIntent, 0);
-        notificationBuilder.setSmallIcon(R.drawable.icon)
+        getNotificationIcon(notificationBuilder);
+        notificationBuilder
                 .setContentText(getApplicationContext().getResources().getString(R.string.notification_part1) + " " + lastEntryDate + getApplicationContext().getResources().getString(R.string.notification_part2))
                 .setContentTitle(getApplicationContext().getResources().getString(R.string.app_name))
                 .setAutoCancel(true) // hide the notification after its selected
@@ -138,5 +123,18 @@ public class BackgroundService extends Service {
         }
 
         notificationManager.notify(notificationId, notificationBuilder.build());
+    }
+
+    /*
+       depending on the SDK-Version an other icon has to be used
+     */
+    private void getNotificationIcon(NotificationCompat.Builder notificationBuilder){
+        if(android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.LOLLIPOP){
+            notificationBuilder.setColor(getResources().getColor(R.color.colorPrimary));
+            notificationBuilder.setSmallIcon(R.drawable.icon_silhouette);
+        }
+        else{
+            notificationBuilder.setSmallIcon(R.drawable.icon);
+        }
     }
 }
