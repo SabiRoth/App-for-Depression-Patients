@@ -73,7 +73,7 @@ public class HomeActivity extends AppCompatActivity {
     }
 
     private void clickOverviewCalendar(){
-        Intent i = new Intent(this, CalendarActivityWeekly.class);
+        Intent i = new Intent(this, CalendarActivityDaily.class);
         startActivity(i);
     }
 

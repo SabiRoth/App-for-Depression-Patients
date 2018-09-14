@@ -32,7 +32,7 @@
                 android:id="@+id/graph_view"
                 android:layout_width="0dp"
                 android:layout_weight="0.9"
-                android:layout_height="280dp"/>
+                android:layout_height="270dp"/>
         </LinearLayout>
 
         <LinearLayout
