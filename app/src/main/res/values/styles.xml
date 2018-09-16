@@ -39,6 +39,16 @@
         <item name="android:textStyle">bold</item>
     </style>
 
+    <style name="headerTextViewCenter" parent="android:Widget.TextView">
+        <item name="android:textColor">@color/colorHeadings</item>
+        <item name="android:textSize">22sp</item>
+        <item name="android:layout_marginBottom">10dp</item>
+        <item name="android:layout_marginTop">25dp</item>
+        <item name="android:gravity">center_horizontal</item>
+        <item name="android:layout_gravity">center_horizontal</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
     <style name="headerTextViewActivities" parent="android:Widget.TextView">
         <item name="android:textColor">@color/colorHeadings</item>
         <item name="android:textSize">22sp</item>
@@ -142,7 +152,7 @@
 
     <style name="scoreTextView">
         <item name="android:textColor">@color/colorText</item>
-        <item name="android:textSize">23sp</item>
+        <item name="android:textSize">22sp</item>
         <item name="android:layout_marginBottom">20dp</item>
         <item name="android:layout_marginStart">15dp</item>
         <item name="android:layout_marginLeft">15dp</item>

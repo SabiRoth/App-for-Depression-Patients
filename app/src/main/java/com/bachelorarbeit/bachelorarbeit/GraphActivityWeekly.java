@@ -135,6 +135,9 @@ public class GraphActivityWeekly extends AppCompatActivity implements AdapterVie
             TextView textViewSymptom = findViewById(R.id.graph_view_label_symptom);
             textViewSymptom.setTextColor(getResources().getColor(R.color.colorPrimary));
             textViewSymptom.setText(contentIntent);
+            if(textViewSymptom.getText().equals(getResources().getString(R.string.spinner_overview))){
+                textViewSymptom.setText(getResources().getString(R.string.key_score));
+            }
             TextView textViewActivity = findViewById(R.id.graph_view_label_activity);
             textViewActivity.setTextColor(getResources().getColor(R.color.colorActivites));
             textViewActivity.setVisibility(View.VISIBLE);
@@ -184,6 +187,9 @@ public class GraphActivityWeekly extends AppCompatActivity implements AdapterVie
             TextView textView = findViewById(R.id.graph_view_label_symptom);
             textView.setTextColor(getResources().getColor(R.color.colorPrimary));
             textView.setText(contentIntent);
+            if(textView.getText().equals(getResources().getString(R.string.spinner_overview))){
+                textView.setText(getResources().getString(R.string.key_score));
+            }
         }
     }
 

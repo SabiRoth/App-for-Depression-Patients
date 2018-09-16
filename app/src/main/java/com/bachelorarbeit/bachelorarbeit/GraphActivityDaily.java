@@ -62,6 +62,7 @@ public class GraphActivityDaily extends AppCompatActivity implements AdapterView
         Label[] xLabels = {new Label(1, getResources().getString(R.string.morning)), new Label(2, getResources().getString(R.string.midday)), new Label(3, getResources().getString(R.string.evening))};
 
         if(contentIntent.equals(getResources().getString(R.string.spinner_overview))){
+            String textviewText = getResources().getString(R.string.key_score);
             Point[] activityPoints = new Point[0];
             Point[] scorePoints;
             ArrayList<Entry> entries  = dataSource.getAllEntries(pickedDate);
@@ -122,7 +123,7 @@ public class GraphActivityDaily extends AppCompatActivity implements AdapterView
                 graphView.setGraph(graph);
                 TextView textViewSymptom = findViewById(R.id.graph_view_label_symptom);
                 textViewSymptom.setTextColor(getResources().getColor(R.color.colorPrimary));
-                textViewSymptom.setText(contentIntent);
+                textViewSymptom.setText(textviewText);
                 TextView textViewActivity = findViewById(R.id.graph_view_label_activity);
                 textViewActivity.setTextColor(getResources().getColor(R.color.colorActivites));
                 textViewActivity.setVisibility(View.VISIBLE);
@@ -172,7 +173,7 @@ public class GraphActivityDaily extends AppCompatActivity implements AdapterView
                 graphView.setGraph(graph);
                 TextView textView = findViewById(R.id.graph_view_label_symptom);
                 textView.setTextColor(getResources().getColor(R.color.colorPrimary));
-                textView.setText(contentIntent);
+                textView.setText(textviewText);
             }
         }
 
@@ -319,6 +320,7 @@ public class GraphActivityDaily extends AppCompatActivity implements AdapterView
             else {
                 Intent i = new Intent(getApplicationContext(), GraphActivityDaily.class);
                 i.putExtra(getResources().getString(R.string.key_spinner_graph), parent.getItemAtPosition(position).toString());
+                i.putExtra(getResources().getString(R.string.key_date), getIntent().getStringExtra(getResources().getString(R.string.key_date)));
                 this.finish();
                 startActivity(i);
             }

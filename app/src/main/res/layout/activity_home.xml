@@ -56,7 +56,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/calendar_button"
-            android:drawableEnd="@mipmap/calendar_icon2"
+            android:drawableEnd="@mipmap/calendar_icon"
             style="@style/button_home"/>
 
         <Button

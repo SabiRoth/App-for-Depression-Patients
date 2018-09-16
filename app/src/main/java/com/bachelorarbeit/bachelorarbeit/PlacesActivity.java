@@ -77,6 +77,7 @@ public class PlacesActivity extends AppCompatActivity {
     private void buildEditText(EditText editText){
         editText.setHint(R.string.places_edittext);
         editText.setInputType(InputType.TYPE_CLASS_TEXT);
+        editText.setTextColor(getResources().getColor(R.color.colorText));
         editText.getBackground().setColorFilter(getResources().getColor(R.color.button_pressed), PorterDuff.Mode.SRC_IN);
     }
 

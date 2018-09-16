@@ -21,8 +21,8 @@
     <string name="saveAndNext_button">Speichern und weiter</string>
 
     <!-- TextViews score-->
-    <string name="totalScore">Wie geht es dir?</string>
-    <string name="score_textview">Wähle die Stärke!</string>
+    <string name="totalScore">Wie geht es dir? Wähle von sehr schlecht (0) bis sehr gut (5).</string>
+    <string name="score_textview">Wähle die Stärke von schwach (0) bis stark (5).</string>
     <string name="score_no_symptoms">Für detailreichere Eingaben speichere deine Hauptsymptome in den Einstellungen.</string>
 
     <!--TextViews Home-->
@@ -40,7 +40,7 @@
     <string name="gps_activation_textview">GPS-Tracking</string>
     <string name="push_activation_textview">Push-Benachrichtigungen</string>
     <string name="main_symptoms">Hauptsymptome ändern</string>
-    <string name="recipient_mail_textview">Standard als E-Mail-Empfänger anlegen</string>
+    <string name="recipient_mail_textview">Standard E-Mail-Empfänger anlegen</string>
     <string name="privacyPolicy_textview">Datenschutzerklärung</string>
     <string name="siteNotice">Impressum</string>
     <string name="input_call_textview">Gib bis zu 3 Hauptsymptome ein:</string>
@@ -96,9 +96,9 @@
     <!-- Text Privacy Polidy-->
     <string name="privacy_policy_header">Datenschutzerklärung</string>
     <string name="privacy_policy_caption">Informationen zur Datenverarbeitung</string>
-    <string name="privacy_policy_text">Die Eingabe personenbezogener Daten erfolgt stets auf freiwilliger Basis. Ihre bei Nutzung der App eingegebenen Daten werden ausschließlich lokal auf Ihrem Endgerät gespeichert. Der Upload zu einem Server wird aus datenschutzrechtlichen Gründen und zum Schutz Ihrer sensiblen Daten und Ihrer Privatsphäre nicht erfolgen. Die Daten werden zur Anzeige der Übersichten lokal ausgelesen und angezeigt. Eine Weitergabe Ihrer Daten an Dritte erfolgt lediglich, bei fakultativen Option des Versendens der eigenen Daten eines gewissen Zeitraums. Die Datenübertagung via E-Mail kann Sicherheitslücken seitens der Betreiber aufweisen. Die App speichert in geöffnetem oder minimierten Zustand die GPS-Position des Smartphones. Diese wird zur Auswertung des Bewegungsprofils benötigt. In den Einstellungen der Anwendung oder durch Abschaltung der GPS-Funktion auf Ihrem Endgerät kann dieses Feature deaktiviert werden.</string>
+    <string name="privacy_policy_text">Die Eingabe personenbezogener Daten erfolgt stets auf freiwilliger Basis. Ihre bei Nutzung der App eingegebenen Daten werden ausschließlich lokal auf Ihrem Endgerät gespeichert. Der Upload zu einem Server wird aus datenschutzrechtlichen Gründen und zum Schutz Ihrer sensiblen Daten und Ihrer Privatsphäre nicht erfolgen. Die Daten werden zur Anzeige der Übersichten lokal ausgelesen und angezeigt. Eine Weitergabe Ihrer Daten an Dritte erfolgt lediglich, bei der fakultativen Option des Versendens der eigenen Daten eines gewissen Zeitraums. Die Datenübertagung via E-Mail kann Sicherheitslücken seitens der Betreiber aufweisen. Die App speichert in geöffnetem oder minimierten Zustand die GPS-Position des Smartphones. Diese wird zur Auswertung des Bewegungsprofils benötigt. In den Einstellungen der Anwendung oder durch Abschaltung der GPS-Funktion auf Ihrem Endgerät kann dieses Feature deaktiviert werden.</string>
     <string name="privacy_policy_caption_maps">Google Maps</string>
-    <string name="privacy_policy_text_maps">Zur Darstellung des Bewegungsprofils wird Google Maps verwendet Es handelt sich hierbei um einen Dienst der Google LLC, 1600 Amphitheatre Parkway, Mountain View, CA 94043 USA, nachfolgend nur „Google“ genannt. Durch die Zertifizierung nach dem EU-US-Datenschutzschild („EU-US Privacy Shield“) garantiert Google, dass die Datenschutzvorgaben der EU auch bei der Verarbeitung von Daten in den USA eingehalten werden. Um die Darstellung bestimmter Schriften in unserem Internetauftritt zu ermöglichen, wird bei Aufruf unseres Internetauftritts eine Verbindung zu dem Google-Server in den USA aufgebaut. Sofern Sie die in unseren Internetauftritt eingebundene Komponente Google Maps aufrufen, speichert Google über Ihren Internet-Browser ein Cookie auf Ihrem Endgerät. Um Ihren Standort anzuzeigen werden Ihre Nutzereinstellungen und -daten verarbeitet. Hierbei können wir nicht ausschließen, dass Google Server in den USA einsetzt. Zudem erfolgt die Nutzung von Google Maps sowie der über Google Maps erlangten Informationen nach den Google-Nutzungsbedingungen <i>https://policies.google.com/</i></string>
+    <string name="privacy_policy_text_maps">Zur Darstellung des Bewegungsprofils wird Google Maps verwendet Es handelt sich hierbei um einen Dienst der Google LLC, 1600 Amphitheatre Parkway, Mountain View, CA 94043 USA, nachfolgend nur „Google“ genannt. Durch die Zertifizierung nach dem EU-US-Datenschutzschild („EU-US Privacy Shield“) garantiert Google, dass die Datenschutzvorgaben der EU auch bei der Verarbeitung von Daten in den USA eingehalten werden. Um die Darstellung eines Bewegungsprofils zu ermöglichen, wird bei entsprechendem Aufruf eine Verbindung zu dem Google-Server in den USA aufgebaut. Um Ihren Standort anzuzeigen werden Ihre Nutzereinstellungen und -daten verarbeitet und Cookies auf Ihrem Endgerät gespeichert. Hierbei kann nicht ausgeschlossen werden, dass Google Server in den USA einsetzt. Zudem erfolgt die Nutzung von Google Maps sowie der über Google Maps erlangten Informationen nach den Google-Nutzungsbedingungen <i>https://policies.google.com/</i></string>
 
     <!--Text site notice-->
     <string name="site_notice_header">Impressum</string>
@@ -190,13 +190,12 @@
 
     <string-array name="sensivities_somatic">
         <item>Konzentrationsschwierigkeiten</item>
-        <item>Verminderte/Gesteigerte Aktivität</item>
+        <item>Verminderte Aktivität</item>
         <item>Anspannung/Unruhe</item>
         <item>Geminderte Leistungsfähigkeit</item>
         <item>Kraftlosigkeit</item>
         <item>Zittern</item>
         <item>Schlafstörungen</item>
-        <item>Früherwachen</item>
         <item>Appetitsminderung/-steigerung</item>
         <item>Libidoverlust</item>
     </string-array>
