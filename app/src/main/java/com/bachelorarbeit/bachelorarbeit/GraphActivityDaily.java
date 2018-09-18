@@ -66,30 +66,30 @@ public class GraphActivityDaily extends AppCompatActivity implements AdapterView
             Point[] activityPoints = new Point[0];
             Point[] scorePoints;
             ArrayList<Entry> entries  = dataSource.getAllEntries(pickedDate);
-            Integer activitiesEntriesMorning = 0, activitiesEntriesMidday = 0, activitiesEntriesEvening =0;
+            Integer activitiesEntriesMorningCounter = 0, activitiesEntriesMiddayCounter = 0, activitiesEntriesEveningCounter =0;
             if(entries.size()!=0) {
                 for (int i = 0; i < entries.size(); i++) {
                     if (entries.get(i).getActivities() != null) {
                         if (entries.get(i).getDaytime().equals(getResources().getString(R.string.morning))) {
-                            activitiesEntriesMorning++;
+                            activitiesEntriesMorningCounter++;
                         }
                         if (entries.get(i).getDaytime().equals(getResources().getString(R.string.midday))) {
-                            activitiesEntriesMidday++;
+                            activitiesEntriesMiddayCounter++;
                         }
                         if (entries.get(i).getDaytime().equals(getResources().getString(R.string.evening))) {
-                            activitiesEntriesEvening++;
+                            activitiesEntriesEveningCounter++;
                         }
                     }
                 }
                 ArrayList<Point> temp = new ArrayList<>();
-                if (activitiesEntriesMorning > 0) {
-                    temp.add(new Point(1, activitiesEntriesMorning));
+                if (activitiesEntriesMorningCounter > 0) {
+                    temp.add(new Point(1, activitiesEntriesMorningCounter));
                 }
-                if (activitiesEntriesMidday > 0) {
-                    temp.add(new Point(2, activitiesEntriesMidday));
+                if (activitiesEntriesMiddayCounter > 0) {
+                    temp.add(new Point(2, activitiesEntriesMiddayCounter));
                 }
-                if (activitiesEntriesEvening > 0) {
-                    temp.add(new Point(3, activitiesEntriesEvening));
+                if (activitiesEntriesEveningCounter > 0) {
+                    temp.add(new Point(3, activitiesEntriesEveningCounter));
                 }
                 activityPoints = new Point[temp.size()];
                 for (int k = 0; k < temp.size(); k++) {

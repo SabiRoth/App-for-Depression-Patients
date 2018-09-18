@@ -81,12 +81,13 @@ public class SensitivitiesActivity extends AppCompatActivity {
                  entryClicked(adapter.getItem(i), view);
              }
          });
+        final EditText editText = (EditText)findViewById(R.id.editText_sensitivities);
+        Button saveButtonOwnEntries = (Button)findViewById(R.id.saveButton_sensitivities);
+
          if(counter == arrayListStringArrays.size()-1){
              if(getIntent().getStringExtra(getResources().getString(R.string.key_intentSource)).equals(getResources().getString(R.string.key_home_value))){
                  buttonSensitivitiesNext.setText(getResources().getString(R.string.end_button));
              }
-             final EditText editText = (EditText)findViewById(R.id.editText_sensitivities);
-             Button saveButtonOwnEntries = (Button)findViewById(R.id.saveButton_sensitivities);
              editText.setVisibility(View.VISIBLE);
              saveButtonOwnEntries.setVisibility(View.VISIBLE);
              saveButtonOwnEntries.setOnClickListener(new View.OnClickListener() {
@@ -95,6 +96,10 @@ public class SensitivitiesActivity extends AppCompatActivity {
                      saveButtonOwnEntriesClicked(editText);
                  }
              });
+         }
+         if(counter<arrayListStringArrays.size()-1){
+             editText.setVisibility(View.GONE);
+             saveButtonOwnEntries.setVisibility(View.GONE);
          }
     }
 
