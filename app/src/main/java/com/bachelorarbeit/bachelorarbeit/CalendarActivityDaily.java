@@ -101,7 +101,7 @@ public class CalendarActivityDaily extends AppCompatActivity implements AdapterV
         }
         if(morningEntriesSensivities.size()!=0) {
             final ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,
-                    R.layout.listentry_simple_listview, morningEntriesSensivities);
+                    R.layout.listentry_calendar_sensivities, morningEntriesSensivities);
             listViewMorningSensivities.setAdapter(adapter);
             listViewMorningSensivities.setVisibility(View.VISIBLE);
         }
@@ -119,7 +119,7 @@ public class CalendarActivityDaily extends AppCompatActivity implements AdapterV
         }
         if(middayEntriesSensivities.size()!=0) {
             final ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,
-                    R.layout.listentry_simple_listview, middayEntriesSensivities);
+                    R.layout.listentry_calendar_sensivities, middayEntriesSensivities);
             listViewMiddaySensivities.setAdapter(adapter);
             listViewMiddaySensivities.setVisibility(View.VISIBLE);
         }
@@ -137,7 +137,7 @@ public class CalendarActivityDaily extends AppCompatActivity implements AdapterV
         }
         if(eveningEntriesSensivities.size()!=0) {
             final ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,
-                    R.layout.listentry_simple_listview, eveningEntriesSensivities);
+                    R.layout.listentry_calendar_sensivities, eveningEntriesSensivities);
             listViewEveningSensivities.setAdapter(adapter);
             listViewEveningSensivities.setVisibility(View.VISIBLE);
         }

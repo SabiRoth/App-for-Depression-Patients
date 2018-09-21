@@ -114,7 +114,7 @@
     <string name="notification_part2">. Aktualisiere deine Eingaben.</string>
     <string name="toast_end">gespeichert.</string>
     <string name="toast">Gespeichert</string>
-    <string name="notification_no_entry">Erstelle deinen ersten Eintrag</string>
+    <string name="notification_no_entry">Klicke und lege jetzt deinen ersten Eintrag an!</string>
     <string name="no_entry_selected">Gib eine Aktivität ein oder wähle aus der Liste.</string>
     <string name="missing_entry_score">Bitte alle Eingaben tätigen</string>
     <string name="toast_deleted">Gelöscht</string>

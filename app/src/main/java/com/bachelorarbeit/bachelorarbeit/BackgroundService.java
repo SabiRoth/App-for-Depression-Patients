@@ -112,14 +112,14 @@ public class BackgroundService extends Service {
         PendingIntent pIntent = PendingIntent.getActivity(this, 0, notificationIntent, 0);
         getNotificationIcon(notificationBuilder);
         notificationBuilder
-                .setContentText(getApplicationContext().getResources().getString(R.string.notification_part1) + " " + lastEntryDate + getApplicationContext().getResources().getString(R.string.notification_part2))
                 .setContentTitle(getApplicationContext().getResources().getString(R.string.app_name))
                 .setAutoCancel(true) // hide the notification after its selected
                 .setVibrate(new long[] { 1000, 1000, 1000 })
                 .setContentIntent(pIntent)
-                .setTicker(getApplicationContext().getResources().getString(R.string.app_name));
+                .setTicker(getApplicationContext().getResources().getString(R.string.app_name))
+                .setStyle(new NotificationCompat.BigTextStyle().bigText(getApplicationContext().getResources().getString(R.string.notification_part1) + " " + lastEntryDate + getApplicationContext().getResources().getString(R.string.notification_part2)));
         if(noDbEntry){
-            notificationBuilder.setContentText(getResources().getString(R.string.notification_no_entry));
+           notificationBuilder.setStyle(new NotificationCompat.BigTextStyle().bigText(getApplicationContext().getResources().getString(R.string.notification_no_entry)));
         }
 
         notificationManager.notify(notificationId, notificationBuilder.build());
