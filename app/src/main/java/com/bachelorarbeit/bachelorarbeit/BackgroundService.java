@@ -117,9 +117,11 @@ public class BackgroundService extends Service {
                 .setVibrate(new long[] { 1000, 1000, 1000 })
                 .setContentIntent(pIntent)
                 .setTicker(getApplicationContext().getResources().getString(R.string.app_name))
+                .setContentText(getApplicationContext().getResources().getString(R.string.notification_part1) + " " + lastEntryDate + getApplicationContext().getResources().getString(R.string.notification_part2))
                 .setStyle(new NotificationCompat.BigTextStyle().bigText(getApplicationContext().getResources().getString(R.string.notification_part1) + " " + lastEntryDate + getApplicationContext().getResources().getString(R.string.notification_part2)));
         if(noDbEntry){
-           notificationBuilder.setStyle(new NotificationCompat.BigTextStyle().bigText(getApplicationContext().getResources().getString(R.string.notification_no_entry)));
+            notificationBuilder.setContentText(getApplicationContext().getResources().getString(R.string.notification_no_entry));
+            notificationBuilder.setStyle(new NotificationCompat.BigTextStyle().bigText(getApplicationContext().getResources().getString(R.string.notification_no_entry)));
         }
 
         notificationManager.notify(notificationId, notificationBuilder.build());
