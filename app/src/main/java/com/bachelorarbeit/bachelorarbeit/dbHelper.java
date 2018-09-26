@@ -8,7 +8,7 @@ import android.util.Log;
 public class dbHelper extends SQLiteOpenHelper {
 
     private static final String DB_NAME = "depTrackAppDB.db";
-    private static final int DB_VERSION = 6;
+    private static final int DB_VERSION = 7;
     public static final String TABLE_ALL_ENTRIES = "Einträgetabelle";
     public static final String TABLE_MOVEMENT_DATA = "Bewegungsdatentabelle";
     public static final String TABLE_OWN_SENSITIVITIES_ENTRIES = "EigeneBefindlichkeitentabelle";

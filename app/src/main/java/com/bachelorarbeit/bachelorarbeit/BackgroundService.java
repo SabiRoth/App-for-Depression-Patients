@@ -59,11 +59,6 @@ public class BackgroundService extends Service {
         return null;
     }
 
-    public static void startBackgroundAction(Context context, String param1, String param2) {
-        Intent intent = new Intent(context, BackgroundService.class);
-        context.startService(intent);
-    }
-
     public void startGPSTracker(){
         GPSTracker gpsTracker = new GPSTracker();
     }

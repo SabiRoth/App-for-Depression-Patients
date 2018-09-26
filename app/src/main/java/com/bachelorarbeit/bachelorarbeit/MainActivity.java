@@ -24,6 +24,7 @@ public class MainActivity extends AppCompatActivity {
         dataSource.close();
         if(trackingSetting!=null){
             if(trackingSetting.equals(getResources().getString(R.string.key_activated))) {
+                GPSTracker gpsTracker = new GPSTracker();
                 Intent i = new Intent(this, GPSTracker.class);
                 startActivityForResult(i, 1);
             }
@@ -32,6 +33,7 @@ public class MainActivity extends AppCompatActivity {
             }
         }
         else{
+            GPSTracker gpsTracker = new GPSTracker();
             Intent i = new Intent(this, GPSTracker.class);
             startActivityForResult(i, 1);
         }
