@@ -5,3 +5,5 @@ The functions of the app include querying and saving current user information, s
 The app also creates a clear summary that shows the improvement or deterioration in the course of depression over a certain period of time and can be forwarded via e-mail if necessary. 
 
 Last updated 09/2018.
+
+<i>The elaboration of the bachelor thesis can be found in the forder thesis.</i>
